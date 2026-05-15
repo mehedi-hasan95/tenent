@@ -7,5 +7,8 @@
     "dotenv": "^17.4.2",
     "zod": "^4.4.3",
     "@workspace/db": "workspace:*"
+  },
+  "exports": {
+    ".": "./src/index.ts"
   }
 }
