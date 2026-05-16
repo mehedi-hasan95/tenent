@@ -13,12 +13,16 @@
     "zod": "^4.4.3",
     "@workspace/auth": "workspace:*",
     "@workspace/db": "workspace:*",
-    "@workspace/open-api": "workspace:*"
+    "@workspace/open-api": "workspace:*",
+    "@workspace/validators": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^20.11.17",
     "@workspace/typescript-config": "workspace:*",
     "tsx": "^4.7.1",
     "typescript": "^5.8.3"
+  },
+  "exports": {
+    "./types/*": "./src/*.ts"
   }
 }

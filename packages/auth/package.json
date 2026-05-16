@@ -6,7 +6,8 @@
     "better-auth": "^1.6.11",
     "dotenv": "^17.4.2",
     "zod": "^4.4.3",
-    "@workspace/db": "workspace:*"
+    "@workspace/db": "workspace:*",
+    "@workspace/redis": "workspace:*"
   },
   "exports": {
     ".": "./src/index.ts"
