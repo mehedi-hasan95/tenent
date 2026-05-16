@@ -8,6 +8,27 @@
       "when": 1778774774430,
       "tag": "0000_tense_jamie_braddock",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1778838445412,
+      "tag": "0001_sudden_power_pack",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1778852002744,
+      "tag": "0002_clean_zarek",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1778852432153,
+      "tag": "0003_safe_the_enforcers",
+      "breakpoints": true
     }
   ]
 }

@@ -1,14 +1,107 @@
 import { db } from "@workspace/db"
-import { betterAuth } from "better-auth"
+import { betterAuth, BetterAuthOptions } from "better-auth"
 import { drizzleAdapter } from "better-auth/adapters/drizzle"
-import { account, session, user } from "@workspace/db/schema/users"
+import { account, user } from "@workspace/db/schema/user.schema"
+import redis from "@workspace/redis"
+import { customSession, emailOTP, username } from "better-auth/plugins"
 
-export const auth = betterAuth({
+const options = {
+  baseURL: process.env.BETTER_AUTH_URL,
+
   database: drizzleAdapter(db, {
     provider: "pg",
-    schema: { user, account, session },
+    schema: { account, user },
   }),
   emailAndPassword: {
     enabled: true,
+    minPasswordLength: 6,
+    maxPasswordLength: 64,
+    requireEmailVerification: true,
   },
+
+  plugins: [
+    emailOTP({
+      async sendVerificationOTP({ email, otp, type }) {
+        if (type === "email-verification") {
+          // await sendVerificationEmail("verification", email, otp);
+        }
+        if (type === "forget-password") {
+          // await sendVerificationEmail("reset", email, otp);
+        }
+      },
+      disableSignUp: false,
+    }),
+    username(),
+  ],
+  advanced: {
+    defaultCookieAttributes: {
+      sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+      secure: process.env.NODE_ENV === "production",
+      partitioned: false,
+    },
+    cookies: {
+      sessionToken: {
+        attributes: {
+          sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
+          secure: process.env.NODE_ENV === "production",
+          partitioned: false,
+        },
+      },
+    },
+  },
+  user: {
+    additionalFields: {
+      role: {
+        type: ["USER", "SELLER"],
+        required: false,
+        defaultValue: "USER",
+      },
+      phone: {
+        type: "string",
+        required: false,
+        defaultValue: undefined,
+      },
+      stripeVerified: {
+        type: "boolean",
+        required: false,
+        defaultValue: false,
+      },
+    },
+  },
+  secondaryStorage: {
+    get: async (key) => {
+      return await redis.get(key)
+    },
+    set: async (key, value, ttl) => {
+      if (ttl) {
+        await redis.set(key, value, "EX", ttl)
+      } else {
+        await redis.set(key, value)
+      }
+    },
+    delete: async (key) => {
+      await redis.del(key)
+    },
+  },
+  trustedOrigins: ["http://localhost:3000", "http://localhost:6002"],
+} satisfies BetterAuthOptions
+
+export const auth = betterAuth({
+  ...options,
+  plugins: [
+    ...(options.plugins ?? []),
+    customSession(async ({ user, session }, ctx) => {
+      return {
+        user: {
+          id: user.id,
+          email: user.email,
+          name: user.name,
+          image: user.image,
+          role: user.role,
+          stripeVerified: user.stripeVerified,
+        },
+        session: { token: session.token },
+      }
+    }, options),
+  ],
 })
