@@ -1,5 +1,8 @@
 import { createRoute } from "@workspace/open-api"
-import { registrationSchema } from "@workspace/validators/validators/user-validators"
+import {
+  loginSchema,
+  registrationSchema,
+} from "@workspace/validators/validators/user-validators"
 import z from "zod"
 
 const tags = ["Authintication"]
@@ -60,6 +63,41 @@ export const registrationEmailVerifyOTPRoute = createRoute({
       },
     },
   },
+  responses: {
+    200: { description: "OK" },
+    400: { description: "Bad Request" },
+    404: { description: "Not Found" },
+    500: { description: "Internal server error" },
+  },
+})
+
+export const loginRoute = createRoute({
+  method: "post",
+  path: "/login",
+  tags,
+  summary: "Sign In",
+  request: {
+    body: {
+      content: {
+        "application/json": {
+          schema: loginSchema,
+        },
+      },
+    },
+  },
+  responses: {
+    200: { description: "OK" },
+    400: { description: "Bad Request" },
+    404: { description: "Not Found" },
+    500: { description: "Internal server error" },
+  },
+})
+
+export const signOutRoute = createRoute({
+  method: "post",
+  path: "/sign-out",
+  tags,
+  summary: "Sign Out",
   responses: {
     200: { description: "OK" },
     400: { description: "Bad Request" },

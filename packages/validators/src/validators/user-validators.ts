@@ -6,15 +6,9 @@ const customError = "custom" as const
 
 export const registrationSchema = z
   .object({
-    name: z
-      .string({ message: "Name is required!" })
-      .min(2)
-      .max(50)
-      .openapi({ example: "Mehedi Hasan" }),
+    name: z.string({ message: "Name is required!" }).min(2).max(50),
 
-    email: z
-      .email({ message: "Invalid email type" })
-      .openapi({ example: "mehedi.jsx@gmail.com" }),
+    email: z.email({ message: "Invalid email type" }),
     username: z
       .string()
       .regex(
@@ -25,9 +19,8 @@ export const registrationSchema = z
     password: z
       .string()
       .min(6, { message: "Password will be atleast 6 characters" })
-      .max(64, { message: "Password will be max 64 characters" })
-      .openapi({ example: "123456" }),
-    confirmPassword: z.string().openapi({ example: "123456" }),
+      .max(64, { message: "Password will be max 64 characters" }),
+    confirmPassword: z.string(),
 
     role: userRoleSchema.default("USER"),
 
@@ -58,3 +51,9 @@ export const registrationSchema = z
       })
     }
   })
+
+export const loginSchema = z.object({
+  email: z.email(),
+  password: z.string(),
+  rememberMe: z.boolean(),
+})

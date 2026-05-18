@@ -1,19 +1,26 @@
-import { Button } from "@workspace/ui/components/button"
+"use client"
+import { NavBar } from "@/components/common/navbar"
+import { ComboboxModify } from "@/components/modify/combobox-modify"
 
+import { useState } from "react"
+
+const frameworks = [
+  { label: "me", value: "me" },
+  { label: "me1", value: "me1" },
+]
 export default function Page() {
+  const [framework, setFramework] = useState("me")
   return (
-    <div className="flex min-h-svh p-6">
-      <div className="flex max-w-md min-w-0 flex-col gap-4 text-sm leading-loose">
-        <div>
-          <h1 className="font-medium">Project ready!</h1>
-          <p>You may now add components and start building.</p>
-          <p>We&apos;ve already added the button component for you.</p>
-          <Button className="mt-2">Button</Button>
-        </div>
-        <div className="text-muted-foreground font-mono text-xs">
-          (Press <kbd>d</kbd> to toggle dark mode)
-        </div>
-      </div>
+    <div className="relative flex min-h-svh flex-col px-6">
+      <NavBar />
+      <ComboboxModify
+        options={frameworks}
+        value={framework}
+        onChange={(value) => {
+          console.log(value) // selected option value
+          setFramework(value)
+        }}
+      />
     </div>
   )
 }

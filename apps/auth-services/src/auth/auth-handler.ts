@@ -1,8 +1,10 @@
 import { RouteHandler } from "@workspace/open-api"
 import {
+  loginRoute,
   registrationEmailVerifyOTPRoute,
   registrationEmailVerifyRoute,
   registrationRoute,
+  signOutRoute,
 } from "./auth-route"
 import { auth } from "@workspace/auth"
 
@@ -56,4 +58,34 @@ export const registrationEmailVerifyOTPHandler: RouteHandler<
   } catch (error) {
     return c.json({ error })
   }
+}
+
+export const loginHandler: RouteHandler<typeof loginRoute> = async (c) => {
+  try {
+    const { email, password, rememberMe } = c.req.valid("json")
+    // const data = await auth.api.signInEmail({
+    //   body: { email, password, rememberMe },
+    //   asResponse: true,
+    // })
+    // return c.json({ data })
+
+    // todo
+    return await auth.api.signInEmail({
+      body: {
+        email,
+        password,
+        rememberMe,
+      },
+      asResponse: true, // returns a response object instead of data
+    })
+  } catch (error) {
+    return c.json({ error })
+  }
+}
+
+export const signOutHandler: RouteHandler<typeof signOutRoute> = async (c) => {
+  await auth.api.signOut({
+    headers: c.req.raw.headers,
+  })
+  return c.json({ success: true }, 200)
 }
