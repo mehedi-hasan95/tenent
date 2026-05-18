@@ -17,6 +17,17 @@ const options = {
     minPasswordLength: 6,
     maxPasswordLength: 64,
     requireEmailVerification: true,
+    onExistingUserSignUp: async ({ user }, request) => {
+      // Notify the existing user about the sign-up attempt
+      console.log(`Someone tried to sign up with ${user.email}`)
+    },
+  },
+  emailVerification: {
+    autoSignInAfterVerification: true,
+    async afterEmailVerification(user, request) {
+      // Your custom logic here, e.g., grant access to premium features
+      console.log(`${user.email} has been successfully verified!`)
+    },
   },
 
   plugins: [
