@@ -94,7 +94,7 @@ const options = {
       await redis.del(key)
     },
   },
-  trustedOrigins: ["http://localhost:3000", "http://localhost:6002"],
+  trustedOrigins: ["http://localhost:3000"],
 } satisfies BetterAuthOptions
 
 export const auth = betterAuth({

@@ -20,7 +20,7 @@ export const ComboboxController = <T extends FieldValues>({
   title,
   placeholder,
   className,
-  disabled = false,
+  disabled,
 }: Props<T>) => {
   return (
     <Controller

@@ -5,3 +5,11 @@ export default function getQueryClient() {
     defaultOptions: { queries: { staleTime: 1000 * 60 * 5 } },
   })
 }
+
+export const getInitials = (name: string): string => {
+  return name
+    .split(" ")
+    .map((n) => n[0])
+    .join("")
+    .toUpperCase()
+}

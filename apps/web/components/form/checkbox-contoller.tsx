@@ -15,6 +15,7 @@ interface Props<T extends FieldValues> {
   title?: string
   description?: string
   label?: string
+  disabled?: boolean
 }
 
 export const CheckboxController = <T extends FieldValues>({
@@ -23,6 +24,7 @@ export const CheckboxController = <T extends FieldValues>({
   title,
   description,
   label = "Accept terms and conditions",
+  disabled,
 }: Props<T>) => {
   return (
     <Controller
@@ -46,6 +48,7 @@ export const CheckboxController = <T extends FieldValues>({
             checked={!!field.value}
             onCheckedChange={(checked) => field.onChange(!!checked)}
             aria-invalid={fieldState.invalid}
+            disabled={disabled}
           />
           <Label htmlFor={name}>{label}</Label>
         </Field>

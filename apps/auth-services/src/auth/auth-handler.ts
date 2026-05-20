@@ -4,6 +4,7 @@ import {
   registrationEmailVerifyOTPRoute,
   registrationEmailVerifyRoute,
   registrationRoute,
+  sessionRoute,
   signOutRoute,
 } from "./auth-route"
 import { auth } from "@workspace/auth"
@@ -48,13 +49,13 @@ export const registrationEmailVerifyOTPHandler: RouteHandler<
 > = async (c) => {
   try {
     const { email, otp } = c.req.valid("json")
-    const data = await auth.api.verifyEmailOTP({
+    return await auth.api.verifyEmailOTP({
       body: {
         email,
         otp,
       },
+      asResponse: true,
     })
-    return c.json({ data }, 200)
   } catch (error) {
     return c.json({ error })
   }
@@ -63,13 +64,7 @@ export const registrationEmailVerifyOTPHandler: RouteHandler<
 export const loginHandler: RouteHandler<typeof loginRoute> = async (c) => {
   try {
     const { email, password, rememberMe } = c.req.valid("json")
-    // const data = await auth.api.signInEmail({
-    //   body: { email, password, rememberMe },
-    //   asResponse: true,
-    // })
-    // return c.json({ data })
 
-    // todo
     return await auth.api.signInEmail({
       body: {
         email,
@@ -88,4 +83,11 @@ export const signOutHandler: RouteHandler<typeof signOutRoute> = async (c) => {
     headers: c.req.raw.headers,
   })
   return c.json({ success: true }, 200)
+}
+
+export const sessionHandler: RouteHandler<typeof sessionRoute> = async (c) => {
+  const data = await auth.api.getSession({
+    headers: c.req.raw.headers,
+  })
+  return c.json({ data })
 }

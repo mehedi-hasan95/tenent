@@ -86,7 +86,7 @@ export const loginRoute = createRoute({
     },
   },
   responses: {
-    200: { description: "OK" },
+    201: { description: "OK" },
     400: { description: "Bad Request" },
     404: { description: "Not Found" },
     500: { description: "Internal server error" },
@@ -99,9 +99,20 @@ export const signOutRoute = createRoute({
   tags,
   summary: "Sign Out",
   responses: {
-    200: { description: "OK" },
+    201: { description: "OK" },
     400: { description: "Bad Request" },
     404: { description: "Not Found" },
+    500: { description: "Internal server error" },
+  },
+})
+
+export const sessionRoute = createRoute({
+  method: "get",
+  path: "/get-session",
+  tags,
+  summary: "Get Session",
+  responses: {
+    200: { description: "OK" },
     500: { description: "Internal server error" },
   },
 })

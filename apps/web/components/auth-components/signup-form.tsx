@@ -17,12 +17,20 @@ import z from "zod"
 import { AuthHeader } from "./auth-header"
 import { VerifyEmailOtpForm } from "./verify-email-opt-form"
 import { useAuthModal } from "@/store/useAuthModalStore"
+import { useMutation } from "@tanstack/react-query"
+import {
+  registrationAction,
+  registrationOtpAction,
+  verifyRegistrationOtpAction,
+} from "@/api/auth/auth"
+import { toast } from "sonner"
+import { LoadingButton } from "../common/loading-button"
 
-export const RegistrationForm = () => {
+export const SignupForm = () => {
   const [showPassword, setShowPassword] = useState(false)
   const [step, setStep] = useState<"registration" | "verify">("registration")
   const [otp, setOtp] = useState("")
-  const { openLogin } = useAuthModal()
+  const { openLogin, closeRegister } = useAuthModal()
   const form = useForm<z.input<typeof registrationSchema>>({
     resolver: zodResolver(registrationSchema),
     defaultValues: {
@@ -35,8 +43,31 @@ export const RegistrationForm = () => {
       confirmPassword: "",
     },
   })
+  const mutation = useMutation({
+    mutationFn: registrationAction,
+    onError: (error) => {
+      console.log(error)
+    },
+    onSuccess: async (data) => {
+      if (data?.data?.user?.id) {
+        await registrationOtpAction({ email: data?.data?.user?.email })
+        setStep("verify")
+        toast.success("A verification OTP send to your email")
+      }
+    },
+  })
+  const otpMutation = useMutation({
+    mutationFn: verifyRegistrationOtpAction,
+    onError: (error) => {
+      console.log(error)
+    },
+    onSuccess: () => {
+      toast.success("User created successfully")
+      closeRegister()
+    },
+  })
   function onSubmit(data: z.input<typeof registrationSchema>) {
-    console.log(data)
+    mutation.mutate(data)
   }
   return (
     <>
@@ -121,9 +152,13 @@ export const RegistrationForm = () => {
               >
                 Reset
               </Button>
-              <Button type="submit" form="form-rhf-demo">
-                Submit
-              </Button>
+              {mutation.isPending ? (
+                <LoadingButton />
+              ) : (
+                <Button type="submit" form="form-rhf-demo">
+                  Submit
+                </Button>
+              )}
             </Field>
           </div>
         </AuthHeader>
@@ -131,7 +166,9 @@ export const RegistrationForm = () => {
         <VerifyEmailOtpForm
           loading={false}
           onOTP={otp}
-          onSubmit={() => {}}
+          onSubmit={() =>
+            otpMutation.mutate({ email: form.getValues("email"), otp })
+          }
           setOTP={setOtp}
         />
       )}

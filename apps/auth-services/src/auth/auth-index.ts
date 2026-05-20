@@ -4,6 +4,7 @@ import {
   registrationEmailVerifyOTPRoute,
   registrationEmailVerifyRoute,
   registrationRoute,
+  sessionRoute,
   signOutRoute,
 } from "./auth-route"
 import {
@@ -11,6 +12,7 @@ import {
   registrationEmailVerifyHandler,
   registrationEmailVerifyOTPHandler,
   registrationHandler,
+  sessionHandler,
   signOutHandler,
 } from "./auth-handler"
 
@@ -24,5 +26,6 @@ app
   .openapi(registrationEmailVerifyOTPRoute, registrationEmailVerifyOTPHandler)
   .openapi(loginRoute, loginHandler)
   .openapi(signOutRoute, signOutHandler)
+  .openapi(sessionRoute, sessionHandler)
 
 export default app

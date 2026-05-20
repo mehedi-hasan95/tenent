@@ -17,10 +17,16 @@ import { useState } from "react"
 import { Eye, EyeOff } from "lucide-react"
 import Link from "next/link"
 import { CheckboxController } from "../form/checkbox-contoller"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
+import { loginAction } from "@/api/auth/auth"
+import { LoadingButton } from "../common/loading-button"
+import { toast } from "sonner"
+import { useRouter } from "next/navigation"
 
 export const SignInForm = () => {
-  const { openRegister } = useAuthModal()
+  const { openRegister, closeLogin } = useAuthModal()
   const [showPassword, setShowPassword] = useState(false)
+  const router = useRouter()
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -29,8 +35,19 @@ export const SignInForm = () => {
       rememberMe: true,
     },
   })
+  const mutation = useMutation({
+    mutationFn: loginAction,
+    onError: (error) => {
+      toast.error("Error", { description: error.message })
+    },
+    onSuccess: () => {
+      toast.success("Login Successfully")
+      router.refresh()
+      closeLogin()
+    },
+  })
   function onSubmit(data: z.infer<typeof loginSchema>) {
-    console.log(data)
+    mutation.mutate(data)
   }
 
   return (
@@ -86,9 +103,13 @@ export const SignInForm = () => {
           <Button type="button" variant="outline" onClick={() => form.reset()}>
             Reset
           </Button>
-          <Button type="submit" form="login-rhf">
-            Submit
-          </Button>
+          {mutation.isPending ? (
+            <LoadingButton />
+          ) : (
+            <Button type="submit" form="login-rhf">
+              Sign In
+            </Button>
+          )}
         </Field>
       </div>
     </AuthHeader>

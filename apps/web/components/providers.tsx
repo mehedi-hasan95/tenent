@@ -1,25 +1,27 @@
 "use client"
 
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
+import { QueryClientProvider } from "@tanstack/react-query"
 import { ThemeProvider } from "./theme-provider"
 import { TooltipProvider } from "@workspace/ui/components/tooltip"
-import { RegistrationModal } from "./auth-components/registration-modal"
+import { SignupModal } from "./auth-components/signup-modal"
 import { SignInModal } from "./auth-components/signin-modal"
 import { Toaster } from "sonner"
 import { ReactQueryDevtools } from "@tanstack/react-query-devtools"
+import { useState } from "react"
+import getQueryClient from "@/lib/lib"
 
 export const Providers = ({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) => {
-  const queryClient = new QueryClient()
+  const [queryClient] = useState(() => getQueryClient())
   return (
     <ThemeProvider>
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
           {children}
-          <RegistrationModal />
+          <SignupModal />
           <SignInModal />
           <Toaster richColors />
           <ReactQueryDevtools initialIsOpen={false} />

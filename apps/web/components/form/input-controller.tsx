@@ -12,6 +12,7 @@ interface Props<T extends FieldValues> {
   inputTypes?: "text" | "password" | "email" | "number"
   className?: string
   otherLink?: JSX.Element
+  disabled?: boolean
 }
 
 export const InputController = <T extends FieldValues>({
@@ -22,6 +23,7 @@ export const InputController = <T extends FieldValues>({
   inputTypes = "text",
   className,
   otherLink,
+  disabled,
 }: Props<T>) => {
   return (
     <Controller
@@ -40,6 +42,7 @@ export const InputController = <T extends FieldValues>({
             placeholder={placeholder}
             type={inputTypes}
             className={cn("", className)}
+            disabled={disabled}
           />
           {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
         </Field>

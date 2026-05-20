@@ -1,14 +1,14 @@
 "use client"
 
 import { useAuthModal } from "@/store/useAuthModalStore"
-import { RegistrationForm } from "@/components/auth-components/registration-form"
+import { SignupForm } from "@/components/auth-components/signup-form"
 import { AuthModal } from "./auth-modal"
 
-export const RegistrationModal = () => {
+export const SignupModal = () => {
   const { isRegisterOpen, closeRegister } = useAuthModal()
   return (
     <AuthModal isOpen={isRegisterOpen} onClose={closeRegister}>
-      <RegistrationForm />
+      <SignupForm />
     </AuthModal>
   )
 }

@@ -1,6 +1,6 @@
 "use client"
 
-import { OtpVerificationForm } from "@/components/form/otp-verification-form"
+import { OtpVerificationForm } from "@/components/common/otp-verification-form"
 import { AuthHeader } from "./auth-header"
 
 interface Props {
