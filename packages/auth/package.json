@@ -1,0 +1,16 @@
+{
+  "name": "@workspace/auth",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "better-auth": "^1.6.14",
+    "dotenv": "^17.4.2",
+    "zod": "^4.4.3",
+    "@workspace/db": "workspace:*",
+    "@workspace/redis": "workspace:*",
+    "@workspace/email-service": "workspace:*"
+  },
+  "exports": {
+    ".": "./src/index.ts"
+  }
+}

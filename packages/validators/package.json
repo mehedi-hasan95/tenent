@@ -1,0 +1,13 @@
+{
+  "name": "@workspace/validators",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "@workspace/db": "workspace:*",
+    "zod": "^4.4.3"
+  },
+  "exports": {
+    "./validators/*": "./src/validators/*.ts",
+    "./types/*": "./src/@types/*.ts"
+  }
+}
