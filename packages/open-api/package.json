@@ -1,0 +1,14 @@
+{
+  "name": "@workspace/open-api",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "@hono/zod-openapi": "^1.4.0",
+    "@scalar/hono-api-reference": "^0.10.14",
+    "hono": "^4.12.18",
+    "zod": "^4.4.3"
+  },
+  "exports": {
+    ".": "./src/index.ts"
+  }
+}
