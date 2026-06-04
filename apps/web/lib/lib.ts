@@ -35,3 +35,11 @@ export function getQueryClient() {
     return browserQueryClient
   }
 }
+
+export const getInitials = (name: string): string => {
+  return name
+    .split(" ")
+    .map((n) => n[0])
+    .join("")
+    .toUpperCase()
+}
