@@ -4,7 +4,7 @@ import {
   isPasswordVerifiedRoute,
   loginRoute,
   registrationEmailVerifyOTPRoute,
-  registrationEmailVerifyRoute,
+  // registrationEmailVerifyRoute,
   registrationRoute,
   requestPasswordResetRoute,
   resetPasswordRoute,
@@ -20,7 +20,7 @@ import {
 import {
   checkVerificationOtpHandler,
   loginHandler,
-  registrationEmailVerifyHandler,
+  // registrationEmailVerifyHandler,
   registrationEmailVerifyOTPHandler,
   registrationHandler,
   requestPasswordResetHandler,
@@ -42,7 +42,7 @@ const app = new OpenAPIHono({
 
 app
   .openapi(registrationRoute, registrationHandler)
-  .openapi(registrationEmailVerifyRoute, registrationEmailVerifyHandler)
+  .openapi(verifyEmailOtpRoute, verifyEmailOtpHandler)
   .openapi(registrationEmailVerifyOTPRoute, registrationEmailVerifyOTPHandler)
   .openapi(loginRoute, loginHandler)
   .openapi(signOutRoute, signOutHandler)
@@ -50,12 +50,10 @@ app
   .openapi(requestPasswordResetRoute, requestPasswordResetHandler)
   .openapi(checkVerificationOtpRoute, checkVerificationOtpHandler)
   .openapi(resetPasswordRoute, resetPasswordHandler)
-  .openapi(verifyEmailOtpRoute, verifyEmailOtpHandler)
   .openapi(verifyPasswordRoute, verifyPasswordHandler)
   .openapi(updateUserRoute, updateUserHandler)
   .openapi(setPasswordRoute, setPasswordHandler)
   .openapi(isPasswordVerifiedRoute, isPasswordVerifiedHandler)
-  .openapi(updateUsernameRoute, updateUsernameHandler)
   .openapi(updateUsernameRoute, updateUsernameHandler)
   .openapi(userDetailsRoute, userDetailsHandler)
 

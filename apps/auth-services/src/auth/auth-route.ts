@@ -32,22 +32,20 @@ export const registrationRoute = createRoute({
   },
 })
 
-export const registrationEmailVerifyRoute = createRoute({
+export const verifyEmailOtpRoute = createRoute({
   method: "post",
   path: "/send-verification-otp",
   tags,
-  summary: "Email verification OTP",
+  summary: "Email verification",
   request: {
     body: {
       content: {
-        "application/json": {
-          schema: z.object({ email: z.email() }),
-        },
+        "application/json": { schema: z.object({ email: z.email() }) },
       },
     },
   },
   responses: {
-    201: { description: "Created" },
+    201: { description: "OK" },
     400: { description: "Bad Request" },
     404: { description: "Not Found" },
     500: { description: "Internal server error" },
@@ -152,26 +150,6 @@ export const checkVerificationOtpRoute = createRoute({
         "application/json": {
           schema: z.object({ email: z.email(), otp: z.string() }),
         },
-      },
-    },
-  },
-  responses: {
-    201: { description: "OK" },
-    400: { description: "Bad Request" },
-    404: { description: "Not Found" },
-    500: { description: "Internal server error" },
-  },
-})
-
-export const verifyEmailOtpRoute = createRoute({
-  method: "post",
-  path: "/send-verification-otp",
-  tags,
-  summary: "Verify Email",
-  request: {
-    body: {
-      content: {
-        "application/json": { schema: z.object({ email: z.email() }) },
       },
     },
   },

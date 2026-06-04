@@ -4,7 +4,7 @@ import {
   isPasswordVerifiedRoute,
   loginRoute,
   registrationEmailVerifyOTPRoute,
-  registrationEmailVerifyRoute,
+  // registrationEmailVerifyRoute,
   registrationRoute,
   requestPasswordResetRoute,
   resetPasswordRoute,
@@ -63,19 +63,19 @@ export const registrationHandler: RouteHandler<
   }
 }
 
-export const registrationEmailVerifyHandler: RouteHandler<
-  typeof registrationEmailVerifyRoute
-> = async (c) => {
-  try {
-    const { email } = c.req.valid("json")
-    const data = await auth.api.sendVerificationOTP({
-      body: { email, type: "email-verification" },
-    })
-    return c.json({ data }, 201)
-  } catch (error) {
-    return c.json({ error })
-  }
-}
+// export const registrationEmailVerifyHandler: RouteHandler<
+//   typeof registrationEmailVerifyRoute
+// > = async (c) => {
+//   try {
+//     const { email } = c.req.valid("json")
+//     const data = await auth.api.sendVerificationOTP({
+//       body: { email, type: "email-verification" },
+//     })
+//     return c.json({ data }, 201)
+//   } catch (error) {
+//     return c.json({ error })
+//   }
+// }
 
 export const registrationEmailVerifyOTPHandler: RouteHandler<
   typeof registrationEmailVerifyOTPRoute

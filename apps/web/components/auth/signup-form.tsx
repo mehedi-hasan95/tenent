@@ -182,7 +182,7 @@ export const SignupForm = () => {
         </AuthHeader>
       ) : (
         <VerifyEmailOtpForm
-          loading={false}
+          loading={otpMutation.isPending}
           onOTP={otp}
           onSubmit={() =>
             otpMutation.mutate({ email: form.getValues("email"), otp })

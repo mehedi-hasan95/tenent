@@ -87,7 +87,10 @@ export const ForgotPasswordForm = () => {
   return (
     <>
       {step === "email" ? (
-        <ForgotPasswordEmail onSubmit={emailMutation.mutate} />
+        <ForgotPasswordEmail
+          onSubmit={emailMutation.mutate}
+          loading={emailMutation.isPending}
+        />
       ) : step === "otp" ? (
         <VerifyEmailOtpForm
           loading={resetPasswordOtpMutation.isPending}
