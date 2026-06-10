@@ -65,6 +65,7 @@ export const updateCategoryRoute = createRoute({
                 format: "binary",
               })
               .optional(),
+            previousImage: z.string().optional(),
           }),
         },
       },

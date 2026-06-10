@@ -33,7 +33,7 @@ export const createCategoryHandler: RouteHandler<
 export const updateCategoryHandler: RouteHandler<
   typeof updateCategoryRoute
 > = async (c) => {
-  const { name, slug, image, id } = c.req.valid("form")
+  const { name, slug, image, id, previousImage } = c.req.valid("form")
   try {
     const existingSlug = await db.query.categories.findFirst({
       where: and(eq(categories.slug, slug), ne(categories.id, id)),
@@ -41,10 +41,12 @@ export const updateCategoryHandler: RouteHandler<
     if (existingSlug) {
       return c.json({ message: "Slug already exist", success: false }, 400)
     }
-    let imageUrl: string | undefined
+    let imageUrl: string | undefined | null = previousImage
     if (image) {
-      const result = await utapi.uploadFiles(image)
-      imageUrl = result.data?.ufsUrl
+      const uploadedImages = await utapi.uploadFiles(image)
+      imageUrl = uploadedImages.data?.ufsUrl
+    } else if (!previousImage) {
+      imageUrl = null
     }
     const data = await db
       .update(categories)
@@ -61,7 +63,7 @@ export const getCategoriesHandler: RouteHandler<
 > = async (c) => {
   try {
     const data = await db.query.categories.findMany()
-    return c.json({ data, success: true }, 200)
+    return c.json({ data }, 200)
   } catch (error) {
     return c.json({ error, success: false })
   }
