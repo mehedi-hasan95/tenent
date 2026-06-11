@@ -6,7 +6,7 @@ import {
   getCategoryRoute,
   updateCategoryRoute,
 } from "./categories-route"
-import { and, db, eq, ne } from "@workspace/db"
+import { and, db, desc, eq, ne } from "@workspace/db"
 import { categories } from "@workspace/db/schema/categories.schema"
 import { utapi } from "@workspace/uploadthing"
 
@@ -20,9 +20,9 @@ export const createCategoryHandler: RouteHandler<
       const result = await utapi.uploadFiles(image)
       imageUrl = result.data?.ufsUrl
     }
-    const data = await db
+    const [data] = await db
       .insert(categories)
-      .values({ name, slug, image })
+      .values({ name, slug, image: imageUrl })
       .returning()
     return c.json({ data }, 201)
   } catch (error) {
@@ -34,27 +34,68 @@ export const updateCategoryHandler: RouteHandler<
   typeof updateCategoryRoute
 > = async (c) => {
   const { name, slug, image, id, previousImage } = c.req.valid("form")
+
   try {
     const existingSlug = await db.query.categories.findFirst({
       where: and(eq(categories.slug, slug), ne(categories.id, id)),
     })
+
     if (existingSlug) {
-      return c.json({ message: "Slug already exist", success: false }, 400)
+      return c.json(
+        {
+          success: false,
+          message: "Slug already exists",
+        },
+        400
+      )
     }
-    let imageUrl: string | undefined | null = previousImage
+
+    let imageUrl: string | null = previousImage ?? null
+
     if (image) {
-      const uploadedImages = await utapi.uploadFiles(image)
-      imageUrl = uploadedImages.data?.ufsUrl
+      const uploadedImage = await utapi.uploadFiles(image)
+      imageUrl = uploadedImage.data?.ufsUrl ?? null
     } else if (!previousImage) {
       imageUrl = null
     }
-    const data = await db
+
+    const [updatedCategory] = await db
       .update(categories)
-      .set({ image: imageUrl, name, slug })
+      .set({
+        name,
+        slug,
+        image: imageUrl,
+      })
+      .where(eq(categories.id, id))
       .returning()
-    return c.json({ data }, 201)
+
+    if (!updatedCategory) {
+      return c.json(
+        {
+          success: false,
+          message: "Category not found",
+        },
+        404
+      )
+    }
+
+    return c.json(
+      {
+        success: true,
+        data: updatedCategory,
+      },
+      200
+    )
   } catch (error) {
-    return c.json({ error })
+    console.error(error)
+
+    return c.json(
+      {
+        success: false,
+        message: "Failed to update category",
+      },
+      500
+    )
   }
 }
 
@@ -62,7 +103,9 @@ export const getCategoriesHandler: RouteHandler<
   typeof getCategoriesRoute
 > = async (c) => {
   try {
-    const data = await db.query.categories.findMany()
+    const data = await db.query.categories.findMany({
+      orderBy: (categories, { desc }) => [desc(categories.updatedAt)],
+    })
     return c.json({ data }, 200)
   } catch (error) {
     return c.json({ error, success: false })

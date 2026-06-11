@@ -1,11 +1,13 @@
+import { Button } from "@workspace/ui/components/button"
 import { categoriesType } from "@workspace/validators/types/categories.types"
 import { Edit2, Trash2 } from "lucide-react"
 import Image from "next/image"
 
 interface Props {
   categories: categoriesType[]
+  onEdit: (category: categoriesType) => void
 }
-export const CategoriesGrid = ({ categories }: Props) => {
+export const CategoriesGrid = ({ categories, onEdit }: Props) => {
   return (
     <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
       {categories.map((category) => (
@@ -14,16 +16,18 @@ export const CategoriesGrid = ({ categories }: Props) => {
           className="group overflow-hidden rounded-xl border border-border bg-white shadow-md transition-all duration-300 hover:border-primary/50 hover:shadow-xl dark:bg-slate-800"
         >
           {/* Image Container */}
-          {category.image && (
-            <div className="relative h-48 overflow-hidden bg-muted">
-              <Image
-                src={category?.image}
-                alt={category.name}
-                className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
-              />
-              <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/30" />
-            </div>
-          )}
+          <div className="relative h-48 overflow-hidden bg-muted">
+            <Image
+              src={category?.image || "/placeholder.webp"}
+              alt={category.name}
+              className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
+              height={500}
+              width={500}
+              sizes=""
+              loading="eager"
+            />
+            <div className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/30" />
+          </div>
 
           {/* Content Container */}
           <div className="p-6">
@@ -40,20 +44,18 @@ export const CategoriesGrid = ({ categories }: Props) => {
 
             {/* Action Buttons */}
             <div className="flex gap-3">
-              <button
-                // onClick={() => onEdit(category)}
-                className="flex flex-1 items-center justify-center gap-2 rounded-lg bg-secondary px-4 py-2 font-medium text-secondary-foreground transition-colors hover:bg-secondary/80"
-              >
+              <Button onClick={() => onEdit(category)} className="flex-1">
                 <Edit2 size={16} />
                 Edit
-              </button>
-              <button
+              </Button>
+              <Button
                 // onClick={() => onDelete(category.id)}
-                className="hover:text-destructive-foreground flex flex-1 items-center justify-center gap-2 rounded-lg bg-destructive/10 px-4 py-2 font-medium text-destructive transition-colors hover:bg-destructive"
+                variant={"destructive"}
+                className="flex-1"
               >
                 <Trash2 size={16} />
                 Delete
-              </button>
+              </Button>
             </div>
           </div>
         </div>

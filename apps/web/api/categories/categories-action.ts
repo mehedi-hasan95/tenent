@@ -13,9 +13,6 @@ export const createCategoryAction = async (
     `${process.env.NEXT_PUBLIC_ADMIN_URL}/categories/create-category`,
     {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
       credentials: "include",
       body: formData,
     }
@@ -28,11 +25,11 @@ export const createCategoryAction = async (
 }
 
 export const updateCategoryAction = async (
-  data: z.input<typeof categoriesValidators>
+  data: z.input<typeof categoriesValidators> & { id: string }
 ) => {
   const formData = new FormData()
-  const { name, slug, image, previousImage } = data
-  Object.entries({ name, slug, previousImage }).forEach(
+  const { name, slug, image, previousImage, id } = data
+  Object.entries({ name, slug, previousImage, id }).forEach(
     ([k, v]) => v && formData.append(k, v)
   )
   if (image instanceof File) formData.append("image", image)
@@ -40,9 +37,6 @@ export const updateCategoryAction = async (
     `${process.env.NEXT_PUBLIC_ADMIN_URL}/categories/update-category`,
     {
       method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
       credentials: "include",
       body: formData,
     }
