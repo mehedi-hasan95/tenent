@@ -7,6 +7,9 @@ import { useGetCategories } from "@/hooks/categories/use-categories"
 import { CategoriesGrid } from "./categories-grid"
 import { useState } from "react"
 import { categoriesType } from "@workspace/validators/types/categories.types"
+import { DeleteCategoryModal } from "./delete-category-modal"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
+import { deleteCategoryAction } from "@/api/categories/categories-action"
 
 export const CategoriesPage = () => {
   const { data } = useGetCategories()
@@ -14,6 +17,9 @@ export const CategoriesPage = () => {
   const [editingCategory, setEditingCategory] = useState<categoriesType | null>(
     null
   )
+
+  const [deleteModalOpen, setDeleteModalOpen] = useState(false)
+  const [deletingCategory, setDeletingCategory] = useState<string | null>(null)
 
   const handleOpenModal = () => {
     setEditingCategory(null)
@@ -27,6 +33,47 @@ export const CategoriesPage = () => {
     setEditingCategory(category)
     setIsModalOpen(true)
   }
+
+  const handleDeleteModal = () => {
+    setDeleteModalOpen(false)
+    setDeletingCategory(null)
+  }
+  const handleDeleteCategory = (category: string) => {
+    setDeletingCategory(category)
+    setDeleteModalOpen(true)
+  }
+
+  const queryClient = useQueryClient()
+  const deleteCategoryMutation = useMutation({
+    mutationFn: deleteCategoryAction,
+
+    onMutate: async (categoryId) => {
+      await queryClient.cancelQueries({
+        queryKey: ["categories"],
+      })
+
+      const previousCategories = queryClient.getQueryData<categoriesType[]>([
+        "categories",
+      ])
+
+      queryClient.setQueryData<categoriesType[]>(["categories"], (old = []) =>
+        old.filter((cat) => cat.id !== categoryId)
+      )
+
+      setDeleteModalOpen(false)
+      return { previousCategories }
+    },
+
+    onError: (_error, _categoryId, context) => {
+      queryClient.setQueryData(["categories"], context?.previousCategories)
+    },
+
+    onSettled: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["categories"],
+      })
+    },
+  })
   return (
     <div className="space-y-4">
       <div className="flex items-center justify-between">
@@ -47,11 +94,22 @@ export const CategoriesPage = () => {
         </Button>
       </div>
       <Separator className="mt-4" />
-      <CategoriesGrid categories={data ?? []} onEdit={handleEditCategory} />
+      <CategoriesGrid
+        categories={data ?? []}
+        onEdit={handleEditCategory}
+        onDelete={handleDeleteCategory}
+      />
       <CreateCategoryModal
         isOpen={isModalOpen}
         onClose={handleCloseModal}
         category={editingCategory}
+      />
+      <DeleteCategoryModal
+        open={deleteModalOpen}
+        onOpenChange={handleDeleteModal}
+        onSubmit={() =>
+          deletingCategory && deleteCategoryMutation.mutate(deletingCategory)
+        }
       />
     </div>
   )

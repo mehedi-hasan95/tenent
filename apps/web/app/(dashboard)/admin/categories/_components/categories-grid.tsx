@@ -6,8 +6,9 @@ import Image from "next/image"
 interface Props {
   categories: categoriesType[]
   onEdit: (category: categoriesType) => void
+  onDelete: (slug: string) => void
 }
-export const CategoriesGrid = ({ categories, onEdit }: Props) => {
+export const CategoriesGrid = ({ categories, onEdit, onDelete }: Props) => {
   return (
     <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
       {categories.map((category) => (
@@ -49,7 +50,7 @@ export const CategoriesGrid = ({ categories, onEdit }: Props) => {
                 Edit
               </Button>
               <Button
-                // onClick={() => onDelete(category.id)}
+                onClick={() => onDelete(category.slug)}
                 variant={"destructive"}
                 className="flex-1"
               >

@@ -15,6 +15,18 @@ export const createCategoryHandler: RouteHandler<
 > = async (c) => {
   const { name, slug, image } = c.req.valid("form")
   try {
+    const existingSlug = await db.query.categories.findFirst({
+      where: eq(categories.slug, slug),
+    })
+    if (existingSlug) {
+      return c.json(
+        {
+          success: false,
+          message: "Slug already exists",
+        },
+        400
+      )
+    }
     let imageUrl: string | undefined
     if (image) {
       const result = await utapi.uploadFiles(image)

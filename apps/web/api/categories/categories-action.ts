@@ -93,6 +93,7 @@ export const deleteCategoryAction = async (slug: string) => {
       headers: {
         "Content-Type": "application/json",
       },
+      credentials: "include",
       body: JSON.stringify({ slug }),
     }
   )

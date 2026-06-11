@@ -99,8 +99,8 @@ export const CreateCategoryModal = ({ isOpen, onClose, category }: Props) => {
         form.reset()
       }
     },
-    onError: () => {
-      toast.error("Filed to create category")
+    onError: (error) => {
+      toast.error(error?.message ?? "Failed to create category")
     },
   })
 
