@@ -1,12 +1,27 @@
 import { RouteHandler } from "@workspace/open-api"
 
-import { and, db, eq, ne } from "@workspace/db"
-import { subCategories } from "@workspace/db/schema/categories.schema"
+import {
+  and,
+  db,
+  desc,
+  eq,
+  isNotNull,
+  isNull,
+  ne,
+  or,
+  sql,
+} from "@workspace/db"
+import {
+  categories,
+  subCategories,
+} from "@workspace/db/schema/categories.schema"
 import {
   createSubCategoryRoute,
   deleteSubCategoryRoute,
   getSubCategoriesRoute,
   getSubCategoryRoute,
+  restoreSubCategoryRoute,
+  trashSubCategoryRoute,
   updateSubCategoryRoute,
 } from "./sub-categories-route"
 
@@ -40,14 +55,24 @@ export const updateSubCategoryHandler: RouteHandler<
       where: and(eq(subCategories.slug, slug), ne(subCategories.id, id)),
     })
     if (existingSlug) {
-      return c.json({ message: "Slug already exist", success: false }, 400)
+      return c.json(
+        {
+          success: false,
+          message: "Slug already exists",
+        },
+        400
+      )
     }
-
-    const data = await db
+    const [updatedSubCategory] = await db
       .update(subCategories)
-      .set({ name, slug, categorySlug })
+      .set({
+        name,
+        slug,
+        categorySlug,
+      })
+      .where(eq(subCategories.id, id))
       .returning()
-    return c.json({ data }, 201)
+    return c.json({ updatedSubCategory })
   } catch (error) {
     return c.json({ error })
   }
@@ -57,8 +82,20 @@ export const getSubCategoriesHandler: RouteHandler<
   typeof getSubCategoriesRoute
 > = async (c) => {
   try {
-    const data = await db.query.subCategories.findMany()
-    return c.json({ data, success: true }, 200)
+    const { type } = c.req.valid("query")
+
+    const data = await db
+      .select()
+      .from(subCategories)
+      .where(
+        type === undefined
+          ? undefined
+          : type
+            ? isNull(subCategories.deleted_at)
+            : isNotNull(subCategories.deleted_at)
+      )
+      .orderBy(desc(subCategories.createdAt))
+    return c.json({ data }, 200)
   } catch (error) {
     return c.json({ error, success: false })
   }
@@ -73,6 +110,38 @@ export const getSubCategoryHandler: RouteHandler<
       where: eq(subCategories.slug, slug),
     })
     return c.json({ data }, 200)
+  } catch (error) {
+    return c.json({ error, success: false })
+  }
+}
+
+export const trashSubCategoryHandler: RouteHandler<
+  typeof trashSubCategoryRoute
+> = async (c) => {
+  try {
+    const { slug } = c.req.valid("json")
+    const data = await db
+      .update(subCategories)
+      .set({ deleted_at: sql`NOW() + INTERVAL '30 days'` })
+      .where(eq(subCategories.slug, slug))
+      .returning()
+    return c.json({ data }, 201)
+  } catch (error) {
+    return c.json({ error, success: false })
+  }
+}
+
+export const restoreSubCategoryHandler: RouteHandler<
+  typeof restoreSubCategoryRoute
+> = async (c) => {
+  try {
+    const { slug } = c.req.valid("json")
+    const data = await db
+      .update(subCategories)
+      .set({ deleted_at: null })
+      .where(eq(subCategories.slug, slug))
+      .returning()
+    return c.json({ data }, 201)
   } catch (error) {
     return c.json({ error, success: false })
   }

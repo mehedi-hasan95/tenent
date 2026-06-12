@@ -9,6 +9,7 @@ import { DynamicBreadcrumbs } from "@/components/common/dynamic-breadcrumbs"
 import { getQueryClient } from "@/lib/lib"
 import { getCategoriesAction } from "@/api/categories/categories-action"
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query"
+import { getSubCategoriesAction } from "@/api/categories/subcategories-action"
 
 interface Props {
   children: React.ReactNode
@@ -18,6 +19,10 @@ const Page = async ({ children }: Props) => {
   await queryClient.prefetchQuery({
     queryKey: ["categories"],
     queryFn: getCategoriesAction,
+  })
+  await queryClient.prefetchQuery({
+    queryKey: ["sub-categories", "true"],
+    queryFn: () => getSubCategoriesAction("true"),
   })
   return (
     <SidebarProvider>

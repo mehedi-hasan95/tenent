@@ -6,6 +6,7 @@ import {
   PlusCircle,
   ShoppingBasket,
   SquareFunction,
+  Trash,
 } from "lucide-react"
 
 export const ADMIN_OVERVIEW = [
@@ -48,5 +49,10 @@ export const ADMIN_ACT = [
     name: "Sub Categories",
     slug: "/admin/sub-categories",
     icon: PlusCircle,
+  },
+  {
+    name: "Trash",
+    slug: "/admin/trash",
+    icon: Trash,
   },
 ]

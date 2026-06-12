@@ -54,6 +54,18 @@ export const getSubCategoriesRoute = createRoute({
   path: "/get-sub-categories",
   tags,
   summary: "Get Sub Categories",
+  request: {
+    query: z.object({
+      type: z
+        .string()
+        .optional()
+        .transform((v) => {
+          if (v === "true") return true
+          if (v === "false") return false
+          return undefined
+        }),
+    }),
+  },
   responses: {
     200: { description: "OK" },
     400: { description: "Bad Request" },
@@ -72,6 +84,48 @@ export const getSubCategoryRoute = createRoute({
   },
   responses: {
     200: { description: "OK" },
+    400: { description: "Bad Request" },
+    404: { description: "Not Found" },
+    500: { description: "Internal server error" },
+  },
+})
+
+export const trashSubCategoryRoute = createRoute({
+  method: "patch",
+  path: "trash-sub-category",
+  tags,
+  summary: "Trashing sub category",
+  middleware: adminMiddleware,
+  request: {
+    body: {
+      content: {
+        "application/json": { schema: z.object({ slug: z.string() }) },
+      },
+    },
+  },
+  responses: {
+    201: { description: "OK" },
+    400: { description: "Bad Request" },
+    404: { description: "Not Found" },
+    500: { description: "Internal server error" },
+  },
+})
+
+export const restoreSubCategoryRoute = createRoute({
+  method: "patch",
+  path: "restore-sub-category",
+  tags,
+  summary: "Restore sub category",
+  middleware: adminMiddleware,
+  request: {
+    body: {
+      content: {
+        "application/json": { schema: z.object({ slug: z.string() }) },
+      },
+    },
+  },
+  responses: {
+    201: { description: "OK" },
     400: { description: "Bad Request" },
     404: { description: "Not Found" },
     500: { description: "Internal server error" },

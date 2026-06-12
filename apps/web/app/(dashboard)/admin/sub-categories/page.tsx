@@ -1,5 +1,7 @@
+import { SubCategoriesPage } from "./_components/sub-categories-page"
+
 const Page = async () => {
-  return <div>Sub categories</div>
+  return <SubCategoriesPage />
 }
 
 export default Page

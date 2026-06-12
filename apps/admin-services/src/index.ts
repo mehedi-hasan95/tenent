@@ -8,6 +8,7 @@ import {
 import { cors } from "hono/cors"
 import { HTTPException } from "hono/http-exception"
 import categories from "./categories/categories-index"
+import subCategories from "./sub-categories/sub-categories-index"
 
 const app = new OpenAPIHono({
   defaultHook,
@@ -25,7 +26,9 @@ app.use(
  * 📌 RPC: Here start the RPC
  * ============================================================
  */
-const routes = app.route("/categories", categories)
+const routes = app
+  .route("/categories", categories)
+  .route("/sub-categories", subCategories)
 
 app.onError((err, c) => {
   if (err instanceof HTTPException) {

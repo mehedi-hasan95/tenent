@@ -4,6 +4,8 @@ import {
   deleteSubCategoryRoute,
   getSubCategoriesRoute,
   getSubCategoryRoute,
+  restoreSubCategoryRoute,
+  trashSubCategoryRoute,
   updateSubCategoryRoute,
 } from "./sub-categories-route"
 import {
@@ -11,6 +13,8 @@ import {
   deleteSubCategoryHandler,
   getSubCategoriesHandler,
   getSubCategoryHandler,
+  restoreSubCategoryHandler,
+  trashSubCategoryHandler,
   updateSubCategoryHandler,
 } from "./sub-categories-handler"
 
@@ -23,6 +27,8 @@ app
   .openapi(updateSubCategoryRoute, updateSubCategoryHandler)
   .openapi(getSubCategoriesRoute, getSubCategoriesHandler)
   .openapi(getSubCategoryRoute, getSubCategoryHandler)
+  .openapi(trashSubCategoryRoute, trashSubCategoryHandler)
+  .openapi(restoreSubCategoryRoute, restoreSubCategoryHandler)
   .openapi(deleteSubCategoryRoute, deleteSubCategoryHandler)
 
 export default app
