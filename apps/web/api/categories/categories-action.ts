@@ -48,16 +48,23 @@ export const updateCategoryAction = async (
   return response.json()
 }
 
-export const getCategoriesAction = async () => {
-  const response = await fetch(
-    `${process.env.NEXT_PUBLIC_ADMIN_URL}/categories/get-categories`,
-    {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
+export const getCategoriesAction = async (type?: string) => {
+  const url = new URL(
+    `${process.env.NEXT_PUBLIC_ADMIN_URL}/categories/get-categories`
   )
+
+  if (type) {
+    url.searchParams.set("type", type)
+  }
+
+  const response = await fetch(url.toString(), {
+    method: "GET",
+  })
+
+  if (!response.ok) {
+    throw await response.json()
+  }
+
   if (!response.ok) {
     const error = await response.json()
     throw error
@@ -94,6 +101,62 @@ export const deleteCategoryAction = async (slug: string) => {
         "Content-Type": "application/json",
       },
       credentials: "include",
+      body: JSON.stringify({ slug }),
+    }
+  )
+  if (!response.ok) {
+    const error = await response.json()
+    throw error
+  }
+  return response.json()
+}
+
+export const trashingCategoryAction = async (slug: string) => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_ADMIN_URL}/categories/trash-category`,
+    {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify({ slug }),
+    }
+  )
+  if (!response.ok) {
+    const error = await response.json()
+    throw error
+  }
+  return response.json()
+}
+
+export const restoreCategoryAction = async (slug: string) => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_ADMIN_URL}/categories/restore-category`,
+    {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify({ slug }),
+    }
+  )
+  if (!response.ok) {
+    const error = await response.json()
+    throw error
+  }
+  return response.json()
+}
+
+export const deleteTrashedCategoryAction = async (slug: string[]) => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_ADMIN_URL}/categories/delete-many-category`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({ slug }),
     }
   )

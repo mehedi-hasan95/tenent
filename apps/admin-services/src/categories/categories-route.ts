@@ -83,6 +83,18 @@ export const getCategoriesRoute = createRoute({
   path: "/get-categories",
   tags,
   summary: "Get Categories",
+  request: {
+    query: z.object({
+      type: z
+        .string()
+        .optional()
+        .transform((v) => {
+          if (v === "true") return true
+          if (v === "false") return false
+          return undefined
+        }),
+    }),
+  },
   responses: {
     200: { description: "OK" },
     400: { description: "Bad Request" },
@@ -120,6 +132,83 @@ export const deleteCategoryRoute = createRoute({
       },
     },
   },
+  responses: {
+    201: { description: "OK" },
+    400: { description: "Bad Request" },
+    404: { description: "Not Found" },
+    500: { description: "Internal server error" },
+  },
+})
+
+export const trashCategoryRoute = createRoute({
+  method: "patch",
+  path: "trash-category",
+  tags,
+  summary: "Trashing category",
+  middleware: adminMiddleware,
+  request: {
+    body: {
+      content: {
+        "application/json": { schema: z.object({ slug: z.string() }) },
+      },
+    },
+  },
+  responses: {
+    201: { description: "OK" },
+    400: { description: "Bad Request" },
+    404: { description: "Not Found" },
+    500: { description: "Internal server error" },
+  },
+})
+
+export const restoreCategoryRoute = createRoute({
+  method: "patch",
+  path: "restore-category",
+  tags,
+  summary: "Restore category",
+  middleware: adminMiddleware,
+  request: {
+    body: {
+      content: {
+        "application/json": { schema: z.object({ slug: z.string() }) },
+      },
+    },
+  },
+  responses: {
+    201: { description: "OK" },
+    400: { description: "Bad Request" },
+    404: { description: "Not Found" },
+    500: { description: "Internal server error" },
+  },
+})
+
+export const deleteManyCategoryRoute = createRoute({
+  method: "delete",
+  path: "/delete-many-category",
+  tags,
+  summary: "Delete many category",
+  middleware: adminMiddleware,
+  request: {
+    body: {
+      content: {
+        "application/json": { schema: z.object({ slug: z.array(z.string()) }) },
+      },
+    },
+  },
+  responses: {
+    201: { description: "OK" },
+    400: { description: "Bad Request" },
+    404: { description: "Not Found" },
+    500: { description: "Internal server error" },
+  },
+})
+
+export const deleteTrashedCategoryRoute = createRoute({
+  method: "delete",
+  path: "/delete-trashed-category",
+  tags,
+  summary: "Delete trashed category",
+  middleware: adminMiddleware,
   responses: {
     201: { description: "OK" },
     400: { description: "Bad Request" },

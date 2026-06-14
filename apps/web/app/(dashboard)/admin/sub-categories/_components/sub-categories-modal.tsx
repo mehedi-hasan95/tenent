@@ -35,7 +35,7 @@ interface Props {
 export const SubCategoriesModal = ({ category, isOpen, onClose }: Props) => {
   const [isSlugEdited, setIsSlugEdited] = useState(false)
   const prevTitleRef = useRef("")
-  const { data: cat } = useGetCategories()
+  const { data: cat } = useGetCategories("true")
   const queryClient = useQueryClient()
 
   const form = useForm<z.infer<typeof subCategoriesValidators>>({

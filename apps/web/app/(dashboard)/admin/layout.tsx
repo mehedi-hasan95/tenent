@@ -17,8 +17,8 @@ interface Props {
 const Page = async ({ children }: Props) => {
   const queryClient = getQueryClient()
   await queryClient.prefetchQuery({
-    queryKey: ["categories"],
-    queryFn: getCategoriesAction,
+    queryKey: ["categories", "true"],
+    queryFn: () => getCategoriesAction("true"),
   })
   await queryClient.prefetchQuery({
     queryKey: ["sub-categories", "true"],

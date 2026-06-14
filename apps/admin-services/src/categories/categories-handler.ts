@@ -2,11 +2,25 @@ import { RouteHandler } from "@workspace/open-api"
 import {
   createCategoryRoute,
   deleteCategoryRoute,
+  deleteManyCategoryRoute,
+  deleteTrashedCategoryRoute,
   getCategoriesRoute,
   getCategoryRoute,
+  restoreCategoryRoute,
+  trashCategoryRoute,
   updateCategoryRoute,
 } from "./categories-route"
-import { and, db, desc, eq, ne } from "@workspace/db"
+import {
+  and,
+  db,
+  desc,
+  eq,
+  inArray,
+  isNotNull,
+  isNull,
+  ne,
+  sql,
+} from "@workspace/db"
 import { categories } from "@workspace/db/schema/categories.schema"
 import { utapi } from "@workspace/uploadthing"
 
@@ -114,8 +128,15 @@ export const updateCategoryHandler: RouteHandler<
 export const getCategoriesHandler: RouteHandler<
   typeof getCategoriesRoute
 > = async (c) => {
+  const { type } = c.req.valid("query")
   try {
     const data = await db.query.categories.findMany({
+      where:
+        type === undefined
+          ? undefined
+          : type
+            ? isNull(categories.deleted_at)
+            : isNotNull(categories.deleted_at),
       orderBy: (categories, { desc }) => [desc(categories.updatedAt)],
     })
     return c.json({ data }, 200)
@@ -145,6 +166,76 @@ export const deleteCategoryHandler: RouteHandler<
     const { slug } = c.req.valid("json")
     const data = await db.delete(categories).where(eq(categories.slug, slug))
     return c.json({ data, success: true }, 201)
+  } catch (error) {
+    return c.json({ error, success: false })
+  }
+}
+
+export const trashCategoryHandler: RouteHandler<
+  typeof trashCategoryRoute
+> = async (c) => {
+  try {
+    const { slug } = c.req.valid("json")
+    const data = await db
+      .update(categories)
+      .set({ deleted_at: sql`NOW() + INTERVAL '30 days'` })
+      .where(eq(categories.slug, slug))
+      .returning()
+    return c.json({ data }, 201)
+  } catch (error) {
+    return c.json({ error, success: false })
+  }
+}
+
+export const restoreCategoryHandler: RouteHandler<
+  typeof restoreCategoryRoute
+> = async (c) => {
+  try {
+    const { slug } = c.req.valid("json")
+    const data = await db
+      .update(categories)
+      .set({ deleted_at: null })
+      .where(eq(categories.slug, slug))
+      .returning()
+    return c.json({ data }, 201)
+  } catch (error) {
+    return c.json({ error, success: false })
+  }
+}
+
+export const deleteManyCategoryHandler: RouteHandler<
+  typeof deleteManyCategoryRoute
+> = async (c) => {
+  try {
+    const { slug } = c.req.valid("json")
+
+    const data = await db
+      .delete(categories)
+      .where(
+        and(inArray(categories.slug, slug), isNotNull(categories.deleted_at))
+      )
+      .returning()
+    if (!data.length) {
+      return c.json({ message: "Category not found or not in trash" })
+    }
+    return c.json({ data }, 201)
+  } catch (error) {
+    return c.json({ error, success: false })
+  }
+}
+
+export const deleteTrashedCategoryHandler: RouteHandler<
+  typeof deleteTrashedCategoryRoute
+> = async (c) => {
+  try {
+    const data = await db
+      .delete(categories)
+      .where(isNotNull(categories.deleted_at))
+      .returning()
+    if (!data.length) {
+      return c.json({ message: "Nothing in trash" })
+    }
+    return c.json({ data }, 201)
   } catch (error) {
     return c.json({ error, success: false })
   }

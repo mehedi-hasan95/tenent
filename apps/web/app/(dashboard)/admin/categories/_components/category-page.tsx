@@ -3,16 +3,19 @@ import { Separator } from "@workspace/ui/components/separator"
 import { CreateCategoryModal } from "./create-category-modal"
 import { Button } from "@workspace/ui/components/button"
 import { Plus } from "lucide-react"
-import { useGetCategories } from "@/hooks/categories/use-categories"
+import {
+  useCategoryMutation,
+  useGetCategories,
+} from "@/hooks/categories/use-categories"
 import { CategoriesGrid } from "./categories-grid"
 import { useState } from "react"
 import { categoriesType } from "@workspace/validators/types/categories.types"
 import { DeleteCategoryModal } from "./delete-category-modal"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
-import { deleteCategoryAction } from "@/api/categories/categories-action"
+import { trashingCategoryAction } from "@/api/categories/categories-action"
 
 export const CategoriesPage = () => {
-  const { data } = useGetCategories()
+  const { data } = useGetCategories("true")
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [editingCategory, setEditingCategory] = useState<categoriesType | null>(
     null
@@ -43,36 +46,10 @@ export const CategoriesPage = () => {
     setDeleteModalOpen(true)
   }
 
-  const queryClient = useQueryClient()
-  const deleteCategoryMutation = useMutation({
-    mutationFn: deleteCategoryAction,
-
-    onMutate: async (categoryId) => {
-      await queryClient.cancelQueries({
-        queryKey: ["categories"],
-      })
-
-      const previousCategories = queryClient.getQueryData<categoriesType[]>([
-        "categories",
-      ])
-
-      queryClient.setQueryData<categoriesType[]>(["categories"], (old = []) =>
-        old.filter((cat) => cat.id !== categoryId)
-      )
-
-      setDeleteModalOpen(false)
-      return { previousCategories }
-    },
-
-    onError: (_error, _categoryId, context) => {
-      queryClient.setQueryData(["categories"], context?.previousCategories)
-    },
-
-    onSettled: () => {
-      queryClient.invalidateQueries({
-        queryKey: ["categories"],
-      })
-    },
+  const trashingCategoryMutation = useCategoryMutation({
+    mutationFn: trashingCategoryAction,
+    successMessage: "Trashed this category",
+    onSuccessClose: () => setDeleteModalOpen(false),
   })
   return (
     <div className="space-y-4">
@@ -108,7 +85,7 @@ export const CategoriesPage = () => {
         open={deleteModalOpen}
         onOpenChange={handleDeleteModal}
         onSubmit={() =>
-          deletingCategory && deleteCategoryMutation.mutate(deletingCategory)
+          deletingCategory && trashingCategoryMutation.mutate(deletingCategory)
         }
       />
     </div>
