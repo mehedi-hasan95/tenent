@@ -5,6 +5,7 @@ import {
   db,
   desc,
   eq,
+  inArray,
   isNotNull,
   isNull,
   ne,
@@ -17,7 +18,9 @@ import {
 } from "@workspace/db/schema/categories.schema"
 import {
   createSubCategoryRoute,
+  deleteManySubCategoryRoute,
   deleteSubCategoryRoute,
+  deleteTrashedSubCategoryRoute,
   getSubCategoriesRoute,
   getSubCategoryRoute,
   restoreSubCategoryRoute,
@@ -156,6 +159,47 @@ export const deleteSubCategoryHandler: RouteHandler<
       .delete(subCategories)
       .where(eq(subCategories.slug, slug))
     return c.json({ data, success: true }, 201)
+  } catch (error) {
+    return c.json({ error, success: false })
+  }
+}
+
+export const deleteManySubCategoryHandler: RouteHandler<
+  typeof deleteManySubCategoryRoute
+> = async (c) => {
+  try {
+    const { slug } = c.req.valid("json")
+
+    const data = await db
+      .delete(subCategories)
+      .where(
+        and(
+          inArray(subCategories.slug, slug),
+          isNotNull(subCategories.deleted_at)
+        )
+      )
+      .returning()
+    if (!data.length) {
+      return c.json({ message: "Sub Category not found or not in trash" })
+    }
+    return c.json({ data }, 201)
+  } catch (error) {
+    return c.json({ error, success: false })
+  }
+}
+
+export const deleteTrashedSubCategoryHandler: RouteHandler<
+  typeof deleteTrashedSubCategoryRoute
+> = async (c) => {
+  try {
+    const data = await db
+      .delete(subCategories)
+      .where(isNotNull(subCategories.deleted_at))
+      .returning()
+    if (!data.length) {
+      return c.json({ message: "Nothing in trash" })
+    }
+    return c.json({ data }, 201)
   } catch (error) {
     return c.json({ error, success: false })
   }

@@ -140,3 +140,40 @@ export const deleteSubCategoryAction = async (slug: string) => {
   }
   return response.json()
 }
+
+export const deleteSelectedSubCategoryAction = async (slug: string[]) => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_ADMIN_URL}/sub-categories/delete-many-sub-category`,
+    {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify({ slug }),
+    }
+  )
+  if (!response.ok) {
+    const error = await response.json()
+    throw error
+  }
+  return response.json()
+}
+
+export const deleteAllSubCategoryAction = async () => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_ADMIN_URL}/sub-categories/delete-trashed-sub-category`,
+    {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    }
+  )
+  if (!response.ok) {
+    const error = await response.json()
+    throw error
+  }
+  return response.json()
+}

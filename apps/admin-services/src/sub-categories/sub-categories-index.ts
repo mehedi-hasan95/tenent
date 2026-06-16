@@ -1,7 +1,9 @@
 import { defaultHook, OpenAPIHono } from "@workspace/open-api"
 import {
   createSubCategoryRoute,
+  deleteManySubCategoryRoute,
   deleteSubCategoryRoute,
+  deleteTrashedSubCategoryRoute,
   getSubCategoriesRoute,
   getSubCategoryRoute,
   restoreSubCategoryRoute,
@@ -10,7 +12,9 @@ import {
 } from "./sub-categories-route"
 import {
   createSubCategoryHandler,
+  deleteManySubCategoryHandler,
   deleteSubCategoryHandler,
+  deleteTrashedSubCategoryHandler,
   getSubCategoriesHandler,
   getSubCategoryHandler,
   restoreSubCategoryHandler,
@@ -30,5 +34,7 @@ app
   .openapi(trashSubCategoryRoute, trashSubCategoryHandler)
   .openapi(restoreSubCategoryRoute, restoreSubCategoryHandler)
   .openapi(deleteSubCategoryRoute, deleteSubCategoryHandler)
+  .openapi(deleteManySubCategoryRoute, deleteManySubCategoryHandler)
+  .openapi(deleteTrashedSubCategoryRoute, deleteTrashedSubCategoryHandler)
 
 export default app

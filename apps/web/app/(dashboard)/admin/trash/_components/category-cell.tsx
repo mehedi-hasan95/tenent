@@ -7,11 +7,14 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@workspace/ui/components/dropdown-menu"
-import { categoriesType } from "@workspace/validators/types/categories.types"
+import {
+  categoriesType,
+  subCategoriesType,
+} from "@workspace/validators/types/categories.types"
 import { DatabaseBackup, MoreHorizontal, Trash } from "lucide-react"
 
 interface Props {
-  data: categoriesType
+  data: categoriesType | subCategoriesType
   onRestore: (slug: string) => void
   onDelete: (slug: string) => void
 }

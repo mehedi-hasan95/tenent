@@ -152,3 +152,38 @@ export const deleteSubCategoryRoute = createRoute({
     500: { description: "Internal server error" },
   },
 })
+
+export const deleteManySubCategoryRoute = createRoute({
+  method: "delete",
+  path: "/delete-many-sub-category",
+  tags,
+  summary: "Delete many category",
+  middleware: adminMiddleware,
+  request: {
+    body: {
+      content: {
+        "application/json": { schema: z.object({ slug: z.array(z.string()) }) },
+      },
+    },
+  },
+  responses: {
+    201: { description: "OK" },
+    400: { description: "Bad Request" },
+    404: { description: "Not Found" },
+    500: { description: "Internal server error" },
+  },
+})
+
+export const deleteTrashedSubCategoryRoute = createRoute({
+  method: "delete",
+  path: "/delete-trashed-sub-category",
+  tags,
+  summary: "Delete trashed category",
+  middleware: adminMiddleware,
+  responses: {
+    201: { description: "OK" },
+    400: { description: "Bad Request" },
+    404: { description: "Not Found" },
+    500: { description: "Internal server error" },
+  },
+})
