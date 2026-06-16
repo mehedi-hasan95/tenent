@@ -30,7 +30,7 @@ interface UseCategoryMutationProps<TVariables> {
   onSuccessClose?: () => void
 }
 
-export function useCategoryMutation<TVariables extends string>({
+export function useCategoryMutation<TVariables extends string | string[]>({
   mutationFn,
   successMessage,
   onSuccessClose,

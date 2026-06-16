@@ -80,8 +80,6 @@ export function DataTable<TData, TValue>({
 
   return (
     <div className="flex flex-col gap-4">
-      {/* <DataTableToolbar table={table} /> */}
-
       <div className="flex items-center justify-between">
         <div className="flex flex-1 items-center gap-2">
           <Input
