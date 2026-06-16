@@ -21,7 +21,6 @@ import { useMutation, useQueryClient } from "@tanstack/react-query"
 
 import { toast } from "sonner"
 import { LoadingButton } from "../common/loading-button"
-import { useRouter } from "next/navigation"
 import {
   registrationAction,
   registrationOtpAction,
@@ -32,7 +31,6 @@ export const SignupForm = () => {
   const [showPassword, setShowPassword] = useState(false)
   const [step, setStep] = useState<"registration" | "verify">("registration")
   const [otp, setOtp] = useState("")
-  const router = useRouter()
   const queryClient = useQueryClient()
   const { openLogin, closeRegister } = useAuthModal()
   const form = useForm<z.input<typeof registrationSchema>>({
