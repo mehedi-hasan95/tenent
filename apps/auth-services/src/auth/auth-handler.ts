@@ -4,6 +4,7 @@ import {
   isPasswordVerifiedRoute,
   loginRoute,
   registrationEmailVerifyOTPRoute,
+  // registrationEmailVerifyRoute,
   registrationRoute,
   requestPasswordResetRoute,
   resetPasswordRoute,
@@ -17,7 +18,7 @@ import {
   verifyPasswordRoute,
 } from "./auth-route"
 import { auth } from "@workspace/auth"
-import { db, eq } from "@workspace/db"
+import { and, db, eq } from "@workspace/db"
 import { user } from "@workspace/db/schema/user.schema"
 import { utapi } from "@workspace/uploadthing"
 import { getSignedCookie, setCookie, setSignedCookie } from "hono/cookie"
@@ -146,6 +147,7 @@ export const checkVerificationOtpHandler: RouteHandler<
       },
       asResponse: true,
     })
+    // return c.json({ data })
   } catch (error) {
     return c.json({ error })
   }
@@ -185,15 +187,7 @@ export const verifyEmailOtpHandler: RouteHandler<
 export const updateUserHandler: RouteHandler<typeof updateUserRoute> = async (
   c
 ) => {
-  const {
-    name,
-    image,
-    phone,
-    previousImage,
-    stripeAccountId,
-    stripeCustomerId,
-    stripeVerified,
-  } = c.req.valid("form")
+  const { name, image, phone, previousImage } = c.req.valid("form")
 
   try {
     let imageUrl: string | undefined | null = previousImage
@@ -204,14 +198,7 @@ export const updateUserHandler: RouteHandler<typeof updateUserRoute> = async (
       imageUrl = null
     }
     const data = await auth.api.updateUser({
-      body: {
-        name,
-        image: imageUrl,
-        phone,
-        stripeAccountId,
-        stripeCustomerId,
-        stripeVerified,
-      },
+      body: { name, image: imageUrl, phone },
       headers: c.req.raw.headers,
     })
     return c.json({ data })

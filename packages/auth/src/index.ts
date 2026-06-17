@@ -78,16 +78,6 @@ const options = {
         required: false,
         defaultValue: false,
       },
-      stripeAccountId: {
-        type: "string",
-        required: false,
-        defaultValue: null,
-      },
-      stripeCustomerId: {
-        type: "string",
-        required: false,
-        defaultValue: null,
-      },
     },
   },
   secondaryStorage: {
