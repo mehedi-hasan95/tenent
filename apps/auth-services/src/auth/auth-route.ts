@@ -235,6 +235,9 @@ export const updateUserRoute = createRoute({
                 })
                 .optional()
                 .or(z.literal("")),
+              stripeCustomerId: z.string().optional(),
+              stripeAccountId: z.string().optional(),
+              stripeVerified: z.boolean().default(false),
             })
             .refine(
               (data) => {

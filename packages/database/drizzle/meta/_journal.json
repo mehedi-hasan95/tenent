@@ -15,6 +15,13 @@
       "when": 1780670655028,
       "tag": "0001_freezing_susan_delgado",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1781652139880,
+      "tag": "0002_bouncy_wither",
+      "breakpoints": true
     }
   ]
 }
