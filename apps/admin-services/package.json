@@ -15,7 +15,8 @@
     "@workspace/db": "workspace:*",
     "@workspace/open-api": "workspace:*",
     "@workspace/validators": "workspace:*",
-    "@workspace/uploadthing": "workspace:*"
+    "@workspace/uploadthing": "workspace:*",
+    "@workspace/kafka": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^25.9.1",
