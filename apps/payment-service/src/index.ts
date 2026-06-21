@@ -6,7 +6,7 @@ import {
 } from "@workspace/open-api"
 import { cors } from "hono/cors"
 import { HTTPException } from "hono/http-exception"
-import auth from "./auth/auth-index"
+import stripe from "./stripe/stripe-index"
 import { consumer, producer } from "./utils/kafka"
 import { runKafkaSubscriptions } from "./utils/subscriptions"
 
@@ -26,7 +26,7 @@ app.use(
  * 📌 RPC: Here start the RPC
  * ============================================================
  */
-const routes = app.route("/auth", auth)
+const routes = app.route("/auth", stripe)
 
 app.onError((err, c) => {
   if (err instanceof HTTPException) {
@@ -46,7 +46,7 @@ app.onError((err, c) => {
 // serve(
 //   {
 //     fetch: app.fetch,
-//     port: Number(process.env.PORT ?? 4001),
+//     port: Number(process.env.PORT ?? 5001),
 //   },
 //   (info) => {
 //     ;(console.log(`Server is running on ${process.env.HOST}:${info.port}`),
@@ -65,7 +65,7 @@ const start = async () => {
     serve(
       {
         fetch: app.fetch,
-        port: Number(process.env.PORT ?? 4001),
+        port: Number(process.env.PORT ?? 5001),
       },
       (info) => {
         ;(console.log(`Server is running on ${process.env.HOST}:${info.port}`),

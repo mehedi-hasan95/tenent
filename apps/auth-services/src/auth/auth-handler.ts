@@ -68,13 +68,19 @@ export const registrationEmailVerifyOTPHandler: RouteHandler<
 > = async (c) => {
   try {
     const { email, otp } = c.req.valid("json")
-    return await auth.api.verifyEmailOTP({
+    const data = await auth.api.verifyEmailOTP({
       body: {
         email,
         otp,
       },
       asResponse: true,
     })
+    // if (data.ok) {
+    //   await producer.send("create.stripe", {
+    //   value: JSON.stringify({ email }),
+    // })
+    // }
+    return data
   } catch (error) {
     return c.json({ error })
   }

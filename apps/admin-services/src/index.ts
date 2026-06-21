@@ -50,7 +50,7 @@ app.onError((err, c) => {
 // serve(
 //   {
 //     fetch: app.fetch,
-//     port: Number(process.env.PORT ?? 5002),
+//     port: Number(process.env.PORT ?? 5001),
 //   },
 //   (info) => {
 //     ;(console.log(`Server is running on ${process.env.HOST}:${info.port}`),
@@ -69,7 +69,7 @@ const start = async () => {
     serve(
       {
         fetch: app.fetch,
-        port: Number(process.env.PORT ?? 5002),
+        port: Number(process.env.PORT ?? 5001),
       },
       (info) => {
         ;(console.log(`Server is running on ${process.env.HOST}:${info.port}`),
