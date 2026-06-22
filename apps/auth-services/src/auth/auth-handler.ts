@@ -1,10 +1,10 @@
 import { RouteHandler } from "@workspace/open-api"
 import {
   checkVerificationOtpRoute,
+  getSendEmailRoute,
   isPasswordVerifiedRoute,
   loginRoute,
   registrationEmailVerifyOTPRoute,
-  // registrationEmailVerifyRoute,
   registrationRoute,
   requestPasswordResetRoute,
   resetPasswordRoute,
@@ -18,11 +18,12 @@ import {
   verifyPasswordRoute,
 } from "./auth-route"
 import { auth } from "@workspace/auth"
-import { and, db, eq } from "@workspace/db"
+import { db, eq } from "@workspace/db"
 import { user } from "@workspace/db/schema/user.schema"
 import { utapi } from "@workspace/uploadthing"
-import { getSignedCookie, setCookie, setSignedCookie } from "hono/cookie"
+import { getSignedCookie, setSignedCookie } from "hono/cookie"
 import { sign, verify } from "hono/jwt"
+import { producer } from "../utils/kafka"
 
 export const registrationHandler: RouteHandler<
   typeof registrationRoute
@@ -358,4 +359,15 @@ export const userDetailsHandler: RouteHandler<typeof userDetailsRoute> = async (
   } catch (error) {
     return c.json({ error })
   }
+}
+
+export const getSendEmailHandler: RouteHandler<
+  typeof getSendEmailRoute
+> = async (c) => {
+  const { email, otp, type } = c.req.valid("json")
+  // used kafka
+  await producer.send("create.stripe", {
+    value: JSON.stringify({ email, otp, type }),
+  })
+  return c.json({ success: true })
 }

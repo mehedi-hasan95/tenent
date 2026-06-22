@@ -5,6 +5,7 @@ import { account, user } from "@workspace/db/schema/user.schema"
 import redis from "@workspace/redis"
 import { customSession, emailOTP, username } from "better-auth/plugins"
 import { sendVerificationEmail } from "@workspace/email-service/email/send-verification-email"
+import { authFetch } from "./api/auth-fetch"
 
 const options = {
   baseURL: process.env.BETTER_AUTH_URL,
@@ -35,7 +36,8 @@ const options = {
           await sendVerificationEmail("verification", email, otp)
         }
         if (type === "forget-password") {
-          await sendVerificationEmail("reset", email, otp)
+          // await sendVerificationEmail("reset", email, otp)
+          await authFetch({ type: "reset", email, otp })
         }
       },
       disableSignUp: false,

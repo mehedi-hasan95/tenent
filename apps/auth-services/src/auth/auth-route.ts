@@ -331,3 +331,29 @@ export const userDetailsRoute = createRoute({
     500: { description: "Internal server error" },
   },
 })
+
+export const getSendEmailRoute = createRoute({
+  method: "post",
+  path: "/get-send-email",
+  tags,
+  summary: "Send verification email using kafka",
+  request: {
+    body: {
+      content: {
+        "application/json": {
+          schema: z.object({
+            type: z.enum(["verification", "reset"]),
+            email: z.email(),
+            otp: z.string(),
+          }),
+        },
+      },
+    },
+  },
+  responses: {
+    201: { description: "OK" },
+    400: { description: "Bad Request" },
+    404: { description: "Not Found" },
+    500: { description: "Internal server error" },
+  },
+})

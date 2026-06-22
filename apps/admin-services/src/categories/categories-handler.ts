@@ -13,6 +13,7 @@ import {
 import { and, db, eq, inArray, isNotNull, isNull, ne, sql } from "@workspace/db"
 import { categories } from "@workspace/db/schema/categories.schema"
 import { utapi } from "@workspace/uploadthing"
+import { producer } from "../utils/kafka"
 
 export const createCategoryHandler: RouteHandler<
   typeof createCategoryRoute
@@ -130,6 +131,9 @@ export const getCategoriesHandler: RouteHandler<
       orderBy: (categories, { desc }) => [desc(categories.updatedAt)],
     })
 
+    await producer.send("create.stripe", {
+      value: JSON.stringify(data),
+    })
     return c.json({ data }, 200)
   } catch (error) {
     return c.json({ error, success: false })
