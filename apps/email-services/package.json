@@ -1,0 +1,21 @@
+{
+  "name": "email-services",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "bun --watch src/index.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "@types/nodemailer": "^8.0.1",
+    "dotenv": "^17.4.2",
+    "nodemailer": "^9.0.1",
+    "@workspace/kafka": "workspace:*"
+  }
+}

@@ -4,7 +4,6 @@ import { drizzleAdapter } from "better-auth/adapters/drizzle"
 import { account, user } from "@workspace/db/schema/user.schema"
 import redis from "@workspace/redis"
 import { customSession, emailOTP, username } from "better-auth/plugins"
-import { sendVerificationEmail } from "@workspace/email-service/email/send-verification-email"
 import { authFetch } from "./api/auth-fetch"
 
 const options = {
@@ -23,17 +22,13 @@ const options = {
   },
   emailVerification: {
     autoSignInAfterVerification: true,
-    async afterEmailVerification(user, request) {
-      // Your custom logic here, e.g., grant access to premium features
-      console.log(`${user.email} has been successfully verified!`)
-    },
   },
 
   plugins: [
     emailOTP({
       async sendVerificationOTP({ email, otp, type }) {
         if (type === "email-verification") {
-          await sendVerificationEmail("verification", email, otp)
+          await authFetch({ type: "verification", email, otp })
         }
         if (type === "forget-password") {
           // await sendVerificationEmail("reset", email, otp)

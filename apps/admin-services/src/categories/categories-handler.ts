@@ -131,8 +131,11 @@ export const getCategoriesHandler: RouteHandler<
       orderBy: (categories, { desc }) => [desc(categories.updatedAt)],
     })
 
+    // used kafka
     await producer.send("create.stripe", {
-      value: JSON.stringify(data),
+      value: JSON.stringify({
+        email: "account.email",
+      }),
     })
     return c.json({ data }, 200)
   } catch (error) {

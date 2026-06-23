@@ -10,14 +10,15 @@
   },
   "dependencies": {
     "@hono/node-server": "^1.19.14",
-    "dotenv": "^17.4.2",
-    "hono": "^4.12.23",
-    "zod": "^4.4.3",
     "@workspace/auth": "workspace:*",
     "@workspace/db": "workspace:*",
+    "@workspace/kafka": "workspace:*",
     "@workspace/open-api": "workspace:*",
     "@workspace/validators": "workspace:*",
-    "@workspace/kafka": "workspace:*"
+    "dotenv": "^17.4.2",
+    "hono": "^4.12.23",
+    "stripe": "^22.2.2",
+    "zod": "^4.4.3"
   },
   "devDependencies": {
     "@types/node": "^25.9.1",
