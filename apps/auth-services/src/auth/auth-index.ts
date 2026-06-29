@@ -1,10 +1,10 @@
 import { defaultHook, OpenAPIHono } from "@workspace/open-api"
 import {
   checkVerificationOtpRoute,
+  getSendEmailRoute,
   isPasswordVerifiedRoute,
   loginRoute,
   registrationEmailVerifyOTPRoute,
-  // registrationEmailVerifyRoute,
   registrationRoute,
   requestPasswordResetRoute,
   resetPasswordRoute,
@@ -20,7 +20,6 @@ import {
 import {
   checkVerificationOtpHandler,
   loginHandler,
-  // registrationEmailVerifyHandler,
   registrationEmailVerifyOTPHandler,
   registrationHandler,
   requestPasswordResetHandler,
@@ -34,6 +33,7 @@ import {
   isPasswordVerifiedHandler,
   updateUsernameHandler,
   userDetailsHandler,
+  getSendEmailHandler,
 } from "./auth-handler"
 
 const app = new OpenAPIHono({
@@ -56,5 +56,6 @@ app
   .openapi(isPasswordVerifiedRoute, isPasswordVerifiedHandler)
   .openapi(updateUsernameRoute, updateUsernameHandler)
   .openapi(userDetailsRoute, userDetailsHandler)
+  .openapi(getSendEmailRoute, getSendEmailHandler)
 
 export default app

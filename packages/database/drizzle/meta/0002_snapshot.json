@@ -1,5 +1,5 @@
 {
-  "id": "1c3e74f1-ed58-43b5-945f-2345800c9599",
+  "id": "b8842954-b810-4217-b1e9-618b61d73fe6",
   "prevId": "1251e21b-1183-450e-9c8c-f38f67cf59ca",
   "version": "7",
   "dialect": "postgresql",
@@ -386,14 +386,8 @@
           "notNull": false,
           "default": false
         },
-        "stripeCustomerId": {
-          "name": "stripeCustomerId",
-          "type": "text",
-          "primaryKey": false,
-          "notNull": false
-        },
-        "stripeAccountId": {
-          "name": "stripeAccountId",
+        "stripeId": {
+          "name": "stripeId",
           "type": "text",
           "primaryKey": false,
           "notNull": false
@@ -415,20 +409,6 @@
           "nullsNotDistinct": false,
           "columns": [
             "username"
-          ]
-        },
-        "user_stripeCustomerId_unique": {
-          "name": "user_stripeCustomerId_unique",
-          "nullsNotDistinct": false,
-          "columns": [
-            "stripeCustomerId"
-          ]
-        },
-        "user_stripeAccountId_unique": {
-          "name": "user_stripeAccountId_unique",
-          "nullsNotDistinct": false,
-          "columns": [
-            "stripeAccountId"
           ]
         }
       },

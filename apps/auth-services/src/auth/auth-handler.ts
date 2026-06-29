@@ -1,6 +1,7 @@
 import { RouteHandler } from "@workspace/open-api"
 import {
   checkVerificationOtpRoute,
+  getSendEmailRoute,
   isPasswordVerifiedRoute,
   loginRoute,
   registrationEmailVerifyOTPRoute,
@@ -20,8 +21,9 @@ import { auth } from "@workspace/auth"
 import { db, eq } from "@workspace/db"
 import { user } from "@workspace/db/schema/user.schema"
 import { utapi } from "@workspace/uploadthing"
-import { getSignedCookie, setCookie, setSignedCookie } from "hono/cookie"
+import { getSignedCookie, setSignedCookie } from "hono/cookie"
 import { sign, verify } from "hono/jwt"
+import { producer } from "../utils/kafka"
 
 export const registrationHandler: RouteHandler<
   typeof registrationRoute
@@ -67,13 +69,21 @@ export const registrationEmailVerifyOTPHandler: RouteHandler<
 > = async (c) => {
   try {
     const { email, otp } = c.req.valid("json")
-    return await auth.api.verifyEmailOTP({
+    const data = await auth.api.verifyEmailOTP({
       body: {
         email,
         otp,
       },
       asResponse: true,
     })
+    // used kafka
+    // if (data.ok === true) {
+    //   console.log(data)
+    //   await producer.send("create.stripe", {
+    //     value: JSON.stringify({ email }),
+    //   })
+    // }
+    return data
   } catch (error) {
     return c.json({ error })
   }
@@ -146,6 +156,7 @@ export const checkVerificationOtpHandler: RouteHandler<
       },
       asResponse: true,
     })
+    // return c.json({ data })
   } catch (error) {
     return c.json({ error })
   }
@@ -185,15 +196,7 @@ export const verifyEmailOtpHandler: RouteHandler<
 export const updateUserHandler: RouteHandler<typeof updateUserRoute> = async (
   c
 ) => {
-  const {
-    name,
-    image,
-    phone,
-    previousImage,
-    stripeAccountId,
-    stripeCustomerId,
-    stripeVerified,
-  } = c.req.valid("form")
+  const { name, image, phone, previousImage } = c.req.valid("form")
 
   try {
     let imageUrl: string | undefined | null = previousImage
@@ -204,14 +207,7 @@ export const updateUserHandler: RouteHandler<typeof updateUserRoute> = async (
       imageUrl = null
     }
     const data = await auth.api.updateUser({
-      body: {
-        name,
-        image: imageUrl,
-        phone,
-        stripeAccountId,
-        stripeCustomerId,
-        stripeVerified,
-      },
+      body: { name, image: imageUrl, phone },
       headers: c.req.raw.headers,
     })
     return c.json({ data })
@@ -365,4 +361,15 @@ export const userDetailsHandler: RouteHandler<typeof userDetailsRoute> = async (
   } catch (error) {
     return c.json({ error })
   }
+}
+
+export const getSendEmailHandler: RouteHandler<
+  typeof getSendEmailRoute
+> = async (c) => {
+  const { email, otp, type } = c.req.valid("json")
+  // used kafka
+  // await producer.send("verification.email", {
+  //   value: JSON.stringify({ email, otp, type }),
+  // })
+  return c.json({ success: true })
 }

@@ -1,6 +1,7 @@
 import {
   ChartNoAxesCombined,
   CreditCard,
+  DollarSign,
   LayoutDashboard,
   Plus,
   PlusCircle,
@@ -19,6 +20,11 @@ export const ADMIN_OVERVIEW = [
     name: "Analytics",
     slug: "/admin/analytics",
     icon: ChartNoAxesCombined,
+  },
+  {
+    name: "Stripe",
+    slug: "/admin/stripe-connect",
+    icon: DollarSign,
   },
 ]
 export const ADMIN_COMMERCE = [

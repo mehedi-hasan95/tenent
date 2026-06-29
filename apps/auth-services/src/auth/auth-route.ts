@@ -235,9 +235,6 @@ export const updateUserRoute = createRoute({
                 })
                 .optional()
                 .or(z.literal("")),
-              stripeCustomerId: z.string().optional(),
-              stripeAccountId: z.string().optional(),
-              stripeVerified: z.boolean().default(false),
             })
             .refine(
               (data) => {
@@ -329,6 +326,32 @@ export const userDetailsRoute = createRoute({
   middleware: authMiddleware,
   responses: {
     200: { description: "OK" },
+    400: { description: "Bad Request" },
+    404: { description: "Not Found" },
+    500: { description: "Internal server error" },
+  },
+})
+
+export const getSendEmailRoute = createRoute({
+  method: "post",
+  path: "/get-send-email",
+  tags,
+  summary: "Send verification email using kafka",
+  request: {
+    body: {
+      content: {
+        "application/json": {
+          schema: z.object({
+            type: z.enum(["verification", "reset"]),
+            email: z.email(),
+            otp: z.string(),
+          }),
+        },
+      },
+    },
+  },
+  responses: {
+    201: { description: "OK" },
     400: { description: "Bad Request" },
     404: { description: "Not Found" },
     500: { description: "Internal server error" },

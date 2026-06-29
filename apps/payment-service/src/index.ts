@@ -7,11 +7,9 @@ import {
 } from "@workspace/open-api"
 import { cors } from "hono/cors"
 import { HTTPException } from "hono/http-exception"
+import stripe from "./stripe/stripe-index"
 // import { consumer, producer } from "./utils/kafka"
 // import { runKafkaSubscriptions } from "./utils/subscriptions"
-import categories from "./categories/categories-index"
-import subCategories from "./sub-categories/sub-categories-index"
-import users from "./users/users-index"
 
 const app = new OpenAPIHono({
   defaultHook,
@@ -29,10 +27,7 @@ app.use(
  * 📌 RPC: Here start the RPC
  * ============================================================
  */
-const routes = app
-  .route("/categories", categories)
-  .route("/sub-categories", subCategories)
-  .route("/users", users)
+const routes = app.route("/stripe", stripe)
 
 app.onError((err, c) => {
   if (err instanceof HTTPException) {
@@ -71,7 +66,7 @@ serve(
 //     serve(
 //       {
 //         fetch: app.fetch,
-//         port: Number(process.env.PORT ?? 5001),
+//         port: Number(process.env.PORT ?? 5002),
 //       },
 //       (info) => {
 //         ;(console.log(`Server is running on ${process.env.HOST}:${info.port}`),
@@ -88,6 +83,7 @@ serve(
 // start()
 
 // used kafka
+
 openAPIConfiguration(app)
 export default app
 export type AppType = typeof routes

@@ -24,4 +24,5 @@ export type getUserType = {
   role: "USER" | "SELLER" | "ADMIN" | null
   phone: string | null
   stripeVerified: boolean | null
+  stripeId: string | null
 }

@@ -7,6 +7,8 @@ import {
 import { cors } from "hono/cors"
 import { HTTPException } from "hono/http-exception"
 import auth from "./auth/auth-index"
+import { consumer, producer } from "./utils/kafka"
+import { runKafkaSubscriptions } from "./utils/subscriptions"
 
 const app = new OpenAPIHono({
   defaultHook,
@@ -53,6 +55,33 @@ serve(
       ))
   }
 )
+
+// used kafka
+
+// const start = async () => {
+//   try {
+//     await Promise.all([producer.connect(), consumer.connect()])
+//     await runKafkaSubscriptions()
+//     serve(
+//       {
+//         fetch: app.fetch,
+//         port: Number(process.env.PORT ?? 4001),
+//       },
+//       (info) => {
+//         ;(console.log(`Server is running on ${process.env.HOST}:${info.port}`),
+//           console.log(
+//             `You can get the documentation at ${process.env.HOST}:${info.port}/api/v1/tenant`
+//           ))
+//       }
+//     )
+//   } catch (error) {
+//     console.log(error)
+//   }
+// }
+
+// start()
+
+// used kafka
 
 openAPIConfiguration(app)
 export default app
