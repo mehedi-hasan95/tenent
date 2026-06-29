@@ -25,6 +25,7 @@ export const user = pgTable("user", {
   role: userRole("role").default("USER"),
   phone: text("phone"),
   stripeVerified: boolean("stripe_verified").default(false),
+  stripeId: text("stripeId"),
 })
 
 export const account = pgTable(

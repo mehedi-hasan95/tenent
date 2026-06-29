@@ -8,8 +8,8 @@ import {
 import { cors } from "hono/cors"
 import { HTTPException } from "hono/http-exception"
 import stripe from "./stripe/stripe-index"
-import { consumer, producer } from "./utils/kafka"
-import { runKafkaSubscriptions } from "./utils/subscriptions"
+// import { consumer, producer } from "./utils/kafka"
+// import { runKafkaSubscriptions } from "./utils/subscriptions"
 
 const app = new OpenAPIHono({
   defaultHook,
@@ -27,7 +27,7 @@ app.use(
  * 📌 RPC: Here start the RPC
  * ============================================================
  */
-const routes = app.route("/auth", stripe)
+const routes = app.route("/stripe", stripe)
 
 app.onError((err, c) => {
   if (err instanceof HTTPException) {
@@ -44,43 +44,43 @@ app.onError((err, c) => {
     500
   )
 })
-// serve(
-//   {
-//     fetch: app.fetch,
-//     port: Number(process.env.PORT ?? 5001),
-//   },
-//   (info) => {
-//     ;(console.log(`Server is running on ${process.env.HOST}:${info.port}`),
-//       console.log(
-//         `You can get the documentation at ${process.env.HOST}:${info.port}/api/v1/tenant`
-//       ))
-//   }
-// )
+serve(
+  {
+    fetch: app.fetch,
+    port: Number(process.env.PORT ?? 5001),
+  },
+  (info) => {
+    ;(console.log(`Server is running on ${process.env.HOST}:${info.port}`),
+      console.log(
+        `You can get the documentation at ${process.env.HOST}:${info.port}/api/v1/tenant`
+      ))
+  }
+)
 
 // used kafka
 
-const start = async () => {
-  try {
-    await Promise.all([producer.connect(), consumer.connect()])
-    await runKafkaSubscriptions()
-    serve(
-      {
-        fetch: app.fetch,
-        port: Number(process.env.PORT ?? 5002),
-      },
-      (info) => {
-        ;(console.log(`Server is running on ${process.env.HOST}:${info.port}`),
-          console.log(
-            `You can get the documentation at ${process.env.HOST}:${info.port}/api/v1/tenant`
-          ))
-      }
-    )
-  } catch (error) {
-    console.log(error)
-  }
-}
+// const start = async () => {
+//   try {
+//     await Promise.all([producer.connect(), consumer.connect()])
+//     await runKafkaSubscriptions()
+//     serve(
+//       {
+//         fetch: app.fetch,
+//         port: Number(process.env.PORT ?? 5002),
+//       },
+//       (info) => {
+//         ;(console.log(`Server is running on ${process.env.HOST}:${info.port}`),
+//           console.log(
+//             `You can get the documentation at ${process.env.HOST}:${info.port}/api/v1/tenant`
+//           ))
+//       }
+//     )
+//   } catch (error) {
+//     console.log(error)
+//   }
+// }
 
-start()
+// start()
 
 // used kafka
 

@@ -1,10 +1,13 @@
-// authors.ts
-import { Hono } from "hono"
+import { defaultHook, OpenAPIHono } from "@workspace/open-api"
+import { stripeConnectRoute, stripeWebhookRoute } from "./stripe-route"
+import { stripeConnectHandler, stripeWebhookHandler } from "./stripe-handler"
 
-const app = new Hono()
+const app = new OpenAPIHono({
+  defaultHook,
+})
 
-app.get("/", (c) => c.json("list authors"))
-app.post("/", (c) => c.json("create an author", 201))
-app.get("/:id", (c) => c.json(`get ${c.req.param("id")}`))
+app
+  .openapi(stripeWebhookRoute, stripeWebhookHandler)
+  .openapi(stripeConnectRoute, stripeConnectHandler)
 
 export default app

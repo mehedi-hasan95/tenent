@@ -75,6 +75,11 @@ const options = {
         required: false,
         defaultValue: false,
       },
+      stripeId: {
+        type: "string",
+        required: false,
+        defaultValue: undefined,
+      },
     },
   },
   secondaryStorage: {

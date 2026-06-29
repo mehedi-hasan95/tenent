@@ -5,7 +5,6 @@ import {
   isPasswordVerifiedRoute,
   loginRoute,
   registrationEmailVerifyOTPRoute,
-  // registrationEmailVerifyRoute,
   registrationRoute,
   requestPasswordResetRoute,
   resetPasswordRoute,
@@ -21,7 +20,6 @@ import {
 import {
   checkVerificationOtpHandler,
   loginHandler,
-  // registrationEmailVerifyHandler,
   registrationEmailVerifyOTPHandler,
   registrationHandler,
   requestPasswordResetHandler,
