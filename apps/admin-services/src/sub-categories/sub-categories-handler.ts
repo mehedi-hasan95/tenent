@@ -85,17 +85,20 @@ export const getSubCategoriesHandler: RouteHandler<
   typeof getSubCategoriesRoute
 > = async (c) => {
   try {
-    const { type } = c.req.valid("query")
+    const { slug, type } = c.req.valid("query")
 
     const data = await db
       .select()
       .from(subCategories)
       .where(
-        type === undefined
-          ? undefined
-          : type
-            ? isNull(subCategories.deleted_at)
-            : isNotNull(subCategories.deleted_at)
+        and(
+          type === undefined
+            ? undefined
+            : type
+              ? isNull(subCategories.deleted_at)
+              : isNotNull(subCategories.deleted_at),
+          slug ? eq(subCategories.categorySlug, slug) : undefined
+        )
       )
       .orderBy(desc(subCategories.createdAt))
     return c.json({ data }, 200)

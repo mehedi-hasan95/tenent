@@ -11,7 +11,6 @@ import { CategoriesGrid } from "./categories-grid"
 import { useState } from "react"
 import { categoriesType } from "@workspace/validators/types/categories.types"
 import { DeleteCategoryModal } from "./delete-category-modal"
-import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { trashingCategoryAction } from "@/api/categories/categories-action"
 
 export const CategoriesPage = () => {

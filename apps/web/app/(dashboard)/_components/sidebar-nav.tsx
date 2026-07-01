@@ -16,10 +16,11 @@ import {
 import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { cn } from "@workspace/ui/lib/utils"
+import { IconType } from "react-icons"
 
 interface Props {
   title?: string
-  data: { name: string; slug: string; icon?: LucideIcon }[]
+  data: { name: string; slug: string; icon?: LucideIcon | IconType }[]
 }
 export const SidebarNav = ({ data, title }: Props) => {
   const pathname = usePathname()

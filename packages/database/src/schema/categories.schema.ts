@@ -1,5 +1,6 @@
 import { relations } from "drizzle-orm"
 import { index, pgTable, text, timestamp, uuid } from "drizzle-orm/pg-core"
+import { products } from "./products.schema"
 
 const timestamps = {
   createdAt: timestamp("created_at").defaultNow().notNull(),
@@ -36,6 +37,7 @@ export const subCategories = pgTable(
   (t) => [index("subCategory_slug_ids").on(t.slug)]
 )
 
+// relations
 export const categoryRelation = relations(categories, ({ many }) => ({
   subCategory: many(subCategories),
 }))
@@ -45,4 +47,12 @@ export const subCategoriesRelation = relations(subCategories, ({ one }) => ({
     fields: [subCategories.categorySlug],
     references: [categories.slug],
   }),
+}))
+
+export const categoriesRelations = relations(categories, ({ many }) => ({
+  products: many(products),
+}))
+
+export const subCategoriesRelations = relations(subCategories, ({ many }) => ({
+  products: many(products),
 }))

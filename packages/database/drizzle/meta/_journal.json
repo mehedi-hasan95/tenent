@@ -22,6 +22,20 @@
       "when": 1782259322660,
       "tag": "0002_lowly_meteorite",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1782741284422,
+      "tag": "0003_wild_nightshade",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1782741505791,
+      "tag": "0004_lame_frog_thor",
+      "breakpoints": true
     }
   ]
 }

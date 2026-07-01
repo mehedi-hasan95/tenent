@@ -44,14 +44,14 @@ export const updateSubCategoryAction = async (
   return response.json()
 }
 
-export const getSubCategoriesAction = async (type?: string) => {
+export const getSubCategoriesAction = async (type?: string, slug?: string) => {
   const url = new URL(
     `${process.env.NEXT_PUBLIC_ADMIN_URL}/sub-categories/get-sub-categories`
   )
 
-  if (type) {
-    url.searchParams.set("type", type)
-  }
+  Object.entries({ type, slug }).forEach(([key, value]) => {
+    if (value) url.searchParams.set(key, value)
+  })
 
   const response = await fetch(url.toString(), {
     method: "GET",

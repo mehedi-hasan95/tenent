@@ -1,14 +1,14 @@
 import {
   ChartNoAxesCombined,
   CreditCard,
-  DollarSign,
   LayoutDashboard,
   Plus,
   PlusCircle,
   ShoppingBasket,
-  SquareFunction,
   Trash,
 } from "lucide-react"
+import { FaStripeS } from "react-icons/fa6"
+import { TbCreditCardRefund } from "react-icons/tb"
 
 export const ADMIN_OVERVIEW = [
   {
@@ -24,7 +24,7 @@ export const ADMIN_OVERVIEW = [
   {
     name: "Stripe",
     slug: "/admin/stripe-connect",
-    icon: DollarSign,
+    icon: FaStripeS,
   },
 ]
 export const ADMIN_COMMERCE = [
@@ -36,7 +36,7 @@ export const ADMIN_COMMERCE = [
   {
     name: "Refunds",
     slug: "/admin/refunds",
-    icon: SquareFunction,
+    icon: TbCreditCardRefund,
   },
   {
     name: "Payments",

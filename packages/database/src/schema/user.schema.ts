@@ -7,6 +7,7 @@ import {
   index,
   pgEnum,
 } from "drizzle-orm/pg-core"
+import { products } from "./products.schema"
 
 export const userRole = pgEnum("user-role", ["USER", "SELLER", "ADMIN"])
 export const user = pgTable("user", {
@@ -52,6 +53,7 @@ export const account = pgTable(
   (table) => [index("account_userId_idx").on(table.userId)]
 )
 
+// relations
 export const userRelations = relations(user, ({ many }) => ({
   accounts: many(account),
 }))
@@ -61,4 +63,8 @@ export const accountRelations = relations(account, ({ one }) => ({
     fields: [account.userId],
     references: [user.id],
   }),
+}))
+
+export const usersRelations = relations(user, ({ many }) => ({
+  products: many(products),
 }))
