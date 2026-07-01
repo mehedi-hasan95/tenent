@@ -8,7 +8,7 @@ import { TagsController } from "@/components/form/tags-controller"
 import { TextareaController } from "@/components/form/textarea-controller"
 import { useGetCategories } from "@/hooks/categories/use-categories"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useQuery } from "@tanstack/react-query"
+import { useMutation, useQuery } from "@tanstack/react-query"
 import { Button } from "@workspace/ui/components/button"
 import {
   Card,
@@ -21,7 +21,7 @@ import {
 import { Field, FieldGroup } from "@workspace/ui/components/field"
 import { productValidator } from "@workspace/validators/validators/products-validators"
 import { useEffect, useRef } from "react"
-import { useForm, useWatch } from "react-hook-form"
+import { ArrayPath, useForm, useWatch } from "react-hook-form"
 import z from "zod"
 import { ColorController } from "../../../../../../components/form/color-controller"
 import { SizeController } from "../../../../../../components/form/size-controller"
@@ -33,6 +33,7 @@ import {
   STATUS_ENUM,
 } from "@workspace/validators/types/constants.types"
 import { ImagePreviewController } from "@/components/form/image-preview-controller"
+import { createProductAction } from "@/api/products/products-action"
 import { SpecificationController } from "@/components/form/specification-controller"
 
 export const CreateProductForm = () => {
@@ -80,12 +81,22 @@ export const CreateProductForm = () => {
     prevCategory.current = selectedCat
   }, [selectedCat, form])
   const { data: subCat } = useQuery({
-    queryKey: ["sub-categories", "false", selectedCat],
-    queryFn: () => getSubCategoriesAction("false", selectedCat),
+    queryKey: ["sub-categories", "true", selectedCat],
+    queryFn: () => getSubCategoriesAction("true", selectedCat),
     enabled: !!selectedCat,
   })
+
+  const createMutation = useMutation({
+    mutationFn: createProductAction,
+    onSuccess: (data) => {
+      console.log(data)
+    },
+    onError: (error) => {
+      console.log("error: ", error)
+    },
+  })
   function onSubmit(data: z.input<typeof productValidator>) {
-    console.log(data)
+    createMutation.mutate(data)
   }
   return (
     <Card className="w-full sm:max-w-2xl">
@@ -123,15 +134,15 @@ export const CreateProductForm = () => {
           </FieldGroup>
 
           <FieldGroup>
-            {Boolean(form.getValues("previousImage")?.length) && (
+            {/* {Boolean(form.getValues("previousImage")) && (
               <ImagePreviewController
                 mode="multiple"
                 control={form.control}
                 name="previousImage"
                 title="Profile Image"
-                urls={prevImg ?? []}
+                urls={}
               />
-            )}
+            )} */}
             <ImageUploadController
               control={form.control}
               mode="multiple"
@@ -240,7 +251,11 @@ export const CreateProductForm = () => {
           <FieldGroup>
             <SpecificationController
               control={form.control}
-              name="specification"
+              name={
+                "specification" as unknown as ArrayPath<
+                  z.input<typeof productValidator>
+                >
+              }
               title="Specification"
             />
             <ComboboxController

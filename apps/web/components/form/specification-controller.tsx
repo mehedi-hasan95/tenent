@@ -7,6 +7,7 @@ import {
   FieldValues,
   Path,
   useFieldArray,
+  useFormContext,
 } from "react-hook-form"
 import {
   Field,
@@ -94,6 +95,19 @@ export const SpecificationController = <T extends FieldValues>({
                         aria-invalid={fieldState.invalid}
                         placeholder={valuePlaceholder}
                       />
+                      {fields.length > 0 && (
+                        <InputGroupAddon align="inline-end">
+                          <InputGroupButton
+                            type="button"
+                            variant="ghost"
+                            size="icon-xs"
+                            onClick={() => remove(index)}
+                            aria-label={`Remove specification ${index + 1}`}
+                          >
+                            <XIcon />
+                          </InputGroupButton>
+                        </InputGroupAddon>
+                      )}
                     </InputGroup>
                     {fieldState.invalid && (
                       <FieldError errors={[fieldState.error]} />
@@ -102,32 +116,25 @@ export const SpecificationController = <T extends FieldValues>({
                 </Field>
               )}
             />
-
-            {fields.length > 1 && (
-              <InputGroupAddon align="inline-end">
-                <InputGroupButton
-                  type="button"
-                  variant="ghost"
-                  size="icon-xs"
-                  onClick={() => remove(index)}
-                  aria-label={`Remove specification ${index + 1}`}
-                >
-                  <XIcon />
-                </InputGroupButton>
-              </InputGroupAddon>
-            )}
           </div>
         ))}
 
-        <Button
-          type="button"
-          variant="outline"
-          size="sm"
-          onClick={() => append({ key: "", value: "" } as never)}
-          disabled={fields.length >= maxFields}
-        >
-          <PlusCircle /> Add Specification
-        </Button>
+        <div className="flex items-center gap-2">
+          <Button
+            type="button"
+            variant="outline"
+            size="sm"
+            onClick={() => append({ key: "", value: "" } as never)}
+            disabled={fields.length >= maxFields}
+          >
+            <PlusCircle /> Add Specification
+          </Button>
+          {fields.length >= maxFields && (
+            <span className="text-xs text-muted-foreground">
+              Max {maxFields} reached
+            </span>
+          )}
+        </div>
       </FieldGroup>
     </FieldSet>
   )

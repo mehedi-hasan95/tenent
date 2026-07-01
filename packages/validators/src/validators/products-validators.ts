@@ -1,8 +1,14 @@
 import z from "zod"
 import { DELIVERY_ENUM, STATUS_ENUM } from "../@types/constants.types"
+import { formArray, jsonArray } from "./constractor"
 
 const MAX_TOTAL_SIZE = 16 * 1024 * 1024
 const customError = "custom" as const
+
+export const specificationSchema = z.object({
+  key: z.string().min(1, "Key is required"),
+  value: z.string().min(1, "Value is required"),
+})
 export const baseProductValidator = z.object({
   title: z.string().min(1),
   shortDescription: z.string().max(160),
@@ -10,7 +16,7 @@ export const baseProductValidator = z.object({
   basePrice: z.coerce.number().nonnegative(),
   salePrice: z.coerce.number().nonnegative(),
   stock: z.coerce.number().int().nonnegative(),
-  tags: z.array(z.string()).optional(),
+  tags: formArray(z.array(z.string()).optional()),
   weight: z.coerce.number().nonnegative().optional(),
   type: z.enum(DELIVERY_ENUM).default("physical"),
   status: z.enum(STATUS_ENUM).default("draft"),
@@ -18,35 +24,20 @@ export const baseProductValidator = z.object({
   previousImage: z.array(z.string()).optional(),
   categorySlug: z.string().nonempty(),
   subCategorySlug: z.string().nonempty(),
-  color: z
-    .array(
-      z
-        .string()
-        .regex(/^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/, "Invalid hex color")
-    )
-    .optional(),
-  specification: z
-    .array(
-      z
-        .object({
-          key: z.string(),
-          value: z.string(),
-        })
-        .refine(
-          (data) =>
-            (data.key === "" && data.value === "") ||
-            (data.key !== "" && data.value !== ""),
-          {
-            message: "Both key and value are required",
-            path: ["value"],
-          }
-        )
-    )
-    .optional(),
+  color: formArray(
+    z
+      .array(
+        z
+          .string()
+          .regex(/^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/, "Invalid hex color")
+      )
+      .optional()
+  ),
+  specification: jsonArray(z.array(specificationSchema).default([])),
 
-  cashOnDelivery: z.boolean().default(false),
+  cashOnDelivery: z.coerce.boolean().default(false),
   coupon: z.string().max(20).optional(),
-  sizes: z.array(z.string()).optional(),
+  sizes: formArray(z.array(z.string()).optional()),
 })
 
 export const productValidator = baseProductValidator
