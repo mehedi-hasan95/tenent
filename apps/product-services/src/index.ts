@@ -6,10 +6,11 @@ import {
   OpenAPIHono,
 } from "@workspace/open-api"
 import { cors } from "hono/cors"
-import { HTTPException } from "hono/http-exception"
-import products from "./products/products-index"
 // import { consumer, producer } from "./utils/kafka"
 // import { runKafkaSubscriptions } from "./utils/subscriptions"
+import { HTTPException } from "hono/http-exception"
+import products from "./products/products-index"
+import common from "./common/products-index"
 
 const app = new OpenAPIHono({
   defaultHook,
@@ -27,7 +28,7 @@ app.use(
  * 📌 RPC: Here start the RPC
  * ============================================================
  */
-const routes = app.route("/products", products)
+const routes = app.route("/products", products).route("/common", common)
 
 app.onError((err, c) => {
   if (err instanceof HTTPException) {

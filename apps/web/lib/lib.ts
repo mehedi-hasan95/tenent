@@ -43,3 +43,17 @@ export const getInitials = (name: string): string => {
     .join("")
     .toUpperCase()
 }
+
+export const formatName = (name: string): string => {
+  return name
+    .split("-")
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(" ")
+}
+
+export const formatPrice = (price: number) => {
+  return new Intl.NumberFormat("en-us", {
+    style: "currency",
+    currency: "USD",
+  }).format(price)
+}
