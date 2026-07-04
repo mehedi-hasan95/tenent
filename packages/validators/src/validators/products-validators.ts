@@ -20,8 +20,11 @@ export const baseProductValidator = z.object({
   weight: z.coerce.number().nonnegative().optional(),
   type: z.enum(DELIVERY_ENUM).default("physical"),
   status: z.enum(STATUS_ENUM).default("draft"),
-
-  previousImage: z.array(z.string()).optional(),
+  previousImage: formArray(z.array(z.string()).optional()),
+  // previousImage: z.preprocess((val) => {
+  //   if (val === undefined) return undefined
+  //   return Array.isArray(val) ? val : [val]
+  // }, z.array(z.string()).optional()),
   categorySlug: z.string().nonempty(),
   subCategorySlug: z.string().nonempty(),
   color: formArray(

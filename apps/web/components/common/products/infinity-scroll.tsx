@@ -1,5 +1,5 @@
 "use client"
-import { useInterceptionObserver } from "@/hooks/products/use-products"
+import { useInterceptionObserver } from "@/hooks/infinity-scroll/use-infinity-scroll-observer"
 import { Button } from "@workspace/ui/components/button"
 import { useEffect } from "react"
 

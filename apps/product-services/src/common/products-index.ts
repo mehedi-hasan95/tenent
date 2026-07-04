@@ -1,11 +1,13 @@
 import { OpenAPIHono, defaultHook } from "@workspace/open-api"
-import { allProductsRoute } from "./products-route"
-import { allProductsHandler } from "./products-handler"
+import { allProductsRoute, singleProductsRoute } from "./products-route"
+import { allProductsHandler, singleProductsHandler } from "./products-handler"
 
 const app = new OpenAPIHono({
   defaultHook,
 })
 
-app.openapi(allProductsRoute, allProductsHandler)
+app
+  .openapi(allProductsRoute, allProductsHandler)
+  .openapi(singleProductsRoute, singleProductsHandler)
 
 export default app

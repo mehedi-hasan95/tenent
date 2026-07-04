@@ -16,9 +16,9 @@ import Link from "next/link"
 
 interface Props {
   data: PRODUCT_TYPE
+  onDelete: (id: string) => void
 }
-export const VendorProductCard = ({ data }: Props) => {
-  console.log(data)
+export const VendorProductCard = ({ data, onDelete }: Props) => {
   return (
     <Card className="relative mx-auto w-full max-w-sm pt-0">
       <Image
@@ -53,7 +53,7 @@ export const VendorProductCard = ({ data }: Props) => {
       </CardHeader>
       <CardFooter className="flex flex-col space-y-4">
         <Link href={"#"} className="w-full">
-          <Button className="w-full bg-blue-800 text-white">
+          <Button variant={"primary"} className="w-full text-white">
             View Details
           </Button>
         </Link>
@@ -64,8 +64,13 @@ export const VendorProductCard = ({ data }: Props) => {
             </Button>
           </Link>
 
-          <Button className="flex-1" variant={"destructive"}>
-            <Trash2 /> Delete
+          <Button
+            onClick={() => onDelete(data.id)}
+            variant={"destructive"}
+            className="flex-1"
+          >
+            <Trash2 size={16} />
+            Delete
           </Button>
         </div>
       </CardFooter>

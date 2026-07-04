@@ -27,7 +27,6 @@ export function DataTableToolbar<TData>({
                 .getSelectedRowModel()
                 .rows.map((row) => (row.original as { slug: string })?.slug)
             )
-            console.log("first")
           }}
         >
           <Trash className="mr-2 h-4 w-4" />

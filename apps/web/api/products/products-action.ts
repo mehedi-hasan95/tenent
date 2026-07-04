@@ -35,16 +35,38 @@ export const createProductAction = async (
   return response.json()
 }
 
-//
+export const updateProductAction = async (
+  data: z.input<typeof productValidator> & { id: string }
+) => {
+  const fd = new FormData()
+  Object.entries(data).forEach(([key, value]) => {
+    if (value === undefined || value === null) return
 
-const allProductsResponseSchema = z.object({
-  data: z.array(productValidator),
-  nextCursor: z.string().nullable(),
-  hasMore: z.boolean(),
-})
+    if (key === "images") {
+      ;(value as File[]).forEach((file) => fd.append("images", file))
+    } else if (key === "specification") {
+      fd.append(key, JSON.stringify(value))
+    } else if (Array.isArray(value)) {
+      value.forEach((v) => fd.append(key, String(v)))
+    } else {
+      fd.append(key, String(value))
+    }
+  })
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_PRODUCTS_URL}/products/update-product`,
+    {
+      method: "PATCH",
 
-export type Product = z.infer<typeof productValidator>
-export type AllProductsResponse = z.infer<typeof allProductsResponseSchema>
+      body: fd,
+      credentials: "include",
+    }
+  )
+  if (!response.ok) {
+    const error = await response.json()
+    throw error
+  }
+  return response.json()
+}
 
 type FetchAllProductsParams = {
   seller?: string
@@ -52,30 +74,7 @@ type FetchAllProductsParams = {
   pageSize?: number
 }
 
-// export const fetchAllProducts = async ({
-//   seller,
-//   cursor,
-//   pageSize = 10,
-// }: FetchAllProductsParams): Promise<AllProductsResponse> => {
-//   const params = new URLSearchParams()
-//   if (seller) params.set("seller", seller)
-//   if (cursor) params.set("cursor", cursor)
-//   params.set("pageSize", String(pageSize))
-
-//   const res = await fetch(
-//     `${process.env.NEXT_PUBLIC_PRODUCTS_URL}/common/all-products?${params.toString()}`
-//   )
-
-//   if (!res.ok) {
-//     const error = await res.json()
-//     throw error
-//   }
-
-//   const data = await res.json()
-//   return data
-// }
-
-export const fetchAllProducts = async ({
+export const fetchAllProductsAction = async ({
   seller,
   cursor,
   pageSize = 10,
@@ -103,4 +102,46 @@ export const fetchAllProducts = async ({
     hasMore: boolean
   } = await response.json()
   return data
+}
+
+export const singleProductsAction = async (id: string) => {
+  const url = new URL(
+    `${process.env.NEXT_PUBLIC_PRODUCTS_URL}/common/single-products`
+  )
+
+  if (id) {
+    url.searchParams.set("id", id)
+  }
+
+  const response = await fetch(url.toString(), {
+    method: "GET",
+  })
+
+  if (!response.ok) {
+    throw await response.json()
+  }
+
+  const data: {
+    data: PRODUCT_TYPE
+  } = await response.json()
+  return data.data
+}
+
+export const trashedProductAction = async ({ id }: { id: string }) => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_PRODUCTS_URL}/products/trash-product`,
+    {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify({ id }),
+    }
+  )
+  if (!response.ok) {
+    const error = await response.json()
+    throw error
+  }
+  return response.json()
 }

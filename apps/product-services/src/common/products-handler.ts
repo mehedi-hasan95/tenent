@@ -1,14 +1,19 @@
 import { RouteHandler } from "@workspace/open-api"
-import { allProductsRoute } from "./products-route"
+import { allProductsRoute, singleProductsRoute } from "./products-route"
 import { Cursor, decodeCursor, encodeCursor } from "../utils/cursor"
-import { and, db, eq, gt, lt, or } from "@workspace/db"
+import { and, db, eq, gt, isNull, lt, or } from "@workspace/db"
 import { products } from "@workspace/db/schema/products.schema"
 
 export const allProductsHandler: RouteHandler<typeof allProductsRoute> = async (
   c
 ) => {
   try {
-    const { seller, pageSize, cursor: rawCursor } = c.req.valid("query")
+    const {
+      seller,
+      pageSize,
+      cursor: rawCursor,
+      productStatus,
+    } = c.req.valid("query")
 
     let cursor: Cursor | null = null
     if (rawCursor) {
@@ -20,6 +25,7 @@ export const allProductsHandler: RouteHandler<typeof allProductsRoute> = async (
 
     const rows = await db.query.products.findMany({
       where: and(
+        productStatus ? eq(products.status, productStatus) : undefined,
         seller ? eq(products.userEmail, seller) : undefined,
         cursor
           ? or(
@@ -29,7 +35,8 @@ export const allProductsHandler: RouteHandler<typeof allProductsRoute> = async (
                 lt(products.id, cursor.id)
               )
             )
-          : undefined
+          : undefined,
+        isNull(products.deleted_at)
       ),
       limit: pageSize + 1,
       orderBy: (products, { desc }) => [
@@ -50,6 +57,20 @@ export const allProductsHandler: RouteHandler<typeof allProductsRoute> = async (
     return c.json({ data, nextCursor, hasMore }, 200)
   } catch (error) {
     console.error(error)
+    return c.json({ error: "Something went wrong" }, 500)
+  }
+}
+
+export const singleProductsHandler: RouteHandler<
+  typeof singleProductsRoute
+> = async (c) => {
+  try {
+    const { id } = c.req.valid("query")
+    const data = await db.query.products.findFirst({
+      where: eq(products.id, id),
+    })
+    return c.json({ data }, 200)
+  } catch (error) {
     return c.json({ error: "Something went wrong" }, 500)
   }
 }

@@ -9,7 +9,7 @@ import { cors } from "hono/cors"
 // import { consumer, producer } from "./utils/kafka"
 // import { runKafkaSubscriptions } from "./utils/subscriptions"
 import { HTTPException } from "hono/http-exception"
-import products from "./products/products-index"
+import products from "./seller-products/products-index"
 import common from "./common/products-index"
 
 const app = new OpenAPIHono({

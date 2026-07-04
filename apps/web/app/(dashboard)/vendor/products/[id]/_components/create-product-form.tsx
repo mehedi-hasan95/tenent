@@ -8,7 +8,7 @@ import { TagsController } from "@/components/form/tags-controller"
 import { TextareaController } from "@/components/form/textarea-controller"
 import { useGetCategories } from "@/hooks/categories/use-categories"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useMutation, useQuery } from "@tanstack/react-query"
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
 import { Button } from "@workspace/ui/components/button"
 import {
   Card,
@@ -23,8 +23,8 @@ import { productValidator } from "@workspace/validators/validators/products-vali
 import { useEffect, useRef } from "react"
 import { ArrayPath, useForm, useWatch } from "react-hook-form"
 import z from "zod"
-import { ColorController } from "../../../../../../components/form/color-controller"
-import { SizeController } from "../../../../../../components/form/size-controller"
+import { ColorController } from "@/components/form/color-controller"
+import { SizeController } from "@/components/form/size-controller"
 import { TextEditorController } from "@/components/form/text-editor-controller"
 import { SwitchController } from "@/components/form/switch-controller"
 import { SelectController } from "@/components/form/select-controller"
@@ -33,35 +33,48 @@ import {
   STATUS_ENUM,
 } from "@workspace/validators/types/constants.types"
 import { ImagePreviewController } from "@/components/form/image-preview-controller"
-import { createProductAction } from "@/api/products/products-action"
+import {
+  createProductAction,
+  updateProductAction,
+} from "@/api/products/products-action"
 import { SpecificationController } from "@/components/form/specification-controller"
+import { useGetSingleProduct } from "@/hooks/products/use-products"
+import { useGetSession } from "@/hooks/auth/use-auth"
+import { useRouter } from "next/navigation"
+import { toast } from "sonner"
+import { LoadingButton } from "@/components/common/loading-button"
 
-export const CreateProductForm = () => {
+interface Props {
+  id: string
+}
+export const CreateProductForm = ({ id }: Props) => {
+  const { user } = useGetSession()
   const { data } = useGetCategories("true")
-
+  const { data: initialData } = useGetSingleProduct({ id })
+  const router = useRouter()
   const form = useForm<z.input<typeof productValidator>>({
     resolver: zodResolver(productValidator),
     mode: "onChange",
     defaultValues: {
-      title: "",
+      title: initialData?.title || "",
       images: [],
-      previousImage: [],
-      categorySlug: "",
-      subCategorySlug: "",
-      shortDescription: "",
-      basePrice: undefined,
-      salePrice: undefined,
-      stock: undefined,
-      weight: undefined,
-      tags: [],
-      color: [],
-      specification: [],
-      description: "",
-      cashOnDelivery: false,
-      coupon: "",
-      type: "physical",
-      status: "draft",
-      sizes: [],
+      previousImage: initialData?.images || [],
+      categorySlug: initialData?.categorySlug || "",
+      subCategorySlug: initialData?.subCategorySlug || "",
+      shortDescription: initialData?.shortDescription || "",
+      basePrice: initialData?.basePrice || undefined,
+      salePrice: initialData?.salePrice || undefined,
+      stock: initialData?.stock || undefined,
+      weight: initialData?.weight || undefined,
+      tags: initialData?.tags || [],
+      color: initialData?.color || [],
+      specification: initialData?.specification || [],
+      description: initialData?.description || "",
+      cashOnDelivery: initialData?.cashOnDelivery || false,
+      coupon: initialData?.coupon || "",
+      type: initialData?.type || "physical",
+      status: initialData?.status || "draft",
+      sizes: initialData?.sizes || [],
     },
   })
   const selectedCat = useWatch({
@@ -71,7 +84,7 @@ export const CreateProductForm = () => {
   const prevImg = useWatch({
     control: form.control,
     name: "previousImage",
-  })
+  }) as string[] | undefined
   const prevCategory = useRef(selectedCat)
 
   useEffect(() => {
@@ -88,27 +101,51 @@ export const CreateProductForm = () => {
 
   const createMutation = useMutation({
     mutationFn: createProductAction,
-    onSuccess: (data) => {
-      console.log(data)
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["products", user?.email, 10] })
+      toast.success("Product create successfully")
+      router.push("/vendor/products/")
     },
     onError: (error) => {
-      console.log("error: ", error)
+      toast.error(error?.message ?? "Something went wrong")
+    },
+  })
+
+  const queryClient = useQueryClient()
+  const updateMutation = useMutation({
+    mutationFn: updateProductAction,
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ["products", user?.email, 10] })
+      queryClient.invalidateQueries({ queryKey: ["products", initialData?.id] })
+      toast.success("Product create successfully")
+      router.push("/vendor/products/")
+    },
+    onError: (error) => {
+      toast.error(error?.message ?? "Something went wrong")
     },
   })
   function onSubmit(data: z.input<typeof productValidator>) {
-    createMutation.mutate(data)
+    if (initialData) {
+      updateMutation.mutate({ ...data, id })
+    } else {
+      createMutation.mutate(data)
+    }
   }
+
+  const title = initialData ? "Update Product" : "Create Product"
+  const desc = initialData
+    ? "Add a new product to the catalog by entering relevant information."
+    : "Modify the existing product's  to keep it accurate and up to date."
+  const btnText = initialData ? "Update Product" : "Create Product"
   return (
     <Card className="w-full sm:max-w-2xl">
       <CardHeader>
-        <CardTitle>Bug Report</CardTitle>
-        <CardDescription>
-          Help us improve by reporting bugs you encounter.
-        </CardDescription>
+        <CardTitle>{title}</CardTitle>
+        <CardDescription>{desc}</CardDescription>
       </CardHeader>
       <CardContent>
         <form
-          id="form-rhf-demo"
+          id="create-product-form"
           onSubmit={form.handleSubmit(onSubmit)}
           className="space-y-4"
         >
@@ -134,15 +171,15 @@ export const CreateProductForm = () => {
           </FieldGroup>
 
           <FieldGroup>
-            {/* {Boolean(form.getValues("previousImage")) && (
+            {Boolean(form.getValues("previousImage")) && (
               <ImagePreviewController
                 mode="multiple"
                 control={form.control}
                 name="previousImage"
                 title="Profile Image"
-                urls={}
+                urls={prevImg ?? []}
               />
-            )} */}
+            )}
             <ImageUploadController
               control={form.control}
               mode="multiple"
@@ -276,9 +313,13 @@ export const CreateProductForm = () => {
           <Button type="button" variant="outline" onClick={() => form.reset()}>
             Reset
           </Button>
-          <Button type="submit" form="form-rhf-demo">
-            Submit
-          </Button>
+          {createMutation.isPending || updateMutation.isPending ? (
+            <LoadingButton />
+          ) : (
+            <Button type="submit" form="create-product-form">
+              {btnText}
+            </Button>
+          )}
         </Field>
       </CardFooter>
     </Card>

@@ -1,5 +1,8 @@
 import { createRoute } from "@workspace/open-api"
-import { DEFAULT_SIZE } from "@workspace/validators/types/constants.types"
+import {
+  DEFAULT_SIZE,
+  PRODUCTS_STATUS_ENUM,
+} from "@workspace/validators/types/constants.types"
 import z from "zod"
 
 const tags = ["Products Common API"]
@@ -13,6 +16,7 @@ export const allProductsRoute = createRoute({
       seller: z.string().optional(),
       cursor: z.string().optional(),
       pageSize: z.coerce.number().int().min(1).max(50).default(DEFAULT_SIZE),
+      productStatus: z.enum(PRODUCTS_STATUS_ENUM).optional(),
     }),
   },
   responses: {
@@ -20,6 +24,25 @@ export const allProductsRoute = createRoute({
       description: "OK",
     },
     400: { description: "BAD_REQUEST" },
+    500: { description: "INTERNAL_SERVER_ERROR" },
+  },
+})
+
+export const singleProductsRoute = createRoute({
+  method: "get",
+  path: "/single-products",
+  tags,
+  summary: "Get single Products",
+  request: {
+    query: z.object({
+      id: z.string(),
+    }),
+  },
+  responses: {
+    200: {
+      description: "OK",
+    },
+    404: { description: "BAD_REQUEST" },
     500: { description: "INTERNAL_SERVER_ERROR" },
   },
 })

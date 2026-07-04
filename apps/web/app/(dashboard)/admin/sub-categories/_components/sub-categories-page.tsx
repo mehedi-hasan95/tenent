@@ -8,9 +8,9 @@ import { subCategoriesType } from "@workspace/validators/types/categories.types"
 import { Button } from "@workspace/ui/components/button"
 import { PlusCircle } from "lucide-react"
 import { SubCategoriesModal } from "./sub-categories-modal"
-import { DeleteCategoryModal } from "../../categories/_components/delete-category-modal"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { trashingSubCategoryAction } from "@/api/categories/subcategories-action"
+import { TrashedModal } from "@/components/common/trashed-modal"
 
 export const SubCategoriesPage = () => {
   const { data } = useGetSubCategories("true")
@@ -46,12 +46,7 @@ export const SubCategoriesPage = () => {
   const queryClient = useQueryClient()
   const deleteCategoryMutation = useMutation({
     mutationFn: trashingSubCategoryAction,
-    // onSuccess: (data) => {
-    //   console.log(data)
-    // },
-    // onError: (error) => {
-    //   console.log("error: ", error)
-    // },
+
     onMutate: async (categoryId) => {
       await queryClient.cancelQueries({
         queryKey: ["sub-categories"],
@@ -110,7 +105,7 @@ export const SubCategoriesPage = () => {
         onClose={handleCloseModal}
         category={editingCategory}
       />
-      <DeleteCategoryModal
+      <TrashedModal
         open={deleteModalOpen}
         onOpenChange={handleDeleteModal}
         onSubmit={() =>
