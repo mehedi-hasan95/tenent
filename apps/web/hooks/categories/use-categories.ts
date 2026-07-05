@@ -2,9 +2,11 @@ import {
   getCategoriesAction,
   getCategoryAction,
 } from "@/api/categories/categories-action"
+import { ALL_PRODUCTS_KEYS } from "@/lib/query-cache"
 import { useQuery } from "@tanstack/react-query"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { categoriesType } from "@workspace/validators/types/categories.types"
+import { PRODUCT_TYPE } from "@workspace/validators/types/product.types"
 import { toast } from "sonner"
 export const useGetCategories = (type?: string) => {
   const { data, isLoading } = useQuery({
@@ -69,6 +71,57 @@ export function useCategoryMutation<TVariables extends string | string[]>({
     onSettled: () => {
       queryClient.invalidateQueries({
         queryKey: ["categories"],
+      })
+    },
+  })
+}
+
+export function useProductsMutation<TVariables extends string | string[]>({
+  mutationFn,
+  successMessage,
+  onSuccessClose,
+}: UseCategoryMutationProps<TVariables>) {
+  const queryClient = useQueryClient()
+
+  return useMutation({
+    mutationFn,
+
+    onMutate: async (id) => {
+      await queryClient.cancelQueries({
+        queryKey: ["trashed-products"],
+      })
+
+      const previousCategories = queryClient.getQueryData<PRODUCT_TYPE[]>([
+        "trashed-products",
+      ])
+
+      queryClient.setQueryData<PRODUCT_TYPE[]>(
+        ["trashed-products"],
+        (old = []) => old.filter((cat) => cat.id !== id)
+      )
+
+      if (successMessage) {
+        toast.success(successMessage)
+      }
+
+      onSuccessClose?.()
+
+      return { previousCategories }
+    },
+
+    onError: (_error, _variables, context) => {
+      queryClient.setQueryData(
+        ["trashed-products"],
+        context?.previousCategories
+      )
+    },
+
+    onSettled: () => {
+      queryClient.invalidateQueries({
+        queryKey: ["trashed-products"],
+      })
+      queryClient.invalidateQueries({
+        queryKey: ALL_PRODUCTS_KEYS(),
       })
     },
   })

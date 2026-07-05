@@ -7,30 +7,34 @@ import { Button } from "@workspace/ui/components/button"
 
 interface DataTableToolbarProps<TData> {
   table: Table<TData>
-  onDelete: (slug: string[]) => void
+  onDelete: (ids: string[]) => void
+  getDeleteId: (row: TData) => string
 }
 
 export function DataTableToolbar<TData>({
   table,
   onDelete,
+  getDeleteId,
 }: DataTableToolbarProps<TData>) {
+  const selectedRows = table.getFilteredSelectedRowModel().rows
+
   return (
     <div>
-      {table.getFilteredSelectedRowModel().rows.length > 0 && (
+      {selectedRows.length > 0 && (
         <Button
-          size={"sm"}
-          variant={"outline"}
+          size="sm"
+          variant="outline"
           className="ml-auto text-sm font-normal"
           onClick={() => {
             onDelete(
               table
                 .getSelectedRowModel()
-                .rows.map((row) => (row.original as { slug: string })?.slug)
+                .rows.map((row) => getDeleteId(row.original))
             )
           }}
         >
           <Trash className="mr-2 h-4 w-4" />
-          Delete ({table.getFilteredSelectedRowModel().rows.length})
+          Delete ({selectedRows.length})
         </Button>
       )}
     </div>

@@ -86,6 +86,7 @@ export const AdminSubCategoriesTrashPage = ({ data }: Props) => {
               <DataTableToolbar
                 table={table}
                 onDelete={(slug) => deleteSelectedMutation.mutate(slug)}
+                getDeleteId={(row) => row.slug}
               />
             )}
           />

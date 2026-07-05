@@ -2,6 +2,7 @@ import { OpenAPIHono, defaultHook } from "@workspace/open-api"
 import {
   allTrashedProductsRoute,
   createProductRoute,
+  deleteATrashedProductRoute,
   deleteManyProductsRoute,
   deleteTrashedProductsRoute,
   restoreProductsRoute,
@@ -11,6 +12,7 @@ import {
 import {
   allTrashedProductsHandler,
   createProductHandler,
+  deleteATrashedProductHandler,
   deleteManyProductsHandler,
   deleteTrashedProductsHandler,
   restoreProductsHandler,
@@ -30,5 +32,6 @@ app
   .openapi(restoreProductsRoute, restoreProductsHandler)
   .openapi(deleteManyProductsRoute, deleteManyProductsHandler)
   .openapi(deleteTrashedProductsRoute, deleteTrashedProductsHandler)
+  .openapi(deleteATrashedProductRoute, deleteATrashedProductHandler)
 
 export default app

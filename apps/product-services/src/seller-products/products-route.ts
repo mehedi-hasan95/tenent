@@ -134,3 +134,22 @@ export const deleteTrashedProductsRoute = createRoute({
     500: { description: "Internal server error" },
   },
 })
+
+export const deleteATrashedProductRoute = createRoute({
+  method: "delete",
+  path: "/delete-single-product",
+  tags,
+  summary: "Delete a trashed Product",
+  middleware: sellerMiddleware,
+  request: {
+    body: {
+      content: { "application/json": { schema: z.object({ id: z.string() }) } },
+    },
+  },
+  responses: {
+    201: { description: "OK" },
+    400: { description: "Bad Request" },
+    404: { description: "Not Found" },
+    500: { description: "Internal server error" },
+  },
+})

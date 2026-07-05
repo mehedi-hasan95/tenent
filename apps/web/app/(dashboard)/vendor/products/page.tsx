@@ -21,6 +21,7 @@ import { trashedProductAction } from "@/api/products/products-action"
 import { Button } from "@workspace/ui/components/button"
 import { Separator } from "@workspace/ui/components/separator"
 import { PRODUCT_TYPE } from "@workspace/validators/types/product.types"
+import { ALL_PRODUCTS_KEYS } from "@/lib/query-cache"
 
 // Type of one page returned from your API
 type ProductsPage = {
@@ -29,12 +30,9 @@ type ProductsPage = {
 }
 
 const Page = () => {
-  const { user } = useGetSession()
-
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
     useGetAllProducts({
       pageSize: 10,
-      seller: user?.email,
       staleTime: 5 * 1000 * 60,
     })
 
@@ -58,15 +56,16 @@ const Page = () => {
 
     onMutate: async ({ id }: { id: string }) => {
       await queryClient.cancelQueries({
-        queryKey: ["products", user?.email, 10],
+        queryKey: ALL_PRODUCTS_KEYS(),
       })
 
-      const previousProducts = queryClient.getQueryData<
-        InfiniteData<ProductsPage>
-      >(["products", user?.email, 10])
+      const previousProducts =
+        queryClient.getQueryData<InfiniteData<ProductsPage>>(
+          ALL_PRODUCTS_KEYS()
+        )
 
       queryClient.setQueryData<InfiniteData<ProductsPage>>(
-        ["products", user?.email, 10],
+        ALL_PRODUCTS_KEYS(),
         (old) => {
           if (!old) return old
 
@@ -89,16 +88,16 @@ const Page = () => {
 
     onError: (_error, _variables, context) => {
       if (context?.previousProducts) {
-        queryClient.setQueryData(
-          ["products", user?.email, 10],
-          context.previousProducts
-        )
+        queryClient.setQueryData(ALL_PRODUCTS_KEYS(), context.previousProducts)
       }
     },
 
     onSettled: () => {
       queryClient.invalidateQueries({
-        queryKey: ["products", user?.email, 10],
+        queryKey: ALL_PRODUCTS_KEYS(),
+      })
+      queryClient.invalidateQueries({
+        queryKey: ["trashed-products"],
       })
     },
   })

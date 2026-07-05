@@ -2,6 +2,7 @@ import { RouteHandler } from "@workspace/open-api"
 import {
   allTrashedProductsRoute,
   createProductRoute,
+  deleteATrashedProductRoute,
   deleteManyProductsRoute,
   deleteTrashedProductsRoute,
   restoreProductsRoute,
@@ -164,6 +165,31 @@ export const deleteTrashedProductsHandler: RouteHandler<
       .delete(products)
       .where(
         and(isNotNull(products.deleted_at), eq(products.userEmail, email!))
+      )
+      .returning()
+    if (!data.length) {
+      return c.json({ message: "Nothing in trash" })
+    }
+    return c.json({ data }, 201)
+  } catch (error) {
+    return c.json({ error, success: false })
+  }
+}
+
+export const deleteATrashedProductHandler: RouteHandler<
+  typeof deleteATrashedProductRoute
+> = async (c) => {
+  try {
+    const email = c.get("user")?.email
+    const { id } = c.req.valid("json")
+    const data = await db
+      .delete(products)
+      .where(
+        and(
+          isNotNull(products.deleted_at),
+          eq(products.userEmail, email!),
+          eq(products.id, id)
+        )
       )
       .returning()
     if (!data.length) {

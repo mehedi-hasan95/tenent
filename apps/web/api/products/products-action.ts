@@ -145,3 +145,97 @@ export const trashedProductAction = async ({ id }: { id: string }) => {
   }
   return response.json()
 }
+
+export const allTrashedProductAction = async () => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_PRODUCTS_URL}/products/all-trashed-products`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    }
+  )
+  if (!response.ok) {
+    const error = await response.json()
+    throw error
+  }
+  const data: { data: PRODUCT_TYPE[] } = await response.json()
+  return data.data
+}
+
+export const restoreProductAction = async (id: string) => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_PRODUCTS_URL}/products/restore-products`,
+    {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify({ id }),
+    }
+  )
+  if (!response.ok) {
+    const error = await response.json()
+    throw error
+  }
+  return response.json()
+}
+
+export const deleteSelectedProductsAction = async (id: string[]) => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_PRODUCTS_URL}/products/delete-many-products`,
+    {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify({ id }),
+    }
+  )
+  if (!response.ok) {
+    const error = await response.json()
+    throw error
+  }
+  return response.json()
+}
+
+export const deleteAllProductsAction = async () => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_PRODUCTS_URL}/products/delete-trashed-products`,
+    {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    }
+  )
+  if (!response.ok) {
+    const error = await response.json()
+    throw error
+  }
+  return response.json()
+}
+
+export const deleteSingleProductsAction = async (id: string) => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_PRODUCTS_URL}/products/delete-single-product`,
+    {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify({ id }),
+    }
+  )
+  if (!response.ok) {
+    const error = await response.json()
+    throw error
+  }
+  return response.json()
+}

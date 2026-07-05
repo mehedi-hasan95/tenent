@@ -43,6 +43,7 @@ import { useGetSession } from "@/hooks/auth/use-auth"
 import { useRouter } from "next/navigation"
 import { toast } from "sonner"
 import { LoadingButton } from "@/components/common/loading-button"
+import { ALL_PRODUCTS_KEYS } from "@/lib/query-cache"
 
 interface Props {
   id: string
@@ -102,7 +103,7 @@ export const CreateProductForm = ({ id }: Props) => {
   const createMutation = useMutation({
     mutationFn: createProductAction,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["products", user?.email, 10] })
+      queryClient.invalidateQueries({ queryKey: ALL_PRODUCTS_KEYS() })
       toast.success("Product create successfully")
       router.push("/vendor/products/")
     },
@@ -115,7 +116,7 @@ export const CreateProductForm = ({ id }: Props) => {
   const updateMutation = useMutation({
     mutationFn: updateProductAction,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ["products", user?.email, 10] })
+      queryClient.invalidateQueries({ queryKey: ALL_PRODUCTS_KEYS() })
       queryClient.invalidateQueries({ queryKey: ["products", initialData?.id] })
       toast.success("Product create successfully")
       router.push("/vendor/products/")
