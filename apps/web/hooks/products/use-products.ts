@@ -2,7 +2,7 @@ import {
   fetchAllProductsAction,
   singleProductsAction,
 } from "@/api/products/products-action"
-import { ALL_PRODUCTS_KEYS } from "@/lib/query-cache"
+import { CACHE_ALL_PRODUCTS_KEYS } from "@/lib/query-cache"
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query"
 import { DEFAULT_SIZE } from "@workspace/validators/types/constants.types"
 import { useMemo } from "react"
@@ -12,7 +12,7 @@ export const useGetAllProducts = ({
   staleTime,
 }: { seller?: string; pageSize?: number; staleTime?: number } = {}) => {
   const query = useInfiniteQuery({
-    queryKey: ALL_PRODUCTS_KEYS(pageSize),
+    queryKey: CACHE_ALL_PRODUCTS_KEYS(pageSize),
     queryFn: ({ pageParam }) =>
       fetchAllProductsAction({ cursor: pageParam, pageSize }),
     initialPageParam: null as string | null,

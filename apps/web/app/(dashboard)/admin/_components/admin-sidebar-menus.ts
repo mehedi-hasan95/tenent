@@ -6,6 +6,7 @@ import {
   PlusCircle,
   ShoppingBasket,
   Trash,
+  TrendingUp,
 } from "lucide-react"
 import { FaStripeS } from "react-icons/fa6"
 import { TbCreditCardRefund } from "react-icons/tb"
@@ -55,6 +56,11 @@ export const ADMIN_ACT = [
     name: "Sub Categories",
     slug: "/admin/sub-categories",
     icon: PlusCircle,
+  },
+  {
+    name: "Boosting Coin",
+    slug: "/admin/boosting-coin",
+    icon: TrendingUp,
   },
   {
     name: "Trash",

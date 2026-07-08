@@ -36,6 +36,13 @@
       "when": 1782741505791,
       "tag": "0004_lame_frog_thor",
       "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1783219977538,
+      "tag": "0005_green_yellow_claw",
+      "breakpoints": true
     }
   ]
 }

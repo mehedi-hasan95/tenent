@@ -11,7 +11,7 @@ import {
   deleteSelectedCategoryAction,
   restoreCategoryAction,
 } from "@/api/categories/categories-action"
-import { useDeleteModalStore } from "@/store/useDeleteStore"
+import { useModalActiveStore } from "@/store/useModalActiveStore"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { categoriesType } from "@workspace/validators/types/categories.types"
 
@@ -19,7 +19,7 @@ interface Props {
   data: categoriesType[] | undefined
 }
 export const AdminCategoriesTrashPage = ({ data }: Props) => {
-  const { onOpen } = useDeleteModalStore()
+  const { onOpen } = useModalActiveStore()
 
   const deleteMutation = useCategoryMutation({
     mutationFn: deleteCategoryAction,

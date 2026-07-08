@@ -10,6 +10,7 @@ import { getQueryClient } from "@/lib/lib"
 import { getCategoriesAction } from "@/api/categories/categories-action"
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query"
 import { getSubCategoriesAction } from "@/api/categories/subcategories-action"
+import { allBoostingCoinAction } from "@/api/boosting-coin/boosting-coin-action"
 
 interface Props {
   children: React.ReactNode
@@ -23,6 +24,10 @@ const Page = async ({ children }: Props) => {
   await queryClient.prefetchQuery({
     queryKey: ["sub-categories", "true"],
     queryFn: () => getSubCategoriesAction("true"),
+  })
+  await queryClient.prefetchQuery({
+    queryKey: ["boosting"],
+    queryFn: allBoostingCoinAction,
   })
   return (
     <SidebarProvider>

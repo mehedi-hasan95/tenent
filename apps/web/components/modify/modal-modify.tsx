@@ -1,52 +1,39 @@
+"use client"
 import { useModalActiveStore } from "@/store/useModalActiveStore"
 import {
   AlertDialog,
-  AlertDialogCancel,
   AlertDialogContent,
   AlertDialogDescription,
-  AlertDialogFooter,
   AlertDialogHeader,
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@workspace/ui/components/alert-dialog"
 import { Button } from "@workspace/ui/components/button"
-import { cn } from "@workspace/ui/lib/utils"
-import { Trash2 } from "lucide-react"
 import { JSX } from "react"
 
 interface Props {
-  title?: string
-  description?: string
   trigger?: JSX.Element
-  onDelete: () => void
-  className?: string
+  title: string
+  description?: string
+  children: React.ReactNode
 }
-export const DeleteModal = ({
-  description = "This action cannot be undone. This will permanently delete your data from our servers.",
-  title = "Are you absolutely sure?",
-  trigger = (
-    <Button variant="outline">
-      <Trash2 /> Delete
-    </Button>
-  ),
-  onDelete,
-  className,
+export const ModalModify = ({
+  trigger = <Button variant="outline">Show Dialog</Button>,
+  title,
+  description,
+  children,
 }: Props) => {
   const { onOpen, open } = useModalActiveStore()
   return (
     <AlertDialog open={open} onOpenChange={onOpen}>
       <AlertDialogTrigger asChild>{trigger}</AlertDialogTrigger>
+
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>{title}</AlertDialogTitle>
           <AlertDialogDescription>{description}</AlertDialogDescription>
         </AlertDialogHeader>
-        <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <Button onClick={onDelete} className={cn(className)}>
-            Continue
-          </Button>
-        </AlertDialogFooter>
+        {children}
       </AlertDialogContent>
     </AlertDialog>
   )

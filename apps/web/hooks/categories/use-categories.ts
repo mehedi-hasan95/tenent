@@ -2,7 +2,7 @@ import {
   getCategoriesAction,
   getCategoryAction,
 } from "@/api/categories/categories-action"
-import { ALL_PRODUCTS_KEYS } from "@/lib/query-cache"
+import { CACHE_ALL_PRODUCTS_KEYS } from "@/lib/query-cache"
 import { useQuery } from "@tanstack/react-query"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { categoriesType } from "@workspace/validators/types/categories.types"
@@ -121,7 +121,7 @@ export function useProductsMutation<TVariables extends string | string[]>({
         queryKey: ["trashed-products"],
       })
       queryClient.invalidateQueries({
-        queryKey: ALL_PRODUCTS_KEYS(),
+        queryKey: CACHE_ALL_PRODUCTS_KEYS(),
       })
     },
   })

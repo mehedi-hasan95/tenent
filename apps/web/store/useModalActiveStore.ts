@@ -5,7 +5,7 @@ interface Props {
   onOpen: (open: boolean) => void
 }
 
-export const useDeleteModalStore = create<Props>((set) => ({
+export const useModalActiveStore = create<Props>((set) => ({
   open: false,
   onOpen: (open) => set({ open }),
 }))

@@ -10,7 +10,8 @@ import { cors } from "hono/cors"
 // import { runKafkaSubscriptions } from "./utils/subscriptions"
 import { HTTPException } from "hono/http-exception"
 import products from "./seller-products/products-index"
-import common from "./common/products-index"
+import common from "./products/products-index"
+import boosting from "./boosting/boosting-index"
 
 const app = new OpenAPIHono({
   defaultHook,
@@ -28,7 +29,10 @@ app.use(
  * 📌 RPC: Here start the RPC
  * ============================================================
  */
-const routes = app.route("/products", products).route("/common", common)
+const routes = app
+  .route("/products", products)
+  .route("/common", common)
+  .route("/boosting", boosting)
 
 app.onError((err, c) => {
   if (err instanceof HTTPException) {

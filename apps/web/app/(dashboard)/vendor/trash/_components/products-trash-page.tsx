@@ -3,7 +3,7 @@
 import { useProductsMutation } from "@/hooks/categories/use-categories"
 import { DataTable } from "@/components/common/data-table/data-table"
 import { DataTableToolbar } from "@/components/common/data-table/data-table-toolbar"
-import { useDeleteModalStore } from "@/store/useDeleteStore"
+import { useModalActiveStore } from "@/store/useModalActiveStore"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { TrashList } from "@/app/(dashboard)/admin/trash/_components/trash-list"
 import { PRODUCT_TYPE } from "@workspace/validators/types/product.types"
@@ -14,13 +14,13 @@ import {
   deleteSingleProductsAction,
   restoreProductAction,
 } from "@/api/products/products-action"
-import { ALL_PRODUCTS_KEYS } from "@/lib/query-cache"
+import { CACHE_ALL_PRODUCTS_KEYS } from "@/lib/query-cache"
 
 interface Props {
   data: PRODUCT_TYPE[] | undefined
 }
 export const ProductsTrashPage = ({ data }: Props) => {
-  const { onOpen } = useDeleteModalStore()
+  const { onOpen } = useModalActiveStore()
 
   const deleteMutation = useProductsMutation({
     mutationFn: deleteSingleProductsAction,
@@ -64,7 +64,7 @@ export const ProductsTrashPage = ({ data }: Props) => {
         queryKey: ["trashed-products"],
       })
       queryClient.invalidateQueries({
-        queryKey: ALL_PRODUCTS_KEYS(),
+        queryKey: CACHE_ALL_PRODUCTS_KEYS(),
       })
     },
   })
