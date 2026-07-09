@@ -2,7 +2,7 @@
 
 import { Trash } from "lucide-react"
 import { useQuery } from "@tanstack/react-query"
-import { allTrashedProductAction } from "@/api/products/products-action"
+import { allTrashedProductAction } from "@/api/products/seller-products-action"
 import { ProductsTrashPage } from "./products-trash-page"
 
 export const VendorTrashPage = () => {

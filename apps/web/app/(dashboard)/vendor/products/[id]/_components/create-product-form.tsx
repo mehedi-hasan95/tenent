@@ -30,26 +30,27 @@ import { SwitchController } from "@/components/form/switch-controller"
 import { SelectController } from "@/components/form/select-controller"
 import {
   DELIVERY_ENUM,
-  STATUS_ENUM,
+  PRODUCTS_STATUS_ENUM,
 } from "@workspace/validators/types/constants.types"
 import { ImagePreviewController } from "@/components/form/image-preview-controller"
 import {
   createProductAction,
   updateProductAction,
-} from "@/api/products/products-action"
+} from "@/api/products/seller-products-action"
 import { SpecificationController } from "@/components/form/specification-controller"
 import { useGetSingleProduct } from "@/hooks/products/use-products"
-import { useGetSession } from "@/hooks/auth/use-auth"
 import { useRouter } from "next/navigation"
 import { toast } from "sonner"
 import { LoadingButton } from "@/components/common/loading-button"
-import { CACHE_ALL_PRODUCTS_KEYS } from "@/lib/query-cache"
+import {
+  CACHE_ALL_PRODUCTS_KEYS,
+  CACHE_SELLER_PRODUCTS_KEYS,
+} from "@/lib/query-cache"
 
 interface Props {
   id: string
 }
 export const CreateProductForm = ({ id }: Props) => {
-  const { user } = useGetSession()
   const { data } = useGetCategories("true")
   const { data: initialData } = useGetSingleProduct({ id })
   const router = useRouter()
@@ -104,6 +105,7 @@ export const CreateProductForm = ({ id }: Props) => {
     mutationFn: createProductAction,
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: CACHE_ALL_PRODUCTS_KEYS() })
+      queryClient.invalidateQueries({ queryKey: CACHE_SELLER_PRODUCTS_KEYS })
       toast.success("Product create successfully")
       router.push("/vendor/products/")
     },
@@ -118,6 +120,7 @@ export const CreateProductForm = ({ id }: Props) => {
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: CACHE_ALL_PRODUCTS_KEYS() })
       queryClient.invalidateQueries({ queryKey: ["products", initialData?.id] })
+      queryClient.invalidateQueries({ queryKey: CACHE_SELLER_PRODUCTS_KEYS })
       toast.success("Product create successfully")
       router.push("/vendor/products/")
     },
@@ -299,7 +302,7 @@ export const CreateProductForm = ({ id }: Props) => {
             <ComboboxController
               control={form.control}
               name="status"
-              options={STATUS_ENUM.map((item) => ({
+              options={PRODUCTS_STATUS_ENUM.map((item) => ({
                 label: item,
                 value: item,
               }))}

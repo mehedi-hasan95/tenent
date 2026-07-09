@@ -239,3 +239,22 @@ export const deleteSingleProductsAction = async (id: string) => {
   }
   return response.json()
 }
+
+export const sellerAllProductsAction = async () => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_PRODUCTS_URL}/products/seller-all-product`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    }
+  )
+  if (!response.ok) {
+    const error = await response.json()
+    throw error
+  }
+  const data: { data: PRODUCT_TYPE[] } = await response.json()
+  return data.data
+}

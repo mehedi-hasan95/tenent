@@ -1,6 +1,6 @@
 import z from "zod"
-import { DELIVERY_ENUM, STATUS_ENUM } from "../@types/constants.types"
-import { formArray, jsonArray } from "./constractor"
+import { DELIVERY_ENUM, PRODUCTS_STATUS_ENUM } from "../@types/constants.types"
+import { formArray, jsonArray } from "./constructor"
 
 const MAX_TOTAL_SIZE = 16 * 1024 * 1024
 const customError = "custom" as const
@@ -19,12 +19,8 @@ export const baseProductValidator = z.object({
   tags: formArray(z.array(z.string()).optional()),
   weight: z.coerce.number().nonnegative().optional(),
   type: z.enum(DELIVERY_ENUM).default("physical"),
-  status: z.enum(STATUS_ENUM).default("draft"),
+  status: z.enum(PRODUCTS_STATUS_ENUM).default("draft"),
   previousImage: formArray(z.array(z.string()).optional()),
-  // previousImage: z.preprocess((val) => {
-  //   if (val === undefined) return undefined
-  //   return Array.isArray(val) ? val : [val]
-  // }, z.array(z.string()).optional()),
   categorySlug: z.string().nonempty(),
   subCategorySlug: z.string().nonempty(),
   color: formArray(

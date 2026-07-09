@@ -81,11 +81,13 @@ export const AdminCategoriesTrashPage = ({ data }: Props) => {
             data={data ?? []}
             searchKey="name"
             toolbar={(table) => (
-              <DataTableToolbar
-                table={table}
-                onDelete={(slug) => deleteSelectedMutation.mutate(slug)}
-                getDeleteId={(row) => row.slug}
-              />
+              <>
+                <DataTableToolbar
+                  table={table}
+                  onDelete={(slug) => deleteSelectedMutation.mutate(slug)}
+                  getDeleteId={(row) => row.slug}
+                />
+              </>
             )}
           />
         </TrashList>

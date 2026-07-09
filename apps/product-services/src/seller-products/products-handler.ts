@@ -6,11 +6,21 @@ import {
   deleteManyProductsRoute,
   deleteTrashedProductsRoute,
   restoreProductsRoute,
+  sellerAllProductRoute,
   trashedProductRoute,
   updateProductRoute,
 } from "./products-route"
 import { utapi } from "@workspace/uploadthing"
-import { and, db, eq, inArray, isNotNull, sql } from "@workspace/db"
+import {
+  and,
+  db,
+  desc,
+  eq,
+  inArray,
+  isNotNull,
+  isNull,
+  sql,
+} from "@workspace/db"
 import { products } from "@workspace/db/schema/products.schema"
 
 export const createProductHandler: RouteHandler<
@@ -77,6 +87,7 @@ export const trashedProductHandler: RouteHandler<
 > = async (c) => {
   try {
     const { id } = c.req.valid("json")
+    console.log(id)
     const user = c.get("user")
     if (!id) {
       return c.json({ message: "Missing the ID" }, 400)
@@ -87,6 +98,7 @@ export const trashedProductHandler: RouteHandler<
       .set({ deleted_at: sql`NOW() + INTERVAL '30 days'` })
       .where(and(eq(products.id, id), eq(products.userEmail, user?.email!)))
       .returning()
+    console.log("data: ", data)
 
     if (!data.length) {
       return c.json({ message: "This product is not yours" }, 404)
@@ -198,5 +210,20 @@ export const deleteATrashedProductHandler: RouteHandler<
     return c.json({ data }, 201)
   } catch (error) {
     return c.json({ error, success: false })
+  }
+}
+
+export const sellerAllProductHandler: RouteHandler<
+  typeof sellerAllProductRoute
+> = async (c) => {
+  try {
+    const email = c.get("user")?.email as string
+    const data = await db.query.products.findMany({
+      where: and(eq(products.userEmail, email), isNull(products.deleted_at)),
+      orderBy: desc(products.created_at),
+    })
+    return c.json({ data }, 200)
+  } catch (error) {
+    return c.json({ message: "Internal server error" }, 500)
   }
 }

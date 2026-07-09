@@ -153,3 +153,17 @@ export const deleteATrashedProductRoute = createRoute({
     500: { description: "Internal server error" },
   },
 })
+
+export const sellerAllProductRoute = createRoute({
+  method: "get",
+  path: "/seller-all-product",
+  tags,
+  summary: "Seller all Product",
+  middleware: sellerMiddleware,
+
+  responses: {
+    200: { description: "OK" },
+    403: { description: "Unauthorize" },
+    500: { description: "Internal server error" },
+  },
+})

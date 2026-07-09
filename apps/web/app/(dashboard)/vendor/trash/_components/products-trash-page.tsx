@@ -13,8 +13,11 @@ import {
   deleteSelectedProductsAction,
   deleteSingleProductsAction,
   restoreProductAction,
-} from "@/api/products/products-action"
-import { CACHE_ALL_PRODUCTS_KEYS } from "@/lib/query-cache"
+} from "@/api/products/seller-products-action"
+import {
+  CACHE_ALL_PRODUCTS_KEYS,
+  CACHE_SELLER_PRODUCTS_KEYS,
+} from "@/lib/query-cache"
 
 interface Props {
   data: PRODUCT_TYPE[] | undefined
@@ -65,6 +68,9 @@ export const ProductsTrashPage = ({ data }: Props) => {
       })
       queryClient.invalidateQueries({
         queryKey: CACHE_ALL_PRODUCTS_KEYS(),
+      })
+      queryClient.invalidateQueries({
+        queryKey: CACHE_SELLER_PRODUCTS_KEYS,
       })
     },
   })

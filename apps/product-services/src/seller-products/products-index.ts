@@ -6,6 +6,7 @@ import {
   deleteManyProductsRoute,
   deleteTrashedProductsRoute,
   restoreProductsRoute,
+  sellerAllProductRoute,
   trashedProductRoute,
   updateProductRoute,
 } from "./products-route"
@@ -16,6 +17,7 @@ import {
   deleteManyProductsHandler,
   deleteTrashedProductsHandler,
   restoreProductsHandler,
+  sellerAllProductHandler,
   trashedProductHandler,
   updateProductHandler,
 } from "./products-handler"
@@ -33,5 +35,6 @@ app
   .openapi(deleteManyProductsRoute, deleteManyProductsHandler)
   .openapi(deleteTrashedProductsRoute, deleteTrashedProductsHandler)
   .openapi(deleteATrashedProductRoute, deleteATrashedProductHandler)
+  .openapi(sellerAllProductRoute, sellerAllProductHandler)
 
 export default app

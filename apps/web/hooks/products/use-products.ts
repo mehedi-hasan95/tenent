@@ -1,7 +1,7 @@
 import {
   fetchAllProductsAction,
   singleProductsAction,
-} from "@/api/products/products-action"
+} from "@/api/products/seller-products-action"
 import { CACHE_ALL_PRODUCTS_KEYS } from "@/lib/query-cache"
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query"
 import { DEFAULT_SIZE } from "@workspace/validators/types/constants.types"

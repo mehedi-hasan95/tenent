@@ -1,6 +1,6 @@
 import { getQueryClient } from "@/lib/lib"
 import { CreateProductForm } from "./_components/create-product-form"
-import { singleProductsAction } from "@/api/products/products-action"
+import { singleProductsAction } from "@/api/products/seller-products-action"
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query"
 
 interface Props {
