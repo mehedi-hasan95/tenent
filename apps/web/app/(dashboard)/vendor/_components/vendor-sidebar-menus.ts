@@ -3,6 +3,7 @@ import {
   LayoutDashboard,
   ShoppingBasket,
   Trash2,
+  TrendingUp,
 } from "lucide-react"
 import { AiFillProduct } from "react-icons/ai"
 import { FaStripeS } from "react-icons/fa6"
@@ -28,6 +29,7 @@ export const VENDOR_OVERVIEW = [
 
 export const VENDOR_ACT = [
   { name: "Products", slug: "/vendor/products", icon: AiFillProduct },
+  { name: "Boosting", slug: "/vendor/boosting", icon: TrendingUp },
   { name: "Trash", slug: "/vendor/trash", icon: Trash2 },
 ]
 

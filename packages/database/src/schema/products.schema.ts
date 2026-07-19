@@ -7,6 +7,7 @@ import {
   pgTable,
   real,
   text,
+  timestamp,
   uuid,
   varchar,
 } from "drizzle-orm/pg-core"
@@ -83,6 +84,7 @@ export const products = pgTable(
       }),
 
     ...timestamps,
+    deleted_at: timestamp(),
   },
   (table) => [index("products_id_idx").on(table.id)]
 )

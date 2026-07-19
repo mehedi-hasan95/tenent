@@ -4,6 +4,7 @@ import Stripe from "stripe"
 import { stripeClient } from "../utils/stripe-client"
 import { db, eq } from "@workspace/db"
 import { user } from "@workspace/db/schema/user.schema"
+import { vendorCoinPurchase } from "../actions/buy-coin-action"
 
 export const stripeWebhookHandler: RouteHandler<
   typeof stripeWebhookRoute
@@ -26,10 +27,21 @@ export const stripeWebhookHandler: RouteHandler<
       400
     )
   }
+
+  const session = event.data.object as Stripe.Checkout.Session
   switch (event.type) {
     case "account.updated":
       const account = event.data.object as Stripe.Account
-      console.log(account)
+      break
+
+    case "checkout.session.completed":
+      if (!session?.metadata?.user && !session?.metadata?.coin) {
+        return c.json({ message: "Webhook Error: Missing metadata" }, 400)
+      }
+      await vendorCoinPurchase({
+        email: session?.metadata?.user as string,
+        price: Number(session?.metadata?.coin),
+      })
       break
 
     default:

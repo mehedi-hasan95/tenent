@@ -8,6 +8,7 @@ import {
   pgEnum,
 } from "drizzle-orm/pg-core"
 import { products } from "./products.schema"
+import { vendor_coin, vendor_coin_purchase } from "./boosting.schema"
 
 export const userRole = pgEnum("user-role", ["USER", "SELLER", "ADMIN"])
 export const user = pgTable("user", {
@@ -54,8 +55,11 @@ export const account = pgTable(
 )
 
 // relations
-export const userRelations = relations(user, ({ many }) => ({
+export const userRelations = relations(user, ({ many, one }) => ({
   accounts: many(account),
+  products: many(products),
+  vendor_coin: one(vendor_coin),
+  vendor_coin_purchase: many(vendor_coin_purchase),
 }))
 
 export const accountRelations = relations(account, ({ one }) => ({
@@ -63,8 +67,4 @@ export const accountRelations = relations(account, ({ one }) => ({
     fields: [account.userId],
     references: [user.id],
   }),
-}))
-
-export const usersRelations = relations(user, ({ many }) => ({
-  products: many(products),
 }))

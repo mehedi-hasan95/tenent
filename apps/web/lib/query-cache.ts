@@ -10,3 +10,4 @@ export const CACHE_ALL_PRODUCTS_KEYS = (size = DEFAULT_SIZE) =>
 
 export const CACHE_BOOSTING_COIN_KEYS = ["boosting"] as const
 export const CACHE_SELLER_PRODUCTS_KEYS = ["seller-products"] as const
+export const CACHE_BUY_BOOSTING_COIN = ["buy-boosting-coin"] as const

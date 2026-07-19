@@ -19,6 +19,7 @@ export const categories = pgTable(
     slug: text().unique().notNull(),
     image: text(),
     ...timestamps,
+    deleted_at: timestamp(),
   },
   (table) => [index("category_slug_ids").on(table.slug)]
 )
@@ -28,6 +29,7 @@ export const subCategories = pgTable(
   {
     id: uuid("id").defaultRandom().primaryKey(),
     ...timestamps,
+    deleted_at: timestamp(),
     name: text().notNull(),
     slug: text().unique().notNull(),
     categorySlug: text()
