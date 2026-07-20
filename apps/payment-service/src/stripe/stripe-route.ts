@@ -19,7 +19,7 @@ export const stripeWebhookRoute = createRoute({
 })
 
 export const stripeConnectRoute = createRoute({
-  method: "get",
+  method: "post",
   path: "/connect",
   summary: "Stripe Connect",
   description: "Create Stripe Connect account & get onboarding link",

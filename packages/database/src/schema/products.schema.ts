@@ -15,6 +15,7 @@ import { categories, subCategories } from "./categories.schema"
 import { user } from "./user.schema"
 import { timestamps } from "./columns.helpers"
 import { relations } from "drizzle-orm"
+import { product_boost } from "./boosting.schema"
 
 export const productTypeEnum = pgEnum("product_type", [
   "physical",
@@ -93,7 +94,7 @@ export const products = pgTable(
 // Relations
 // =====================
 
-export const productsRelations = relations(products, ({ one }) => ({
+export const productsRelations = relations(products, ({ one, many }) => ({
   user: one(user, {
     fields: [products.userEmail],
     references: [user.email],
@@ -108,4 +109,5 @@ export const productsRelations = relations(products, ({ one }) => ({
     fields: [products.subCategorySlug],
     references: [subCategories.slug],
   }),
+  productsBoosts: many(product_boost),
 }))

@@ -5,7 +5,7 @@ import {
   vendor_coin_purchase,
 } from "@workspace/db/schema/boosting.schema"
 
-export const vendorCoinPurchase = async ({
+export const vendorCoinPurchaseAction = async ({
   email,
   price,
 }: {

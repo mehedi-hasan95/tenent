@@ -2,7 +2,7 @@ export const stripeConnectAction = async () => {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_PAYMENT_URL}/stripe/connect`,
     {
-      method: "GET",
+      method: "POST",
       headers: {
         "Content-Type": "application/json",
       },

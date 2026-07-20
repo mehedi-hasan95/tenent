@@ -11,6 +11,7 @@ import {
 import { user } from "./user.schema"
 import { timestamps } from "./columns.helpers"
 import { relations } from "drizzle-orm"
+import { products } from "./products.schema"
 
 export const boosting_coin = pgTable("boosting_coin", {
   id: uuid().defaultRandom().primaryKey(),
@@ -68,3 +69,40 @@ export const vendor_coin_purchase_relations = relations(
     }),
   })
 )
+
+export const product_boost = pgTable(
+  "product_boost",
+  {
+    id: uuid().defaultRandom().primaryKey(),
+    productId: uuid()
+      .notNull()
+      .references(() => products.id, { onDelete: "cascade" }),
+    userId: uuid()
+      .notNull()
+      .references(() => user.id, { onDelete: "cascade" }),
+    coins: real().notNull(),
+    ...timestamps,
+    endAt: timestamp(),
+  },
+  (table) => [
+    index("product_boosts_product_idx").on(table.productId),
+    index("product_boosts_user_idx").on(table.userId),
+    uniqueIndex("product_boosts_user_product_unique").on(
+      table.productId,
+      table.endAt
+    ),
+  ]
+)
+
+// relations
+
+export const productBoostRelations = relations(product_boost, ({ one }) => ({
+  product: one(products, {
+    fields: [product_boost.productId],
+    references: [products.id],
+  }),
+  user: one(user, {
+    fields: [product_boost.userId],
+    references: [user.id],
+  }),
+}))

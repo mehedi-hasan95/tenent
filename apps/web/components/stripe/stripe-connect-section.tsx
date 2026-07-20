@@ -10,12 +10,11 @@ export const StripeConnectSection = () => {
   const { mutate, isPending } = useMutation({
     mutationFn: stripeConnectAction,
     onSuccess: (data) => {
-      console.log(data)
-      // window.location.href = data.data.url;
+      window.location.href = data.data.url
     },
     onError: (error) => {
       // console.error(error)
-      toast.error(error.message)
+      toast.error(error.message ?? "Something went wrong")
     },
   })
   return (
