@@ -1,5 +1,9 @@
 import { RouteHandler } from "@workspace/open-api"
-import { stripeConnectRoute, stripeWebhookRoute } from "./stripe-route"
+import {
+  retrieveStripeConnectRoute,
+  stripeConnectRoute,
+  stripeWebhookRoute,
+} from "./stripe-route"
 import Stripe from "stripe"
 import { stripeClient } from "../utils/stripe-client"
 import { db, eq } from "@workspace/db"
@@ -34,10 +38,9 @@ export const stripeWebhookHandler: RouteHandler<
     case "account.updated":
       const account = event.data.object as Stripe.Account
       // used kafka
-      console.log("webhook: ", account)
-      await producer.send("account.update", {
-        value: JSON.stringify({ email: account?.email }),
-      })
+      // await producer.send("account.update", {
+      //   value: JSON.stringify({ email: account?.email }),
+      // })
       break
 
     case "checkout.session.completed":
@@ -45,14 +48,14 @@ export const stripeWebhookHandler: RouteHandler<
         return c.json({ message: "Webhook Error: Missing metadata" }, 400)
       }
       // used kafka
-      await producer.send("vendor.coin", {
-        value: JSON.stringify({
-          email: session?.metadata?.user as string,
-          price: Number(session?.metadata?.coin),
-        }),
-      })
+      // await producer.send("vendor.coin", {
+      //   value: JSON.stringify({
+      //     email: session?.metadata?.user as string,
+      //     price: Number(session?.metadata?.coin),
+      //   }),
+      // })
 
-      // disabled this if kafka is used
+      // used kafka: disabled this if kafka is used
       await vendorCoinPurchaseAction({
         email: session?.metadata?.user as string,
         price: Number(session?.metadata?.coin),
@@ -79,6 +82,9 @@ export const stripeConnectHandler: RouteHandler<
     if (!getUser?.stripeId) {
       return c.json({ message: "Stripe ID not found" }, 404)
     }
+    if (getUser?.stripeVerified) {
+      return c.json({ message: "Stripe is already connected" }, 400)
+    }
 
     const linksAccount = await stripeClient.accountLinks.create({
       account: getUser?.stripeId,
@@ -89,5 +95,23 @@ export const stripeConnectHandler: RouteHandler<
     return c.json({ data: linksAccount }, 200)
   } catch (error) {
     return c.json({ error })
+  }
+}
+
+export const retrieveStripeConnectHandler: RouteHandler<
+  typeof retrieveStripeConnectRoute
+> = async (c) => {
+  try {
+    const details = c.get("user")
+    const account = await db.query.user.findFirst({
+      where: eq(user?.email, details?.email!),
+    })
+    if (account?.stripeVerified === false) {
+      return c.json({ message: "Please connect your stripe" })
+    }
+    const data = await stripeClient.accounts.retrieve(account?.stripeId!)
+    return c.json({ data }, 200)
+  } catch (error) {
+    return c.json({ message: "Something went wrong" }, 500)
   }
 }

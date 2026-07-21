@@ -1,6 +1,14 @@
 import { defaultHook, OpenAPIHono } from "@workspace/open-api"
-import { stripeConnectRoute, stripeWebhookRoute } from "./stripe-route"
-import { stripeConnectHandler, stripeWebhookHandler } from "./stripe-handler"
+import {
+  retrieveStripeConnectRoute,
+  stripeConnectRoute,
+  stripeWebhookRoute,
+} from "./stripe-route"
+import {
+  retrieveStripeConnectHandler,
+  stripeConnectHandler,
+  stripeWebhookHandler,
+} from "./stripe-handler"
 
 const app = new OpenAPIHono({
   defaultHook,
@@ -9,5 +17,6 @@ const app = new OpenAPIHono({
 app
   .openapi(stripeWebhookRoute, stripeWebhookHandler)
   .openapi(stripeConnectRoute, stripeConnectHandler)
+  .openapi(retrieveStripeConnectRoute, retrieveStripeConnectHandler)
 
 export default app

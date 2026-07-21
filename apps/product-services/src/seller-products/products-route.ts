@@ -163,7 +163,7 @@ export const sellerAllProductRoute = createRoute({
 
   responses: {
     200: { description: "OK" },
-    403: { description: "Unauthorize" },
+    401: { description: "Unauthorize" },
     500: { description: "Internal server error" },
   },
 })

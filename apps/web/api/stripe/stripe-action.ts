@@ -37,3 +37,22 @@ export const createCoinPaymentIntent = async (coin: number) => {
   const data = await response.json()
   return data.data as string
 }
+
+export const retrieveStripeConnectAction = async () => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_PAYMENT_URL}/stripe/retrieve-stripe-connect`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    }
+  )
+  if (!response.ok) {
+    const error = await response.json()
+    throw error
+  }
+  const data = await response.json()
+  return data.data
+}

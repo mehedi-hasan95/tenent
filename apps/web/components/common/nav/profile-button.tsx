@@ -16,7 +16,12 @@ import {
   DropdownMenuTrigger,
 } from "@workspace/ui/components/dropdown-menu"
 import { userSessionType } from "@workspace/validators/types/auth.types"
-import { BadgeCheckIcon, BellIcon, LogOutIcon } from "lucide-react"
+import {
+  BadgeCheckIcon,
+  BellIcon,
+  LogOutIcon,
+  PersonStanding,
+} from "lucide-react"
 import Link from "next/link"
 
 interface Props {
@@ -47,6 +52,22 @@ export const ProfileButton = ({ user }: Props) => {
                   Account
                 </DropdownMenuItem>
               </Link>
+              {user.role === "SELLER" && (
+                <Link href={"/vendor"}>
+                  <DropdownMenuItem>
+                    <PersonStanding />
+                    Vendor
+                  </DropdownMenuItem>
+                </Link>
+              )}
+              {user.role === "ADMIN" && (
+                <Link href={"/admin"}>
+                  <DropdownMenuItem>
+                    <PersonStanding />
+                    Admin
+                  </DropdownMenuItem>
+                </Link>
+              )}
               <DropdownMenuItem>
                 <BellIcon />
                 Notifications

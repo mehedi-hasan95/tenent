@@ -10,7 +10,7 @@ export const getAllUserRoute = createRoute({
   summary: "Get all user only for admin",
   responses: {
     200: { description: "OK" },
-    403: { description: "UNAUTHORIZED" },
+    401: { description: "UNAUTHORIZED" },
     500: { description: "INTERNAL_SERVER_ERROR" },
   },
 })

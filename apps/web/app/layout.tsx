@@ -6,6 +6,7 @@ import { Providers } from "@/components/providers/providers"
 import { getQueryClient } from "@/lib/lib"
 import { getSessionAction } from "@/api/auth/auth-server-action"
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query"
+import { retrieveStripeConnectAction } from "@/api/stripe/stripe-action"
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" })
 
@@ -23,6 +24,12 @@ export default async function RootLayout({
   await queryClient.prefetchQuery({
     queryKey: ["session"],
     queryFn: getSessionAction,
+  })
+  await queryClient.prefetchQuery({
+    queryKey: ["retrieve-stripe-connect"],
+    queryFn: retrieveStripeConnectAction,
+    staleTime: 1000 * 60 * 5,
+    retry: 1,
   })
   return (
     <html

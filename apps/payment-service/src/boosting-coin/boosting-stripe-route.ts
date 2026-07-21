@@ -23,9 +23,7 @@ export const buyCoinRoute = createRoute({
       description: "Webhook received successfully",
     },
     400: { description: "Bad Request" },
-    403: {
-      description: "Unauthorized",
-    },
+    401: { description: "Unauthorized" },
     500: { description: "Internal server error" },
   },
 })

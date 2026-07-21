@@ -15,7 +15,7 @@ import { products } from "./products.schema"
 
 export const boosting_coin = pgTable("boosting_coin", {
   id: uuid().defaultRandom().primaryKey(),
-  coin: real(),
+  coin: real().notNull(),
   is_active: boolean().default(false),
   created_at: timestamp().defaultNow().notNull(),
 })
@@ -24,7 +24,7 @@ export const vendor_coin = pgTable(
   "vendor_coin",
   {
     id: uuid().defaultRandom().primaryKey(),
-    coin: real(),
+    coin: real().notNull(),
     email: text("email")
       .notNull()
       .references(() => user.email, {
@@ -39,8 +39,8 @@ export const vendor_coin_purchase = pgTable(
   "vendor_coin_purchase",
   {
     id: uuid().defaultRandom().primaryKey(),
-    coin: real(),
-    price: real(),
+    coin: real().notNull(),
+    price: real().notNull(),
     email: text("email")
       .notNull()
       .references(() => user.email, {
@@ -77,7 +77,7 @@ export const product_boost = pgTable(
     productId: uuid()
       .notNull()
       .references(() => products.id, { onDelete: "cascade" }),
-    userId: uuid()
+    userId: text()
       .notNull()
       .references(() => user.id, { onDelete: "cascade" }),
     coins: real().notNull(),
