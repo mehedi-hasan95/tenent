@@ -9,3 +9,8 @@ export const useModalActiveStore = create<Props>((set) => ({
   open: false,
   onOpen: (open) => set({ open }),
 }))
+
+export const useDialogActiveStore = create<Props>((set) => ({
+  open: false,
+  onOpen: (open) => set({ open }),
+}))

@@ -1,8 +1,12 @@
 import {
   fetchAllProductsAction,
+  sellerAllProductsAction,
   singleProductsAction,
 } from "@/api/products/seller-products-action"
-import { CACHE_ALL_PRODUCTS_KEYS } from "@/lib/query-cache"
+import {
+  CACHE_ALL_PRODUCTS_KEYS,
+  CACHE_SELLER_PRODUCTS_KEYS,
+} from "@/lib/query-cache"
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query"
 import { DEFAULT_SIZE } from "@workspace/validators/types/constants.types"
 import { useMemo } from "react"
@@ -36,6 +40,16 @@ export const useGetSingleProduct = ({ id }: { id: string }) => {
     retry: 1,
     enabled: !!id,
     staleTime: 60 * 1000 * 5,
+  })
+  return { data, isPending }
+}
+
+export const useGetVendorAllProducts = () => {
+  const { data, isPending } = useQuery({
+    queryKey: CACHE_SELLER_PRODUCTS_KEYS,
+    queryFn: sellerAllProductsAction,
+    retry: 1,
+    staleTime: 5 * 60 * 1000,
   })
   return { data, isPending }
 }

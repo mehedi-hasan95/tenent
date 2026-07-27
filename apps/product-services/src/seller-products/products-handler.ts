@@ -220,7 +220,7 @@ export const sellerAllProductHandler: RouteHandler<
     const email = c.get("user")?.email as string
     const data = await db.query.products.findMany({
       where: and(eq(products.userEmail, email), isNull(products.deleted_at)),
-      orderBy: desc(products.created_at),
+      orderBy: desc(products.createdAt),
     })
     return c.json({ data }, 200)
   } catch (error) {

@@ -3,7 +3,7 @@ CREATE TABLE "categories" (
 	"name" text NOT NULL,
 	"slug" text NOT NULL,
 	"image" text,
-	"created_at" timestamp DEFAULT now() NOT NULL,
+	"createdAt" timestamp DEFAULT now() NOT NULL,
 	"updated_at" timestamp DEFAULT now() NOT NULL,
 	"deleted_at" timestamp,
 	CONSTRAINT "categories_slug_unique" UNIQUE("slug")
@@ -11,7 +11,7 @@ CREATE TABLE "categories" (
 --> statement-breakpoint
 CREATE TABLE "sub-categories" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
-	"created_at" timestamp DEFAULT now() NOT NULL,
+	"createdAt" timestamp DEFAULT now() NOT NULL,
 	"updated_at" timestamp DEFAULT now() NOT NULL,
 	"deleted_at" timestamp,
 	"name" text NOT NULL,

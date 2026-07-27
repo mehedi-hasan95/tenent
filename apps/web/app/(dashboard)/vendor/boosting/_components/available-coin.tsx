@@ -7,10 +7,12 @@ import {
   Card,
   CardContent,
   CardDescription,
+  CardFooter,
   CardHeader,
   CardTitle,
 } from "@workspace/ui/components/card"
 import { format } from "date-fns"
+import { BoostedProductForm } from "./boosted-product-form"
 
 export const AvailableCoin = () => {
   const { data: vendorAvailableCoin } = useQuery({
@@ -19,6 +21,8 @@ export const AvailableCoin = () => {
     retry: 1,
     staleTime: 1000 * 60 * 5,
   })
+
+  console.log(vendorAvailableCoin)
   return (
     <Card>
       <CardHeader>
@@ -29,15 +33,17 @@ export const AvailableCoin = () => {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        {/* Last Purchase : {format("2026-07-19T07:12:12.307Z", "")} */}
-        Last Purchase :{" "}
-        {vendorAvailableCoin?.updated_at || vendorAvailableCoin?.created_at
+        Last Update :{" "}
+        {vendorAvailableCoin?.updatedAt || vendorAvailableCoin?.createdAt
           ? format(
-              vendorAvailableCoin.updated_at ?? vendorAvailableCoin.created_at!,
+              vendorAvailableCoin.updatedAt ?? vendorAvailableCoin.createdAt!,
               "yyyy-MM-dd 'at' hh:mm a"
             )
           : "-"}
       </CardContent>
+      <CardFooter>
+        <BoostedProductForm />
+      </CardFooter>
     </Card>
   )
 }

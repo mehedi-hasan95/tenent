@@ -4,7 +4,7 @@ CREATE TABLE "product_boost" (
 	"userId" uuid NOT NULL,
 	"coins" real NOT NULL,
 	"updated_at" timestamp,
-	"created_at" timestamp DEFAULT now() NOT NULL,
+	"createdAt" timestamp DEFAULT now() NOT NULL,
 	"endAt" timestamp
 );
 --> statement-breakpoint

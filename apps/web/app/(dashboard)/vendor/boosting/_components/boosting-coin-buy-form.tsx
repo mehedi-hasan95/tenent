@@ -4,7 +4,7 @@ import {
   PaymentElement,
   useCheckoutElements,
 } from "@stripe/react-stripe-js/checkout"
-import { useState } from "react"
+import { FormEvent, SubmitEvent, useState } from "react"
 import { BuyCoinSkeleton } from "./buy-coin-skeleton"
 import { Button } from "@workspace/ui/components/button"
 import { useCoinStepStore } from "@/store/stripe-store/useCoinStepStore"
@@ -26,7 +26,8 @@ export const BoostingCoinBuyForm = () => {
     return <div>Error: {checkoutState.error.message}</div>
   }
 
-  const handleSubmit = async () => {
+  const handleSubmit = async (e: SubmitEvent<HTMLFormElement>) => {
+    e.preventDefault()
     const { checkout } = checkoutState
     setIsSubmitting(true)
 

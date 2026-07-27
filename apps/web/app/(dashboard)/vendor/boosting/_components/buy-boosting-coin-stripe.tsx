@@ -1,23 +1,18 @@
 "use client"
 
 import { useEffect } from "react"
-import { useMutation, useQueryClient } from "@tanstack/react-query"
+import { useMutation } from "@tanstack/react-query"
 
 import { StripeCheckoutProviders } from "@/components/common/stripe/stripe-checkout-providers"
 import { BoostingCoinBuyForm } from "./boosting-coin-buy-form"
 import { createCoinPaymentIntent } from "@/api/stripe/stripe-action"
 import { BuyCoinSkeleton } from "./buy-coin-skeleton"
-import {
-  CACHE_COIN_PURCHASE_HISTORY,
-  CACHE_VENDOR_AVAILABLE_BOOSTING_COIN,
-} from "@/lib/query-cache"
 
 interface Props {
   coin: number
 }
 
 export const BuyBoostingCoinStripe = ({ coin }: Props) => {
-  const queryClient = useQueryClient()
   const {
     mutate,
     data: clientSecret,
@@ -26,14 +21,6 @@ export const BuyBoostingCoinStripe = ({ coin }: Props) => {
     error,
   } = useMutation({
     mutationFn: createCoinPaymentIntent,
-    onSettled: () => {
-      queryClient.invalidateQueries({
-        queryKey: CACHE_VENDOR_AVAILABLE_BOOSTING_COIN,
-      })
-      queryClient.invalidateQueries({
-        queryKey: CACHE_COIN_PURCHASE_HISTORY({}),
-      })
-    },
   })
 
   useEffect(() => {

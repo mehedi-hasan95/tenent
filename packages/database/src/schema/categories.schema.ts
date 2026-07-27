@@ -3,7 +3,7 @@ import { index, pgTable, text, timestamp, uuid } from "drizzle-orm/pg-core"
 import { products } from "./products.schema"
 
 const timestamps = {
-  createdAt: timestamp("created_at").defaultNow().notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updated_at")
     .defaultNow()
     .$onUpdate(() => /* @__PURE__ */ new Date())

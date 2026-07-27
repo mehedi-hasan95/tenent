@@ -3,7 +3,7 @@ CREATE TABLE "vendor_coin" (
 	"coin" real,
 	"email" text NOT NULL,
 	"updated_at" timestamp,
-	"created_at" timestamp DEFAULT now() NOT NULL
+	"createdAt" timestamp DEFAULT now() NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE "vendor_coin_purchase" (
@@ -12,7 +12,7 @@ CREATE TABLE "vendor_coin_purchase" (
 	"price" real,
 	"email" text NOT NULL,
 	"updated_at" timestamp,
-	"created_at" timestamp DEFAULT now() NOT NULL
+	"createdAt" timestamp DEFAULT now() NOT NULL
 );
 --> statement-breakpoint
 ALTER TABLE "boosting_coin" ALTER COLUMN "coin" SET DATA TYPE real;--> statement-breakpoint

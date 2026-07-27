@@ -60,7 +60,7 @@ const Page = () => {
         id: `optimistic-${Date.now()}`,
         coin: newCoin,
         is_active: false,
-        created_at: new Date(),
+        createdAt: new Date(),
       }
 
       queryClient.setQueryData<BOOSTING_COIN_TYPE[]>(

@@ -29,9 +29,9 @@ export const allProductsHandler: RouteHandler<typeof allProductsRoute> = async (
         seller ? eq(products.userEmail, seller) : undefined,
         cursor
           ? or(
-              lt(products.created_at, cursor.createdAt),
+              lt(products.createdAt, cursor.createdAt),
               and(
-                eq(products.created_at, cursor.createdAt),
+                eq(products.createdAt, cursor.createdAt),
                 lt(products.id, cursor.id)
               )
             )
@@ -40,7 +40,7 @@ export const allProductsHandler: RouteHandler<typeof allProductsRoute> = async (
       ),
       limit: pageSize + 1,
       orderBy: (products, { desc }) => [
-        desc(products.created_at),
+        desc(products.createdAt),
         desc(products.id),
       ],
     })
@@ -51,7 +51,7 @@ export const allProductsHandler: RouteHandler<typeof allProductsRoute> = async (
     const last = data[data.length - 1]
     const nextCursor =
       hasMore && last
-        ? encodeCursor({ id: last.id, createdAt: last.created_at })
+        ? encodeCursor({ id: last.id, createdAt: last.createdAt })
         : null
 
     return c.json({ data, nextCursor, hasMore }, 200)

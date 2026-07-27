@@ -1,4 +1,5 @@
 import { z, ZodType } from "zod"
+export const customError = "custom" as const
 
 /**
  * Normalizes multipart/form-data array fields.

@@ -15,6 +15,6 @@ export const getActiveBoostingCoinAction = async () => {
     const error = await response.json()
     throw error
   }
-  const data: { data: BOOSTING_COIN_TYPE } = await response.json()
+  const data: { data: BOOSTING_COIN_TYPE | undefined } = await response.json()
   return data.data
 }

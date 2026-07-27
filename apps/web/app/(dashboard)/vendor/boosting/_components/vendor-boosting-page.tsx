@@ -7,6 +7,7 @@ import { getActiveBoostingCoinAction } from "@/api/stripe/boosting-action"
 import { Separator } from "@workspace/ui/components/separator"
 import { AvailableCoin } from "./available-coin"
 import { BoostingCoinHistory } from "./boosting-coin-history"
+import { VendorBoostedProducts } from "./boosted-products/vendor-boosted-products"
 
 export const VendorBoostingCoin = () => {
   const { data } = useQuery({
@@ -24,13 +25,15 @@ export const VendorBoostingCoin = () => {
       </div>
       <Separator className="my-3" />
       <div className="grid grid-cols-3 gap-5">
-        <div className="col-span-full md:col-span-1">
-          <AvailableCoin />
-        </div>
         <div className="col-span-full md:col-span-2">
           <BoostingCoinHistory />
         </div>
+        <div className="col-span-full md:col-span-1">
+          <AvailableCoin />
+        </div>
       </div>
+      <Separator className="my-3" />
+      <VendorBoostedProducts />
     </div>
   )
 }

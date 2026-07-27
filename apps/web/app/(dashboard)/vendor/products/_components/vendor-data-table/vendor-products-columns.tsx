@@ -108,7 +108,7 @@ export const VendorProductsColumns = ({
       <DataTableColumnHeader column={column} title="Created At" />
     ),
     cell: ({ row }) => {
-      const date = row.original.created_at
+      const date = row.original.createdAt
 
       return <span>{date ? format(date, "dd MMM yyyy") : "-"}</span>
     },

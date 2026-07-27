@@ -10,6 +10,10 @@ export const CACHE_VENDOR_AVAILABLE_BOOSTING_COIN = [
   "vendor-available-boosting",
 ] as const
 
+export const CACHE_VENDOR_BOOSTED_PRODUCTS = [
+  "vendor-boosted-products",
+] as const
+
 export const CACHE_COIN_PURCHASE_HISTORY = ({
   page = 1,
   size = DEFAULT_SIZE,

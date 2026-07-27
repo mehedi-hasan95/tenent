@@ -28,7 +28,7 @@ export const buyCoinHandler: RouteHandler<typeof buyCoinRoute> = async (c) => {
         coin,
         user: email!,
       },
-      return_url: `http://localhost:3000/complete?session_id={CHECKOUT_SESSION_ID}`,
+      return_url: `http://localhost:3000/vendor/boosting?success=true`,
     })
     return c.json({ data: session.client_secret })
   } catch (error) {

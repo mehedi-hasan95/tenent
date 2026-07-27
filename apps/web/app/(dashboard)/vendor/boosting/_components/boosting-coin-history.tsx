@@ -15,59 +15,15 @@ import {
   TableBody,
   TableCaption,
   TableCell,
-  TableFooter,
   TableHead,
   TableHeader,
   TableRow,
 } from "@workspace/ui/components/table"
 import { DEFAULT_SIZE } from "@workspace/validators/types/constants.types"
+import { format } from "date-fns"
 import { useState } from "react"
 
 export const BoostingCoinHistory = () => {
-  const invoices = [
-    {
-      invoice: "INV001",
-      paymentStatus: "Paid",
-      totalAmount: "$250.00",
-      paymentMethod: "Credit Card",
-    },
-    {
-      invoice: "INV002",
-      paymentStatus: "Pending",
-      totalAmount: "$150.00",
-      paymentMethod: "PayPal",
-    },
-    {
-      invoice: "INV003",
-      paymentStatus: "Unpaid",
-      totalAmount: "$350.00",
-      paymentMethod: "Bank Transfer",
-    },
-    {
-      invoice: "INV004",
-      paymentStatus: "Paid",
-      totalAmount: "$450.00",
-      paymentMethod: "Credit Card",
-    },
-    {
-      invoice: "INV005",
-      paymentStatus: "Paid",
-      totalAmount: "$550.00",
-      paymentMethod: "PayPal",
-    },
-    {
-      invoice: "INV006",
-      paymentStatus: "Pending",
-      totalAmount: "$200.00",
-      paymentMethod: "Bank Transfer",
-    },
-    {
-      invoice: "INV007",
-      paymentStatus: "Unpaid",
-      totalAmount: "$300.00",
-      paymentMethod: "Credit Card",
-    },
-  ]
   const [page, setPage] = useState(1)
   const size = DEFAULT_SIZE
   const { data } = useQuery({
@@ -102,6 +58,7 @@ export const BoostingCoinHistory = () => {
             <TableRow>
               <TableHead className="w-25">Invoice</TableHead>
               <TableHead>Status</TableHead>
+              <TableHead>Purchase Date</TableHead>
               <TableHead>Price</TableHead>
               <TableHead className="text-right">Coin</TableHead>
             </TableRow>
@@ -113,12 +70,14 @@ export const BoostingCoinHistory = () => {
                   ****{item.id.slice(-6)}
                 </TableCell>
                 <TableCell>Paid</TableCell>
+                <TableCell>{format(item.createdAt, "do MMM, yyyy")}</TableCell>
                 <TableCell>{item.price}</TableCell>
                 <TableCell className="text-right">{item.coin}</TableCell>
               </TableRow>
             ))}
             <TableRow className="border-b bg-muted transition-colors hover:bg-muted/50 has-aria-expanded:bg-muted/50 data-[state=selected]:bg-muted">
               <TableCell className="font-medium">Total</TableCell>
+              <TableCell></TableCell>
               <TableCell></TableCell>
               <TableCell>
                 ${data?.data.reduce((sum, item) => sum + item.price, 0)}

@@ -33,7 +33,6 @@ export const createCoinPaymentIntent = async (coin: number) => {
     const error = await response.json()
     throw error
   }
-  // return response.json()
   const data = await response.json()
   return data.data as string
 }

@@ -1,7 +1,6 @@
 "use client"
 
 import {
-  deleteSingleProductsAction,
   sellerAllProductsAction,
   trashedProductAction,
 } from "@/api/products/seller-products-action"
@@ -20,27 +19,11 @@ import {
 } from "@/lib/query-cache"
 import { PRODUCT_TYPE } from "@workspace/validators/types/product.types"
 import { toast } from "sonner"
+import { useGetVendorAllProducts } from "@/hooks/products/use-products"
 
 const Page = () => {
-  const { data } = useQuery({
-    queryKey: CACHE_SELLER_PRODUCTS_KEYS,
-    queryFn: sellerAllProductsAction,
-    retry: 1,
-    staleTime: 5 * 60 * 1000,
-  })
+  const { data } = useGetVendorAllProducts()
 
-  // const queryClient = useQueryClient()
-
-  // const deleteMutation = useMutation({
-  //   mutationFn: trashedProductAction,
-
-  //   onSuccess: (data) => {
-  //     console.log(data)
-  //   },
-  //   onError: (error) => {
-  //     console.log("error: ", error)
-  //   },
-  // })
   const queryClient = useQueryClient()
 
   const trashedMutation = useMutation({

@@ -22,7 +22,7 @@ CREATE TABLE "products" (
 	"sizes" text[] DEFAULT '{}' NOT NULL,
 	"user_email" text NOT NULL,
 	"updated_at" timestamp,
-	"created_at" timestamp DEFAULT now() NOT NULL,
+	"createdAt" timestamp DEFAULT now() NOT NULL,
 	"deleted_at" timestamp
 );
 --> statement-breakpoint

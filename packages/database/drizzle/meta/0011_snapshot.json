@@ -1,6 +1,6 @@
 {
-  "id": "564a5295-dac7-4da3-890f-d9fe263a67af",
-  "prevId": "265c0fe9-1940-49a5-a36f-ebe0c308ce1b",
+  "id": "d73353ab-b9ab-4bcc-8c9a-4d8a0173d2e8",
+  "prevId": "0b3490b2-fe6d-45dd-8b23-ac52d8bac856",
   "version": "7",
   "dialect": "postgresql",
   "tables": {
@@ -19,7 +19,7 @@
           "name": "coin",
           "type": "real",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "is_active": {
           "name": "is_active",
@@ -44,6 +44,143 @@
       "checkConstraints": {},
       "isRLSEnabled": false
     },
+    "public.product_boost": {
+      "name": "product_boost",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "productId": {
+          "name": "productId",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "userId": {
+          "name": "userId",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "coins": {
+          "name": "coins",
+          "type": "real",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "updated_at": {
+          "name": "updated_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "createdAt": {
+          "name": "createdAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "now()"
+        },
+        "endAt": {
+          "name": "endAt",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {
+        "product_boosts_product_idx": {
+          "name": "product_boosts_product_idx",
+          "columns": [
+            {
+              "expression": "productId",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "product_boosts_user_idx": {
+          "name": "product_boosts_user_idx",
+          "columns": [
+            {
+              "expression": "userId",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": false,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        },
+        "product_boosts_user_product_unique": {
+          "name": "product_boosts_user_product_unique",
+          "columns": [
+            {
+              "expression": "productId",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            },
+            {
+              "expression": "endAt",
+              "isExpression": false,
+              "asc": true,
+              "nulls": "last"
+            }
+          ],
+          "isUnique": true,
+          "concurrently": false,
+          "method": "btree",
+          "with": {}
+        }
+      },
+      "foreignKeys": {
+        "product_boost_productId_products_id_fk": {
+          "name": "product_boost_productId_products_id_fk",
+          "tableFrom": "product_boost",
+          "tableTo": "products",
+          "columnsFrom": [
+            "productId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        },
+        "product_boost_userId_user_id_fk": {
+          "name": "product_boost_userId_user_id_fk",
+          "tableFrom": "product_boost",
+          "tableTo": "user",
+          "columnsFrom": [
+            "userId"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {},
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    },
     "public.vendor_coin": {
       "name": "vendor_coin",
       "schema": "",
@@ -59,7 +196,7 @@
           "name": "coin",
           "type": "real",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "email": {
           "name": "email",
@@ -71,7 +208,8 @@
           "name": "updated_at",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true,
+          "default": "now()"
         },
         "createdAt": {
           "name": "createdAt",
@@ -92,7 +230,7 @@
               "nulls": "last"
             }
           ],
-          "isUnique": false,
+          "isUnique": true,
           "concurrently": false,
           "method": "btree",
           "with": {}
@@ -103,8 +241,12 @@
           "name": "vendor_coin_email_user_email_fk",
           "tableFrom": "vendor_coin",
           "tableTo": "user",
-          "columnsFrom": ["email"],
-          "columnsTo": ["email"],
+          "columnsFrom": [
+            "email"
+          ],
+          "columnsTo": [
+            "email"
+          ],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -130,13 +272,13 @@
           "name": "coin",
           "type": "real",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "price": {
           "name": "price",
           "type": "real",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true
         },
         "email": {
           "name": "email",
@@ -148,7 +290,8 @@
           "name": "updated_at",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true,
+          "default": "now()"
         },
         "createdAt": {
           "name": "createdAt",
@@ -180,8 +323,12 @@
           "name": "vendor_coin_purchase_email_user_email_fk",
           "tableFrom": "vendor_coin_purchase",
           "tableTo": "user",
-          "columnsFrom": ["email"],
-          "columnsTo": ["email"],
+          "columnsFrom": [
+            "email"
+          ],
+          "columnsTo": [
+            "email"
+          ],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -265,7 +412,9 @@
         "categories_slug_unique": {
           "name": "categories_slug_unique",
           "nullsNotDistinct": false,
-          "columns": ["slug"]
+          "columns": [
+            "slug"
+          ]
         }
       },
       "policies": {},
@@ -344,8 +493,12 @@
           "name": "sub-categories_categorySlug_categories_slug_fk",
           "tableFrom": "sub-categories",
           "tableTo": "categories",
-          "columnsFrom": ["categorySlug"],
-          "columnsTo": ["slug"],
+          "columnsFrom": [
+            "categorySlug"
+          ],
+          "columnsTo": [
+            "slug"
+          ],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -355,7 +508,9 @@
         "sub-categories_slug_unique": {
           "name": "sub-categories_slug_unique",
           "nullsNotDistinct": false,
-          "columns": ["slug"]
+          "columns": [
+            "slug"
+          ]
         }
       },
       "policies": {},
@@ -468,8 +623,12 @@
           "name": "account_user_id_user_id_fk",
           "tableFrom": "account",
           "tableTo": "user",
-          "columnsFrom": ["user_id"],
-          "columnsTo": ["id"],
+          "columnsFrom": [
+            "user_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -576,12 +735,16 @@
         "user_email_unique": {
           "name": "user_email_unique",
           "nullsNotDistinct": false,
-          "columns": ["email"]
+          "columns": [
+            "email"
+          ]
         },
         "user_username_unique": {
           "name": "user_username_unique",
           "nullsNotDistinct": false,
-          "columns": ["username"]
+          "columns": [
+            "username"
+          ]
         }
       },
       "policies": {},
@@ -723,7 +886,8 @@
           "name": "updated_at",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": false
+          "notNull": true,
+          "default": "now()"
         },
         "createdAt": {
           "name": "createdAt",
@@ -761,8 +925,12 @@
           "name": "products_category_slug_categories_slug_fk",
           "tableFrom": "products",
           "tableTo": "categories",
-          "columnsFrom": ["category_slug"],
-          "columnsTo": ["slug"],
+          "columnsFrom": [
+            "category_slug"
+          ],
+          "columnsTo": [
+            "slug"
+          ],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -770,8 +938,12 @@
           "name": "products_sub_category_slug_sub-categories_slug_fk",
           "tableFrom": "products",
           "tableTo": "sub-categories",
-          "columnsFrom": ["sub_category_slug"],
-          "columnsTo": ["slug"],
+          "columnsFrom": [
+            "sub_category_slug"
+          ],
+          "columnsTo": [
+            "slug"
+          ],
           "onDelete": "cascade",
           "onUpdate": "no action"
         },
@@ -779,8 +951,12 @@
           "name": "products_user_email_user_email_fk",
           "tableFrom": "products",
           "tableTo": "user",
-          "columnsFrom": ["user_email"],
-          "columnsTo": ["email"],
+          "columnsFrom": [
+            "user_email"
+          ],
+          "columnsTo": [
+            "email"
+          ],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -796,17 +972,29 @@
     "public.user-role": {
       "name": "user-role",
       "schema": "public",
-      "values": ["USER", "SELLER", "ADMIN"]
+      "values": [
+        "USER",
+        "SELLER",
+        "ADMIN"
+      ]
     },
     "public.product_status": {
       "name": "product_status",
       "schema": "public",
-      "values": ["draft", "active", "archived"]
+      "values": [
+        "draft",
+        "active",
+        "archived"
+      ]
     },
     "public.product_type": {
       "name": "product_type",
       "schema": "public",
-      "values": ["physical", "digital", "service"]
+      "values": [
+        "physical",
+        "digital",
+        "service"
+      ]
     }
   },
   "schemas": {},

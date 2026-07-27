@@ -1,28 +1,22 @@
 import { Controller, Control, FieldValues, Path } from "react-hook-form"
 import { Field, FieldError, FieldLabel } from "@workspace/ui/components/field"
-import { Input } from "@workspace/ui/components/input"
+import type { Matcher } from "react-day-picker"
+import { Calendar } from "@workspace/ui/components/calendar"
 import { cn } from "@workspace/ui/lib/utils"
-import { JSX } from "react"
 
 interface Props<T extends FieldValues> {
   name: Path<T>
   control: Control<T>
   title?: string
-  placeholder?: string
-  inputTypes?: "text" | "password" | "email" | "number"
   className?: string
-  otherLink?: JSX.Element
-  disabled?: boolean
+  disabled?: Matcher | Matcher[]
 }
 
-export const InputController = <T extends FieldValues>({
+export const DateController = <T extends FieldValues>({
   name,
   control,
   title,
-  placeholder,
-  inputTypes = "text",
   className,
-  otherLink,
   disabled,
 }: Props<T>) => {
   return (
@@ -33,17 +27,16 @@ export const InputController = <T extends FieldValues>({
         <Field data-invalid={fieldState.invalid}>
           <div className="flex items-center">
             <FieldLabel htmlFor={name}>{title}</FieldLabel>
-            {otherLink}
           </div>
-          <Input
+
+          <Calendar
             {...field}
             id={name}
-            aria-invalid={fieldState.invalid}
-            placeholder={placeholder}
-            type={inputTypes}
+            mode="single"
+            selected={field.value}
+            onSelect={field.onChange}
             className={cn("", className)}
             disabled={disabled}
-            value={field.value ?? ""}
           />
           {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
         </Field>

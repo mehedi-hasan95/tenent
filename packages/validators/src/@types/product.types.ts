@@ -4,8 +4,8 @@ export type PRODUCT_TYPE = {
   type: "physical" | "digital" | "service"
   id: string
   title: string
-  created_at: Date
-  updated_at: Date | null
+  createdAt: Date
+  updatedAt: Date | null
   shortDescription: string
   basePrice: number
   salePrice: number

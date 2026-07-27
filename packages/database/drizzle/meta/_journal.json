@@ -78,6 +78,13 @@
       "when": 1784597086891,
       "tag": "0010_medical_mantis",
       "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "7",
+      "when": 1784699819090,
+      "tag": "0011_fair_lethal_legion",
+      "breakpoints": true
     }
   ]
 }

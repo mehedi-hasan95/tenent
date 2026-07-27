@@ -34,9 +34,16 @@ export const stripeWebhookHandler: RouteHandler<
   }
 
   const session = event.data.object as Stripe.Checkout.Session
+  console.log(`Received event: ${event.type}`, "account:", event.account)
   switch (event.type) {
     case "account.updated":
       const account = event.data.object as Stripe.Account
+      const isFullyOnboarded =
+        account.charges_enabled &&
+        account.payouts_enabled &&
+        account.details_submitted
+      console.log("isFullyOnboarded: ", isFullyOnboarded)
+      console.log("account: ", account)
       // used kafka
       // await producer.send("account.update", {
       //   value: JSON.stringify({ email: account?.email }),

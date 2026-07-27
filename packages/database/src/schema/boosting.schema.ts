@@ -17,7 +17,7 @@ export const boosting_coin = pgTable("boosting_coin", {
   id: uuid().defaultRandom().primaryKey(),
   coin: real().notNull(),
   is_active: boolean().default(false),
-  created_at: timestamp().defaultNow().notNull(),
+  createdAt: timestamp().defaultNow().notNull(),
 })
 
 export const vendor_coin = pgTable(
