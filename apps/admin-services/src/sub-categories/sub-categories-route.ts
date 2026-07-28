@@ -64,6 +64,7 @@ export const getSubCategoriesRoute = createRoute({
           if (v === "false") return false
           return undefined
         }),
+      slug: z.string().optional(),
     }),
   },
   responses: {

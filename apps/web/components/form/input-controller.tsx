@@ -43,6 +43,7 @@ export const InputController = <T extends FieldValues>({
             type={inputTypes}
             className={cn("", className)}
             disabled={disabled}
+            value={field.value ?? ""}
           />
           {fieldState.invalid && <FieldError errors={[fieldState.error]} />}
         </Field>

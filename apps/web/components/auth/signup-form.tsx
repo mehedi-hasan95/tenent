@@ -59,7 +59,6 @@ export const SignupForm = () => {
       }
     },
 
-    // todo
     onSuccess: async (data) => {
       if (data?.data?.user?.id) {
         await registrationOtpAction({ email: data?.data?.user?.email })

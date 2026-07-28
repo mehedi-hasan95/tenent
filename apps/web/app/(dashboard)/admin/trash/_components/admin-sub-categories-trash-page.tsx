@@ -4,7 +4,7 @@ import { TrashList } from "./trash-list"
 import { DataTable } from "@/components/common/data-table/data-table"
 import { DataTableToolbar } from "@/components/common/data-table/data-table-toolbar"
 
-import { useDeleteModalStore } from "@/store/useDeleteStore"
+import { useModalActiveStore } from "@/store/useModalActiveStore"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { subCategoriesType } from "@workspace/validators/types/categories.types"
 import { SubCategoriesColumns } from "./sub-categories-columns"
@@ -20,7 +20,7 @@ interface Props {
   data: subCategoriesType[] | undefined
 }
 export const AdminSubCategoriesTrashPage = ({ data }: Props) => {
-  const { onOpen } = useDeleteModalStore()
+  const { onOpen } = useModalActiveStore()
 
   const deleteMutation = useSubCategoryMutation({
     mutationFn: deleteSubCategoryAction,
@@ -51,7 +51,7 @@ export const AdminSubCategoriesTrashPage = ({ data }: Props) => {
 
       queryClient.setQueryData<subCategoriesType[]>(
         ["sub-categories"],
-        (old = []) => old.filter((cat) => !cat.deleted_at)
+        (old = []) => old.filter((cat) => !cat.deletedAt)
       )
 
       return { previousCategories }
@@ -86,6 +86,7 @@ export const AdminSubCategoriesTrashPage = ({ data }: Props) => {
               <DataTableToolbar
                 table={table}
                 onDelete={(slug) => deleteSelectedMutation.mutate(slug)}
+                getDeleteId={(row) => row.slug}
               />
             )}
           />

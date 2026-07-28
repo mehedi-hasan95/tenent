@@ -11,7 +11,7 @@ import {
   deleteSelectedCategoryAction,
   restoreCategoryAction,
 } from "@/api/categories/categories-action"
-import { useDeleteModalStore } from "@/store/useDeleteStore"
+import { useModalActiveStore } from "@/store/useModalActiveStore"
 import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { categoriesType } from "@workspace/validators/types/categories.types"
 
@@ -19,7 +19,7 @@ interface Props {
   data: categoriesType[] | undefined
 }
 export const AdminCategoriesTrashPage = ({ data }: Props) => {
-  const { onOpen } = useDeleteModalStore()
+  const { onOpen } = useModalActiveStore()
 
   const deleteMutation = useCategoryMutation({
     mutationFn: deleteCategoryAction,
@@ -49,7 +49,7 @@ export const AdminCategoriesTrashPage = ({ data }: Props) => {
       ])
 
       queryClient.setQueryData<categoriesType[]>(["categories"], (old = []) =>
-        old.filter((cat) => !cat.deleted_at)
+        old.filter((cat) => !cat.deletedAt)
       )
 
       return { previousCategories }
@@ -81,10 +81,13 @@ export const AdminCategoriesTrashPage = ({ data }: Props) => {
             data={data ?? []}
             searchKey="name"
             toolbar={(table) => (
-              <DataTableToolbar
-                table={table}
-                onDelete={(slug) => deleteSelectedMutation.mutate(slug)}
-              />
+              <>
+                <DataTableToolbar
+                  table={table}
+                  onDelete={(slug) => deleteSelectedMutation.mutate(slug)}
+                  getDeleteId={(row) => row.slug}
+                />
+              </>
             )}
           />
         </TrashList>

@@ -105,7 +105,7 @@ export function DataTableFacetedFilter<TData, TValue>({
                   >
                     <div
                       className={cn(
-                        "flex size-4 items-center justify-center rounded-lg border",
+                        "flex size-4 items-center justify-center rounded-sm border",
                         isSelected
                           ? "border-primary bg-primary text-primary-foreground"
                           : "border-input [&_svg]:invisible"

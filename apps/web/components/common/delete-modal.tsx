@@ -1,4 +1,4 @@
-import { useDeleteModalStore } from "@/store/useDeleteStore"
+import { useModalActiveStore } from "@/store/useModalActiveStore"
 import {
   AlertDialog,
   AlertDialogCancel,
@@ -10,6 +10,8 @@ import {
   AlertDialogTrigger,
 } from "@workspace/ui/components/alert-dialog"
 import { Button } from "@workspace/ui/components/button"
+import { cn } from "@workspace/ui/lib/utils"
+import { Trash2 } from "lucide-react"
 import { JSX } from "react"
 
 interface Props {
@@ -17,14 +19,20 @@ interface Props {
   description?: string
   trigger?: JSX.Element
   onDelete: () => void
+  className?: string
 }
 export const DeleteModal = ({
   description = "This action cannot be undone. This will permanently delete your data from our servers.",
   title = "Are you absolutely sure?",
-  trigger = <Button variant="outline">Show Dialog</Button>,
+  trigger = (
+    <Button variant="outline">
+      <Trash2 /> Delete
+    </Button>
+  ),
   onDelete,
+  className,
 }: Props) => {
-  const { onOpen, open } = useDeleteModalStore()
+  const { onOpen, open } = useModalActiveStore()
   return (
     <AlertDialog open={open} onOpenChange={onOpen}>
       <AlertDialogTrigger asChild>{trigger}</AlertDialogTrigger>
@@ -35,7 +43,9 @@ export const DeleteModal = ({
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <Button onClick={onDelete}>Continue</Button>
+          <Button onClick={onDelete} className={cn(className)}>
+            Continue
+          </Button>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

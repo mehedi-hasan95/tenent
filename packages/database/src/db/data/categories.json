@@ -1,0 +1,92 @@
+[
+  {
+    "id": "b1b28472-68f3-4d10-8663-8ed3fd56dfd9",
+    "name": "Electronics",
+    "slug": "electronics",
+    "image": null,
+    "createdAt": "2026-07-27 00:00:00.000000",
+    "updatedAt": "2026-07-27 00:00:00.000000",
+    "deletedAt": null
+  },
+  {
+    "id": "057b402f-cde1-4f08-9b9d-746e4d11dd84",
+    "name": "Fashion",
+    "slug": "fashion",
+    "image": null,
+    "createdAt": "2026-07-27 00:00:00.000000",
+    "updatedAt": "2026-07-27 00:00:00.000000",
+    "deletedAt": null
+  },
+  {
+    "id": "4c1466b0-2929-4c7c-b735-d9d115128820",
+    "name": "Home & Kitchen",
+    "slug": "home-and-kitchen",
+    "image": null,
+    "createdAt": "2026-07-27 00:00:00.000000",
+    "updatedAt": "2026-07-27 00:00:00.000000",
+    "deletedAt": null
+  },
+  {
+    "id": "96d06325-a66b-4122-9d0e-95d3148fd388",
+    "name": "Beauty & Personal Care",
+    "slug": "beauty-and-personal-care",
+    "image": null,
+    "createdAt": "2026-07-27 00:00:00.000000",
+    "updatedAt": "2026-07-27 00:00:00.000000",
+    "deletedAt": null
+  },
+  {
+    "id": "7313aa8a-7603-4a6c-9693-89b7d534c123",
+    "name": "Health & Wellness",
+    "slug": "health-and-wellness",
+    "image": null,
+    "createdAt": "2026-07-27 00:00:00.000000",
+    "updatedAt": "2026-07-27 00:00:00.000000",
+    "deletedAt": null
+  },
+  {
+    "id": "0be723c8-4822-442d-8158-b67fc86ef89c",
+    "name": "Sports & Outdoors",
+    "slug": "sports-and-outdoors",
+    "image": null,
+    "createdAt": "2026-07-27 00:00:00.000000",
+    "updatedAt": "2026-07-27 00:00:00.000000",
+    "deletedAt": null
+  },
+  {
+    "id": "0452c090-b749-4992-99d1-42a76e33f121",
+    "name": "Groceries",
+    "slug": "groceries",
+    "image": null,
+    "createdAt": "2026-07-27 00:00:00.000000",
+    "updatedAt": "2026-07-27 00:00:00.000000",
+    "deletedAt": null
+  },
+  {
+    "id": "843b98df-c116-4818-9041-1124ce16ecd5",
+    "name": "Books & Stationery",
+    "slug": "books-and-stationery",
+    "image": null,
+    "createdAt": "2026-07-27 00:00:00.000000",
+    "updatedAt": "2026-07-27 00:00:00.000000",
+    "deletedAt": null
+  },
+  {
+    "id": "2e852b50-d470-4610-83e1-4c36e1970cda",
+    "name": "Toys & Kids",
+    "slug": "toys-and-kids",
+    "image": null,
+    "createdAt": "2026-07-27 00:00:00.000000",
+    "updatedAt": "2026-07-27 00:00:00.000000",
+    "deletedAt": null
+  },
+  {
+    "id": "e519bb20-d77f-40f6-b3fc-09bff2a66eee",
+    "name": "Automotive",
+    "slug": "automotive",
+    "image": null,
+    "createdAt": "2026-07-27 00:00:00.000000",
+    "updatedAt": "2026-07-27 00:00:00.000000",
+    "deletedAt": null
+  }
+]

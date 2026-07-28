@@ -39,7 +39,7 @@ export const sellerMiddleware = createMiddleware<Env>(async (c, next) => {
   if (!session || session.user.role !== "SELLER") {
     c.set("user", null)
     c.set("session", null)
-    return c.json({ message: "Only admin has the access" }, 401)
+    return c.json({ message: "Only Seller has the access" }, 401)
   }
 
   c.set("user", session.user)

@@ -19,12 +19,27 @@ export const stripeWebhookRoute = createRoute({
 })
 
 export const stripeConnectRoute = createRoute({
-  method: "get",
+  method: "post",
   path: "/connect",
   summary: "Stripe Connect",
   description: "Create Stripe Connect account & get onboarding link",
   tags,
   middleware: authMiddleware,
+  responses: {
+    200: { description: "Onboarding link created" },
+    400: { description: "Bad request" },
+    401: { description: "Unauthorize" },
+    404: { description: "Stripe ID not found" },
+  },
+})
+
+export const retrieveStripeConnectRoute = createRoute({
+  method: "get",
+  path: "/retrieve-stripe-connect",
+  summary: "Retrieve Stripe Connect",
+  tags,
+  middleware: authMiddleware,
+
   responses: {
     200: { description: "Onboarding link created" },
     400: { description: "Bad request" },

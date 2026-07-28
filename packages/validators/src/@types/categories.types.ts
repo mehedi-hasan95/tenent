@@ -5,7 +5,7 @@ export type categoriesType = {
   image: string | null
   createdAt: Date
   updatedAt: Date
-  deleted_at: Date | null
+  deletedAt: Date | null
 }
 
 export type subCategoriesType = {
@@ -14,6 +14,6 @@ export type subCategoriesType = {
   categorySlug: string
   createdAt: Date
   updatedAt: Date
-  deleted_at: Date | null
+  deletedAt: Date | null
   id: string
 }

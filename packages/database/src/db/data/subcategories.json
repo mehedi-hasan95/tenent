@@ -1,0 +1,182 @@
+[
+  {
+    "id": "96b094e1-60a3-4b0c-b763-570850dac5eb",
+    "updatedAt": "2026-07-27 13:27:08.469506",
+    "deletedAt": null,
+    "name": "Mobile Phones",
+    "slug": "mobile-phones",
+    "createdAt": "2026-07-27 13:27:08.469506",
+    "categorySlug": "electronics"
+  },
+  {
+    "id": "9fa711d8-507c-41ca-898e-b9a7d307729c",
+    "updatedAt": "2026-07-27 13:27:08.469506",
+    "deletedAt": null,
+    "name": "Laptops",
+    "slug": "laptops",
+    "createdAt": "2026-07-27 13:27:08.469506",
+    "categorySlug": "electronics"
+  },
+  {
+    "id": "e9777178-1156-430d-b284-8ea526ea14b8",
+    "updatedAt": "2026-07-27 13:27:08.469506",
+    "deletedAt": null,
+    "name": "Headphones",
+    "slug": "headphones",
+    "createdAt": "2026-07-27 13:27:08.469506",
+    "categorySlug": "electronics"
+  },
+  {
+    "id": "ccd91649-5201-440c-b654-43f6070b02c6",
+    "updatedAt": "2026-07-27 13:27:08.469506",
+    "deletedAt": null,
+    "name": "Smart Watches",
+    "slug": "smart-watches",
+    "createdAt": "2026-07-27 13:27:08.469506",
+    "categorySlug": "electronics"
+  },
+  {
+    "id": "e7a4b54a-6806-41a4-bf43-c832e472611f",
+    "updatedAt": "2026-07-27 13:27:08.469506",
+    "deletedAt": null,
+    "name": "Men's Clothing",
+    "slug": "mens-clothing",
+    "createdAt": "2026-07-27 13:27:08.469506",
+    "categorySlug": "fashion"
+  },
+  {
+    "id": "b3ba0e96-d430-4fd9-b602-2bd6cf2b7b9f",
+    "updatedAt": "2026-07-27 13:27:08.469506",
+    "deletedAt": null,
+    "name": "Women's Clothing",
+    "slug": "womens-clothing",
+    "createdAt": "2026-07-27 13:27:08.469506",
+    "categorySlug": "fashion"
+  },
+  {
+    "id": "c0e7c4aa-172f-4075-8c8b-36b5defa628e",
+    "updatedAt": "2026-07-27 13:27:08.469506",
+    "deletedAt": null,
+    "name": "Shoes",
+    "slug": "shoes",
+    "createdAt": "2026-07-27 13:27:08.469506",
+    "categorySlug": "fashion"
+  },
+  {
+    "id": "03147c9b-13b8-4e94-888c-2baa57f2b2c5",
+    "updatedAt": "2026-07-27 13:27:08.469506",
+    "deletedAt": null,
+    "name": "Kitchen Appliances",
+    "slug": "kitchen-appliances",
+    "createdAt": "2026-07-27 13:27:08.469506",
+    "categorySlug": "home-and-kitchen"
+  },
+  {
+    "id": "db0ef52d-5476-47fb-a9dc-8b3ddbc248c0",
+    "updatedAt": "2026-07-27 13:27:08.469506",
+    "deletedAt": null,
+    "name": "Home Decor",
+    "slug": "home-decor",
+    "createdAt": "2026-07-27 13:27:08.469506",
+    "categorySlug": "home-and-kitchen"
+  },
+  {
+    "id": "0b3c7df7-3b02-4da6-9246-7cd488ee48ac",
+    "updatedAt": "2026-07-27 13:27:08.469506",
+    "deletedAt": null,
+    "name": "Skincare",
+    "slug": "skincare",
+    "createdAt": "2026-07-27 13:27:08.469506",
+    "categorySlug": "beauty-and-personal-care"
+  },
+  {
+    "id": "e9f73554-3b37-42da-9406-23cd85b62fbc",
+    "updatedAt": "2026-07-27 13:27:08.469506",
+    "deletedAt": null,
+    "name": "Hair Care",
+    "slug": "hair-care",
+    "createdAt": "2026-07-27 13:27:08.469506",
+    "categorySlug": "beauty-and-personal-care"
+  },
+  {
+    "id": "bef8ea2f-285a-49ef-a500-4dc12250b336",
+    "updatedAt": "2026-07-27 13:27:08.469506",
+    "deletedAt": null,
+    "name": "Vitamins & Supplements",
+    "slug": "vitamins-and-supplements",
+    "createdAt": "2026-07-27 13:27:08.469506",
+    "categorySlug": "health-and-wellness"
+  },
+  {
+    "id": "0630963e-b7b0-493a-826c-c2f14d254f65",
+    "updatedAt": "2026-07-27 13:27:08.469506",
+    "deletedAt": null,
+    "name": "Fitness Equipment",
+    "slug": "fitness-equipment",
+    "createdAt": "2026-07-27 13:27:08.469506",
+    "categorySlug": "sports-and-outdoors"
+  },
+  {
+    "id": "3a8377e4-0d2d-4303-8ed1-1dbfd7caed47",
+    "updatedAt": "2026-07-27 13:27:08.469506",
+    "deletedAt": null,
+    "name": "Outdoor Recreation",
+    "slug": "outdoor-recreation",
+    "createdAt": "2026-07-27 13:27:08.469506",
+    "categorySlug": "sports-and-outdoors"
+  },
+  {
+    "id": "ee8cd112-2cfe-45ef-9dde-4f43ed1dbb53",
+    "updatedAt": "2026-07-27 13:27:08.469506",
+    "deletedAt": null,
+    "name": "Fresh Produce",
+    "slug": "fresh-produce",
+    "createdAt": "2026-07-27 13:27:08.469506",
+    "categorySlug": "groceries"
+  },
+  {
+    "id": "1cd95396-a7b1-444e-a08c-1f47e82fd868",
+    "updatedAt": "2026-07-27 13:27:08.469506",
+    "deletedAt": null,
+    "name": "Snacks & Beverages",
+    "slug": "snacks-and-beverages",
+    "createdAt": "2026-07-27 13:27:08.469506",
+    "categorySlug": "groceries"
+  },
+  {
+    "id": "7f325632-0e22-4f64-a958-86b9843d81f2",
+    "updatedAt": "2026-07-27 13:27:08.469506",
+    "deletedAt": null,
+    "name": "Fiction Books",
+    "slug": "fiction-books",
+    "createdAt": "2026-07-27 13:27:08.469506",
+    "categorySlug": "books-and-stationery"
+  },
+  {
+    "id": "e3d61ae1-19cf-455e-83a2-88b6588fb75a",
+    "updatedAt": "2026-07-27 13:27:08.469506",
+    "deletedAt": null,
+    "name": "Educational Books",
+    "slug": "educational-books",
+    "createdAt": "2026-07-27 13:27:08.469506",
+    "categorySlug": "books-and-stationery"
+  },
+  {
+    "id": "5dc1a973-c858-4355-8015-1d6348500c75",
+    "updatedAt": "2026-07-27 13:27:08.469506",
+    "deletedAt": null,
+    "name": "Kids Toys",
+    "slug": "kids-toys",
+    "createdAt": "2026-07-27 13:27:08.469506",
+    "categorySlug": "toys-and-kids"
+  },
+  {
+    "id": "1e19d8e5-2573-41ce-8c29-fe0d2c9bb533",
+    "updatedAt": "2026-07-27 13:27:08.469506",
+    "deletedAt": null,
+    "name": "Car Accessories",
+    "slug": "car-accessories",
+    "createdAt": "2026-07-27 13:27:08.469506",
+    "categorySlug": "automotive"
+  }
+]

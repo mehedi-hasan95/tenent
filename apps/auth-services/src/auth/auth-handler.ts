@@ -78,7 +78,6 @@ export const registrationEmailVerifyOTPHandler: RouteHandler<
     })
     // used kafka
     // if (data.ok === true) {
-    //   console.log(data)
     //   await producer.send("create.stripe", {
     //     value: JSON.stringify({ email }),
     //   })

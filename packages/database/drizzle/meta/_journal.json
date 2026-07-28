@@ -22,6 +22,76 @@
       "when": 1782259322660,
       "tag": "0002_lowly_meteorite",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1782741284422,
+      "tag": "0003_wild_nightshade",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1782741505791,
+      "tag": "0004_lame_frog_thor",
+      "breakpoints": true
+    },
+    {
+      "idx": 5,
+      "version": "7",
+      "when": 1783219977538,
+      "tag": "0005_green_yellow_claw",
+      "breakpoints": true
+    },
+    {
+      "idx": 6,
+      "version": "7",
+      "when": 1784389513251,
+      "tag": "0006_slimy_ronan",
+      "breakpoints": true
+    },
+    {
+      "idx": 7,
+      "version": "7",
+      "when": 1784423461370,
+      "tag": "0007_right_mariko_yashida",
+      "breakpoints": true
+    },
+    {
+      "idx": 8,
+      "version": "7",
+      "when": 1784545554461,
+      "tag": "0008_broad_exodus",
+      "breakpoints": true
+    },
+    {
+      "idx": 9,
+      "version": "7",
+      "when": 1784545688283,
+      "tag": "0009_thick_living_mummy",
+      "breakpoints": true
+    },
+    {
+      "idx": 10,
+      "version": "7",
+      "when": 1784597086891,
+      "tag": "0010_medical_mantis",
+      "breakpoints": true
+    },
+    {
+      "idx": 11,
+      "version": "7",
+      "when": 1784699819090,
+      "tag": "0011_fair_lethal_legion",
+      "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "7",
+      "when": 1785151545149,
+      "tag": "0012_serious_anthem",
+      "breakpoints": true
     }
   ]
 }

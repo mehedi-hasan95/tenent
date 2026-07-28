@@ -7,6 +7,8 @@ import {
   index,
   pgEnum,
 } from "drizzle-orm/pg-core"
+import { products } from "./products.schema"
+import { productBoost, vendorCoin, vendorCoinPurchase } from "./boosting.schema"
 
 export const userRole = pgEnum("user-role", ["USER", "SELLER", "ADMIN"])
 export const user = pgTable("user", {
@@ -15,7 +17,7 @@ export const user = pgTable("user", {
   email: text("email").notNull().unique(),
   emailVerified: boolean("email_verified").default(false).notNull(),
   image: text("image"),
-  createdAt: timestamp("created_at").defaultNow().notNull(),
+  createdAt: timestamp("createdAt").defaultNow().notNull(),
   updatedAt: timestamp("updated_at")
     .defaultNow()
     .$onUpdate(() => /* @__PURE__ */ new Date())
@@ -44,7 +46,7 @@ export const account = pgTable(
     refreshTokenExpiresAt: timestamp("refresh_token_expires_at"),
     scope: text("scope"),
     password: text("password"),
-    createdAt: timestamp("created_at").defaultNow().notNull(),
+    createdAt: timestamp("createdAt").defaultNow().notNull(),
     updatedAt: timestamp("updated_at")
       .$onUpdate(() => /* @__PURE__ */ new Date())
       .notNull(),
@@ -52,8 +54,13 @@ export const account = pgTable(
   (table) => [index("account_userId_idx").on(table.userId)]
 )
 
-export const userRelations = relations(user, ({ many }) => ({
+// relations
+export const userRelations = relations(user, ({ many, one }) => ({
   accounts: many(account),
+  products: many(products),
+  vendor_coin: one(vendorCoin),
+  vendor_coin_purchase: many(vendorCoinPurchase),
+  productsBoosts: many(productBoost),
 }))
 
 export const accountRelations = relations(account, ({ one }) => ({

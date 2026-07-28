@@ -10,9 +10,8 @@ import {
 import { CategoriesGrid } from "./categories-grid"
 import { useState } from "react"
 import { categoriesType } from "@workspace/validators/types/categories.types"
-import { DeleteCategoryModal } from "./delete-category-modal"
-import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { trashingCategoryAction } from "@/api/categories/categories-action"
+import { TrashedModal } from "@/components/common/trashed-modal"
 
 export const CategoriesPage = () => {
   const { data } = useGetCategories("true")
@@ -81,7 +80,7 @@ export const CategoriesPage = () => {
         onClose={handleCloseModal}
         category={editingCategory}
       />
-      <DeleteCategoryModal
+      <TrashedModal
         open={deleteModalOpen}
         onOpenChange={handleDeleteModal}
         onSubmit={() =>

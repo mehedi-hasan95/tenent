@@ -1,0 +1,2553 @@
+[
+  {
+    "id": "887066ec-cf94-4514-b422-038b60be02d6",
+    "title": "AeroFit Pro Running Shoes",
+    "short_description": "Lightweight running shoes with breathable mesh and responsive cushioning.",
+    "base_price": 129,
+    "sale_price": 109,
+    "stock": 50,
+    "tags": [
+      "Shoes",
+      "Sports"
+    ],
+    "weight": 720,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=running-shoes",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=running-shoes"
+    ],
+    "category_slug": "footwear",
+    "sub_category_slug": "running-shoes",
+    "color": [
+      "#111827",
+      "#F3F4F6"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Footwear"
+      },
+      {
+        "key": "Brand",
+        "value": "AeroFit"
+      },
+      {
+        "key": "Model",
+        "value": "AeroFit-100"
+      },
+      {
+        "key": "Weight",
+        "value": "720 g"
+      }
+    ],
+    "description": "<h1>AeroFit Pro Running Shoes</h1><h2>Designed for Everyday Performance</h2><p>Lightweight running shoes with breathable mesh and responsive cushioning. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Footwear</li><li><strong>Weight:</strong> 720 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the AeroFit Pro Running Shoes today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": null,
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 06:31:01.000",
+    "createdAt": "2026-07-27 06:31:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "b91f4ae6-5c73-4a08-88bd-ec3aa89c64b2",
+    "title": "UrbanFlex Casual Sneakers",
+    "short_description": "Everyday sneakers combining a clean design with flexible all-day comfort.",
+    "base_price": 99,
+    "sale_price": 84,
+    "stock": 67,
+    "tags": [
+      "Shoes",
+      "Fashion"
+    ],
+    "weight": 680,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=sneakers",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=sneakers"
+    ],
+    "category_slug": "footwear",
+    "sub_category_slug": "sneakers",
+    "color": [
+      "#FFFFFF",
+      "#111827"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Footwear"
+      },
+      {
+        "key": "Brand",
+        "value": "UrbanFlex"
+      },
+      {
+        "key": "Model",
+        "value": "UrbanFlex-101"
+      },
+      {
+        "key": "Weight",
+        "value": "680 g"
+      }
+    ],
+    "description": "<h1>UrbanFlex Casual Sneakers</h1><h2>Designed for Everyday Performance</h2><p>Everyday sneakers combining a clean design with flexible all-day comfort. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Footwear</li><li><strong>Weight:</strong> 680 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the UrbanFlex Casual Sneakers today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "FLAT10",
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 06:28:01.000",
+    "createdAt": "2026-07-27 06:28:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "6eb698be-b4eb-4563-8042-5b79a516cda8",
+    "title": "Classic Leather Oxford Shoes",
+    "short_description": "Polished leather Oxford shoes suitable for office wear and formal occasions.",
+    "base_price": 159,
+    "sale_price": 139,
+    "stock": 84,
+    "tags": [
+      "Shoes",
+      "Formal"
+    ],
+    "weight": 980,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=leather-shoes",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=leather-shoes"
+    ],
+    "category_slug": "footwear",
+    "sub_category_slug": "formal-shoes",
+    "color": [
+      "#78350F",
+      "#111827"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Footwear"
+      },
+      {
+        "key": "Brand",
+        "value": "Classic"
+      },
+      {
+        "key": "Model",
+        "value": "Classic-102"
+      },
+      {
+        "key": "Weight",
+        "value": "980 g"
+      }
+    ],
+    "description": "<h1>Classic Leather Oxford Shoes</h1><h2>Designed for Everyday Performance</h2><p>Polished leather Oxford shoes suitable for office wear and formal occasions. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Footwear</li><li><strong>Weight:</strong> 980 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the Classic Leather Oxford Shoes today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "FLAT10",
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 06:25:01.000",
+    "createdAt": "2026-07-27 06:25:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "fe9df9bd-23bf-4bba-9a03-67db57281ab0",
+    "title": "TrailMaster Hiking Boots",
+    "short_description": "Durable waterproof hiking boots with strong grip for outdoor adventures.",
+    "base_price": 189,
+    "sale_price": 159,
+    "stock": 101,
+    "tags": [
+      "Shoes",
+      "Outdoor"
+    ],
+    "weight": 1250,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=hiking-boots",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=hiking-boots"
+    ],
+    "category_slug": "footwear",
+    "sub_category_slug": "hiking-boots",
+    "color": [
+      "#374151",
+      "#92400E"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Footwear"
+      },
+      {
+        "key": "Brand",
+        "value": "TrailMaster"
+      },
+      {
+        "key": "Model",
+        "value": "TrailMaster-103"
+      },
+      {
+        "key": "Weight",
+        "value": "1250 g"
+      }
+    ],
+    "description": "<h1>TrailMaster Hiking Boots</h1><h2>Designed for Everyday Performance</h2><p>Durable waterproof hiking boots with strong grip for outdoor adventures. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Footwear</li><li><strong>Weight:</strong> 1250 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the TrailMaster Hiking Boots today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": null,
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 06:22:01.000",
+    "createdAt": "2026-07-27 06:22:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "a86f3bfa-7eab-46bc-a37b-328bab3392ec",
+    "title": "CloudStep Walking Shoes",
+    "short_description": "Comfort-focused walking shoes designed for daily movement and travel.",
+    "base_price": 119,
+    "sale_price": 99,
+    "stock": 118,
+    "tags": [
+      "Shoes",
+      "Walking"
+    ],
+    "weight": 740,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=walking-shoes",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=walking-shoes"
+    ],
+    "category_slug": "footwear",
+    "sub_category_slug": "walking-shoes",
+    "color": [
+      "#E5E7EB",
+      "#2563EB"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Footwear"
+      },
+      {
+        "key": "Brand",
+        "value": "CloudStep"
+      },
+      {
+        "key": "Model",
+        "value": "CloudStep-104"
+      },
+      {
+        "key": "Weight",
+        "value": "740 g"
+      }
+    ],
+    "description": "<h1>CloudStep Walking Shoes</h1><h2>Designed for Everyday Performance</h2><p>Comfort-focused walking shoes designed for daily movement and travel. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Footwear</li><li><strong>Weight:</strong> 740 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the CloudStep Walking Shoes today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "FLAT10",
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 06:19:01.000",
+    "createdAt": "2026-07-27 06:19:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "2d88ad07-83f9-43ec-b7df-4e07ea8bcfdc",
+    "title": "Nova X Pro Smartphone",
+    "short_description": "High-performance smartphone with a vivid display, fast processor, and advanced camera system.",
+    "base_price": 899,
+    "sale_price": 829,
+    "stock": 135,
+    "tags": [
+      "Mobile",
+      "Electronics"
+    ],
+    "weight": 205,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=mobile-phone",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=mobile-phone"
+    ],
+    "category_slug": "mobile",
+    "sub_category_slug": "smartphones",
+    "color": [
+      "#111827",
+      "#6B7280"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Mobile"
+      },
+      {
+        "key": "Brand",
+        "value": "Nova"
+      },
+      {
+        "key": "Model",
+        "value": "Nova-105"
+      },
+      {
+        "key": "Weight",
+        "value": "205 g"
+      }
+    ],
+    "description": "<h1>Nova X Pro Smartphone</h1><h2>Designed for Everyday Performance</h2><p>High-performance smartphone with a vivid display, fast processor, and advanced camera system. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Mobile</li><li><strong>Weight:</strong> 205 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the Nova X Pro Smartphone today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "FLAT10",
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 06:16:01.000",
+    "createdAt": "2026-07-27 06:16:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "c9524e2b-f619-41e6-b17b-b10d41177408",
+    "title": "PixelView 5G Smartphone",
+    "short_description": "Modern 5G phone with an OLED display, dependable battery, and versatile cameras.",
+    "base_price": 699,
+    "sale_price": 639,
+    "stock": 152,
+    "tags": [
+      "Mobile",
+      "5G"
+    ],
+    "weight": 190,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=smartphone-camera",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=smartphone-camera"
+    ],
+    "category_slug": "mobile",
+    "sub_category_slug": "smartphones",
+    "color": [
+      "#1D4ED8",
+      "#F8FAFC"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Mobile"
+      },
+      {
+        "key": "Brand",
+        "value": "PixelView"
+      },
+      {
+        "key": "Model",
+        "value": "PixelView-106"
+      },
+      {
+        "key": "Weight",
+        "value": "190 g"
+      }
+    ],
+    "description": "<h1>PixelView 5G Smartphone</h1><h2>Designed for Everyday Performance</h2><p>Modern 5G phone with an OLED display, dependable battery, and versatile cameras. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Mobile</li><li><strong>Weight:</strong> 190 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the PixelView 5G Smartphone today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": null,
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 06:13:01.000",
+    "createdAt": "2026-07-27 06:13:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "61b5764b-e9de-45e9-8cdc-30059824e90e",
+    "title": "GalaxyMax Ultra Smartphone",
+    "short_description": "Premium smartphone built for multitasking, photography, and immersive entertainment.",
+    "base_price": 1199,
+    "sale_price": 1099,
+    "stock": 169,
+    "tags": [
+      "Mobile",
+      "Samsung"
+    ],
+    "weight": 228,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=phone",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=phone"
+    ],
+    "category_slug": "mobile",
+    "sub_category_slug": "samsung",
+    "color": [
+      "#111827",
+      "#7C3AED"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Mobile"
+      },
+      {
+        "key": "Brand",
+        "value": "GalaxyMax"
+      },
+      {
+        "key": "Model",
+        "value": "GalaxyMax-107"
+      },
+      {
+        "key": "Weight",
+        "value": "228 g"
+      }
+    ],
+    "description": "<h1>GalaxyMax Ultra Smartphone</h1><h2>Designed for Everyday Performance</h2><p>Premium smartphone built for multitasking, photography, and immersive entertainment. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Mobile</li><li><strong>Weight:</strong> 228 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the GalaxyMax Ultra Smartphone today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "FLAT10",
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 06:10:01.000",
+    "createdAt": "2026-07-27 06:10:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "c06ab3ee-22ae-4bdd-abd5-436a29616022",
+    "title": "PocketOne Mini Smartphone",
+    "short_description": "Compact smartphone with smooth performance and a bright edge-to-edge display.",
+    "base_price": 499,
+    "sale_price": 449,
+    "stock": 186,
+    "tags": [
+      "Mobile",
+      "Compact"
+    ],
+    "weight": 165,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=smartphone",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=smartphone"
+    ],
+    "category_slug": "mobile",
+    "sub_category_slug": "smartphones",
+    "color": [
+      "#EC4899",
+      "#F3F4F6"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Mobile"
+      },
+      {
+        "key": "Brand",
+        "value": "PocketOne"
+      },
+      {
+        "key": "Model",
+        "value": "PocketOne-108"
+      },
+      {
+        "key": "Weight",
+        "value": "165 g"
+      }
+    ],
+    "description": "<h1>PocketOne Mini Smartphone</h1><h2>Designed for Everyday Performance</h2><p>Compact smartphone with smooth performance and a bright edge-to-edge display. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Mobile</li><li><strong>Weight:</strong> 165 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the PocketOne Mini Smartphone today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "FLAT10",
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 06:07:01.000",
+    "createdAt": "2026-07-27 06:07:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "e6808ad1-dfa9-40b5-87e2-21f81751a5fd",
+    "title": "Titan 5G Business Phone",
+    "short_description": "Reliable business-focused smartphone with long battery life and secure features.",
+    "base_price": 749,
+    "sale_price": 679,
+    "stock": 203,
+    "tags": [
+      "Mobile",
+      "Business"
+    ],
+    "weight": 210,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=mobile-phone",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=mobile-phone"
+    ],
+    "category_slug": "mobile",
+    "sub_category_slug": "smartphones",
+    "color": [
+      "#111827",
+      "#334155"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Mobile"
+      },
+      {
+        "key": "Brand",
+        "value": "Titan"
+      },
+      {
+        "key": "Model",
+        "value": "Titan-109"
+      },
+      {
+        "key": "Weight",
+        "value": "210 g"
+      }
+    ],
+    "description": "<h1>Titan 5G Business Phone</h1><h2>Designed for Everyday Performance</h2><p>Reliable business-focused smartphone with long battery life and secure features. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Mobile</li><li><strong>Weight:</strong> 210 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the Titan 5G Business Phone today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": null,
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 06:04:01.000",
+    "createdAt": "2026-07-27 06:04:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "a10cddc7-c932-4ef3-83ff-784693dd75f2",
+    "title": "VisionBook 14 Laptop",
+    "short_description": "Slim 14-inch laptop designed for work, study, browsing, and everyday productivity.",
+    "base_price": 899,
+    "sale_price": 799,
+    "stock": 220,
+    "tags": [
+      "Laptop",
+      "Computers"
+    ],
+    "weight": 1420,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=gaming-laptop",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=gaming-laptop"
+    ],
+    "category_slug": "computer",
+    "sub_category_slug": "laptops",
+    "color": [
+      "#6B7280",
+      "#111827"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Computer"
+      },
+      {
+        "key": "Brand",
+        "value": "VisionBook"
+      },
+      {
+        "key": "Model",
+        "value": "VisionBook-110"
+      },
+      {
+        "key": "Weight",
+        "value": "1420 g"
+      }
+    ],
+    "description": "<h1>VisionBook 14 Laptop</h1><h2>Designed for Everyday Performance</h2><p>Slim 14-inch laptop designed for work, study, browsing, and everyday productivity. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Computer</li><li><strong>Weight:</strong> 1420 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the VisionBook 14 Laptop today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "FLAT10",
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 06:01:01.000",
+    "createdAt": "2026-07-27 06:01:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "5fb4b059-2e8c-4963-84f5-f0a30a83b235",
+    "title": "ProCreator 16 Laptop",
+    "short_description": "Large-screen performance laptop for creative work, coding, and demanding applications.",
+    "base_price": 1699,
+    "sale_price": 1499,
+    "stock": 237,
+    "tags": [
+      "Laptop",
+      "Creator"
+    ],
+    "weight": 2050,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=office-laptop",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=office-laptop"
+    ],
+    "category_slug": "computer",
+    "sub_category_slug": "laptops",
+    "color": [
+      "#111827",
+      "#475569"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Computer"
+      },
+      {
+        "key": "Brand",
+        "value": "ProCreator"
+      },
+      {
+        "key": "Model",
+        "value": "ProCreator-111"
+      },
+      {
+        "key": "Weight",
+        "value": "2050 g"
+      }
+    ],
+    "description": "<h1>ProCreator 16 Laptop</h1><h2>Designed for Everyday Performance</h2><p>Large-screen performance laptop for creative work, coding, and demanding applications. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Computer</li><li><strong>Weight:</strong> 2050 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the ProCreator 16 Laptop today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "FLAT10",
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 05:58:01.000",
+    "createdAt": "2026-07-27 05:58:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "e1a79469-99cd-4c41-a6be-c8c5f2652981",
+    "title": "SwiftNote Air Laptop",
+    "short_description": "Lightweight laptop with long battery life for students, professionals, and travelers.",
+    "base_price": 1099,
+    "sale_price": 949,
+    "stock": 254,
+    "tags": [
+      "Laptop",
+      "Ultrabook"
+    ],
+    "weight": 1180,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=laptop",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=laptop"
+    ],
+    "category_slug": "computer",
+    "sub_category_slug": "laptops",
+    "color": [
+      "#E5E7EB",
+      "#64748B"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Computer"
+      },
+      {
+        "key": "Brand",
+        "value": "SwiftNote"
+      },
+      {
+        "key": "Model",
+        "value": "SwiftNote-112"
+      },
+      {
+        "key": "Weight",
+        "value": "1180 g"
+      }
+    ],
+    "description": "<h1>SwiftNote Air Laptop</h1><h2>Designed for Everyday Performance</h2><p>Lightweight laptop with long battery life for students, professionals, and travelers. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Computer</li><li><strong>Weight:</strong> 1180 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the SwiftNote Air Laptop today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": null,
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 05:55:01.000",
+    "createdAt": "2026-07-27 05:55:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "7734c7a5-cefc-4b52-a935-b1feb2d4fd9b",
+    "title": "GameForge RTX Laptop",
+    "short_description": "Gaming laptop with a high-refresh display and dedicated graphics performance.",
+    "base_price": 1899,
+    "sale_price": 1699,
+    "stock": 271,
+    "tags": [
+      "Laptop",
+      "Gaming"
+    ],
+    "weight": 2320,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=laptop-computer",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=laptop-computer"
+    ],
+    "category_slug": "computer",
+    "sub_category_slug": "gaming-laptops",
+    "color": [
+      "#111827",
+      "#DC2626"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Computer"
+      },
+      {
+        "key": "Brand",
+        "value": "GameForge"
+      },
+      {
+        "key": "Model",
+        "value": "GameForge-113"
+      },
+      {
+        "key": "Weight",
+        "value": "2320 g"
+      }
+    ],
+    "description": "<h1>GameForge RTX Laptop</h1><h2>Designed for Everyday Performance</h2><p>Gaming laptop with a high-refresh display and dedicated graphics performance. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Computer</li><li><strong>Weight:</strong> 2320 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the GameForge RTX Laptop today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "FLAT10",
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 05:52:01.000",
+    "createdAt": "2026-07-27 05:52:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "7034ff18-e19c-4b0d-bd56-44191d269ab0",
+    "title": "StudyMate 15 Laptop",
+    "short_description": "Affordable everyday laptop for schoolwork, office tasks, video calls, and web use.",
+    "base_price": 599,
+    "sale_price": 529,
+    "stock": 288,
+    "tags": [
+      "Laptop",
+      "Student"
+    ],
+    "weight": 1680,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=gaming-laptop",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=gaming-laptop"
+    ],
+    "category_slug": "computer",
+    "sub_category_slug": "laptops",
+    "color": [
+      "#F8FAFC",
+      "#1E3A8A"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Computer"
+      },
+      {
+        "key": "Brand",
+        "value": "StudyMate"
+      },
+      {
+        "key": "Model",
+        "value": "StudyMate-114"
+      },
+      {
+        "key": "Weight",
+        "value": "1680 g"
+      }
+    ],
+    "description": "<h1>StudyMate 15 Laptop</h1><h2>Designed for Everyday Performance</h2><p>Affordable everyday laptop for schoolwork, office tasks, video calls, and web use. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Computer</li><li><strong>Weight:</strong> 1680 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the StudyMate 15 Laptop today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "FLAT10",
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 05:49:01.000",
+    "createdAt": "2026-07-27 05:49:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "8b689311-0c8e-43c3-8ac8-e1fd2a8ea35c",
+    "title": "UltraView 55 4K Smart TV",
+    "short_description": "55-inch 4K smart TV with HDR visuals, streaming apps, and immersive sound.",
+    "base_price": 699,
+    "sale_price": 599,
+    "stock": 305,
+    "tags": [
+      "TV",
+      "Electronics"
+    ],
+    "weight": 12500,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=home-theater",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=home-theater"
+    ],
+    "category_slug": "electronics",
+    "sub_category_slug": "televisions",
+    "color": [
+      "#111827",
+      "#374151"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Electronics"
+      },
+      {
+        "key": "Brand",
+        "value": "UltraView"
+      },
+      {
+        "key": "Model",
+        "value": "UltraView-115"
+      },
+      {
+        "key": "Weight",
+        "value": "12500 g"
+      }
+    ],
+    "description": "<h1>UltraView 55 4K Smart TV</h1><h2>Designed for Everyday Performance</h2><p>55-inch 4K smart TV with HDR visuals, streaming apps, and immersive sound. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Electronics</li><li><strong>Weight:</strong> 12500 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the UltraView 55 4K Smart TV today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": null,
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 05:46:01.000",
+    "createdAt": "2026-07-27 05:46:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "07b6a8e2-f2fa-49aa-9813-c797828882c1",
+    "title": "CinemaMax 65 OLED TV",
+    "short_description": "Premium OLED television delivering deep contrast, rich colors, and cinematic viewing.",
+    "base_price": 1799,
+    "sale_price": 1599,
+    "stock": 322,
+    "tags": [
+      "TV",
+      "OLED"
+    ],
+    "weight": 18500,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=smart-tv",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=smart-tv"
+    ],
+    "category_slug": "electronics",
+    "sub_category_slug": "televisions",
+    "color": [
+      "#111827",
+      "#1F2937"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Electronics"
+      },
+      {
+        "key": "Brand",
+        "value": "CinemaMax"
+      },
+      {
+        "key": "Model",
+        "value": "CinemaMax-116"
+      },
+      {
+        "key": "Weight",
+        "value": "18500 g"
+      }
+    ],
+    "description": "<h1>CinemaMax 65 OLED TV</h1><h2>Designed for Everyday Performance</h2><p>Premium OLED television delivering deep contrast, rich colors, and cinematic viewing. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Electronics</li><li><strong>Weight:</strong> 18500 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the CinemaMax 65 OLED TV today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "FLAT10",
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 05:43:01.000",
+    "createdAt": "2026-07-27 05:43:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "971c5501-4ed8-4bb1-85e3-26c954206545",
+    "title": "HomeView 43 4K TV",
+    "short_description": "Compact 4K smart TV suited for bedrooms, apartments, and family entertainment.",
+    "base_price": 449,
+    "sale_price": 389,
+    "stock": 339,
+    "tags": [
+      "TV",
+      "4K"
+    ],
+    "weight": 8200,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=television",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=television"
+    ],
+    "category_slug": "electronics",
+    "sub_category_slug": "televisions",
+    "color": [
+      "#111827",
+      "#4B5563"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Electronics"
+      },
+      {
+        "key": "Brand",
+        "value": "HomeView"
+      },
+      {
+        "key": "Model",
+        "value": "HomeView-117"
+      },
+      {
+        "key": "Weight",
+        "value": "8200 g"
+      }
+    ],
+    "description": "<h1>HomeView 43 4K TV</h1><h2>Designed for Everyday Performance</h2><p>Compact 4K smart TV suited for bedrooms, apartments, and family entertainment. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Electronics</li><li><strong>Weight:</strong> 8200 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the HomeView 43 4K TV today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "FLAT10",
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 05:40:01.000",
+    "createdAt": "2026-07-27 05:40:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "07e953f1-d16a-4a3b-9178-b2b22d05d09f",
+    "title": "StreamBox 50 Smart TV",
+    "short_description": "Feature-rich smart TV with 4K resolution and easy access to popular streaming services.",
+    "base_price": 549,
+    "sale_price": 469,
+    "stock": 356,
+    "tags": [
+      "TV",
+      "Streaming"
+    ],
+    "weight": 10100,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=tv-screen",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=tv-screen"
+    ],
+    "category_slug": "electronics",
+    "sub_category_slug": "televisions",
+    "color": [
+      "#111827",
+      "#64748B"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Electronics"
+      },
+      {
+        "key": "Brand",
+        "value": "StreamBox"
+      },
+      {
+        "key": "Model",
+        "value": "StreamBox-118"
+      },
+      {
+        "key": "Weight",
+        "value": "10100 g"
+      }
+    ],
+    "description": "<h1>StreamBox 50 Smart TV</h1><h2>Designed for Everyday Performance</h2><p>Feature-rich smart TV with 4K resolution and easy access to popular streaming services. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Electronics</li><li><strong>Weight:</strong> 10100 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the StreamBox 50 Smart TV today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": null,
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 05:37:01.000",
+    "createdAt": "2026-07-27 05:37:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "7fda308e-18be-4bd2-bb61-dfa8105035e1",
+    "title": "VisionFrame 75 QLED TV",
+    "short_description": "Large QLED display built for sports, movies, gaming, and premium home theaters.",
+    "base_price": 1999,
+    "sale_price": 1799,
+    "stock": 373,
+    "tags": [
+      "TV",
+      "QLED"
+    ],
+    "weight": 24000,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=home-theater",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=home-theater"
+    ],
+    "category_slug": "electronics",
+    "sub_category_slug": "televisions",
+    "color": [
+      "#111827",
+      "#0F172A"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Electronics"
+      },
+      {
+        "key": "Brand",
+        "value": "VisionFrame"
+      },
+      {
+        "key": "Model",
+        "value": "VisionFrame-119"
+      },
+      {
+        "key": "Weight",
+        "value": "24000 g"
+      }
+    ],
+    "description": "<h1>VisionFrame 75 QLED TV</h1><h2>Designed for Everyday Performance</h2><p>Large QLED display built for sports, movies, gaming, and premium home theaters. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Electronics</li><li><strong>Weight:</strong> 24000 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the VisionFrame 75 QLED TV today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "FLAT10",
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 05:34:01.000",
+    "createdAt": "2026-07-27 05:34:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "1a53db80-d00d-403a-a991-c44384081ec2",
+    "title": "SoundWave Pro Headphones",
+    "short_description": "Wireless over-ear headphones with active noise cancellation and rich audio.",
+    "base_price": 249,
+    "sale_price": 219,
+    "stock": 390,
+    "tags": [
+      "Audio",
+      "Headphones"
+    ],
+    "weight": 310,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=headphones",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=headphones"
+    ],
+    "category_slug": "audio",
+    "sub_category_slug": "headphones",
+    "color": [
+      "#111827",
+      "#F3F4F6"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Audio"
+      },
+      {
+        "key": "Brand",
+        "value": "SoundWave"
+      },
+      {
+        "key": "Model",
+        "value": "SoundWave-120"
+      },
+      {
+        "key": "Weight",
+        "value": "310 g"
+      }
+    ],
+    "description": "<h1>SoundWave Pro Headphones</h1><h2>Designed for Everyday Performance</h2><p>Wireless over-ear headphones with active noise cancellation and rich audio. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Audio</li><li><strong>Weight:</strong> 310 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the SoundWave Pro Headphones today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "FLAT10",
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 05:31:01.000",
+    "createdAt": "2026-07-27 05:31:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "9e1af78d-5e44-451d-9701-b5d09d0a2660",
+    "title": "AirBeat ANC Earbuds",
+    "short_description": "Compact wireless earbuds with active noise cancellation and a portable charging case.",
+    "base_price": 149,
+    "sale_price": 129,
+    "stock": 407,
+    "tags": [
+      "Audio",
+      "Earbuds"
+    ],
+    "weight": 85,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=wireless-earbuds",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=wireless-earbuds"
+    ],
+    "category_slug": "audio",
+    "sub_category_slug": "earbuds",
+    "color": [
+      "#FFFFFF",
+      "#111827"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Audio"
+      },
+      {
+        "key": "Brand",
+        "value": "AirBeat"
+      },
+      {
+        "key": "Model",
+        "value": "AirBeat-121"
+      },
+      {
+        "key": "Weight",
+        "value": "85 g"
+      }
+    ],
+    "description": "<h1>AirBeat ANC Earbuds</h1><h2>Designed for Everyday Performance</h2><p>Compact wireless earbuds with active noise cancellation and a portable charging case. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Audio</li><li><strong>Weight:</strong> 85 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the AirBeat ANC Earbuds today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": null,
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 05:28:01.000",
+    "createdAt": "2026-07-27 05:28:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "9c95877c-43e3-4453-856e-f63b7a97efbb",
+    "title": "StudioCore Wireless Headphones",
+    "short_description": "Comfortable wireless headphones tuned for music, podcasts, and long listening sessions.",
+    "base_price": 179,
+    "sale_price": 149,
+    "stock": 424,
+    "tags": [
+      "Audio",
+      "Wireless"
+    ],
+    "weight": 295,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=bluetooth-speaker",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=bluetooth-speaker"
+    ],
+    "category_slug": "audio",
+    "sub_category_slug": "headphones",
+    "color": [
+      "#1F2937",
+      "#7C3AED"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Audio"
+      },
+      {
+        "key": "Brand",
+        "value": "StudioCore"
+      },
+      {
+        "key": "Model",
+        "value": "StudioCore-122"
+      },
+      {
+        "key": "Weight",
+        "value": "295 g"
+      }
+    ],
+    "description": "<h1>StudioCore Wireless Headphones</h1><h2>Designed for Everyday Performance</h2><p>Comfortable wireless headphones tuned for music, podcasts, and long listening sessions. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Audio</li><li><strong>Weight:</strong> 295 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the StudioCore Wireless Headphones today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "FLAT10",
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 05:25:01.000",
+    "createdAt": "2026-07-27 05:25:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "5c473263-98ae-4e3d-ac92-025d7a8c8c4a",
+    "title": "BassPulse Bluetooth Speaker",
+    "short_description": "Portable Bluetooth speaker with punchy bass and a durable travel-friendly design.",
+    "base_price": 119,
+    "sale_price": 99,
+    "stock": 441,
+    "tags": [
+      "Audio",
+      "Speaker"
+    ],
+    "weight": 640,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=audio",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=audio"
+    ],
+    "category_slug": "audio",
+    "sub_category_slug": "speakers",
+    "color": [
+      "#111827",
+      "#2563EB"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Audio"
+      },
+      {
+        "key": "Brand",
+        "value": "BassPulse"
+      },
+      {
+        "key": "Model",
+        "value": "BassPulse-123"
+      },
+      {
+        "key": "Weight",
+        "value": "640 g"
+      }
+    ],
+    "description": "<h1>BassPulse Bluetooth Speaker</h1><h2>Designed for Everyday Performance</h2><p>Portable Bluetooth speaker with punchy bass and a durable travel-friendly design. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Audio</li><li><strong>Weight:</strong> 640 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the BassPulse Bluetooth Speaker today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "FLAT10",
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 05:22:01.000",
+    "createdAt": "2026-07-27 05:22:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "af5deb94-b401-427d-8177-791313f29321",
+    "title": "MiniBoom Portable Speaker",
+    "short_description": "Small portable speaker offering clear sound for rooms, picnics, and casual gatherings.",
+    "base_price": 69,
+    "sale_price": 59,
+    "stock": 458,
+    "tags": [
+      "Audio",
+      "Portable"
+    ],
+    "weight": 390,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=headphones",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=headphones"
+    ],
+    "category_slug": "audio",
+    "sub_category_slug": "speakers",
+    "color": [
+      "#111827",
+      "#EF4444"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Audio"
+      },
+      {
+        "key": "Brand",
+        "value": "MiniBoom"
+      },
+      {
+        "key": "Model",
+        "value": "MiniBoom-124"
+      },
+      {
+        "key": "Weight",
+        "value": "390 g"
+      }
+    ],
+    "description": "<h1>MiniBoom Portable Speaker</h1><h2>Designed for Everyday Performance</h2><p>Small portable speaker offering clear sound for rooms, picnics, and casual gatherings. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Audio</li><li><strong>Weight:</strong> 390 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the MiniBoom Portable Speaker today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": null,
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 05:19:01.000",
+    "createdAt": "2026-07-27 05:19:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "483c20d9-8fba-4145-be2c-38e8d95a2b6f",
+    "title": "SmartFit Active Watch",
+    "short_description": "Fitness smartwatch with activity tracking, notifications, heart-rate monitoring, and GPS.",
+    "base_price": 299,
+    "sale_price": 249,
+    "stock": 475,
+    "tags": [
+      "Watch",
+      "Fitness"
+    ],
+    "weight": 58,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=fitness-watch",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=fitness-watch"
+    ],
+    "category_slug": "wearables",
+    "sub_category_slug": "smartwatches",
+    "color": [
+      "#111827",
+      "#22C55E"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Wearables"
+      },
+      {
+        "key": "Brand",
+        "value": "SmartFit"
+      },
+      {
+        "key": "Model",
+        "value": "SmartFit-125"
+      },
+      {
+        "key": "Weight",
+        "value": "58 g"
+      }
+    ],
+    "description": "<h1>SmartFit Active Watch</h1><h2>Designed for Everyday Performance</h2><p>Fitness smartwatch with activity tracking, notifications, heart-rate monitoring, and GPS. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Wearables</li><li><strong>Weight:</strong> 58 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the SmartFit Active Watch today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "FLAT10",
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 05:16:01.000",
+    "createdAt": "2026-07-27 05:16:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "99c840b7-0d94-4fdf-a01d-0fa78ae52752",
+    "title": "PulseTrack Lite Watch",
+    "short_description": "Affordable smartwatch for daily activity, sleep tracking, notifications, and workouts.",
+    "base_price": 159,
+    "sale_price": 129,
+    "stock": 492,
+    "tags": [
+      "Watch",
+      "Health"
+    ],
+    "weight": 52,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=sports-watch",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=sports-watch"
+    ],
+    "category_slug": "wearables",
+    "sub_category_slug": "smartwatches",
+    "color": [
+      "#0F172A",
+      "#3B82F6"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Wearables"
+      },
+      {
+        "key": "Brand",
+        "value": "PulseTrack"
+      },
+      {
+        "key": "Model",
+        "value": "PulseTrack-126"
+      },
+      {
+        "key": "Weight",
+        "value": "52 g"
+      }
+    ],
+    "description": "<h1>PulseTrack Lite Watch</h1><h2>Designed for Everyday Performance</h2><p>Affordable smartwatch for daily activity, sleep tracking, notifications, and workouts. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Wearables</li><li><strong>Weight:</strong> 52 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the PulseTrack Lite Watch today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "FLAT10",
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 05:13:01.000",
+    "createdAt": "2026-07-27 05:13:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "cace1920-0d82-49e5-925b-66c6f38dabea",
+    "title": "TimePro Classic Smartwatch",
+    "short_description": "Elegant smartwatch combining classic styling with modern fitness and notification features.",
+    "base_price": 349,
+    "sale_price": 299,
+    "stock": 58,
+    "tags": [
+      "Watch",
+      "Premium"
+    ],
+    "weight": 64,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=smart-band",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=smart-band"
+    ],
+    "category_slug": "wearables",
+    "sub_category_slug": "smartwatches",
+    "color": [
+      "#78350F",
+      "#111827"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Wearables"
+      },
+      {
+        "key": "Brand",
+        "value": "TimePro"
+      },
+      {
+        "key": "Model",
+        "value": "TimePro-127"
+      },
+      {
+        "key": "Weight",
+        "value": "64 g"
+      }
+    ],
+    "description": "<h1>TimePro Classic Smartwatch</h1><h2>Designed for Everyday Performance</h2><p>Elegant smartwatch combining classic styling with modern fitness and notification features. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Wearables</li><li><strong>Weight:</strong> 64 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the TimePro Classic Smartwatch today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": null,
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 05:10:01.000",
+    "createdAt": "2026-07-27 05:10:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "b34a21f8-6d73-4024-8a08-41fac1c08eb6",
+    "title": "ActiveBand Fitness Tracker",
+    "short_description": "Slim fitness band for steps, workouts, sleep insights, and daily activity goals.",
+    "base_price": 89,
+    "sale_price": 74,
+    "stock": 75,
+    "tags": [
+      "Fitness",
+      "Tracker"
+    ],
+    "weight": 28,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=smartwatch",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=smartwatch"
+    ],
+    "category_slug": "wearables",
+    "sub_category_slug": "fitness-bands",
+    "color": [
+      "#111827",
+      "#EC4899"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Wearables"
+      },
+      {
+        "key": "Brand",
+        "value": "ActiveBand"
+      },
+      {
+        "key": "Model",
+        "value": "ActiveBand-128"
+      },
+      {
+        "key": "Weight",
+        "value": "28 g"
+      }
+    ],
+    "description": "<h1>ActiveBand Fitness Tracker</h1><h2>Designed for Everyday Performance</h2><p>Slim fitness band for steps, workouts, sleep insights, and daily activity goals. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Wearables</li><li><strong>Weight:</strong> 28 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the ActiveBand Fitness Tracker today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "FLAT10",
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 05:07:01.000",
+    "createdAt": "2026-07-27 05:07:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "e6db4542-6d32-430d-949d-00c7ba699c9c",
+    "title": "Outdoor GPS Adventure Watch",
+    "short_description": "Rugged GPS watch designed for hiking, running, cycling, and outdoor exploration.",
+    "base_price": 499,
+    "sale_price": 429,
+    "stock": 92,
+    "tags": [
+      "Watch",
+      "Outdoor"
+    ],
+    "weight": 72,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=fitness-watch",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=fitness-watch"
+    ],
+    "category_slug": "wearables",
+    "sub_category_slug": "smartwatches",
+    "color": [
+      "#111827",
+      "#16A34A"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Wearables"
+      },
+      {
+        "key": "Brand",
+        "value": "Outdoor"
+      },
+      {
+        "key": "Model",
+        "value": "Outdoor-129"
+      },
+      {
+        "key": "Weight",
+        "value": "72 g"
+      }
+    ],
+    "description": "<h1>Outdoor GPS Adventure Watch</h1><h2>Designed for Everyday Performance</h2><p>Rugged GPS watch designed for hiking, running, cycling, and outdoor exploration. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Wearables</li><li><strong>Weight:</strong> 72 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the Outdoor GPS Adventure Watch today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "FLAT10",
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 05:04:01.000",
+    "createdAt": "2026-07-27 05:04:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "947b753a-d79e-49e3-8509-49ecbb348c77",
+    "title": "ErgoMesh Office Chair",
+    "short_description": "Ergonomic office chair with breathable mesh, adjustable lumbar support, and armrests.",
+    "base_price": 349,
+    "sale_price": 299,
+    "stock": 109,
+    "tags": [
+      "Furniture",
+      "Office"
+    ],
+    "weight": 14500,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=office-desk",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=office-desk"
+    ],
+    "category_slug": "furniture",
+    "sub_category_slug": "office-chairs",
+    "color": [
+      "#111827",
+      "#6B7280"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Furniture"
+      },
+      {
+        "key": "Brand",
+        "value": "ErgoMesh"
+      },
+      {
+        "key": "Model",
+        "value": "ErgoMesh-130"
+      },
+      {
+        "key": "Weight",
+        "value": "14500 g"
+      }
+    ],
+    "description": "<h1>ErgoMesh Office Chair</h1><h2>Designed for Everyday Performance</h2><p>Ergonomic office chair with breathable mesh, adjustable lumbar support, and armrests. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Furniture</li><li><strong>Weight:</strong> 14500 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the ErgoMesh Office Chair today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": null,
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 05:01:01.000",
+    "createdAt": "2026-07-27 05:01:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "cfadc53a-0471-47b6-ae2a-aaadd550b0c7",
+    "title": "Executive Comfort Chair",
+    "short_description": "Premium padded office chair designed for comfortable long work sessions.",
+    "base_price": 499,
+    "sale_price": 429,
+    "stock": 126,
+    "tags": [
+      "Furniture",
+      "Office"
+    ],
+    "weight": 18200,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=workspace",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=workspace"
+    ],
+    "category_slug": "furniture",
+    "sub_category_slug": "office-chairs",
+    "color": [
+      "#111827",
+      "#78350F"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Furniture"
+      },
+      {
+        "key": "Brand",
+        "value": "Executive"
+      },
+      {
+        "key": "Model",
+        "value": "Executive-131"
+      },
+      {
+        "key": "Weight",
+        "value": "18200 g"
+      }
+    ],
+    "description": "<h1>Executive Comfort Chair</h1><h2>Designed for Everyday Performance</h2><p>Premium padded office chair designed for comfortable long work sessions. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Furniture</li><li><strong>Weight:</strong> 18200 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the Executive Comfort Chair today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "FLAT10",
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 04:58:01.000",
+    "createdAt": "2026-07-27 04:58:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "7a1aa6f5-72d1-4950-b02d-4a4be66cb275",
+    "title": "FlexWork Task Chair",
+    "short_description": "Adjustable task chair with supportive backrest and smooth-rolling casters.",
+    "base_price": 249,
+    "sale_price": 209,
+    "stock": 143,
+    "tags": [
+      "Furniture",
+      "Office"
+    ],
+    "weight": 11200,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=office-chair",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=office-chair"
+    ],
+    "category_slug": "furniture",
+    "sub_category_slug": "office-chairs",
+    "color": [
+      "#374151",
+      "#2563EB"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Furniture"
+      },
+      {
+        "key": "Brand",
+        "value": "FlexWork"
+      },
+      {
+        "key": "Model",
+        "value": "FlexWork-132"
+      },
+      {
+        "key": "Weight",
+        "value": "11200 g"
+      }
+    ],
+    "description": "<h1>FlexWork Task Chair</h1><h2>Designed for Everyday Performance</h2><p>Adjustable task chair with supportive backrest and smooth-rolling casters. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Furniture</li><li><strong>Weight:</strong> 11200 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the FlexWork Task Chair today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "FLAT10",
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 04:55:01.000",
+    "createdAt": "2026-07-27 04:55:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "43df8c42-ab74-4ebb-8cd0-f32ce557644e",
+    "title": "Minimal Oak Study Desk",
+    "short_description": "Clean-lined oak desk with generous workspace for study, work, and creative projects.",
+    "base_price": 399,
+    "sale_price": 349,
+    "stock": 160,
+    "tags": [
+      "Furniture",
+      "Desk"
+    ],
+    "weight": 21000,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=desk",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=desk"
+    ],
+    "category_slug": "furniture",
+    "sub_category_slug": "desks",
+    "color": [
+      "#92400E",
+      "#F5F5F4"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Furniture"
+      },
+      {
+        "key": "Brand",
+        "value": "Minimal"
+      },
+      {
+        "key": "Model",
+        "value": "Minimal-133"
+      },
+      {
+        "key": "Weight",
+        "value": "21000 g"
+      }
+    ],
+    "description": "<h1>Minimal Oak Study Desk</h1><h2>Designed for Everyday Performance</h2><p>Clean-lined oak desk with generous workspace for study, work, and creative projects. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Furniture</li><li><strong>Weight:</strong> 21000 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the Minimal Oak Study Desk today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": null,
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 04:52:01.000",
+    "createdAt": "2026-07-27 04:52:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "3fff2959-a907-4a1d-b516-7e16314a4b5a",
+    "title": "Compact Home Office Desk",
+    "short_description": "Space-saving work desk designed for bedrooms, apartments, and compact offices.",
+    "base_price": 229,
+    "sale_price": 199,
+    "stock": 177,
+    "tags": [
+      "Furniture",
+      "Desk"
+    ],
+    "weight": 13800,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=office-desk",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=office-desk"
+    ],
+    "category_slug": "furniture",
+    "sub_category_slug": "desks",
+    "color": [
+      "#F5F5F4",
+      "#374151"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Furniture"
+      },
+      {
+        "key": "Brand",
+        "value": "Compact"
+      },
+      {
+        "key": "Model",
+        "value": "Compact-134"
+      },
+      {
+        "key": "Weight",
+        "value": "13800 g"
+      }
+    ],
+    "description": "<h1>Compact Home Office Desk</h1><h2>Designed for Everyday Performance</h2><p>Space-saving work desk designed for bedrooms, apartments, and compact offices. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Furniture</li><li><strong>Weight:</strong> 13800 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the Compact Home Office Desk today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "FLAT10",
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 04:49:01.000",
+    "createdAt": "2026-07-27 04:49:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "a42e0385-778c-46a4-9c9f-9e71f6e2bbff",
+    "title": "Everyday Cotton T-Shirt",
+    "short_description": "Soft cotton crew-neck T-shirt designed for comfortable everyday wear.",
+    "base_price": 29,
+    "sale_price": 24,
+    "stock": 194,
+    "tags": [
+      "Fashion",
+      "T-Shirt"
+    ],
+    "weight": 210,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=t-shirt",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=t-shirt"
+    ],
+    "category_slug": "fashion",
+    "sub_category_slug": "t-shirts",
+    "color": [
+      "#FFFFFF",
+      "#111827",
+      "#2563EB"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Fashion"
+      },
+      {
+        "key": "Brand",
+        "value": "Everyday"
+      },
+      {
+        "key": "Model",
+        "value": "Everyday-135"
+      },
+      {
+        "key": "Weight",
+        "value": "210 g"
+      }
+    ],
+    "description": "<h1>Everyday Cotton T-Shirt</h1><h2>Designed for Everyday Performance</h2><p>Soft cotton crew-neck T-shirt designed for comfortable everyday wear. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Fashion</li><li><strong>Weight:</strong> 210 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the Everyday Cotton T-Shirt today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "FLAT10",
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 04:46:01.000",
+    "createdAt": "2026-07-27 04:46:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "281e8f93-f8d8-42f0-afff-a36b4517a7f4",
+    "title": "Premium Oversized Hoodie",
+    "short_description": "Relaxed-fit hoodie with a soft interior and versatile streetwear styling.",
+    "base_price": 69,
+    "sale_price": 59,
+    "stock": 211,
+    "tags": [
+      "Fashion",
+      "Hoodie"
+    ],
+    "weight": 540,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=hoodie",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=hoodie"
+    ],
+    "category_slug": "fashion",
+    "sub_category_slug": "hoodies",
+    "color": [
+      "#111827",
+      "#6B7280"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Fashion"
+      },
+      {
+        "key": "Brand",
+        "value": "Premium"
+      },
+      {
+        "key": "Model",
+        "value": "Premium-136"
+      },
+      {
+        "key": "Weight",
+        "value": "540 g"
+      }
+    ],
+    "description": "<h1>Premium Oversized Hoodie</h1><h2>Designed for Everyday Performance</h2><p>Relaxed-fit hoodie with a soft interior and versatile streetwear styling. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Fashion</li><li><strong>Weight:</strong> 540 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the Premium Oversized Hoodie today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": null,
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 04:43:01.000",
+    "createdAt": "2026-07-27 04:43:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "6cc03a80-cb4d-4ef6-a23e-4a5ae2097376",
+    "title": "Classic Denim Jacket",
+    "short_description": "Timeless denim jacket with a structured fit for casual layering.",
+    "base_price": 89,
+    "sale_price": 74,
+    "stock": 228,
+    "tags": [
+      "Fashion",
+      "Jacket"
+    ],
+    "weight": 720,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=denim-jacket",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=denim-jacket"
+    ],
+    "category_slug": "fashion",
+    "sub_category_slug": "jackets",
+    "color": [
+      "#1D4ED8",
+      "#1E3A8A"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Fashion"
+      },
+      {
+        "key": "Brand",
+        "value": "Classic"
+      },
+      {
+        "key": "Model",
+        "value": "Classic-137"
+      },
+      {
+        "key": "Weight",
+        "value": "720 g"
+      }
+    ],
+    "description": "<h1>Classic Denim Jacket</h1><h2>Designed for Everyday Performance</h2><p>Timeless denim jacket with a structured fit for casual layering. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Fashion</li><li><strong>Weight:</strong> 720 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the Classic Denim Jacket today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "FLAT10",
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 04:40:01.000",
+    "createdAt": "2026-07-27 04:40:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "0aa1adfc-c357-478d-b080-dd0e39530d6a",
+    "title": "Relaxed Linen Shirt",
+    "short_description": "Breathable linen-blend shirt with a relaxed silhouette for warm-weather outfits.",
+    "base_price": 59,
+    "sale_price": 49,
+    "stock": 245,
+    "tags": [
+      "Fashion",
+      "Shirt"
+    ],
+    "weight": 190,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=linen-shirt",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=linen-shirt"
+    ],
+    "category_slug": "fashion",
+    "sub_category_slug": "shirts",
+    "color": [
+      "#F5F5DC",
+      "#FFFFFF"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Fashion"
+      },
+      {
+        "key": "Brand",
+        "value": "Relaxed"
+      },
+      {
+        "key": "Model",
+        "value": "Relaxed-138"
+      },
+      {
+        "key": "Weight",
+        "value": "190 g"
+      }
+    ],
+    "description": "<h1>Relaxed Linen Shirt</h1><h2>Designed for Everyday Performance</h2><p>Breathable linen-blend shirt with a relaxed silhouette for warm-weather outfits. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Fashion</li><li><strong>Weight:</strong> 190 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the Relaxed Linen Shirt today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "FLAT10",
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 04:37:01.000",
+    "createdAt": "2026-07-27 04:37:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "20be0ee6-646f-4bce-a9fa-c86d93fb98d4",
+    "title": "Modern Chino Pants",
+    "short_description": "Versatile chino pants with a clean cut suitable for casual and smart-casual looks.",
+    "base_price": 65,
+    "sale_price": 55,
+    "stock": 262,
+    "tags": [
+      "Fashion",
+      "Pants"
+    ],
+    "weight": 460,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=chinos",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=chinos"
+    ],
+    "category_slug": "fashion",
+    "sub_category_slug": "pants",
+    "color": [
+      "#92400E",
+      "#1F2937"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Fashion"
+      },
+      {
+        "key": "Brand",
+        "value": "Modern"
+      },
+      {
+        "key": "Model",
+        "value": "Modern-139"
+      },
+      {
+        "key": "Weight",
+        "value": "460 g"
+      }
+    ],
+    "description": "<h1>Modern Chino Pants</h1><h2>Designed for Everyday Performance</h2><p>Versatile chino pants with a clean cut suitable for casual and smart-casual looks. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Fashion</li><li><strong>Weight:</strong> 460 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the Modern Chino Pants today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": null,
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 04:34:01.000",
+    "createdAt": "2026-07-27 04:34:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "2e7ed107-d8e8-401e-9990-dbf935e19944",
+    "title": "AeroRide 700C Road Bike",
+    "short_description": "Lightweight road bicycle designed for fast commuting, fitness rides, and long-distance cycling.",
+    "base_price": 1299,
+    "sale_price": 1149,
+    "stock": 279,
+    "tags": [
+      "Bike",
+      "Road"
+    ],
+    "weight": 9800,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=road-bike",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=road-bike"
+    ],
+    "category_slug": "bikes",
+    "sub_category_slug": "road-bikes",
+    "color": [
+      "#111827",
+      "#DC2626"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Bikes"
+      },
+      {
+        "key": "Brand",
+        "value": "AeroRide"
+      },
+      {
+        "key": "Model",
+        "value": "AeroRide-140"
+      },
+      {
+        "key": "Weight",
+        "value": "9800 g"
+      }
+    ],
+    "description": "<h1>AeroRide 700C Road Bike</h1><h2>Designed for Everyday Performance</h2><p>Lightweight road bicycle designed for fast commuting, fitness rides, and long-distance cycling. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Bikes</li><li><strong>Weight:</strong> 9800 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the AeroRide 700C Road Bike today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "FLAT10",
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 04:31:01.000",
+    "createdAt": "2026-07-27 04:31:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "9bf5075a-e09a-4768-aae5-23e24d7cbb2b",
+    "title": "MountainForce Trail Bike",
+    "short_description": "Trail-ready mountain bike with suspension and durable components for off-road riding.",
+    "base_price": 1499,
+    "sale_price": 1299,
+    "stock": 296,
+    "tags": [
+      "Bike",
+      "Mountain"
+    ],
+    "weight": 13500,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=mountain-bike",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=mountain-bike"
+    ],
+    "category_slug": "bikes",
+    "sub_category_slug": "mountain-bikes",
+    "color": [
+      "#16A34A",
+      "#111827"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Bikes"
+      },
+      {
+        "key": "Brand",
+        "value": "MountainForce"
+      },
+      {
+        "key": "Model",
+        "value": "MountainForce-141"
+      },
+      {
+        "key": "Weight",
+        "value": "13500 g"
+      }
+    ],
+    "description": "<h1>MountainForce Trail Bike</h1><h2>Designed for Everyday Performance</h2><p>Trail-ready mountain bike with suspension and durable components for off-road riding. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Bikes</li><li><strong>Weight:</strong> 13500 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the MountainForce Trail Bike today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "FLAT10",
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 04:28:01.000",
+    "createdAt": "2026-07-27 04:28:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "3524762b-fb81-40e4-9f2c-862bfd18b6b8",
+    "title": "CityGlide Comfort Bike",
+    "short_description": "Comfortable city bicycle with an upright riding position and practical everyday design.",
+    "base_price": 599,
+    "sale_price": 519,
+    "stock": 313,
+    "tags": [
+      "Bike",
+      "City"
+    ],
+    "weight": 11800,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=city-bike",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=city-bike"
+    ],
+    "category_slug": "bikes",
+    "sub_category_slug": "city-bikes",
+    "color": [
+      "#2563EB",
+      "#F8FAFC"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Bikes"
+      },
+      {
+        "key": "Brand",
+        "value": "CityGlide"
+      },
+      {
+        "key": "Model",
+        "value": "CityGlide-142"
+      },
+      {
+        "key": "Weight",
+        "value": "11800 g"
+      }
+    ],
+    "description": "<h1>CityGlide Comfort Bike</h1><h2>Designed for Everyday Performance</h2><p>Comfortable city bicycle with an upright riding position and practical everyday design. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Bikes</li><li><strong>Weight:</strong> 11800 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the CityGlide Comfort Bike today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": null,
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 04:25:01.000",
+    "createdAt": "2026-07-27 04:25:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "9a3cd8cc-813b-4d70-aef2-b564a7fff095",
+    "title": "SprintX Fitness Bike",
+    "short_description": "Responsive fitness bike built for efficient training and fast urban rides.",
+    "base_price": 799,
+    "sale_price": 699,
+    "stock": 330,
+    "tags": [
+      "Bike",
+      "Fitness"
+    ],
+    "weight": 10500,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=bicycle",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=bicycle"
+    ],
+    "category_slug": "bikes",
+    "sub_category_slug": "fitness-bikes",
+    "color": [
+      "#111827",
+      "#F97316"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Bikes"
+      },
+      {
+        "key": "Brand",
+        "value": "SprintX"
+      },
+      {
+        "key": "Model",
+        "value": "SprintX-143"
+      },
+      {
+        "key": "Weight",
+        "value": "10500 g"
+      }
+    ],
+    "description": "<h1>SprintX Fitness Bike</h1><h2>Designed for Everyday Performance</h2><p>Responsive fitness bike built for efficient training and fast urban rides. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Bikes</li><li><strong>Weight:</strong> 10500 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the SprintX Fitness Bike today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "FLAT10",
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 04:22:01.000",
+    "createdAt": "2026-07-27 04:22:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "65893041-c488-414e-8ed5-a70a1942481b",
+    "title": "TrailLite Hybrid Bike",
+    "short_description": "Versatile hybrid bicycle combining road efficiency with light trail capability.",
+    "base_price": 699,
+    "sale_price": 599,
+    "stock": 347,
+    "tags": [
+      "Bike",
+      "Hybrid"
+    ],
+    "weight": 11200,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=road-bike",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=road-bike"
+    ],
+    "category_slug": "bikes",
+    "sub_category_slug": "hybrid-bikes",
+    "color": [
+      "#374151",
+      "#22C55E"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Bikes"
+      },
+      {
+        "key": "Brand",
+        "value": "TrailLite"
+      },
+      {
+        "key": "Model",
+        "value": "TrailLite-144"
+      },
+      {
+        "key": "Weight",
+        "value": "11200 g"
+      }
+    ],
+    "description": "<h1>TrailLite Hybrid Bike</h1><h2>Designed for Everyday Performance</h2><p>Versatile hybrid bicycle combining road efficiency with light trail capability. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Bikes</li><li><strong>Weight:</strong> 11200 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the TrailLite Hybrid Bike today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "FLAT10",
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 04:19:01.000",
+    "createdAt": "2026-07-27 04:19:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "d3cf62b6-44c3-41f5-9373-84fcc49ceb1c",
+    "title": "BrewMaster Espresso Machine",
+    "short_description": "Countertop espresso machine with pressure brewing and a milk-frothing system.",
+    "base_price": 599,
+    "sale_price": 499,
+    "stock": 364,
+    "tags": [
+      "Kitchen",
+      "Coffee"
+    ],
+    "weight": 8600,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=espresso-machine",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=espresso-machine"
+    ],
+    "category_slug": "kitchen",
+    "sub_category_slug": "coffee-machines",
+    "color": [
+      "#111827",
+      "#C0C0C0"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Kitchen"
+      },
+      {
+        "key": "Brand",
+        "value": "BrewMaster"
+      },
+      {
+        "key": "Model",
+        "value": "BrewMaster-145"
+      },
+      {
+        "key": "Weight",
+        "value": "8600 g"
+      }
+    ],
+    "description": "<h1>BrewMaster Espresso Machine</h1><h2>Designed for Everyday Performance</h2><p>Countertop espresso machine with pressure brewing and a milk-frothing system. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Kitchen</li><li><strong>Weight:</strong> 8600 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the BrewMaster Espresso Machine today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": null,
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 04:16:01.000",
+    "createdAt": "2026-07-27 04:16:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "1425276f-2420-4ee6-9d34-e489071ca6c0",
+    "title": "ChefPro Air Fryer XL",
+    "short_description": "Large-capacity air fryer for crisp cooking with less oil and easy digital controls.",
+    "base_price": 179,
+    "sale_price": 149,
+    "stock": 381,
+    "tags": [
+      "Kitchen",
+      "Appliance"
+    ],
+    "weight": 6100,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=air-fryer",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=air-fryer"
+    ],
+    "category_slug": "kitchen",
+    "sub_category_slug": "air-fryers",
+    "color": [
+      "#111827",
+      "#6B7280"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Kitchen"
+      },
+      {
+        "key": "Brand",
+        "value": "ChefPro"
+      },
+      {
+        "key": "Model",
+        "value": "ChefPro-146"
+      },
+      {
+        "key": "Weight",
+        "value": "6100 g"
+      }
+    ],
+    "description": "<h1>ChefPro Air Fryer XL</h1><h2>Designed for Everyday Performance</h2><p>Large-capacity air fryer for crisp cooking with less oil and easy digital controls. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Kitchen</li><li><strong>Weight:</strong> 6100 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the ChefPro Air Fryer XL today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "FLAT10",
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 04:13:01.000",
+    "createdAt": "2026-07-27 04:13:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "f8c0912d-48a2-4ffc-88b3-0729bb7eb280",
+    "title": "PureBlend Pro Blender",
+    "short_description": "High-speed blender for smoothies, sauces, soups, and everyday food preparation.",
+    "base_price": 229,
+    "sale_price": 189,
+    "stock": 398,
+    "tags": [
+      "Kitchen",
+      "Blender"
+    ],
+    "weight": 4700,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=blender",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=blender"
+    ],
+    "category_slug": "kitchen",
+    "sub_category_slug": "blenders",
+    "color": [
+      "#111827",
+      "#F8FAFC"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Kitchen"
+      },
+      {
+        "key": "Brand",
+        "value": "PureBlend"
+      },
+      {
+        "key": "Model",
+        "value": "PureBlend-147"
+      },
+      {
+        "key": "Weight",
+        "value": "4700 g"
+      }
+    ],
+    "description": "<h1>PureBlend Pro Blender</h1><h2>Designed for Everyday Performance</h2><p>High-speed blender for smoothies, sauces, soups, and everyday food preparation. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Kitchen</li><li><strong>Weight:</strong> 4700 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the PureBlend Pro Blender today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "FLAT10",
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 04:10:01.000",
+    "createdAt": "2026-07-27 04:10:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "4d97f011-2933-48f6-9beb-f7793efe42fc",
+    "title": "FreshKeep Smart Refrigerator",
+    "short_description": "Modern refrigerator with spacious storage, adjustable shelves, and efficient cooling.",
+    "base_price": 1499,
+    "sale_price": 1299,
+    "stock": 415,
+    "tags": [
+      "Kitchen",
+      "Refrigerator"
+    ],
+    "weight": 68000,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=refrigerator",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=refrigerator"
+    ],
+    "category_slug": "kitchen",
+    "sub_category_slug": "refrigerators",
+    "color": [
+      "#E5E7EB",
+      "#111827"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Kitchen"
+      },
+      {
+        "key": "Brand",
+        "value": "FreshKeep"
+      },
+      {
+        "key": "Model",
+        "value": "FreshKeep-148"
+      },
+      {
+        "key": "Weight",
+        "value": "68000 g"
+      }
+    ],
+    "description": "<h1>FreshKeep Smart Refrigerator</h1><h2>Designed for Everyday Performance</h2><p>Modern refrigerator with spacious storage, adjustable shelves, and efficient cooling. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Kitchen</li><li><strong>Weight:</strong> 68000 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the FreshKeep Smart Refrigerator today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": null,
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 04:07:01.000",
+    "createdAt": "2026-07-27 04:07:01.000",
+    "deleted_at": null
+  },
+  {
+    "id": "390e9447-d37e-41fc-bbd1-d4c93c248911",
+    "title": "QuickHeat Microwave Oven",
+    "short_description": "Compact microwave oven with practical presets for quick everyday meal preparation.",
+    "base_price": 199,
+    "sale_price": 169,
+    "stock": 432,
+    "tags": [
+      "Kitchen",
+      "Microwave"
+    ],
+    "weight": 11200,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=microwave",
+      "https://images.unsplash.com/photo-1498049794561-7780e7231661?auto=format&fit=crop&w=900&q=80&fm=jpg&ixlib=rb-4.1.0&query=microwave"
+    ],
+    "category_slug": "kitchen",
+    "sub_category_slug": "microwaves",
+    "color": [
+      "#111827",
+      "#6B7280"
+    ],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Kitchen"
+      },
+      {
+        "key": "Brand",
+        "value": "QuickHeat"
+      },
+      {
+        "key": "Model",
+        "value": "QuickHeat-149"
+      },
+      {
+        "key": "Weight",
+        "value": "11200 g"
+      }
+    ],
+    "description": "<h1>QuickHeat Microwave Oven</h1><h2>Designed for Everyday Performance</h2><p>Compact microwave oven with practical presets for quick everyday meal preparation. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Kitchen</li><li><strong>Weight:</strong> 11200 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the QuickHeat Microwave Oven today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "FLAT10",
+    "sizes": null,
+    "user_email": "topexo7972@meikeya.com",
+    "updated_at": "2026-07-27 04:04:01.000",
+    "createdAt": "2026-07-27 04:04:01.000",
+    "deleted_at": null
+  }
+]

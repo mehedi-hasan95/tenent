@@ -12,6 +12,9 @@ import { HTTPException } from "hono/http-exception"
 import categories from "./categories/categories-index"
 import subCategories from "./sub-categories/sub-categories-index"
 import users from "./users/users-index"
+import boosting from "./boosting-coin/boosting-coin-index"
+import { consumer, producer } from "./utils/kafka"
+import { runKafkaSubscriptions } from "./utils/subscriptions"
 
 const app = new OpenAPIHono({
   defaultHook,
@@ -33,6 +36,7 @@ const routes = app
   .route("/categories", categories)
   .route("/sub-categories", subCategories)
   .route("/users", users)
+  .route("/boosting", boosting)
 
 app.onError((err, c) => {
   if (err instanceof HTTPException) {
