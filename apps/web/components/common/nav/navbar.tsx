@@ -1,14 +1,30 @@
+"use client"
 import { LoginButton } from "@/components/auth/login-button"
 import { Logo } from "../logo"
 import { useGetSession } from "@/hooks/auth/use-auth"
 import { ProfileButton } from "./profile-button"
+import { WishlistButton } from "./wishlist-button"
+import { AddToCartButton } from "./add-to-cart-button"
+import { cn } from "@workspace/ui/lib/utils"
+import Link from "next/link"
+import { Button } from "@workspace/ui/components/button"
 
-export const NavBar = () => {
+interface Props {
+  className?: string
+}
+export const NavBar = ({ className }: Props) => {
   const { user } = useGetSession()
   return (
-    <div className="flex items-center justify-between">
+    <div className={cn("flex items-center justify-between", className)}>
       <Logo />
-      {user?.id ? <ProfileButton user={user} /> : <LoginButton />}
+      <div className="flex items-center gap-5">
+        <Link href={"/products"}>
+          <Button variant={"link"}>Products</Button>
+        </Link>
+        <WishlistButton showBadge />
+        <AddToCartButton showBadge />
+        {user?.id ? <ProfileButton user={user} /> : <LoginButton />}
+      </div>
     </div>
   )
 }

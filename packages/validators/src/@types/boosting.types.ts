@@ -22,7 +22,7 @@ export type VENDOR_COIN_HISTORY_TYPE = {
   price: number
 }
 
-export type VENDOR_BOOSTED_PRODUCT_TYPE = {
+export type BOOSTED_PRODUCT_TYPE = {
   id: string
   createdAt: Date
   updatedAt: Date

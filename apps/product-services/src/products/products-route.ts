@@ -45,3 +45,15 @@ export const singleProductsRoute = createRoute({
     500: { description: "INTERNAL_SERVER_ERROR" },
   },
 })
+
+export const boostedProductRoute = createRoute({
+  method: "get",
+  path: "/boosted-products",
+  summary: "Get boosted products",
+  tags,
+
+  responses: {
+    200: { description: "OK" },
+    500: { description: "Internal server error" },
+  },
+})

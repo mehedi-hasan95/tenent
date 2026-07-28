@@ -1,5 +1,9 @@
 import { RouteHandler } from "@workspace/open-api"
-import { allProductsRoute, singleProductsRoute } from "./products-route"
+import {
+  allProductsRoute,
+  boostedProductRoute,
+  singleProductsRoute,
+} from "./products-route"
 import { Cursor, decodeCursor, encodeCursor } from "../utils/cursor"
 import {
   and,
@@ -8,6 +12,7 @@ import {
   eq,
   getTableColumns,
   gt,
+  gte,
   isNull,
   lt,
   or,
@@ -101,5 +106,28 @@ export const singleProductsHandler: RouteHandler<
     return c.json({ data }, 200)
   } catch (error) {
     return c.json({ error: "Something went wrong" }, 500)
+  }
+}
+
+export const boostedProductHandler: RouteHandler<
+  typeof boostedProductRoute
+> = async (c) => {
+  try {
+    const data = await db.query.productBoost.findMany({
+      where: gte(productBoost.endAt, sql`now()`),
+      orderBy: [
+        desc(sql`
+      ${productBoost.coins} /
+      (extract(epoch from (${productBoost.endAt} - ${productBoost.createdAt})) / 86400.0)
+    `),
+      ],
+      with: {
+        product: true,
+      },
+    })
+
+    return c.json({ data }, 200)
+  } catch (error) {
+    return c.json({ message: "Something went wrong" }, 500)
   }
 }

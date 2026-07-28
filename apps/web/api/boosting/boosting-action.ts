@@ -1,5 +1,5 @@
 import {
-  VENDOR_BOOSTED_PRODUCT_TYPE,
+  BOOSTED_PRODUCT_TYPE,
   VENDOR_COIN_HISTORY_TYPE,
   VENDOR_COIN_TYPE,
 } from "@workspace/validators/types/boosting.types"
@@ -88,7 +88,7 @@ export const vendorAllBoostedProductsAction = async () => {
     throw error
   }
   const data: {
-    data: (VENDOR_BOOSTED_PRODUCT_TYPE & { product: PRODUCT_TYPE })[]
+    data: (BOOSTED_PRODUCT_TYPE & { product: PRODUCT_TYPE })[]
     pagination: PAGINATION_TYPES
   } = await response.json()
   return data
