@@ -51,7 +51,7 @@ export const AdminSubCategoriesTrashPage = ({ data }: Props) => {
 
       queryClient.setQueryData<subCategoriesType[]>(
         ["sub-categories"],
-        (old = []) => old.filter((cat) => !cat.deleted_at)
+        (old = []) => old.filter((cat) => !cat.deletedAt)
       )
 
       return { previousCategories }

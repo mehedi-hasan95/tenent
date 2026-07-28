@@ -11,7 +11,7 @@ export const specificationSchema = z.object({
 })
 export const baseProductValidator = z.object({
   title: z.string().min(1),
-  shortDescription: z.string().max(160),
+  shortDescription: z.string().max(300),
   description: z.string().nonempty(),
   basePrice: z.coerce.number().nonnegative(),
   salePrice: z.coerce.number().nonnegative(),

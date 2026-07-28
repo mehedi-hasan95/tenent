@@ -13,14 +13,14 @@ import { timestamps } from "./columns.helpers"
 import { relations } from "drizzle-orm"
 import { products } from "./products.schema"
 
-export const boosting_coin = pgTable("boosting_coin", {
+export const boostingCoin = pgTable("boosting_coin", {
   id: uuid().defaultRandom().primaryKey(),
   coin: real().notNull(),
-  is_active: boolean().default(false),
-  createdAt: timestamp().defaultNow().notNull(),
+  isActive: boolean("is_active").default(false),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
 })
 
-export const vendor_coin = pgTable(
+export const vendorCoin = pgTable(
   "vendor_coin",
   {
     id: uuid().defaultRandom().primaryKey(),
@@ -35,7 +35,7 @@ export const vendor_coin = pgTable(
   (table) => [uniqueIndex("vendor_email").on(table.email)]
 )
 
-export const vendor_coin_purchase = pgTable(
+export const vendorCoinPurchase = pgTable(
   "vendor_coin_purchase",
   {
     id: uuid().defaultRandom().primaryKey(),
@@ -53,36 +53,36 @@ export const vendor_coin_purchase = pgTable(
 
 // relations
 
-export const vendor_coin_relations = relations(vendor_coin, ({ one }) => ({
+export const vendorCoinRelations = relations(vendorCoin, ({ one }) => ({
   user: one(user, {
-    fields: [vendor_coin.email],
+    fields: [vendorCoin.email],
     references: [user.email],
   }),
 }))
 
-export const vendor_coin_purchase_relations = relations(
-  vendor_coin_purchase,
+export const vendorCoinPurchaseRelations = relations(
+  vendorCoinPurchase,
   ({ one }) => ({
     user: one(user, {
-      fields: [vendor_coin_purchase.email],
+      fields: [vendorCoinPurchase.email],
       references: [user.email],
     }),
   })
 )
 
-export const product_boost = pgTable(
+export const productBoost = pgTable(
   "product_boost",
   {
     id: uuid().defaultRandom().primaryKey(),
-    productId: uuid()
+    productId: uuid("product_id")
       .notNull()
       .references(() => products.id, { onDelete: "cascade" }),
-    userId: text()
+    userId: text("user_id")
       .notNull()
       .references(() => user.id, { onDelete: "cascade" }),
     coins: real().notNull(),
     ...timestamps,
-    endAt: timestamp(),
+    endAt: timestamp("end_at"),
   },
   (table) => [
     index("product_boosts_product_idx").on(table.productId),
@@ -96,13 +96,13 @@ export const product_boost = pgTable(
 
 // relations
 
-export const productBoostRelations = relations(product_boost, ({ one }) => ({
+export const productBoostRelations = relations(productBoost, ({ one }) => ({
   product: one(products, {
-    fields: [product_boost.productId],
+    fields: [productBoost.productId],
     references: [products.id],
   }),
   user: one(user, {
-    fields: [product_boost.userId],
+    fields: [productBoost.userId],
     references: [user.id],
   }),
 }))

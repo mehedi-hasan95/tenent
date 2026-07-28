@@ -3,6 +3,7 @@ import { z } from "@hono/zod-openapi"
 const cursorSchema = z.object({
   id: z.string(),
   createdAt: z.coerce.date(),
+  boost: z.coerce.number(),
 })
 
 export type Cursor = z.infer<typeof cursorSchema>

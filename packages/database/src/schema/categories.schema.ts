@@ -1,15 +1,7 @@
 import { relations } from "drizzle-orm"
 import { index, pgTable, text, timestamp, uuid } from "drizzle-orm/pg-core"
 import { products } from "./products.schema"
-
-const timestamps = {
-  createdAt: timestamp("createdAt").defaultNow().notNull(),
-  updatedAt: timestamp("updated_at")
-    .defaultNow()
-    .$onUpdate(() => /* @__PURE__ */ new Date())
-    .notNull(),
-  deleted_at: timestamp(),
-}
+import { timestamps } from "./columns.helpers"
 
 export const categories = pgTable(
   "categories",
@@ -19,7 +11,7 @@ export const categories = pgTable(
     slug: text().unique().notNull(),
     image: text(),
     ...timestamps,
-    deleted_at: timestamp(),
+    deletedAt: timestamp("deleted_at"),
   },
   (table) => [index("category_slug_ids").on(table.slug)]
 )
@@ -29,10 +21,10 @@ export const subCategories = pgTable(
   {
     id: uuid("id").defaultRandom().primaryKey(),
     ...timestamps,
-    deleted_at: timestamp(),
+    deletedAt: timestamp("deleted_at"),
     name: text().notNull(),
     slug: text().unique().notNull(),
-    categorySlug: text()
+    categorySlug: text("category_slug")
       .notNull()
       .references(() => categories.slug, { onDelete: "cascade" }),
   },

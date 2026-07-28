@@ -85,6 +85,13 @@
       "when": 1784699819090,
       "tag": "0011_fair_lethal_legion",
       "breakpoints": true
+    },
+    {
+      "idx": 12,
+      "version": "7",
+      "when": 1785151545149,
+      "tag": "0012_serious_anthem",
+      "breakpoints": true
     }
   ]
 }

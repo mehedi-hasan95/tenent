@@ -95,7 +95,7 @@ export const trashedProductHandler: RouteHandler<
 
     const data = await db
       .update(products)
-      .set({ deleted_at: sql`NOW() + INTERVAL '30 days'` })
+      .set({ deletedAt: sql`NOW() + INTERVAL '30 days'` })
       .where(and(eq(products.id, id), eq(products.userEmail, user?.email!)))
       .returning()
     console.log("data: ", data)
@@ -115,10 +115,7 @@ export const allTrashedProductsHandler: RouteHandler<
   try {
     const email = c.get("user")?.email
     const data = await db.query.products.findMany({
-      where: and(
-        eq(products.userEmail, email!),
-        isNotNull(products.deleted_at)
-      ),
+      where: and(eq(products.userEmail, email!), isNotNull(products.deletedAt)),
     })
     return c.json({ data }, 200)
   } catch (error) {
@@ -134,7 +131,7 @@ export const restoreProductsHandler: RouteHandler<
     const email = c.get("user")?.email
     const data = await db
       .update(products)
-      .set({ deleted_at: null })
+      .set({ deletedAt: null })
       .where(and(eq(products.id, id), eq(products.userEmail, email!)))
       .returning()
     return c.json({ data }, 201)
@@ -154,7 +151,7 @@ export const deleteManyProductsHandler: RouteHandler<
       .where(
         and(
           inArray(products.id, id),
-          isNotNull(products.deleted_at),
+          isNotNull(products.deletedAt),
           eq(products.userEmail, email!)
         )
       )
@@ -175,9 +172,7 @@ export const deleteTrashedProductsHandler: RouteHandler<
     const email = c.get("user")?.email
     const data = await db
       .delete(products)
-      .where(
-        and(isNotNull(products.deleted_at), eq(products.userEmail, email!))
-      )
+      .where(and(isNotNull(products.deletedAt), eq(products.userEmail, email!)))
       .returning()
     if (!data.length) {
       return c.json({ message: "Nothing in trash" })
@@ -198,7 +193,7 @@ export const deleteATrashedProductHandler: RouteHandler<
       .delete(products)
       .where(
         and(
-          isNotNull(products.deleted_at),
+          isNotNull(products.deletedAt),
           eq(products.userEmail, email!),
           eq(products.id, id)
         )
@@ -219,7 +214,7 @@ export const sellerAllProductHandler: RouteHandler<
   try {
     const email = c.get("user")?.email as string
     const data = await db.query.products.findMany({
-      where: and(eq(products.userEmail, email), isNull(products.deleted_at)),
+      where: and(eq(products.userEmail, email), isNull(products.deletedAt)),
       orderBy: desc(products.createdAt),
     })
     return c.json({ data }, 200)

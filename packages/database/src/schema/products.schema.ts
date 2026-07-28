@@ -15,7 +15,7 @@ import { categories, subCategories } from "./categories.schema"
 import { user } from "./user.schema"
 import { timestamps } from "./columns.helpers"
 import { relations } from "drizzle-orm"
-import { product_boost } from "./boosting.schema"
+import { productBoost } from "./boosting.schema"
 
 export const productTypeEnum = pgEnum("product_type", [
   "physical",
@@ -85,7 +85,7 @@ export const products = pgTable(
       }),
 
     ...timestamps,
-    deleted_at: timestamp(),
+    deletedAt: timestamp("deleted_at"),
   },
   (table) => [index("products_id_idx").on(table.id)]
 )
@@ -109,5 +109,5 @@ export const productsRelations = relations(products, ({ one, many }) => ({
     fields: [products.subCategorySlug],
     references: [subCategories.slug],
   }),
-  productsBoosts: many(product_boost),
+  productsBoosts: many(productBoost),
 }))

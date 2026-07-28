@@ -64,7 +64,7 @@ export const ProductsColumns = ({
       <DataTableColumnHeader column={column} title="Delete Date" />
     ),
     cell: ({ row }) => {
-      const date = row.original.deleted_at
+      const date = row.original.deletedAt
 
       return (
         <span>Delete after {differenceInDays(date ?? 0, new Date())} days</span>

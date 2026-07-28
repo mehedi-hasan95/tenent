@@ -126,8 +126,8 @@ export const getCategoriesHandler: RouteHandler<
         type === undefined
           ? undefined
           : type
-            ? isNull(categories.deleted_at)
-            : isNotNull(categories.deleted_at),
+            ? isNull(categories.deletedAt)
+            : isNotNull(categories.deletedAt),
       orderBy: (categories, { desc }) => [desc(categories.updatedAt)],
     })
 
@@ -170,7 +170,7 @@ export const trashCategoryHandler: RouteHandler<
     const { slug } = c.req.valid("json")
     const data = await db
       .update(categories)
-      .set({ deleted_at: sql`NOW() + INTERVAL '30 days'` })
+      .set({ deletedAt: sql`NOW() + INTERVAL '30 days'` })
       .where(eq(categories.slug, slug))
       .returning()
     return c.json({ data }, 201)
@@ -186,7 +186,7 @@ export const restoreCategoryHandler: RouteHandler<
     const { slug } = c.req.valid("json")
     const data = await db
       .update(categories)
-      .set({ deleted_at: null })
+      .set({ deletedAt: null })
       .where(eq(categories.slug, slug))
       .returning()
     return c.json({ data }, 201)
@@ -204,7 +204,7 @@ export const deleteManyCategoryHandler: RouteHandler<
     const data = await db
       .delete(categories)
       .where(
-        and(inArray(categories.slug, slug), isNotNull(categories.deleted_at))
+        and(inArray(categories.slug, slug), isNotNull(categories.deletedAt))
       )
       .returning()
     if (!data.length) {
@@ -222,7 +222,7 @@ export const deleteTrashedCategoryHandler: RouteHandler<
   try {
     const data = await db
       .delete(categories)
-      .where(isNotNull(categories.deleted_at))
+      .where(isNotNull(categories.deletedAt))
       .returning()
     if (!data.length) {
       return c.json({ message: "Nothing in trash" })

@@ -1,8 +1,8 @@
 import { db, eq, sql } from "@workspace/db"
 import {
-  boosting_coin,
-  vendor_coin,
-  vendor_coin_purchase,
+  boostingCoin,
+  vendorCoin,
+  vendorCoinPurchase,
 } from "@workspace/db/schema/boosting.schema"
 
 export const vendorCoinPurchaseAction = async ({
@@ -13,21 +13,21 @@ export const vendorCoinPurchaseAction = async ({
   price: number
 }) => {
   try {
-    const data = await db.query.boosting_coin.findFirst({
-      where: eq(boosting_coin.is_active, true),
+    const data = await db.query.boostingCoin.findFirst({
+      where: eq(boostingCoin.isActive, true),
     })
     const coin = data?.coin! * price
     await db.transaction(async (tx) => {
       const [purchase] = await tx
-        .insert(vendor_coin_purchase)
+        .insert(vendorCoinPurchase)
         .values({ email, coin, price })
         .returning()
       const [existing] = await tx
-        .insert(vendor_coin)
+        .insert(vendorCoin)
         .values({ email, coin })
         .onConflictDoUpdate({
-          target: vendor_coin.email,
-          set: { coin: sql`COALESCE(${vendor_coin.coin}, 0) + EXCLUDED.coin` },
+          target: vendorCoin.email,
+          set: { coin: sql`COALESCE(${vendorCoin.coin}, 0) + EXCLUDED.coin` },
         })
         .returning()
       return { purchase, existing }

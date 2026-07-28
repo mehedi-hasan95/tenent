@@ -19,7 +19,7 @@ import { toast } from "sonner"
 import { useDialogActiveStore } from "@/store/useModalActiveStore"
 import { LoadingButton } from "@/components/common/loading-button"
 import { ChartSpline } from "lucide-react"
-import { CACHE_VENDOR_AVAILABLE_BOOSTING_COIN } from "@/lib/query-cache"
+import { CACHE_VENDOR_AVAILABLE_BOOSTING_COIN, CACHE_VENDOR_BOOSTED_PRODUCTS } from "@/lib/query-cache"
 
 export const BoostedProductForm = () => {
   const { onOpen } = useDialogActiveStore()
@@ -41,6 +41,9 @@ export const BoostedProductForm = () => {
       onOpen(false)
       queryClient.invalidateQueries({
         queryKey: CACHE_VENDOR_AVAILABLE_BOOSTING_COIN,
+      })
+      queryClient.invalidateQueries({
+        queryKey: CACHE_VENDOR_BOOSTED_PRODUCTS,
       })
     },
     onError: (error) => {

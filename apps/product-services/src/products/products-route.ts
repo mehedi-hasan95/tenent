@@ -16,7 +16,6 @@ export const allProductsRoute = createRoute({
       seller: z.string().optional(),
       cursor: z.string().optional(),
       pageSize: z.coerce.number().int().min(1).max(50).default(DEFAULT_SIZE),
-      productStatus: z.enum(PRODUCTS_STATUS_ENUM).optional(),
     }),
   },
   responses: {

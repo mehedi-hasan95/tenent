@@ -8,10 +8,10 @@ import {
 } from "./boosting-route"
 import { and, count, db, desc, eq, gt, gte, sql } from "@workspace/db"
 import {
-  boosting_coin,
-  product_boost,
-  vendor_coin,
-  vendor_coin_purchase,
+  boostingCoin,
+  productBoost,
+  vendorCoin,
+  vendorCoinPurchase,
 } from "@workspace/db/schema/boosting.schema"
 import { products } from "@workspace/db/schema/products.schema"
 
@@ -19,8 +19,8 @@ export const getActiveBoostingCoinHandler: RouteHandler<
   typeof getActiveBoostingCoinRoute
 > = async (c) => {
   try {
-    const data = await db.query.boosting_coin.findFirst({
-      where: eq(boosting_coin.is_active, true),
+    const data = await db.query.boostingCoin.findFirst({
+      where: eq(boostingCoin.isActive, true),
     })
     return c.json({ data }, 200)
   } catch (error) {
@@ -33,8 +33,8 @@ export const vendorCoinsHandler: RouteHandler<typeof vendorCoinsRoute> = async (
 ) => {
   try {
     const email = c.get("user")?.email
-    const data = await db.query.vendor_coin.findFirst({
-      where: eq(vendor_coin.email, email!),
+    const data = await db.query.vendorCoin.findFirst({
+      where: eq(vendorCoin.email, email!),
     })
     return c.json({ data: data ?? null }, 200)
   } catch (error) {
@@ -51,16 +51,16 @@ export const vendorCoinPurchaseHistoryHandler: RouteHandler<
     const offset = (page - 1) * limit
 
     const [data, totalResult] = await Promise.all([
-      db.query.vendor_coin_purchase.findMany({
-        where: eq(vendor_coin_purchase.email, email!),
-        orderBy: [desc(vendor_coin_purchase.createdAt)],
+      db.query.vendorCoinPurchase.findMany({
+        where: eq(vendorCoinPurchase.email, email!),
+        orderBy: [desc(vendorCoinPurchase.createdAt)],
         limit,
         offset,
       }),
       db
         .select({ count: count() })
-        .from(vendor_coin_purchase)
-        .where(eq(vendor_coin_purchase.email, email!)),
+        .from(vendorCoinPurchase)
+        .where(eq(vendorCoinPurchase.email, email!)),
     ])
 
     const total = totalResult[0]?.count ?? 0
@@ -101,8 +101,8 @@ export const productBoostingHandler: RouteHandler<
       return c.json({ error: "End date must be in the future." }, 400)
     }
 
-    const getCoin = await db.query.vendor_coin.findFirst({
-      where: eq(vendor_coin.email, getUser.email),
+    const getCoin = await db.query.vendorCoin.findFirst({
+      where: eq(vendorCoin.email, getUser.email),
     })
 
     if ((getCoin?.coin ?? 0) < coins) {
@@ -118,11 +118,11 @@ export const productBoostingHandler: RouteHandler<
       return c.json({ message: "Product not found or not owned by you" }, 403)
     }
 
-    const existingActiveBoost = await db.query.product_boost.findFirst({
+    const existingActiveBoost = await db.query.productBoost.findFirst({
       where: and(
-        eq(product_boost.productId, productId),
-        eq(product_boost.userId, getUser.id),
-        gt(product_boost.endAt, now)
+        eq(productBoost.productId, productId),
+        eq(productBoost.userId, getUser.id),
+        gt(productBoost.endAt, now)
       ),
     })
     let data
@@ -133,16 +133,16 @@ export const productBoostingHandler: RouteHandler<
       const addedDurationMs = targetEndAt.getTime() - now.getTime()
       const newEndAt = new Date(currentEndAt.getTime() + addedDurationMs)
       ;[data] = await db
-        .update(product_boost)
+        .update(productBoost)
         .set({
           coins: existingActiveBoost.coins + coins,
           endAt: newEndAt,
         })
-        .where(eq(product_boost.id, existingActiveBoost.id))
+        .where(eq(productBoost.id, existingActiveBoost.id))
         .returning()
     } else {
       ;[data] = await db
-        .insert(product_boost)
+        .insert(productBoost)
         .values({
           productId,
           userId: getUser.id,
@@ -155,11 +155,11 @@ export const productBoostingHandler: RouteHandler<
     // todo: implements kafka
     if (data) {
       await db
-        .update(vendor_coin)
+        .update(vendorCoin)
         .set({
-          coin: sql`${vendor_coin.coin} - ${coins}`,
+          coin: sql`${vendorCoin.coin} - ${coins}`,
         })
-        .where(eq(vendor_coin.email, getUser.email))
+        .where(eq(vendorCoin.email, getUser.email))
     }
     return c.json({ data }, 200)
   } catch (error) {
@@ -175,23 +175,23 @@ export const getAllBoostedProductsHandler: RouteHandler<
     const { limit, page } = c.req.valid("query")
     const offset = (page - 1) * limit
     const [data, totalResult] = await Promise.all([
-      db.query.product_boost.findMany({
+      db.query.productBoost.findMany({
         where: and(
-          eq(product_boost.userId, user?.id!),
-          gte(product_boost.endAt, new Date())
+          eq(productBoost.userId, user?.id!),
+          gte(productBoost.endAt, new Date())
         ),
-        orderBy: [desc(product_boost.createdAt)],
+        orderBy: [desc(productBoost.createdAt)],
         limit,
         offset,
         with: { product: true },
       }),
       db
         .select({ count: count() })
-        .from(product_boost)
+        .from(productBoost)
         .where(
           and(
-            eq(product_boost.userId, user?.id!),
-            gte(product_boost.endAt, new Date())
+            eq(productBoost.userId, user?.id!),
+            gte(productBoost.endAt, new Date())
           )
         ),
     ])

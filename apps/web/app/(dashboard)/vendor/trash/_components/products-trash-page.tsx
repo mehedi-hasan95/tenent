@@ -54,7 +54,7 @@ export const ProductsTrashPage = ({ data }: Props) => {
 
       queryClient.setQueryData<PRODUCT_TYPE[]>(
         ["trashed-products"],
-        (old = []) => old.filter((cat) => !cat.deleted_at)
+        (old = []) => old.filter((cat) => !cat.deletedAt)
       )
 
       return { previousProducts }

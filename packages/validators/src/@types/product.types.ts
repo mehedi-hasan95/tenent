@@ -13,7 +13,7 @@ export type PRODUCT_TYPE = {
   weight: number | null
   status: "draft" | "active" | "archived"
   images: string[]
-  deleted_at: Date | null
+  deletedAt: Date | null
   categorySlug: string
   subCategorySlug: string
   color: string[] | null

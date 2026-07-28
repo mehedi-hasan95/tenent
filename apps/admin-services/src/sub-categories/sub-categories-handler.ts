@@ -95,8 +95,8 @@ export const getSubCategoriesHandler: RouteHandler<
           type === undefined
             ? undefined
             : type
-              ? isNull(subCategories.deleted_at)
-              : isNotNull(subCategories.deleted_at),
+              ? isNull(subCategories.deletedAt)
+              : isNotNull(subCategories.deletedAt),
           slug ? eq(subCategories.categorySlug, slug) : undefined
         )
       )
@@ -128,7 +128,7 @@ export const trashSubCategoryHandler: RouteHandler<
     const { slug } = c.req.valid("json")
     const data = await db
       .update(subCategories)
-      .set({ deleted_at: sql`NOW() + INTERVAL '30 days'` })
+      .set({ deletedAt: sql`NOW() + INTERVAL '30 days'` })
       .where(eq(subCategories.slug, slug))
       .returning()
     return c.json({ data }, 201)
@@ -144,7 +144,7 @@ export const restoreSubCategoryHandler: RouteHandler<
     const { slug } = c.req.valid("json")
     const data = await db
       .update(subCategories)
-      .set({ deleted_at: null })
+      .set({ deletedAt: null })
       .where(eq(subCategories.slug, slug))
       .returning()
     return c.json({ data }, 201)
@@ -178,7 +178,7 @@ export const deleteManySubCategoryHandler: RouteHandler<
       .where(
         and(
           inArray(subCategories.slug, slug),
-          isNotNull(subCategories.deleted_at)
+          isNotNull(subCategories.deletedAt)
         )
       )
       .returning()
@@ -197,7 +197,7 @@ export const deleteTrashedSubCategoryHandler: RouteHandler<
   try {
     const data = await db
       .delete(subCategories)
-      .where(isNotNull(subCategories.deleted_at))
+      .where(isNotNull(subCategories.deletedAt))
       .returning()
     if (!data.length) {
       return c.json({ message: "Nothing in trash" })

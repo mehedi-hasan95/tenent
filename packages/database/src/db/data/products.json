@@ -1,0 +1,2202 @@
+[
+  {
+    "id": "fe7e7c4d-0343-483b-a242-f69f24d3ef1f",
+    "title": "AdventureLite Camping Chair",
+    "short_description": "Portable folding camping chair designed for travel, picnics, and outdoor recreation.",
+    "base_price": 69,
+    "sale_price": 55,
+    "stock": 319,
+    "tags": ["Outdoor Recreation", "Sports And Outdoors"],
+    "weight": 2400,
+    "type": "physical",
+    "status": "draft",
+    "images": [
+      "https://images.unsplash.com/photo-1501555088652-021faa106b9b?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "sports-and-outdoors",
+    "sub_category_slug": "outdoor-recreation",
+    "color": ["#64748B", "#F8FAFC"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Sports And Outdoors"
+      },
+      {
+        "key": "Brand",
+        "value": "Prime"
+      },
+      {
+        "key": "Model",
+        "value": "Model-947"
+      },
+      {
+        "key": "Weight",
+        "value": "2400 g"
+      }
+    ],
+    "description": "<h1>AdventureLite Camping Chair</h1><h2>Designed for Everyday Use</h2><p>Portable folding camping chair designed for travel, picnics, and outdoor recreation. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Sports And Outdoors</li><li><strong>Weight:</strong> 2400 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the AdventureLite Camping Chair today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "SAVE15",
+    "sizes": null,
+    "userEmail": "topexo7972@meikeya.com",
+    "updatedAt": "2026-07-27 21:48:15.971262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:48:15.971262"
+  },
+  {
+    "id": "bfe4677b-30f7-47e4-bf86-aa4ae368bd36",
+    "title": "Daily Brew Coffee Pack",
+    "short_description": "Roasted coffee blend packaged for convenient everyday brewing at home or work.",
+    "base_price": 18,
+    "sale_price": 15,
+    "stock": 396,
+    "tags": ["Groceries", "Snacks And Beverages"],
+    "weight": 500,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1621939514649-280e2aa1f7b0?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "groceries",
+    "sub_category_slug": "snacks-and-beverages",
+    "color": ["#0F172A", "#22C55E"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Groceries"
+      },
+      {
+        "key": "Brand",
+        "value": "Prime"
+      },
+      {
+        "key": "Model",
+        "value": "Model-235"
+      },
+      {
+        "key": "Weight",
+        "value": "500 g"
+      }
+    ],
+    "description": "<h1>Daily Brew Coffee Pack</h1><h2>Designed for Everyday Use</h2><p>Roasted coffee blend packaged for convenient everyday brewing at home or work. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Groceries</li><li><strong>Weight:</strong> 500 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the Daily Brew Coffee Pack today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "SAVE15",
+    "sizes": null,
+    "userEmail": "m@m.com",
+    "updatedAt": "2026-07-27 21:50:08.846262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:50:08.846262"
+  },
+  {
+    "id": "f01f7354-db06-419f-b246-76b8e763f060",
+    "title": "GardenFresh Vegetable Box",
+    "short_description": "Mixed fresh vegetables packed for convenient everyday cooking and family meals.",
+    "base_price": 15,
+    "sale_price": 12,
+    "stock": 55,
+    "tags": ["Fresh Produce", "Groceries"],
+    "weight": 2500,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "groceries",
+    "sub_category_slug": "fresh-produce",
+    "color": ["#F59E0B", "#8B5CF6"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Groceries"
+      },
+      {
+        "key": "Brand",
+        "value": "EverMax"
+      },
+      {
+        "key": "Model",
+        "value": "Model-150"
+      },
+      {
+        "key": "Weight",
+        "value": "2500 g"
+      }
+    ],
+    "description": "<h1>GardenFresh Vegetable Box</h1><h2>Designed for Everyday Use</h2><p>Mixed fresh vegetables packed for convenient everyday cooking and family meals. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Groceries</li><li><strong>Weight:</strong> 2500 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the GardenFresh Vegetable Box today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "",
+    "sizes": null,
+    "userEmail": "m@m.com",
+    "updatedAt": "2026-07-27 21:23:58.494262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:23:58.494262"
+  },
+  {
+    "id": "cab455c2-9244-4da9-be0a-324af96c6d16",
+    "title": "SmoothRoot Hair Conditioner",
+    "short_description": "Daily conditioner designed to leave hair feeling soft, manageable, and refreshed.",
+    "base_price": 22,
+    "sale_price": 18,
+    "stock": 576,
+    "tags": ["Hair Care", "Beauty And Personal Care"],
+    "weight": 360,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "beauty-and-personal-care",
+    "sub_category_slug": "hair-care",
+    "color": ["#64748B", "#F8FAFC"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Beauty And Personal Care"
+      },
+      {
+        "key": "Brand",
+        "value": "Urban"
+      },
+      {
+        "key": "Model",
+        "value": "Model-938"
+      },
+      {
+        "key": "Weight",
+        "value": "360 g"
+      }
+    ],
+    "description": "<h1>SmoothRoot Hair Conditioner</h1><h2>Designed for Everyday Use</h2><p>Daily conditioner designed to leave hair feeling soft, manageable, and refreshed. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Beauty And Personal Care</li><li><strong>Weight:</strong> 360 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the SmoothRoot Hair Conditioner today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": false,
+    "coupon": null,
+    "sizes": null,
+    "userEmail": "topexo7972@meikeya.com",
+    "updatedAt": "2026-07-27 21:17:12.213262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:17:12.213262"
+  },
+  {
+    "id": "4c90dba2-1fc9-4791-a016-d09b3f610eed",
+    "title": "PureSkin Gentle Cleanser",
+    "short_description": "Gentle facial cleanser designed for a simple and refreshing daily skincare routine.",
+    "base_price": 25,
+    "sale_price": 20,
+    "stock": 475,
+    "tags": ["Skincare", "Beauty And Personal Care"],
+    "weight": 210,
+    "type": "physical",
+    "status": "draft",
+    "images": [
+      "https://images.unsplash.com/photo-1556228578-8c89e6adf883?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "beauty-and-personal-care",
+    "sub_category_slug": "skincare",
+    "color": ["#EF4444", "#F3F4F6"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Beauty And Personal Care"
+      },
+      {
+        "key": "Brand",
+        "value": "SmartChoice"
+      },
+      {
+        "key": "Model",
+        "value": "Model-624"
+      },
+      {
+        "key": "Weight",
+        "value": "210 g"
+      }
+    ],
+    "description": "<h1>PureSkin Gentle Cleanser</h1><h2>Designed for Everyday Use</h2><p>Gentle facial cleanser designed for a simple and refreshing daily skincare routine. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Beauty And Personal Care</li><li><strong>Weight:</strong> 210 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the PureSkin Gentle Cleanser today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "FLAT10",
+    "sizes": null,
+    "userEmail": "topexo7972@meikeya.com",
+    "updatedAt": "2026-07-27 21:20:16.906262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:20:16.906262"
+  },
+  {
+    "id": "b430a697-6726-4e63-8c9e-74fb02cf4c8e",
+    "title": "CloudStep Walking Shoes",
+    "short_description": "Comfort-focused walking shoes designed for daily movement, commuting, and travel.",
+    "base_price": 119,
+    "sale_price": 99,
+    "stock": 505,
+    "tags": ["Shoes", "Fashion"],
+    "weight": 740,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "fashion",
+    "sub_category_slug": "shoes",
+    "color": ["#0F172A", "#22C55E"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Fashion"
+      },
+      {
+        "key": "Brand",
+        "value": "Prime"
+      },
+      {
+        "key": "Model",
+        "value": "Model-868"
+      },
+      {
+        "key": "Weight",
+        "value": "740 g"
+      }
+    ],
+    "description": "<h1>CloudStep Walking Shoes</h1><h2>Designed for Everyday Use</h2><p>Comfort-focused walking shoes designed for daily movement, commuting, and travel. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Fashion</li><li><strong>Weight:</strong> 740 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the CloudStep Walking Shoes today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "",
+    "sizes": ["S", "M"],
+    "userEmail": "topexo7972@meikeya.com",
+    "updatedAt": "2026-07-27 21:43:38.353262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:43:38.353262"
+  },
+  {
+    "id": "7d114158-eb86-4b78-b353-1f396bede48e",
+    "title": "Everyday Science Workbook",
+    "short_description": "Practical educational workbook covering core science concepts with clear exercises and examples.",
+    "base_price": 22,
+    "sale_price": 18,
+    "stock": 576,
+    "tags": ["Books And Stationery", "Educational Books"],
+    "weight": 520,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "books-and-stationery",
+    "sub_category_slug": "educational-books",
+    "color": ["#F59E0B", "#8B5CF6"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Books And Stationery"
+      },
+      {
+        "key": "Brand",
+        "value": "Modern"
+      },
+      {
+        "key": "Model",
+        "value": "Model-872"
+      },
+      {
+        "key": "Weight",
+        "value": "520 g"
+      }
+    ],
+    "description": "<h1>Everyday Science Workbook</h1><h2>Designed for Everyday Use</h2><p>Practical educational workbook covering core science concepts with clear exercises and examples. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Books And Stationery</li><li><strong>Weight:</strong> 520 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the Everyday Science Workbook today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "",
+    "sizes": null,
+    "userEmail": "topexo7972@meikeya.com",
+    "updatedAt": "2026-07-27 22:04:26.574262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 22:04:26.574262"
+  },
+  {
+    "id": "4f3fe930-bfa0-48ba-a88a-519e5286539b",
+    "title": "PowerFit Adjustable Dumbbells",
+    "short_description": "Adjustable dumbbell set designed for strength training at home or in a compact workout space.",
+    "base_price": 199,
+    "sale_price": 169,
+    "stock": 366,
+    "tags": ["Fitness Equipment", "Sports And Outdoors"],
+    "weight": 12000,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "sports-and-outdoors",
+    "sub_category_slug": "fitness-equipment",
+    "color": ["#F59E0B", "#8B5CF6"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Sports And Outdoors"
+      },
+      {
+        "key": "Brand",
+        "value": "Urban"
+      },
+      {
+        "key": "Model",
+        "value": "Model-953"
+      },
+      {
+        "key": "Weight",
+        "value": "12000 g"
+      }
+    ],
+    "description": "<h1>PowerFit Adjustable Dumbbells</h1><h2>Designed for Everyday Use</h2><p>Adjustable dumbbell set designed for strength training at home or in a compact workout space. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Sports And Outdoors</li><li><strong>Weight:</strong> 12000 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the PowerFit Adjustable Dumbbells today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "",
+    "sizes": null,
+    "userEmail": "m@m.com",
+    "updatedAt": "2026-07-27 21:36:55.295262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:36:55.295262"
+  },
+  {
+    "id": "bce1a8bf-17f4-448c-afd8-6eab5ef2fcb4",
+    "title": "The Last Harbor Novel",
+    "short_description": "Engaging fiction novel featuring an atmospheric story of friendship, discovery, and adventure.",
+    "base_price": 18,
+    "sale_price": 15,
+    "stock": 256,
+    "tags": ["Fiction Books", "Books And Stationery"],
+    "weight": 380,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "books-and-stationery",
+    "sub_category_slug": "fiction-books",
+    "color": ["#10B981", "#0EA5E9"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Books And Stationery"
+      },
+      {
+        "key": "Brand",
+        "value": "ProLine"
+      },
+      {
+        "key": "Model",
+        "value": "Model-128"
+      },
+      {
+        "key": "Weight",
+        "value": "380 g"
+      }
+    ],
+    "description": "<h1>The Last Harbor Novel</h1><h2>Designed for Everyday Use</h2><p>Engaging fiction novel featuring an atmospheric story of friendship, discovery, and adventure. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Books And Stationery</li><li><strong>Weight:</strong> 380 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the The Last Harbor Novel today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": false,
+    "coupon": "",
+    "sizes": null,
+    "userEmail": "topexo7972@meikeya.com",
+    "updatedAt": "2026-07-27 21:35:52.625262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:35:52.625262"
+  },
+  {
+    "id": "03280019-f67f-4bf4-9833-cfe67462ad39",
+    "title": "OneMax Ultra Smartphone",
+    "short_description": "High-performance smartphone designed for photography, streaming, gaming, and daily productivity.",
+    "base_price": 999,
+    "sale_price": 899,
+    "stock": 549,
+    "tags": ["Mobile Phones", "Electronics"],
+    "weight": 228,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "electronics",
+    "sub_category_slug": "mobile-phones",
+    "color": ["#F59E0B", "#8B5CF6"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Electronics"
+      },
+      {
+        "key": "Brand",
+        "value": "Prime"
+      },
+      {
+        "key": "Model",
+        "value": "Model-659"
+      },
+      {
+        "key": "Weight",
+        "value": "228 g"
+      }
+    ],
+    "description": "<h1>OneMax Ultra Smartphone</h1><h2>Designed for Everyday Use</h2><p>High-performance smartphone designed for photography, streaming, gaming, and daily productivity. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Electronics</li><li><strong>Weight:</strong> 228 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the OneMax Ultra Smartphone today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": false,
+    "coupon": "FLAT10",
+    "sizes": null,
+    "userEmail": "topexo7972@meikeya.com",
+    "updatedAt": "2026-07-27 21:29:10.879262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:29:10.879262"
+  },
+  {
+    "id": "1f781d1d-8cc6-4c60-a774-1edaffdc59ef",
+    "title": "Learn Math Step by Step",
+    "short_description": "Structured mathematics workbook with progressive lessons and practice activities.",
+    "base_price": 19,
+    "sale_price": 16,
+    "stock": 192,
+    "tags": ["Books And Stationery", "Educational Books"],
+    "weight": 490,
+    "type": "physical",
+    "status": "draft",
+    "images": [
+      "https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "books-and-stationery",
+    "sub_category_slug": "educational-books",
+    "color": ["#EF4444", "#F3F4F6"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Books And Stationery"
+      },
+      {
+        "key": "Brand",
+        "value": "ProLine"
+      },
+      {
+        "key": "Model",
+        "value": "Model-255"
+      },
+      {
+        "key": "Weight",
+        "value": "490 g"
+      }
+    ],
+    "description": "<h1>Learn Math Step by Step</h1><h2>Designed for Everyday Use</h2><p>Structured mathematics workbook with progressive lessons and practice activities. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Books And Stationery</li><li><strong>Weight:</strong> 490 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the Learn Math Step by Step today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "",
+    "sizes": null,
+    "userEmail": "m@m.com",
+    "updatedAt": "2026-07-27 21:08:33.178262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:08:33.178262"
+  },
+  {
+    "id": "de982bae-562b-41f0-8e3a-994e848ee3f2",
+    "title": "RoboBuddy Interactive Toy",
+    "short_description": "Interactive toy robot designed for playful exploration, simple controls, and imaginative activities.",
+    "base_price": 59,
+    "sale_price": 49,
+    "stock": 179,
+    "tags": ["Kids Toys", "Toys And Kids"],
+    "weight": 950,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "toys-and-kids",
+    "sub_category_slug": "kids-toys",
+    "color": ["#0F172A", "#22C55E"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Toys And Kids"
+      },
+      {
+        "key": "Brand",
+        "value": "Nova"
+      },
+      {
+        "key": "Model",
+        "value": "Model-110"
+      },
+      {
+        "key": "Weight",
+        "value": "950 g"
+      }
+    ],
+    "description": "<h1>RoboBuddy Interactive Toy</h1><h2>Designed for Everyday Use</h2><p>Interactive toy robot designed for playful exploration, simple controls, and imaginative activities. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Toys And Kids</li><li><strong>Weight:</strong> 950 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the RoboBuddy Interactive Toy today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "SAVE15",
+    "sizes": null,
+    "userEmail": "topexo7972@meikeya.com",
+    "updatedAt": "2026-07-27 21:17:01.335262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:17:01.335262"
+  },
+  {
+    "id": "dabf10b7-7f00-4ae5-be98-5cd3be2a2249",
+    "title": "AutoCare Emergency Kit",
+    "short_description": "Practical roadside kit containing useful essentials for everyday vehicle preparedness.",
+    "base_price": 69,
+    "sale_price": 55,
+    "stock": 271,
+    "tags": ["Car Accessories", "Automotive"],
+    "weight": 2400,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "automotive",
+    "sub_category_slug": "car-accessories",
+    "color": ["#0F172A", "#22C55E"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Automotive"
+      },
+      {
+        "key": "Brand",
+        "value": "ProLine"
+      },
+      {
+        "key": "Model",
+        "value": "Model-801"
+      },
+      {
+        "key": "Weight",
+        "value": "2400 g"
+      }
+    ],
+    "description": "<h1>AutoCare Emergency Kit</h1><h2>Designed for Everyday Use</h2><p>Practical roadside kit containing useful essentials for everyday vehicle preparedness. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Automotive</li><li><strong>Weight:</strong> 2400 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the AutoCare Emergency Kit today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "FLAT10",
+    "sizes": null,
+    "userEmail": "m@m.com",
+    "updatedAt": "2026-07-27 21:20:11.838262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:20:11.838262"
+  },
+  {
+    "id": "0faa29b9-6354-4b66-a027-39d5737fa577",
+    "title": "Midnight at Cedar Lane",
+    "short_description": "Character-driven mystery novel designed for relaxed reading and weekend entertainment.",
+    "base_price": 21,
+    "sale_price": 17,
+    "stock": 552,
+    "tags": ["Fiction Books", "Books And Stationery"],
+    "weight": 410,
+    "type": "physical",
+    "status": "draft",
+    "images": [
+      "https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "books-and-stationery",
+    "sub_category_slug": "fiction-books",
+    "color": ["#0F172A", "#22C55E"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Books And Stationery"
+      },
+      {
+        "key": "Brand",
+        "value": "ProLine"
+      },
+      {
+        "key": "Model",
+        "value": "Model-899"
+      },
+      {
+        "key": "Weight",
+        "value": "410 g"
+      }
+    ],
+    "description": "<h1>Midnight at Cedar Lane</h1><h2>Designed for Everyday Use</h2><p>Character-driven mystery novel designed for relaxed reading and weekend entertainment. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Books And Stationery</li><li><strong>Weight:</strong> 410 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the Midnight at Cedar Lane today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": false,
+    "coupon": "",
+    "sizes": null,
+    "userEmail": "m@m.com",
+    "updatedAt": "2026-07-27 21:42:38.796262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:42:38.796262"
+  },
+  {
+    "id": "7a44cf6b-f068-491d-a275-ebbc1fee5be8",
+    "title": "DailyVital Multivitamin",
+    "short_description": "Daily multivitamin product designed to complement a balanced wellness routine.",
+    "base_price": 29,
+    "sale_price": 24,
+    "stock": 117,
+    "tags": ["Vitamins And Supplements", "Health And Wellness"],
+    "weight": 180,
+    "type": "physical",
+    "status": "draft",
+    "images": [
+      "https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "health-and-wellness",
+    "sub_category_slug": "vitamins-and-supplements",
+    "color": ["#EC4899", "#6366F1"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Health And Wellness"
+      },
+      {
+        "key": "Brand",
+        "value": "EverMax"
+      },
+      {
+        "key": "Model",
+        "value": "Model-391"
+      },
+      {
+        "key": "Weight",
+        "value": "180 g"
+      }
+    ],
+    "description": "<h1>DailyVital Multivitamin</h1><h2>Designed for Everyday Use</h2><p>Daily multivitamin product designed to complement a balanced wellness routine. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Health And Wellness</li><li><strong>Weight:</strong> 180 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the DailyVital Multivitamin today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": false,
+    "coupon": "FLAT10",
+    "sizes": null,
+    "userEmail": "topexo7972@meikeya.com",
+    "updatedAt": "2026-07-27 21:09:30.751262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:09:30.751262"
+  },
+  {
+    "id": "584dedfa-893b-4eab-a854-c4566be0e7a1",
+    "title": "RadiantGlow Face Serum",
+    "short_description": "Lightweight face serum designed to complement a bright and hydrated skincare routine.",
+    "base_price": 39,
+    "sale_price": 32,
+    "stock": 351,
+    "tags": ["Beauty And Personal Care", "Skincare"],
+    "weight": 120,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1556228578-8c89e6adf883?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "beauty-and-personal-care",
+    "sub_category_slug": "skincare",
+    "color": ["#111827", "#2563EB"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Beauty And Personal Care"
+      },
+      {
+        "key": "Brand",
+        "value": "EverMax"
+      },
+      {
+        "key": "Model",
+        "value": "Model-116"
+      },
+      {
+        "key": "Weight",
+        "value": "120 g"
+      }
+    ],
+    "description": "<h1>RadiantGlow Face Serum</h1><h2>Designed for Everyday Use</h2><p>Lightweight face serum designed to complement a bright and hydrated skincare routine. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Beauty And Personal Care</li><li><strong>Weight:</strong> 120 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the RadiantGlow Face Serum today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": false,
+    "coupon": "",
+    "sizes": null,
+    "userEmail": "topexo7972@meikeya.com",
+    "updatedAt": "2026-07-27 21:17:23.585262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:17:23.585262"
+  },
+  {
+    "id": "df722f62-6183-45ee-8188-c9d774cd7281",
+    "title": "Young Learner Study Guide",
+    "short_description": "Student-friendly study guide designed to support organized learning and revision.",
+    "base_price": 25,
+    "sale_price": 21,
+    "stock": 87,
+    "tags": ["Books And Stationery", "Educational Books"],
+    "weight": 560,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1495446815901-a7297e633e8d?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "books-and-stationery",
+    "sub_category_slug": "educational-books",
+    "color": ["#EC4899", "#6366F1"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Books And Stationery"
+      },
+      {
+        "key": "Brand",
+        "value": "Nova"
+      },
+      {
+        "key": "Model",
+        "value": "Model-775"
+      },
+      {
+        "key": "Weight",
+        "value": "560 g"
+      }
+    ],
+    "description": "<h1>Young Learner Study Guide</h1><h2>Designed for Everyday Use</h2><p>Student-friendly study guide designed to support organized learning and revision. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Books And Stationery</li><li><strong>Weight:</strong> 560 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the Young Learner Study Guide today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "",
+    "sizes": null,
+    "userEmail": "m@m.com",
+    "updatedAt": "2026-07-27 21:31:54.738262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:31:54.738262"
+  },
+  {
+    "id": "98279e91-84e3-4b26-b5a3-8642974c4a7e",
+    "title": "RoadView LED Interior Kit",
+    "short_description": "Compact interior lighting kit designed to add a modern accent to vehicle cabins.",
+    "base_price": 39,
+    "sale_price": 32,
+    "stock": 347,
+    "tags": ["Car Accessories", "Automotive"],
+    "weight": 680,
+    "type": "physical",
+    "status": "draft",
+    "images": [
+      "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "automotive",
+    "sub_category_slug": "car-accessories",
+    "color": ["#111827", "#2563EB"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Automotive"
+      },
+      {
+        "key": "Brand",
+        "value": "EverMax"
+      },
+      {
+        "key": "Model",
+        "value": "Model-366"
+      },
+      {
+        "key": "Weight",
+        "value": "680 g"
+      }
+    ],
+    "description": "<h1>RoadView LED Interior Kit</h1><h2>Designed for Everyday Use</h2><p>Compact interior lighting kit designed to add a modern accent to vehicle cabins. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Automotive</li><li><strong>Weight:</strong> 680 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the RoadView LED Interior Kit today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "",
+    "sizes": null,
+    "userEmail": "topexo7972@meikeya.com",
+    "updatedAt": "2026-07-27 21:07:17.728262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:07:17.728262"
+  },
+  {
+    "id": "32933507-c011-48af-a22f-8e8b5bac70dd",
+    "title": "GlowCare Daily Moisturizer",
+    "short_description": "Lightweight daily moisturizer designed for a smooth, hydrated-feeling skincare routine.",
+    "base_price": 29,
+    "sale_price": 24,
+    "stock": 596,
+    "tags": ["Beauty And Personal Care", "Skincare"],
+    "weight": 180,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1556228578-8c89e6adf883?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "beauty-and-personal-care",
+    "sub_category_slug": "skincare",
+    "color": ["#0F172A", "#22C55E"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Beauty And Personal Care"
+      },
+      {
+        "key": "Brand",
+        "value": "Nova"
+      },
+      {
+        "key": "Model",
+        "value": "Model-353"
+      },
+      {
+        "key": "Weight",
+        "value": "180 g"
+      }
+    ],
+    "description": "<h1>GlowCare Daily Moisturizer</h1><h2>Designed for Everyday Use</h2><p>Lightweight daily moisturizer designed for a smooth, hydrated-feeling skincare routine. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Beauty And Personal Care</li><li><strong>Weight:</strong> 180 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the GlowCare Daily Moisturizer today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "",
+    "sizes": null,
+    "userEmail": "topexo7972@meikeya.com",
+    "updatedAt": "2026-07-27 21:19:49.623262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:19:49.623262"
+  },
+  {
+    "id": "c9c69b00-84b5-4344-8a64-8192042420c1",
+    "title": "BassWave Wireless Headset",
+    "short_description": "Immersive wireless headset with deep bass, clear calls, and comfortable ear cushions.",
+    "base_price": 179,
+    "sale_price": 149,
+    "stock": 556,
+    "tags": ["Electronics", "Headphones"],
+    "weight": 295,
+    "type": "physical",
+    "status": "draft",
+    "images": [
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "electronics",
+    "sub_category_slug": "headphones",
+    "color": ["#1F2937", "#F97316"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Electronics"
+      },
+      {
+        "key": "Brand",
+        "value": "Nova"
+      },
+      {
+        "key": "Model",
+        "value": "Model-910"
+      },
+      {
+        "key": "Weight",
+        "value": "295 g"
+      }
+    ],
+    "description": "<h1>BassWave Wireless Headset</h1><h2>Designed for Everyday Use</h2><p>Immersive wireless headset with deep bass, clear calls, and comfortable ear cushions. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Electronics</li><li><strong>Weight:</strong> 295 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the BassWave Wireless Headset today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": null,
+    "sizes": null,
+    "userEmail": "topexo7972@meikeya.com",
+    "updatedAt": "2026-07-27 21:54:58.457262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:54:58.457262"
+  },
+  {
+    "id": "4662edfc-b4b4-4a18-b492-d2bb27a1f557",
+    "title": "FlexCore Resistance Kit",
+    "short_description": "Portable resistance training kit for home workouts, mobility routines, and strength exercises.",
+    "base_price": 79,
+    "sale_price": 65,
+    "stock": 120,
+    "tags": ["Sports And Outdoors", "Fitness Equipment"],
+    "weight": 1800,
+    "type": "physical",
+    "status": "draft",
+    "images": [
+      "https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "sports-and-outdoors",
+    "sub_category_slug": "fitness-equipment",
+    "color": ["#EF4444", "#F3F4F6"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Sports And Outdoors"
+      },
+      {
+        "key": "Brand",
+        "value": "Nova"
+      },
+      {
+        "key": "Model",
+        "value": "Model-381"
+      },
+      {
+        "key": "Weight",
+        "value": "1800 g"
+      }
+    ],
+    "description": "<h1>FlexCore Resistance Kit</h1><h2>Designed for Everyday Use</h2><p>Portable resistance training kit for home workouts, mobility routines, and strength exercises. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Sports And Outdoors</li><li><strong>Weight:</strong> 1800 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the FlexCore Resistance Kit today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "FLAT10",
+    "sizes": null,
+    "userEmail": "topexo7972@meikeya.com",
+    "updatedAt": "2026-07-27 21:15:12.651262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:15:12.651262"
+  },
+  {
+    "id": "3469b1fd-ba99-45ed-8e89-95b394eab766",
+    "title": "TrailPeak Camping Tent",
+    "short_description": "Durable two-person camping tent designed for weekend trips and outdoor adventures.",
+    "base_price": 159,
+    "sale_price": 129,
+    "stock": 132,
+    "tags": ["Sports And Outdoors", "Outdoor Recreation"],
+    "weight": 3200,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1501555088652-021faa106b9b?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "sports-and-outdoors",
+    "sub_category_slug": "outdoor-recreation",
+    "color": ["#0F172A", "#22C55E"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Sports And Outdoors"
+      },
+      {
+        "key": "Brand",
+        "value": "Nova"
+      },
+      {
+        "key": "Model",
+        "value": "Model-145"
+      },
+      {
+        "key": "Weight",
+        "value": "3200 g"
+      }
+    ],
+    "description": "<h1>TrailPeak Camping Tent</h1><h2>Designed for Everyday Use</h2><p>Durable two-person camping tent designed for weekend trips and outdoor adventures. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Sports And Outdoors</li><li><strong>Weight:</strong> 3200 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the TrailPeak Camping Tent today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "",
+    "sizes": null,
+    "userEmail": "topexo7972@meikeya.com",
+    "updatedAt": "2026-07-27 21:21:59.971262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:21:59.971262"
+  },
+  {
+    "id": "cfa2e45c-ee8f-45c1-bf31-54fff47e9c15",
+    "title": "ProStyle Hair Dryer",
+    "short_description": "Compact hair dryer with multiple airflow settings for convenient everyday styling.",
+    "base_price": 59,
+    "sale_price": 49,
+    "stock": 148,
+    "tags": ["Beauty And Personal Care", "Hair Care"],
+    "weight": 720,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "beauty-and-personal-care",
+    "sub_category_slug": "hair-care",
+    "color": ["#0F172A", "#22C55E"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Beauty And Personal Care"
+      },
+      {
+        "key": "Brand",
+        "value": "Nova"
+      },
+      {
+        "key": "Model",
+        "value": "Model-415"
+      },
+      {
+        "key": "Weight",
+        "value": "720 g"
+      }
+    ],
+    "description": "<h1>ProStyle Hair Dryer</h1><h2>Designed for Everyday Use</h2><p>Compact hair dryer with multiple airflow settings for convenient everyday styling. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Beauty And Personal Care</li><li><strong>Weight:</strong> 720 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the ProStyle Hair Dryer today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "",
+    "sizes": null,
+    "userEmail": "m@m.com",
+    "updatedAt": "2026-07-27 21:06:48.749262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:06:48.749262"
+  },
+  {
+    "id": "f2aada5d-b856-418b-a5a3-05c4c8d05cae",
+    "title": "Nordic Wall Decor Set",
+    "short_description": "Minimal wall decor set designed to add a clean, modern accent to living spaces.",
+    "base_price": 69,
+    "sale_price": 55,
+    "stock": 389,
+    "tags": ["Home Decor", "Home And Kitchen"],
+    "weight": 1200,
+    "type": "physical",
+    "status": "draft",
+    "images": [
+      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "home-and-kitchen",
+    "sub_category_slug": "home-decor",
+    "color": ["#F59E0B", "#8B5CF6"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Home And Kitchen"
+      },
+      {
+        "key": "Brand",
+        "value": "Nova"
+      },
+      {
+        "key": "Model",
+        "value": "Model-712"
+      },
+      {
+        "key": "Weight",
+        "value": "1200 g"
+      }
+    ],
+    "description": "<h1>Nordic Wall Decor Set</h1><h2>Designed for Everyday Use</h2><p>Minimal wall decor set designed to add a clean, modern accent to living spaces. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Home And Kitchen</li><li><strong>Weight:</strong> 1200 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the Nordic Wall Decor Set today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": false,
+    "coupon": "",
+    "sizes": null,
+    "userEmail": "m@m.com",
+    "updatedAt": "2026-07-27 21:27:50.429262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:27:50.429262"
+  },
+  {
+    "id": "6a8d1703-8de4-46bc-ae2e-56e2d2fabd65",
+    "title": "FitPulse AMOLED Watch",
+    "short_description": "AMOLED smartwatch with fitness tracking, sleep insights, and customizable watch faces.",
+    "base_price": 229,
+    "sale_price": 189,
+    "stock": 261,
+    "tags": ["Smart Watches", "Electronics"],
+    "weight": 52,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1544117519-31a4b719223d?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "electronics",
+    "sub_category_slug": "smart-watches",
+    "color": ["#0F172A", "#22C55E"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Electronics"
+      },
+      {
+        "key": "Brand",
+        "value": "EverMax"
+      },
+      {
+        "key": "Model",
+        "value": "Model-551"
+      },
+      {
+        "key": "Weight",
+        "value": "52 g"
+      }
+    ],
+    "description": "<h1>FitPulse AMOLED Watch</h1><h2>Designed for Everyday Use</h2><p>AMOLED smartwatch with fitness tracking, sleep insights, and customizable watch faces. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Electronics</li><li><strong>Weight:</strong> 52 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the FitPulse AMOLED Watch today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "",
+    "sizes": null,
+    "userEmail": "topexo7972@meikeya.com",
+    "updatedAt": "2026-07-27 21:54:35.005262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:54:35.005262"
+  },
+  {
+    "id": "b3305273-204d-4dea-aeff-7bccefa0ab95",
+    "title": "PureMix High-Speed Blender",
+    "short_description": "High-speed blender for smoothies, sauces, soups, and everyday food preparation.",
+    "base_price": 229,
+    "sale_price": 189,
+    "stock": 277,
+    "tags": ["Kitchen Appliances", "Home And Kitchen"],
+    "weight": 4700,
+    "type": "physical",
+    "status": "draft",
+    "images": [
+      "https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "home-and-kitchen",
+    "sub_category_slug": "kitchen-appliances",
+    "color": ["#10B981", "#0EA5E9"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Home And Kitchen"
+      },
+      {
+        "key": "Brand",
+        "value": "Urban"
+      },
+      {
+        "key": "Model",
+        "value": "Model-491"
+      },
+      {
+        "key": "Weight",
+        "value": "4700 g"
+      }
+    ],
+    "description": "<h1>PureMix High-Speed Blender</h1><h2>Designed for Everyday Use</h2><p>High-speed blender for smoothies, sauces, soups, and everyday food preparation. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Home And Kitchen</li><li><strong>Weight:</strong> 4700 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the PureMix High-Speed Blender today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": false,
+    "coupon": null,
+    "sizes": null,
+    "userEmail": "m@m.com",
+    "updatedAt": "2026-07-27 21:38:44.481262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:38:44.481262"
+  },
+  {
+    "id": "7c05bf4e-2eb3-4193-85b5-2e8b7513eed9",
+    "title": "OakCraft Table Lamp",
+    "short_description": "Modern table lamp with a warm ambient glow for bedrooms, desks, and living rooms.",
+    "base_price": 89,
+    "sale_price": 72,
+    "stock": 221,
+    "tags": ["Home And Kitchen", "Home Decor"],
+    "weight": 950,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "home-and-kitchen",
+    "sub_category_slug": "home-decor",
+    "color": ["#0F172A", "#22C55E"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Home And Kitchen"
+      },
+      {
+        "key": "Brand",
+        "value": "Nova"
+      },
+      {
+        "key": "Model",
+        "value": "Model-187"
+      },
+      {
+        "key": "Weight",
+        "value": "950 g"
+      }
+    ],
+    "description": "<h1>OakCraft Table Lamp</h1><h2>Designed for Everyday Use</h2><p>Modern table lamp with a warm ambient glow for bedrooms, desks, and living rooms. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Home And Kitchen</li><li><strong>Weight:</strong> 950 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the OakCraft Table Lamp today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "",
+    "sizes": null,
+    "userEmail": "topexo7972@meikeya.com",
+    "updatedAt": "2026-07-27 21:17:33.354262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:17:33.354262"
+  },
+  {
+    "id": "1b35b479-ff4f-412b-a573-aea5380cd291",
+    "title": "Essential Men's Polo",
+    "short_description": "Soft everyday polo shirt with a clean collar and versatile styling for casual occasions.",
+    "base_price": 45,
+    "sale_price": 36,
+    "stock": 529,
+    "tags": ["Mens Clothing", "Fashion"],
+    "weight": 280,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "fashion",
+    "sub_category_slug": "mens-clothing",
+    "color": ["#64748B", "#F8FAFC"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Fashion"
+      },
+      {
+        "key": "Brand",
+        "value": "Prime"
+      },
+      {
+        "key": "Model",
+        "value": "Model-623"
+      },
+      {
+        "key": "Weight",
+        "value": "280 g"
+      }
+    ],
+    "description": "<h1>Essential Men's Polo</h1><h2>Designed for Everyday Use</h2><p>Soft everyday polo shirt with a clean collar and versatile styling for casual occasions. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Fashion</li><li><strong>Weight:</strong> 280 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the Essential Men's Polo today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": false,
+    "coupon": "",
+    "sizes": ["XL", "S", "L", "XXL"],
+    "userEmail": "topexo7972@meikeya.com",
+    "updatedAt": "2026-07-27 21:52:00.128262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:52:00.128262"
+  },
+  {
+    "id": "cf0f3df5-684c-48a8-bde5-0eca5051955b",
+    "title": "Family Snack & Juice Bundle",
+    "short_description": "Convenient family bundle combining popular snacks and refreshing everyday beverages.",
+    "base_price": 29,
+    "sale_price": 24,
+    "stock": 591,
+    "tags": ["Groceries", "Snacks And Beverages"],
+    "weight": 3200,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1621939514649-280e2aa1f7b0?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "groceries",
+    "sub_category_slug": "snacks-and-beverages",
+    "color": ["#64748B", "#F8FAFC"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Groceries"
+      },
+      {
+        "key": "Brand",
+        "value": "Prime"
+      },
+      {
+        "key": "Model",
+        "value": "Model-454"
+      },
+      {
+        "key": "Weight",
+        "value": "3200 g"
+      }
+    ],
+    "description": "<h1>Family Snack & Juice Bundle</h1><h2>Designed for Everyday Use</h2><p>Convenient family bundle combining popular snacks and refreshing everyday beverages. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Groceries</li><li><strong>Weight:</strong> 3200 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the Family Snack & Juice Bundle today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "FLAT10",
+    "sizes": null,
+    "userEmail": "topexo7972@meikeya.com",
+    "updatedAt": "2026-07-27 21:15:52.713262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:15:52.713262"
+  },
+  {
+    "id": "9890fc60-6fae-4d78-b2f0-f296c13aa5dc",
+    "title": "GripMax Steering Cover",
+    "short_description": "Comfortable steering wheel cover designed to improve grip and refresh the vehicle interior.",
+    "base_price": 25,
+    "sale_price": 20,
+    "stock": 54,
+    "tags": ["Automotive", "Car Accessories"],
+    "weight": 520,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "automotive",
+    "sub_category_slug": "car-accessories",
+    "color": ["#0F172A", "#22C55E"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Automotive"
+      },
+      {
+        "key": "Brand",
+        "value": "Urban"
+      },
+      {
+        "key": "Model",
+        "value": "Model-249"
+      },
+      {
+        "key": "Weight",
+        "value": "520 g"
+      }
+    ],
+    "description": "<h1>GripMax Steering Cover</h1><h2>Designed for Everyday Use</h2><p>Comfortable steering wheel cover designed to improve grip and refresh the vehicle interior. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Automotive</li><li><strong>Weight:</strong> 520 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the GripMax Steering Cover today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": null,
+    "sizes": null,
+    "userEmail": "m@m.com",
+    "updatedAt": "2026-07-27 21:10:03.140262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:10:03.140262"
+  },
+  {
+    "id": "b2ff4f8c-a1c3-45b4-8507-8f556475f03c",
+    "title": "StreetRun Casual Sneakers",
+    "short_description": "Lightweight casual sneakers with a modern profile for everyday city wear.",
+    "base_price": 99,
+    "sale_price": 79,
+    "stock": 521,
+    "tags": ["Fashion", "Shoes"],
+    "weight": 690,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "fashion",
+    "sub_category_slug": "shoes",
+    "color": ["#1F2937", "#F97316"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Fashion"
+      },
+      {
+        "key": "Brand",
+        "value": "Nova"
+      },
+      {
+        "key": "Model",
+        "value": "Model-998"
+      },
+      {
+        "key": "Weight",
+        "value": "690 g"
+      }
+    ],
+    "description": "<h1>StreetRun Casual Sneakers</h1><h2>Designed for Everyday Use</h2><p>Lightweight casual sneakers with a modern profile for everyday city wear. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Fashion</li><li><strong>Weight:</strong> 690 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the StreetRun Casual Sneakers today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "FLAT10",
+    "sizes": ["XL", "XXL"],
+    "userEmail": "m@m.com",
+    "updatedAt": "2026-07-27 21:51:03.317262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:51:03.317262"
+  },
+  {
+    "id": "dca35fad-edb8-4980-ad44-81a94fe3b716",
+    "title": "DriveSafe Car Phone Mount",
+    "short_description": "Adjustable vehicle phone mount designed for convenient in-car navigation.",
+    "base_price": 29,
+    "sale_price": 24,
+    "stock": 501,
+    "tags": ["Automotive", "Car Accessories"],
+    "weight": 320,
+    "type": "physical",
+    "status": "draft",
+    "images": [
+      "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "automotive",
+    "sub_category_slug": "car-accessories",
+    "color": ["#0F172A", "#22C55E"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Automotive"
+      },
+      {
+        "key": "Brand",
+        "value": "Prime"
+      },
+      {
+        "key": "Model",
+        "value": "Model-580"
+      },
+      {
+        "key": "Weight",
+        "value": "320 g"
+      }
+    ],
+    "description": "<h1>DriveSafe Car Phone Mount</h1><h2>Designed for Everyday Use</h2><p>Adjustable vehicle phone mount designed for convenient in-car navigation. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Automotive</li><li><strong>Weight:</strong> 320 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the DriveSafe Car Phone Mount today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": false,
+    "coupon": null,
+    "sizes": null,
+    "userEmail": "m@m.com",
+    "updatedAt": "2026-07-27 21:46:33.741262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:46:33.741262"
+  },
+  {
+    "id": "d6178111-7d32-463b-97bc-985938d87eb3",
+    "title": "Crunchy Snack Variety Box",
+    "short_description": "Mixed snack assortment with convenient portions for home, work, and travel.",
+    "base_price": 25,
+    "sale_price": 21,
+    "stock": 109,
+    "tags": ["Snacks And Beverages", "Groceries"],
+    "weight": 1500,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1621939514649-280e2aa1f7b0?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "groceries",
+    "sub_category_slug": "snacks-and-beverages",
+    "color": ["#10B981", "#0EA5E9"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Groceries"
+      },
+      {
+        "key": "Brand",
+        "value": "Modern"
+      },
+      {
+        "key": "Model",
+        "value": "Model-301"
+      },
+      {
+        "key": "Weight",
+        "value": "1500 g"
+      }
+    ],
+    "description": "<h1>Crunchy Snack Variety Box</h1><h2>Designed for Everyday Use</h2><p>Mixed snack assortment with convenient portions for home, work, and travel. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Groceries</li><li><strong>Weight:</strong> 1500 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the Crunchy Snack Variety Box today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": false,
+    "coupon": "SAVE15",
+    "sizes": null,
+    "userEmail": "topexo7972@meikeya.com",
+    "updatedAt": "2026-07-27 21:08:00.638262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:08:00.638262"
+  },
+  {
+    "id": "f53e6d98-19bd-43d0-ab99-0d06ee5078fa",
+    "title": "ClassicFit Men's Jacket",
+    "short_description": "Modern men's jacket with a clean silhouette, practical pockets, and an easy everyday fit.",
+    "base_price": 129,
+    "sale_price": 109,
+    "stock": 388,
+    "tags": ["Mens Clothing", "Fashion"],
+    "weight": 780,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "fashion",
+    "sub_category_slug": "mens-clothing",
+    "color": ["#EF4444", "#F3F4F6"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Fashion"
+      },
+      {
+        "key": "Brand",
+        "value": "EverMax"
+      },
+      {
+        "key": "Model",
+        "value": "Model-871"
+      },
+      {
+        "key": "Weight",
+        "value": "780 g"
+      }
+    ],
+    "description": "<h1>ClassicFit Men's Jacket</h1><h2>Designed for Everyday Use</h2><p>Modern men's jacket with a clean silhouette, practical pockets, and an easy everyday fit. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Fashion</li><li><strong>Weight:</strong> 780 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the ClassicFit Men's Jacket today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "",
+    "sizes": ["XL", "S", "XXL"],
+    "userEmail": "m@m.com",
+    "updatedAt": "2026-07-27 21:05:41.277262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:05:41.277262"
+  },
+  {
+    "id": "f953e96f-7a10-411e-bff3-5b15c9e024ae",
+    "title": "SoundPulse ANC Headphones",
+    "short_description": "Wireless over-ear headphones with active noise cancellation and rich, balanced audio.",
+    "base_price": 249,
+    "sale_price": 219,
+    "stock": 565,
+    "tags": ["Headphones", "Electronics"],
+    "weight": 310,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "electronics",
+    "sub_category_slug": "headphones",
+    "color": ["#64748B", "#F8FAFC"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Electronics"
+      },
+      {
+        "key": "Brand",
+        "value": "ProLine"
+      },
+      {
+        "key": "Model",
+        "value": "Model-980"
+      },
+      {
+        "key": "Weight",
+        "value": "310 g"
+      }
+    ],
+    "description": "<h1>SoundPulse ANC Headphones</h1><h2>Designed for Everyday Use</h2><p>Wireless over-ear headphones with active noise cancellation and rich, balanced audio. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Electronics</li><li><strong>Weight:</strong> 310 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the SoundPulse ANC Headphones today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "FLAT10",
+    "sizes": null,
+    "userEmail": "m@m.com",
+    "updatedAt": "2026-07-27 21:22:08.202262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:22:08.202262"
+  },
+  {
+    "id": "16787513-a23f-4845-bb72-feb62729ddfc",
+    "title": "SmartTrack Active Watch",
+    "short_description": "Feature-rich smartwatch for activity tracking, notifications, workouts, and everyday routines.",
+    "base_price": 299,
+    "sale_price": 249,
+    "stock": 517,
+    "tags": ["Electronics", "Smart Watches"],
+    "weight": 58,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1544117519-31a4b719223d?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "electronics",
+    "sub_category_slug": "smart-watches",
+    "color": ["#0F172A", "#22C55E"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Electronics"
+      },
+      {
+        "key": "Brand",
+        "value": "Prime"
+      },
+      {
+        "key": "Model",
+        "value": "Model-393"
+      },
+      {
+        "key": "Weight",
+        "value": "58 g"
+      }
+    ],
+    "description": "<h1>SmartTrack Active Watch</h1><h2>Designed for Everyday Use</h2><p>Feature-rich smartwatch for activity tracking, notifications, workouts, and everyday routines. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Electronics</li><li><strong>Weight:</strong> 58 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the SmartTrack Active Watch today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "",
+    "sizes": null,
+    "userEmail": "m@m.com",
+    "updatedAt": "2026-07-27 21:39:14.747262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:39:14.747262"
+  },
+  {
+    "id": "f9c901f1-4072-4c5d-b33b-e571a50b150a",
+    "title": "Modern Women's Cardigan",
+    "short_description": "Soft cardigan with a timeless design for layering across seasons.",
+    "base_price": 79,
+    "sale_price": 65,
+    "stock": 334,
+    "tags": ["Womens Clothing", "Fashion"],
+    "weight": 460,
+    "type": "physical",
+    "status": "draft",
+    "images": [
+      "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "fashion",
+    "sub_category_slug": "womens-clothing",
+    "color": ["#1F2937", "#F97316"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Fashion"
+      },
+      {
+        "key": "Brand",
+        "value": "Prime"
+      },
+      {
+        "key": "Model",
+        "value": "Model-302"
+      },
+      {
+        "key": "Weight",
+        "value": "460 g"
+      }
+    ],
+    "description": "<h1>Modern Women's Cardigan</h1><h2>Designed for Everyday Use</h2><p>Soft cardigan with a timeless design for layering across seasons. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Fashion</li><li><strong>Weight:</strong> 460 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the Modern Women's Cardigan today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "FLAT10",
+    "sizes": ["XL", "M", "S", "XXL"],
+    "userEmail": "topexo7972@meikeya.com",
+    "updatedAt": "2026-07-27 21:38:40.780262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:38:40.780262"
+  },
+  {
+    "id": "78fd1d05-b667-4868-aff2-1808fee72324",
+    "title": "SilkCare Repair Shampoo",
+    "short_description": "Nourishing shampoo designed for regular hair washing and a smooth, refreshed feel.",
+    "base_price": 24,
+    "sale_price": 19,
+    "stock": 386,
+    "tags": ["Hair Care", "Beauty And Personal Care"],
+    "weight": 350,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "beauty-and-personal-care",
+    "sub_category_slug": "hair-care",
+    "color": ["#EC4899", "#6366F1"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Beauty And Personal Care"
+      },
+      {
+        "key": "Brand",
+        "value": "Modern"
+      },
+      {
+        "key": "Model",
+        "value": "Model-667"
+      },
+      {
+        "key": "Weight",
+        "value": "350 g"
+      }
+    ],
+    "description": "<h1>SilkCare Repair Shampoo</h1><h2>Designed for Everyday Use</h2><p>Nourishing shampoo designed for regular hair washing and a smooth, refreshed feel. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Beauty And Personal Care</li><li><strong>Weight:</strong> 350 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the SilkCare Repair Shampoo today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "",
+    "sizes": null,
+    "userEmail": "m@m.com",
+    "updatedAt": "2026-07-27 21:37:04.096262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:37:04.096262"
+  },
+  {
+    "id": "c2d4511d-871d-4afb-a877-7d9a603b0908",
+    "title": "TropicalFruit Mango Pack",
+    "short_description": "Sweet seasonal mangoes packed for convenient home snacking and desserts.",
+    "base_price": 12,
+    "sale_price": 10,
+    "stock": 397,
+    "tags": ["Fresh Produce", "Groceries"],
+    "weight": 1800,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "groceries",
+    "sub_category_slug": "fresh-produce",
+    "color": ["#0F172A", "#22C55E"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Groceries"
+      },
+      {
+        "key": "Brand",
+        "value": "EverMax"
+      },
+      {
+        "key": "Model",
+        "value": "Model-251"
+      },
+      {
+        "key": "Weight",
+        "value": "1800 g"
+      }
+    ],
+    "description": "<h1>TropicalFruit Mango Pack</h1><h2>Designed for Everyday Use</h2><p>Sweet seasonal mangoes packed for convenient home snacking and desserts. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Groceries</li><li><strong>Weight:</strong> 1800 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the TropicalFruit Mango Pack today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": false,
+    "coupon": null,
+    "sizes": null,
+    "userEmail": "topexo7972@meikeya.com",
+    "updatedAt": "2026-07-27 21:20:21.664262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:20:21.664262"
+  },
+  {
+    "id": "0616c167-d665-49d1-ad30-7ebd7dc7af06",
+    "title": "TimeSync Pro Smart Watch",
+    "short_description": "Elegant smartwatch combining health tracking, notifications, and a polished everyday design.",
+    "base_price": 349,
+    "sale_price": 299,
+    "stock": 253,
+    "tags": ["Electronics", "Smart Watches"],
+    "weight": 64,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1544117519-31a4b719223d?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "electronics",
+    "sub_category_slug": "smart-watches",
+    "color": ["#10B981", "#0EA5E9"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Electronics"
+      },
+      {
+        "key": "Brand",
+        "value": "SmartChoice"
+      },
+      {
+        "key": "Model",
+        "value": "Model-727"
+      },
+      {
+        "key": "Weight",
+        "value": "64 g"
+      }
+    ],
+    "description": "<h1>TimeSync Pro Smart Watch</h1><h2>Designed for Everyday Use</h2><p>Elegant smartwatch combining health tracking, notifications, and a polished everyday design. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Electronics</li><li><strong>Weight:</strong> 64 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the TimeSync Pro Smart Watch today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": null,
+    "sizes": null,
+    "userEmail": "m@m.com",
+    "updatedAt": "2026-07-27 21:50:35.694262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:50:35.694262"
+  },
+  {
+    "id": "24338190-22bf-42cc-a566-2930a653468f",
+    "title": "UrbanFlex Men's Shirt",
+    "short_description": "Versatile men's casual shirt made for comfortable everyday wear and smart-casual styling.",
+    "base_price": 59,
+    "sale_price": 49,
+    "stock": 334,
+    "tags": ["Fashion", "Mens Clothing"],
+    "weight": 320,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "fashion",
+    "sub_category_slug": "mens-clothing",
+    "color": ["#64748B", "#F8FAFC"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Fashion"
+      },
+      {
+        "key": "Brand",
+        "value": "EverMax"
+      },
+      {
+        "key": "Model",
+        "value": "Model-904"
+      },
+      {
+        "key": "Weight",
+        "value": "320 g"
+      }
+    ],
+    "description": "<h1>UrbanFlex Men's Shirt</h1><h2>Designed for Everyday Use</h2><p>Versatile men's casual shirt made for comfortable everyday wear and smart-casual styling. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Fashion</li><li><strong>Weight:</strong> 320 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the UrbanFlex Men's Shirt today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "FLAT10",
+    "sizes": ["XXL", "L", "S"],
+    "userEmail": "m@m.com",
+    "updatedAt": "2026-07-27 21:47:24.204262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:47:24.204262"
+  },
+  {
+    "id": "6228a8aa-25b4-49f4-b166-76ea8260c62d",
+    "title": "FreshHarvest Organic Apples",
+    "short_description": "Fresh apples selected for everyday snacking, breakfast, and family meals.",
+    "base_price": 8,
+    "sale_price": 7,
+    "stock": 593,
+    "tags": ["Fresh Produce", "Groceries"],
+    "weight": 1000,
+    "type": "physical",
+    "status": "draft",
+    "images": [
+      "https://images.unsplash.com/photo-1610832958506-aa56368176cf?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "groceries",
+    "sub_category_slug": "fresh-produce",
+    "color": ["#F59E0B", "#8B5CF6"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Groceries"
+      },
+      {
+        "key": "Brand",
+        "value": "Modern"
+      },
+      {
+        "key": "Model",
+        "value": "Model-305"
+      },
+      {
+        "key": "Weight",
+        "value": "1000 g"
+      }
+    ],
+    "description": "<h1>FreshHarvest Organic Apples</h1><h2>Designed for Everyday Use</h2><p>Fresh apples selected for everyday snacking, breakfast, and family meals. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Groceries</li><li><strong>Weight:</strong> 1000 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the FreshHarvest Organic Apples today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": null,
+    "sizes": null,
+    "userEmail": "m@m.com",
+    "updatedAt": "2026-07-27 21:36:14.344262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:36:14.344262"
+  },
+  {
+    "id": "c70f9bfb-fe1c-40a9-8057-46a2f63e3510",
+    "title": "CreatorBook 15 Laptop",
+    "short_description": "Versatile laptop for creative work, multitasking, entertainment, and professional applications.",
+    "base_price": 1499,
+    "sale_price": 1349,
+    "stock": 274,
+    "tags": ["Electronics", "Laptops"],
+    "weight": 1680,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "electronics",
+    "sub_category_slug": "laptops",
+    "color": ["#64748B", "#F8FAFC"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Electronics"
+      },
+      {
+        "key": "Brand",
+        "value": "Modern"
+      },
+      {
+        "key": "Model",
+        "value": "Model-659"
+      },
+      {
+        "key": "Weight",
+        "value": "1680 g"
+      }
+    ],
+    "description": "<h1>CreatorBook 15 Laptop</h1><h2>Designed for Everyday Use</h2><p>Versatile laptop for creative work, multitasking, entertainment, and professional applications. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Electronics</li><li><strong>Weight:</strong> 1680 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the CreatorBook 15 Laptop today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": false,
+    "coupon": "",
+    "sizes": null,
+    "userEmail": "topexo7972@meikeya.com",
+    "updatedAt": "2026-07-27 21:41:00.821262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:41:00.821262"
+  },
+  {
+    "id": "83c8199a-3470-4db2-8612-2d0f9b2bff2c",
+    "title": "BrewCraft Espresso Machine",
+    "short_description": "Countertop espresso machine with pressure brewing and a convenient milk-frothing system.",
+    "base_price": 599,
+    "sale_price": 499,
+    "stock": 303,
+    "tags": ["Kitchen Appliances", "Home And Kitchen"],
+    "weight": 8600,
+    "type": "physical",
+    "status": "draft",
+    "images": [
+      "https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "home-and-kitchen",
+    "sub_category_slug": "kitchen-appliances",
+    "color": ["#1F2937", "#F97316"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Home And Kitchen"
+      },
+      {
+        "key": "Brand",
+        "value": "ProLine"
+      },
+      {
+        "key": "Model",
+        "value": "Model-444"
+      },
+      {
+        "key": "Weight",
+        "value": "8600 g"
+      }
+    ],
+    "description": "<h1>BrewCraft Espresso Machine</h1><h2>Designed for Everyday Use</h2><p>Countertop espresso machine with pressure brewing and a convenient milk-frothing system. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Home And Kitchen</li><li><strong>Weight:</strong> 8600 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the BrewCraft Espresso Machine today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "SAVE15",
+    "sizes": null,
+    "userEmail": "m@m.com",
+    "updatedAt": "2026-07-27 21:46:22.197262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:46:22.197262"
+  },
+  {
+    "id": "64d2a24a-3a8f-4f88-a46a-e1ba7a3b8c32",
+    "title": "AeroBook 14 Laptop",
+    "short_description": "Slim 14-inch laptop built for work, study, browsing, and everyday productivity.",
+    "base_price": 1099,
+    "sale_price": 949,
+    "stock": 220,
+    "tags": ["Laptops", "Electronics"],
+    "weight": 1420,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "electronics",
+    "sub_category_slug": "laptops",
+    "color": ["#F59E0B", "#8B5CF6"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Electronics"
+      },
+      {
+        "key": "Brand",
+        "value": "EverMax"
+      },
+      {
+        "key": "Model",
+        "value": "Model-972"
+      },
+      {
+        "key": "Weight",
+        "value": "1420 g"
+      }
+    ],
+    "description": "<h1>AeroBook 14 Laptop</h1><h2>Designed for Everyday Use</h2><p>Slim 14-inch laptop built for work, study, browsing, and everyday productivity. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Electronics</li><li><strong>Weight:</strong> 1420 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the AeroBook 14 Laptop today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "",
+    "sizes": null,
+    "userEmail": "topexo7972@meikeya.com",
+    "updatedAt": "2026-07-27 21:07:07.579262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:07:07.579262"
+  },
+  {
+    "id": "4c8e5c0f-c2a3-46e0-bd43-a8a83f395e18",
+    "title": "LunaStyle Women's Dress",
+    "short_description": "Elegant women's dress with a comfortable silhouette suitable for casual and semi-formal occasions.",
+    "base_price": 89,
+    "sale_price": 74,
+    "stock": 415,
+    "tags": ["Womens Clothing", "Fashion"],
+    "weight": 410,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "fashion",
+    "sub_category_slug": "womens-clothing",
+    "color": ["#0F172A", "#22C55E"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Fashion"
+      },
+      {
+        "key": "Brand",
+        "value": "EverMax"
+      },
+      {
+        "key": "Model",
+        "value": "Model-766"
+      },
+      {
+        "key": "Weight",
+        "value": "410 g"
+      }
+    ],
+    "description": "<h1>LunaStyle Women's Dress</h1><h2>Designed for Everyday Use</h2><p>Elegant women's dress with a comfortable silhouette suitable for casual and semi-formal occasions. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Fashion</li><li><strong>Weight:</strong> 410 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the LunaStyle Women's Dress today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "FLAT10",
+    "sizes": ["XL", "S", "L", "M"],
+    "userEmail": "topexo7972@meikeya.com",
+    "updatedAt": "2026-07-27 21:31:55.996262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:31:55.996262"
+  },
+  {
+    "id": "364a297b-28f3-4c42-ba55-fe459601f0f7",
+    "title": "Modern World Stories",
+    "short_description": "Collection of contemporary fiction stories for readers who enjoy varied perspectives and settings.",
+    "base_price": 24,
+    "sale_price": 19,
+    "stock": 428,
+    "tags": ["Fiction Books", "Books And Stationery"],
+    "weight": 460,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1544947950-fa07a98d237f?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "books-and-stationery",
+    "sub_category_slug": "fiction-books",
+    "color": ["#EC4899", "#6366F1"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Books And Stationery"
+      },
+      {
+        "key": "Brand",
+        "value": "ProLine"
+      },
+      {
+        "key": "Model",
+        "value": "Model-883"
+      },
+      {
+        "key": "Weight",
+        "value": "460 g"
+      }
+    ],
+    "description": "<h1>Modern World Stories</h1><h2>Designed for Everyday Use</h2><p>Collection of contemporary fiction stories for readers who enjoy varied perspectives and settings. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Books And Stationery</li><li><strong>Weight:</strong> 460 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the Modern World Stories today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "FLAT10",
+    "sizes": null,
+    "userEmail": "m@m.com",
+    "updatedAt": "2026-07-27 21:53:51.022262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:53:51.022262"
+  },
+  {
+    "id": "b9bc7fec-a76c-4f64-9056-2e4c9da1386a",
+    "title": "GalaxyNova S25 Smartphone",
+    "short_description": "Premium 5G smartphone with a vivid AMOLED display, fast performance, and a versatile camera system.",
+    "base_price": 899,
+    "sale_price": 799,
+    "stock": 561,
+    "tags": ["Electronics", "Mobile Phones"],
+    "weight": 215,
+    "type": "physical",
+    "status": "draft",
+    "images": [
+      "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "electronics",
+    "sub_category_slug": "mobile-phones",
+    "color": ["#EC4899", "#6366F1"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Electronics"
+      },
+      {
+        "key": "Brand",
+        "value": "Modern"
+      },
+      {
+        "key": "Model",
+        "value": "Model-145"
+      },
+      {
+        "key": "Weight",
+        "value": "215 g"
+      }
+    ],
+    "description": "<h1>GalaxyNova S25 Smartphone</h1><h2>Designed for Everyday Use</h2><p>Premium 5G smartphone with a vivid AMOLED display, fast performance, and a versatile camera system. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Electronics</li><li><strong>Weight:</strong> 215 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the GalaxyNova S25 Smartphone today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": false,
+    "coupon": "",
+    "sizes": null,
+    "userEmail": "topexo7972@meikeya.com",
+    "updatedAt": "2026-07-27 21:41:32.910262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:41:32.910262"
+  },
+  {
+    "id": "5826bd3e-2485-43f2-a4ad-07c3c9a780ce",
+    "title": "ActiveLife Wellness Capsules",
+    "short_description": "Everyday wellness supplement designed to fit easily into a consistent routine.",
+    "base_price": 32,
+    "sale_price": 27,
+    "stock": 353,
+    "tags": ["Health And Wellness", "Vitamins And Supplements"],
+    "weight": 160,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "health-and-wellness",
+    "sub_category_slug": "vitamins-and-supplements",
+    "color": ["#1F2937", "#F97316"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Health And Wellness"
+      },
+      {
+        "key": "Brand",
+        "value": "ProLine"
+      },
+      {
+        "key": "Model",
+        "value": "Model-616"
+      },
+      {
+        "key": "Weight",
+        "value": "160 g"
+      }
+    ],
+    "description": "<h1>ActiveLife Wellness Capsules</h1><h2>Designed for Everyday Use</h2><p>Everyday wellness supplement designed to fit easily into a consistent routine. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Health And Wellness</li><li><strong>Weight:</strong> 160 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the ActiveLife Wellness Capsules today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "",
+    "sizes": null,
+    "userEmail": "m@m.com",
+    "updatedAt": "2026-07-27 21:24:39.478262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:24:39.478262"
+  },
+  {
+    "id": "1b111d45-5f56-464a-a983-2460303c410b",
+    "title": "ChefMate Air Fryer",
+    "short_description": "Large-capacity air fryer with digital controls for convenient everyday cooking.",
+    "base_price": 179,
+    "sale_price": 149,
+    "stock": 374,
+    "tags": ["Kitchen Appliances", "Home And Kitchen"],
+    "weight": 6100,
+    "type": "physical",
+    "status": "active",
+    "images": [
+      "https://images.unsplash.com/photo-1556911220-bff31c812dba?auto=format&fit=crop&w=900&q=80"
+    ],
+    "category_slug": "home-and-kitchen",
+    "sub_category_slug": "kitchen-appliances",
+    "color": ["#EF4444", "#F3F4F6"],
+    "specification": [
+      {
+        "key": "Product Type",
+        "value": "Home And Kitchen"
+      },
+      {
+        "key": "Brand",
+        "value": "Nova"
+      },
+      {
+        "key": "Model",
+        "value": "Model-900"
+      },
+      {
+        "key": "Weight",
+        "value": "6100 g"
+      }
+    ],
+    "description": "<h1>ChefMate Air Fryer</h1><h2>Designed for Everyday Use</h2><p>Large-capacity air fryer with digital controls for convenient everyday cooking. Built with practical features, dependable materials, and a modern design, it is a great choice for everyday use.</p><h2>Key Features</h2><ul><li>Reliable everyday performance</li><li>Modern and practical design</li><li>Comfortable and easy to use</li><li>Built for dependable long-term use</li></ul><h2>Specifications</h2><ul><li><strong>Category:</strong> Home And Kitchen</li><li><strong>Weight:</strong> 6100 g</li><li><strong>Condition:</strong> Brand new</li></ul><p>Order the ChefMate Air Fryer today and add a dependable product to your collection.</p>",
+    "cash_on_delivery": true,
+    "coupon": "",
+    "sizes": null,
+    "userEmail": "m@m.com",
+    "updatedAt": "2026-07-27 21:20:07.144262",
+    "deletedAt": null,
+    "createdAt": "2026-07-27 21:20:07.144262"
+  }
+]
