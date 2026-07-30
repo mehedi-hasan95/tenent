@@ -104,29 +104,6 @@ export const fetchAllProductsAction = async ({
   return data
 }
 
-export const singleProductsAction = async (id: string) => {
-  const url = new URL(
-    `${process.env.NEXT_PUBLIC_PRODUCTS_URL}/common/single-products`
-  )
-
-  if (id) {
-    url.searchParams.set("id", id)
-  }
-
-  const response = await fetch(url.toString(), {
-    method: "GET",
-  })
-
-  if (!response.ok) {
-    throw await response.json()
-  }
-
-  const data: {
-    data: PRODUCT_TYPE
-  } = await response.json()
-  return data.data
-}
-
 export const trashedProductAction = async ({ id }: { id: string }) => {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_PRODUCTS_URL}/products/trash-product`,

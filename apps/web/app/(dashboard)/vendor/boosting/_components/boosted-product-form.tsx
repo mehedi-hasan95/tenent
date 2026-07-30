@@ -19,11 +19,14 @@ import { toast } from "sonner"
 import { useDialogActiveStore } from "@/store/useModalActiveStore"
 import { LoadingButton } from "@/components/common/loading-button"
 import { ChartSpline } from "lucide-react"
-import { CACHE_VENDOR_AVAILABLE_BOOSTING_COIN, CACHE_VENDOR_BOOSTED_PRODUCTS } from "@/lib/query-cache"
+import {
+  CACHE_VENDOR_AVAILABLE_BOOSTING_COIN,
+  CACHE_VENDOR_BOOSTED_PRODUCTS,
+} from "@/lib/query-cache"
 
 export const BoostedProductForm = () => {
   const { onOpen } = useDialogActiveStore()
-  const { data, isPending } = useGetVendorAllProducts()
+  const { data, isLoading } = useGetVendorAllProducts()
   const form = useForm<z.input<typeof productBoostingValidator>>({
     resolver: zodResolver(productBoostingValidator),
     defaultValues: {
@@ -64,7 +67,7 @@ export const BoostedProductForm = () => {
       <ScrollArea className="max-h-[70vh]">
         <form id="form-rhf-demo" onSubmit={form.handleSubmit(onSubmit)}>
           <FieldGroup>
-            {isPending ? (
+            {isLoading ? (
               <Input disabled />
             ) : (
               <SelectController

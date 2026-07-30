@@ -1,7 +1,10 @@
 import {
+  boostedProductsAction,
+  singleProductsAction,
+} from "@/api/products/products-action"
+import {
   fetchAllProductsAction,
   sellerAllProductsAction,
-  singleProductsAction,
 } from "@/api/products/seller-products-action"
 import {
   CACHE_ALL_PRODUCTS_KEYS,
@@ -34,22 +37,32 @@ export const useGetAllProducts = ({
 }
 
 export const useGetSingleProduct = ({ id }: { id: string }) => {
-  const { data, isPending } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ["products", id],
     queryFn: () => singleProductsAction(id),
     retry: 1,
     enabled: !!id,
     staleTime: 60 * 1000 * 5,
   })
-  return { data, isPending }
+  return { data, isLoading }
 }
 
 export const useGetVendorAllProducts = () => {
-  const { data, isPending } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: CACHE_SELLER_PRODUCTS_KEYS,
     queryFn: sellerAllProductsAction,
     retry: 1,
     staleTime: 5 * 60 * 1000,
   })
-  return { data, isPending }
+  return { data, isLoading }
+}
+
+export const useGetBoostedProducts = () => {
+  const { data = [], isLoading } = useQuery({
+    queryKey: ["boosted-products"],
+    queryFn: boostedProductsAction,
+    staleTime: 1000 * 60 * 5,
+    retry: 1,
+  })
+  return { data, isLoading }
 }

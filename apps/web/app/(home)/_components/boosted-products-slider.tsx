@@ -1,9 +1,8 @@
 "use client"
 
-import { boostedProductsAction } from "@/api/products/products-action"
 import { HtmlParser } from "@/components/common/products/html-parser"
+import { useGetBoostedProducts } from "@/hooks/products/use-products"
 import { formatName } from "@/lib/lib"
-import { useQuery } from "@tanstack/react-query"
 import { Button } from "@workspace/ui/components/button"
 import { ScrollArea } from "@workspace/ui/components/scroll-area"
 import { cn } from "@workspace/ui/lib/utils"
@@ -16,12 +15,7 @@ export const BoostedProductsSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [activeDetails, setActiveDetails] = useState(false)
 
-  const { data } = useQuery({
-    queryKey: ["boosted-products"],
-    queryFn: boostedProductsAction,
-    staleTime: 1000 * 60 * 5,
-    retry: 1,
-  })
+  const { data } = useGetBoostedProducts()
 
   const hasData = data?.length ? data.length : 0
   const handleNext = useCallback(() => {
@@ -66,15 +60,15 @@ export const BoostedProductsSlider = () => {
         <div className="list absolute top-0 left-1/2 h-[80%] w-350 max-w-[90%] -translate-x-1/2">
           {data?.map((item, idx) => (
             <div
-              key={item.id}
+              key={item.productBoost.id}
               className={`absolute right-0 left-0 h-full w-full transition-all duration-500 ease-in-out lg:w-[80%] ${getPosition(
                 idx
               )}`}
             >
               {/* IMAGE */}
               <Image
-                src={item.product.images[0] as string}
-                alt={item.product.title}
+                src={item?.products?.images[0] as string}
+                alt={item.products.title}
                 width={500}
                 height={500}
                 className={cn(
@@ -95,12 +89,12 @@ export const BoostedProductsSlider = () => {
                 )}
               >
                 <div className="title text-2xl font-bold">
-                  {item.product.title}
+                  {item.products.title}
                 </div>
                 <div className="topic text-xl">
-                  {formatName(item.product.categorySlug)}
+                  {formatName(item.products.categorySlug)}
                 </div>
-                <div className="des">{item.product.shortDescription}</div>
+                <div className="des">{item.products.shortDescription}</div>
 
                 <Button
                   variant={"primary"}
@@ -119,14 +113,14 @@ export const BoostedProductsSlider = () => {
                     "pointer-events-auto absolute top-1/2 right-0 w-1/2 -translate-y-1/2 space-y-5 text-right opacity-100"
                 )}
               >
-                <h2 className="text-2xl font-bold">{item.product.title}</h2>
+                <h2 className="text-2xl font-bold">{item.products.title}</h2>
                 <ScrollArea className="hidden md:block md:h-75 lg:h-100">
                   <div className="pr-4">
-                    <HtmlParser html={item.product.description} />
+                    <HtmlParser html={item.products.description} />
                   </div>
                 </ScrollArea>
                 <Link
-                  href={`/products/${item.productId}`}
+                  href={`/products/${item.productBoost.productId}`}
                   className="underline underline-offset-4"
                 >
                   View Details

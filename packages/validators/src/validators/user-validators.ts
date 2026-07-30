@@ -18,7 +18,7 @@ export const registrationSchema = z
 
     password: z
       .string()
-      .min(6, { message: "Password will be atleast 6 characters" })
+      .min(6, { message: "Password will be at least 6 characters" })
       .max(64, { message: "Password will be max 64 characters" }),
     confirmPassword: z.string(),
 
