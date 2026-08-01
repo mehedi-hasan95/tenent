@@ -1,8 +1,5 @@
 import { createRoute } from "@workspace/open-api"
-import {
-  DEFAULT_SIZE,
-  PRODUCTS_STATUS_ENUM,
-} from "@workspace/validators/types/constants.types"
+import { productListQuerySchema } from "@workspace/validators/validators/products-validators"
 import z from "zod"
 
 const tags = ["Products Common API"]
@@ -12,11 +9,7 @@ export const allProductsRoute = createRoute({
   tags,
   summary: "Get all Products",
   request: {
-    query: z.object({
-      seller: z.string().optional(),
-      cursor: z.string().optional(),
-      pageSize: z.coerce.number().int().min(1).max(50).default(DEFAULT_SIZE),
-    }),
+    query: productListQuerySchema.extend({ cats: z.string().optional() }),
   },
   responses: {
     200: {

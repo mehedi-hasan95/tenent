@@ -68,42 +68,6 @@ export const updateProductAction = async (
   return response.json()
 }
 
-type FetchAllProductsParams = {
-  seller?: string
-  cursor?: string | null
-  pageSize?: number
-}
-
-export const fetchAllProductsAction = async ({
-  seller,
-  cursor,
-  pageSize = 10,
-}: FetchAllProductsParams) => {
-  const url = new URL(
-    `${process.env.NEXT_PUBLIC_PRODUCTS_URL}/common/all-products`
-  )
-
-  Object.entries({ seller, cursor }).forEach(([key, value]) => {
-    if (value) url.searchParams.set(key, value)
-  })
-  url.searchParams.set("pageSize", String(pageSize))
-
-  const response = await fetch(url.toString(), {
-    method: "GET",
-  })
-
-  if (!response.ok) {
-    throw await response.json()
-  }
-
-  const data: {
-    data: PRODUCT_TYPE[]
-    nextCursor: string | null
-    hasMore: boolean
-  } = await response.json()
-  return data
-}
-
 export const trashedProductAction = async ({ id }: { id: string }) => {
   const response = await fetch(
     `${process.env.NEXT_PUBLIC_PRODUCTS_URL}/products/trash-product`,

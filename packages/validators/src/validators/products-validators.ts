@@ -1,5 +1,10 @@
 import z from "zod"
-import { DELIVERY_ENUM, PRODUCTS_STATUS_ENUM } from "../@types/constants.types"
+import {
+  DEFAULT_SIZE,
+  DELIVERY_ENUM,
+  PRODUCTS_STATUS_ENUM,
+  sortValues,
+} from "../@types/constants.types"
 import { formArray, jsonArray } from "./constructor"
 
 const MAX_TOTAL_SIZE = 16 * 1024 * 1024
@@ -133,3 +138,13 @@ export const productOpenApiValidator = baseProductValidator
       }
     }
   })
+
+export const productListQuerySchema = z.object({
+  seller: z.string().optional(),
+  cursor: z.string().nullable().optional(),
+  pageSize: z.coerce.number().int().min(1).max(50).default(DEFAULT_SIZE),
+  search: z.string().optional(),
+  minPrice: z.coerce.number().int().positive().optional(),
+  maxPrice: z.coerce.number().int().positive().optional(),
+  sort: z.enum(sortValues).default(sortValues[0]).optional(),
+})

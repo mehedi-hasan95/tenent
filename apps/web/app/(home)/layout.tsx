@@ -7,7 +7,7 @@ interface Props {
 }
 const Page = async ({ children }: Props) => {
   return (
-    <div className="flex min-h-screen flex-col justify-between space-y-5">
+    <div className="flex min-h-screen flex-col justify-between">
       <div>
         <NavBar className="p-5" />
         <Separator />

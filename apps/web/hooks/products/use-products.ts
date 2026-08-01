@@ -1,34 +1,69 @@
 import {
   boostedProductsAction,
+  fetchAllProductsAction,
   singleProductsAction,
 } from "@/api/products/products-action"
-import {
-  fetchAllProductsAction,
-  sellerAllProductsAction,
-} from "@/api/products/seller-products-action"
+import { sellerAllProductsAction } from "@/api/products/seller-products-action"
 import {
   CACHE_ALL_PRODUCTS_KEYS,
   CACHE_SELLER_PRODUCTS_KEYS,
 } from "@/lib/query-cache"
+import { useProductFilters } from "@/nuqs/nuqs-client"
 import { useInfiniteQuery, useQuery } from "@tanstack/react-query"
-import { DEFAULT_SIZE } from "@workspace/validators/types/constants.types"
+import {
+  DEFAULT_SIZE,
+  sortValues,
+} from "@workspace/validators/types/constants.types"
+import { PRODUCT_TYPE } from "@workspace/validators/types/product.types"
 import { useMemo } from "react"
 
 export const useGetAllProducts = ({
   pageSize = DEFAULT_SIZE,
   staleTime,
 }: { seller?: string; pageSize?: number; staleTime?: number } = {}) => {
+  const [filters] = useProductFilters()
+  const search = filters.search ?? ""
+  const minPrice = filters.minPrice ? Number(filters.minPrice) : undefined
+  const maxPrice = filters.maxPrice ? Number(filters.maxPrice) : undefined
+  const cats =
+    typeof filters.cats === "string"
+      ? (filters.cats as string).split(",")
+      : Array.isArray(filters.cats)
+        ? filters.cats
+        : undefined
+  const sort = filters.sort as (typeof sortValues)[number] | undefined
   const query = useInfiniteQuery({
-    queryKey: CACHE_ALL_PRODUCTS_KEYS(pageSize),
+    queryKey: [
+      "all-products",
+      pageSize,
+      search,
+      minPrice,
+      maxPrice,
+      cats,
+      sort,
+    ],
     queryFn: ({ pageParam }) =>
-      fetchAllProductsAction({ cursor: pageParam, pageSize }),
+      fetchAllProductsAction({
+        cursor: pageParam,
+        pageSize,
+        search,
+        minPrice,
+        maxPrice,
+        cats,
+        sort,
+      }),
     initialPageParam: null as string | null,
     getNextPageParam: (lastPage) =>
       lastPage.hasMore ? lastPage.nextCursor : undefined,
     staleTime,
   })
 
-  const data = useMemo(
+  const data: {
+    products: PRODUCT_TYPE
+    boost: number
+    avgRating: number
+    ratingCount: number
+  }[] = useMemo(
     () => query.data?.pages.flatMap((page) => page.data) ?? [],
     [query.data]
   )

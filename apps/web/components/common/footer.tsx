@@ -2,7 +2,7 @@ import { Input } from "@workspace/ui/components/input"
 
 export const Footer = () => {
   return (
-    <footer className="border-t border-slate-800 bg-slate-900 py-20 text-slate-300">
+    <footer className="z-50 border-t border-slate-800 bg-slate-900 py-20 text-slate-300">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mb-16 grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-4">
           <div className="space-y-6">

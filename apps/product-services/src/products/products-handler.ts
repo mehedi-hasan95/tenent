@@ -7,27 +7,41 @@ import {
 import { Cursor, decodeCursor, encodeCursor } from "../utils/cursor"
 import {
   and,
+  asc,
   db,
   desc,
   eq,
-  getTableColumns,
-  gt,
   gte,
+  ilike,
+  inArray,
   isNull,
   lt,
+  lte,
   or,
   sql,
 } from "@workspace/db"
 import { products } from "@workspace/db/schema/products.schema"
 import { productBoost } from "@workspace/db/schema/boosting.schema"
-import { ratings } from "@workspace/db/schema/order.schema"
-import { ratingColumns, ratingSubquery } from "../utils/queries/rating-query"
+import {
+  boostingSubquery,
+  ratingColumns,
+  ratingSubquery,
+} from "../utils/queries/rating-query"
 
 export const allProductsHandler: RouteHandler<typeof allProductsRoute> = async (
   c
 ) => {
   try {
-    const { seller, pageSize, cursor: rawCursor } = c.req.valid("query")
+    const {
+      seller,
+      pageSize,
+      cursor: rawCursor,
+      search,
+      maxPrice,
+      minPrice,
+      cats,
+      sort,
+    } = c.req.valid("query")
 
     let cursor: Cursor | null = null
     if (rawCursor) {
@@ -35,42 +49,34 @@ export const allProductsHandler: RouteHandler<typeof allProductsRoute> = async (
       if (!cursor) return c.json({ error: "Invalid cursor" }, 400)
     }
 
-    const boostSq = db
-      .select({
-        productId: productBoost.productId,
-        boostRate:
-          sql<number>`max(${productBoost.coins} / (extract(epoch from (${productBoost.endAt} - ${productBoost.createdAt})) / 86400))`.as(
-            "boost_rate"
-          ),
-      })
-      .from(productBoost)
-      .where(gt(productBoost.endAt, sql`now()`))
-      .groupBy(productBoost.productId)
-      .as("boost_sq")
-    const ratingSq = db
-      .select({
-        productId: ratings.productId,
-        avgRating: sql<number>`avg(${ratings.rating})`.as("avg_rating"),
-        ratingCount: sql<number>`count(*)`.as("rating_count"),
-      })
-      .from(ratings)
-      .groupBy(ratings.productId)
-      .as("rating_sq")
+    const getCats = cats?.length ? cats?.split(",") : undefined
+
+    const boostSq = boostingSubquery()
+    const ratingSq = ratingSubquery()
 
     const boost = sql<number>`coalesce(${boostSq.boostRate}, 0)`
+
+    const orderBy =
+      sort === "ascByName"
+        ? [asc(products.title)]
+        : sort === "dscByName"
+          ? [desc(products.title)]
+          : sort === "ascByPrice"
+            ? [asc(products.salePrice)]
+            : sort === "dscByPrice"
+              ? [desc(products.salePrice)]
+              : sort === "new"
+                ? [desc(products.createdAt)]
+                : sort === "old"
+                  ? [asc(products.createdAt)]
+                  : [desc(boost), desc(products.createdAt), desc(products.id)]
 
     const rows = await db
       .select({
         products,
         boost: boost.as("boost"),
 
-        avgRating: sql<number | null>`
-          ${ratingSq.avgRating}::float8
-        `.as("avgRating"),
-
-        ratingCount: sql<number | null>`
-          ${ratingSq.ratingCount}::int
-        `.as("ratingCount"),
+        ...ratingColumns(ratingSq),
       })
       .from(products)
       .leftJoin(boostSq, eq(boostSq.productId, products.id))
@@ -78,7 +84,12 @@ export const allProductsHandler: RouteHandler<typeof allProductsRoute> = async (
       .where(
         and(
           eq(products.status, "active"),
+
+          search ? ilike(products.title, `%${search}%`) : undefined,
+          minPrice ? gte(products.salePrice, minPrice) : undefined,
+          maxPrice ? lte(products.salePrice, maxPrice) : undefined,
           seller ? eq(products.userEmail, seller) : undefined,
+          getCats && inArray(products.categorySlug, getCats),
           cursor
             ? or(
                 lt(boost, cursor.boost),
@@ -96,7 +107,8 @@ export const allProductsHandler: RouteHandler<typeof allProductsRoute> = async (
           isNull(products.deletedAt)
         )
       )
-      .orderBy(desc(boost), desc(products.createdAt), desc(products.id))
+      // .orderBy(desc(boost), desc(products.createdAt), desc(products.id))
+      .orderBy(...orderBy)
       .limit(pageSize + 1)
 
     const hasMore = rows.length > pageSize
