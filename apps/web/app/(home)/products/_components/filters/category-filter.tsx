@@ -70,7 +70,9 @@ export const CategoryFilter = () => {
                   handleCheckedChange(item.slug, Boolean(checked))
                 }
               />
-              <FieldLabel htmlFor={item.slug}>{item.name}</FieldLabel>
+              <FieldLabel htmlFor={item.slug} className="cursor-pointer">
+                {item.name}
+              </FieldLabel>
             </Field>
           )
         })}

@@ -18,6 +18,7 @@ import {
 import { Separator } from "@workspace/ui/components/separator"
 import Link from "next/link"
 import { FaGifts } from "react-icons/fa6"
+import { SpecificationTable } from "./specification-table"
 interface Props {
   id: string
 }
@@ -26,7 +27,6 @@ export const ProductIdPage = ({ id }: Props) => {
   if (!data) {
     return
   }
-  console.log(data)
   return (
     <section className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
       <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
@@ -83,12 +83,6 @@ export const ProductIdPage = ({ id }: Props) => {
                 <span className="text-sm font-semibold text-muted-foreground">
                   Select Size
                 </span>
-                <Link
-                  href="#"
-                  className="text-xs text-indigo-600 hover:underline"
-                >
-                  Size Guide
-                </Link>
               </div>
               <div className="grid grid-cols-4 gap-2">
                 {data.products.sizes?.map((s) => (
@@ -104,7 +98,7 @@ export const ProductIdPage = ({ id }: Props) => {
               </div>
             </div>
 
-            {!data.products.coupon && (
+            {data.products.coupon && (
               <div className="flex items-center justify-between rounded-xl border border-indigo-100 bg-indigo-50 p-4 dark:bg-card">
                 <div className="flex items-center gap-3">
                   <div className="rounded-lg bg-indigo-100 p-2 text-indigo-600">
@@ -129,10 +123,26 @@ export const ProductIdPage = ({ id }: Props) => {
 
           <div className="mb-12 flex gap-4">
             <AddToCartButton
-              title="Add to Cart"
+              btnTitle="Add to Cart"
               className="flex-1 cursor-pointer items-center justify-center rounded-xl border-2 bg-card py-2 hover:bg-card/10"
+              category={data.products.categorySlug}
+              id={data.products.id}
+              image={data.products.images[0]!}
+              price={data.products.basePrice}
+              rating={data.avgRating}
+              totalRatings={data.ratingCount}
+              title={data.products.title}
+              quantity={1}
             />
-            <WishlistButton />
+            <WishlistButton
+              category={data.products.categorySlug}
+              id={data.products.id}
+              image={data.products.images[0]!}
+              price={data.products.basePrice}
+              rating={data.avgRating}
+              totalRatings={data.ratingCount}
+              title={data.products.title}
+            />
           </div>
 
           {/* <!-- Stock status --> */}
@@ -159,7 +169,18 @@ export const ProductIdPage = ({ id }: Props) => {
           <CardHeader>
             <CardTitle>Quick Specs</CardTitle>
           </CardHeader>
-          <CardContent>todo: add specification</CardContent>
+          <CardContent>
+            {Boolean((data?.products?.specification as []).length) && (
+              <SpecificationTable
+                specifications={
+                  (data.products.specification ?? []) as {
+                    key: string
+                    value: string
+                  }[]
+                }
+              />
+            )}
+          </CardContent>
         </Card>
       </div>
     </section>

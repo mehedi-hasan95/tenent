@@ -14,7 +14,7 @@ import { Separator } from "@workspace/ui/components/separator"
 import { DataTableFilter } from "@/components/common/data-table/data-table-filter"
 import { statuses } from "@/utils/constructor"
 import {
-  CACHE_ALL_PRODUCTS_KEYS,
+  CACHE_ALL_PRODUCTS,
   CACHE_SELLER_PRODUCTS_KEYS,
 } from "@/lib/query-cache"
 import { PRODUCT_TYPE } from "@workspace/validators/types/product.types"
@@ -61,7 +61,7 @@ const Page = () => {
         queryKey: CACHE_SELLER_PRODUCTS_KEYS,
       })
       queryClient.invalidateQueries({
-        queryKey: CACHE_ALL_PRODUCTS_KEYS(),
+        queryKey: CACHE_ALL_PRODUCTS(),
       })
       queryClient.invalidateQueries({
         queryKey: ["trashed-products"],

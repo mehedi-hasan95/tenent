@@ -15,7 +15,7 @@ import {
   restoreProductAction,
 } from "@/api/products/seller-products-action"
 import {
-  CACHE_ALL_PRODUCTS_KEYS,
+  CACHE_ALL_PRODUCTS,
   CACHE_SELLER_PRODUCTS_KEYS,
 } from "@/lib/query-cache"
 
@@ -67,7 +67,7 @@ export const ProductsTrashPage = ({ data }: Props) => {
         queryKey: ["trashed-products"],
       })
       queryClient.invalidateQueries({
-        queryKey: CACHE_ALL_PRODUCTS_KEYS(),
+        queryKey: CACHE_ALL_PRODUCTS(),
       })
       queryClient.invalidateQueries({
         queryKey: CACHE_SELLER_PRODUCTS_KEYS,

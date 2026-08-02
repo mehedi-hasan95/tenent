@@ -1,6 +1,7 @@
 import { BoostedProductsSlider } from "./_components/boosted-products-slider"
 import { ShopByCategory } from "./_components/shop-by-category"
 import { FeaturedProducts } from "./_components/featured-products"
+import { BrowsedProducts } from "./_components/browsed-products"
 
 export default function Page() {
   return (
@@ -8,6 +9,7 @@ export default function Page() {
       <BoostedProductsSlider />
       <ShopByCategory />
       <FeaturedProducts />
+      <BrowsedProducts />
     </div>
   )
 }

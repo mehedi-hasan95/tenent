@@ -56,12 +56,29 @@ export const FeaturedProducts = () => {
                       className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
                     />
                     <div className="absolute top-3 right-3">
-                      <WishlistButton className="flex h-8 w-8 items-center justify-center rounded-full bg-white/80" />
+                      <WishlistButton
+                        className="flex h-8 w-8 items-center justify-center rounded-full bg-white/80"
+                        category={item.products.categorySlug}
+                        id={item.products.id}
+                        image={item.products.images[0]!}
+                        price={item.products.basePrice}
+                        rating={item.avgRating}
+                        totalRatings={item.ratingCount}
+                        title={item.products.title}
+                      />
                     </div>
                     <div className="absolute inset-x-0 bottom-0 translate-y-full p-4 transition-transform duration-300 group-hover:translate-y-0">
                       <AddToCartButton
                         className="w-full justify-center rounded-xl bg-blue-500 py-3 text-sm font-bold text-white shadow-lg transition-colors hover:bg-blue-600"
-                        title="Add to Cart"
+                        btnTitle="Add to Cart"
+                        category={item.products.categorySlug}
+                        id={item.products.id}
+                        image={item.products.images[0]!}
+                        price={item.products.basePrice}
+                        rating={item.avgRating}
+                        totalRatings={item.ratingCount}
+                        title={item.products.title}
+                        quantity={1}
                       />
                     </div>
                   </div>
@@ -69,7 +86,7 @@ export const FeaturedProducts = () => {
                     <div className="mb-2 flex items-start justify-between">
                       <div>
                         <Link
-                          href={"#"}
+                          href={`/products?cats=${item.products.categorySlug}`}
                           className="text-primary-600 dark:text-primary-400 mb-1 line-clamp-1 text-xs font-medium tracking-wider uppercase"
                           onClick={(e) => e.stopPropagation()}
                         >
@@ -95,7 +112,6 @@ export const FeaturedProducts = () => {
           <CarouselPrevious />
           <CarouselNext />
         </Carousel>
-        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4"></div>
       </div>
     </section>
   )

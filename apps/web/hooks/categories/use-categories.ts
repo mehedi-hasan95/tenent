@@ -3,7 +3,7 @@ import {
   getCategoryAction,
 } from "@/api/categories/categories-action"
 import {
-  CACHE_ALL_PRODUCTS_KEYS,
+  CACHE_ALL_PRODUCTS,
   CACHE_SELLER_PRODUCTS_KEYS,
 } from "@/lib/query-cache"
 import { useQuery } from "@tanstack/react-query"
@@ -124,7 +124,7 @@ export function useProductsMutation<TVariables extends string | string[]>({
         queryKey: ["trashed-products"],
       })
       queryClient.invalidateQueries({
-        queryKey: CACHE_ALL_PRODUCTS_KEYS(),
+        queryKey: CACHE_ALL_PRODUCTS(),
       })
       queryClient.invalidateQueries({
         queryKey: CACHE_SELLER_PRODUCTS_KEYS,

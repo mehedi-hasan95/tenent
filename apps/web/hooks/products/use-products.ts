@@ -5,7 +5,7 @@ import {
 } from "@/api/products/products-action"
 import { sellerAllProductsAction } from "@/api/products/seller-products-action"
 import {
-  CACHE_ALL_PRODUCTS_KEYS,
+  CACHE_ALL_PRODUCTS,
   CACHE_SELLER_PRODUCTS_KEYS,
 } from "@/lib/query-cache"
 import { useProductFilters } from "@/nuqs/nuqs-client"
@@ -33,15 +33,7 @@ export const useGetAllProducts = ({
         : undefined
   const sort = filters.sort as (typeof sortValues)[number] | undefined
   const query = useInfiniteQuery({
-    queryKey: [
-      "all-products",
-      pageSize,
-      search,
-      minPrice,
-      maxPrice,
-      cats,
-      sort,
-    ],
+    queryKey: CACHE_ALL_PRODUCTS(pageSize, sort, cats, minPrice, maxPrice),
     queryFn: ({ pageParam }) =>
       fetchAllProductsAction({
         cursor: pageParam,

@@ -1,7 +1,7 @@
-import { DEFAULT_SIZE } from "@workspace/validators/types/constants.types"
-
-export const CACHE_ALL_PRODUCTS_KEYS = (size = DEFAULT_SIZE) =>
-  ["products", size] as const
+import {
+  DEFAULT_SIZE,
+  sortValues,
+} from "@workspace/validators/types/constants.types"
 
 export const CACHE_BOOSTING_COIN_KEYS = ["boosting"] as const
 export const CACHE_SELLER_PRODUCTS_KEYS = ["seller-products"] as const
@@ -21,3 +21,12 @@ export const CACHE_COIN_PURCHASE_HISTORY = ({
   page?: number
   size?: number
 }) => ["coinPurchaseHistory", page, size] as const
+
+export const CACHE_ALL_PRODUCTS = (
+  pageSize = DEFAULT_SIZE,
+  sort: (typeof sortValues)[number] = sortValues[0],
+  cats: string[] = [],
+  minPrice?: number,
+  maxPrice?: number,
+  seller?: string | ""
+) => ["products", pageSize, sort, cats, minPrice, maxPrice, seller] as const

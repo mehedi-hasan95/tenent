@@ -56,21 +56,6 @@ export const allProductsHandler: RouteHandler<typeof allProductsRoute> = async (
 
     const boost = sql<number>`coalesce(${boostSq.boostRate}, 0)`
 
-    const orderBy =
-      sort === "ascByName"
-        ? [asc(products.title)]
-        : sort === "dscByName"
-          ? [desc(products.title)]
-          : sort === "ascByPrice"
-            ? [asc(products.salePrice)]
-            : sort === "dscByPrice"
-              ? [desc(products.salePrice)]
-              : sort === "new"
-                ? [desc(products.createdAt)]
-                : sort === "old"
-                  ? [asc(products.createdAt)]
-                  : [desc(boost), desc(products.createdAt), desc(products.id)]
-
     const rows = await db
       .select({
         products,
@@ -107,8 +92,7 @@ export const allProductsHandler: RouteHandler<typeof allProductsRoute> = async (
           isNull(products.deletedAt)
         )
       )
-      // .orderBy(desc(boost), desc(products.createdAt), desc(products.id))
-      .orderBy(...orderBy)
+      .orderBy(desc(boost), desc(products.createdAt), desc(products.id))
       .limit(pageSize + 1)
 
     const hasMore = rows.length > pageSize
