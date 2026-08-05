@@ -10,6 +10,9 @@ type productType = {
   rating: number
   totalRatings: number
   quantity: number
+  usedCoupon: boolean
+  size: string | null
+  color: string | null
 }
 type zustandArray = {
   products: productType[]

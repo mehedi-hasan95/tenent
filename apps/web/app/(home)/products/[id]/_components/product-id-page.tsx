@@ -133,6 +133,7 @@ export const ProductIdPage = ({ id }: Props) => {
               totalRatings={data.ratingCount}
               title={data.products.title}
               quantity={1}
+              usedCoupon={false}
             />
             <WishlistButton
               category={data.products.categorySlug}

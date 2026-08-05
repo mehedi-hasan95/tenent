@@ -81,6 +81,7 @@ export const BrowsedProducts = () => {
                           totalRatings={item.totalRatings}
                           btnTitle="Add to Cart"
                           quantity={1}
+                          usedCoupon={false}
                         />
                       </div>
                     </div>

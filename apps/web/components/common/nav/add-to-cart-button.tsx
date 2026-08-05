@@ -1,5 +1,5 @@
 "use client"
-import { useAddToCartStore } from "@/store/products/use-add-to-cart"
+import { useAddToCartStore } from "@/store/products/use-add-to-cart-store"
 import { cn } from "@workspace/ui/lib/utils"
 import { FaCartShopping } from "react-icons/fa6"
 
@@ -14,6 +14,9 @@ interface Props {
   totalRatings: number
   btnTitle?: string
   quantity: number
+  usedCoupon: boolean
+  size?: string | null
+  color?: string | null
 }
 export const AddToCartButton = ({
   className,
@@ -26,6 +29,9 @@ export const AddToCartButton = ({
   totalRatings,
   btnTitle,
   quantity,
+  usedCoupon,
+  size = null,
+  color = null,
 }: Props) => {
   const { addItem, products } = useAddToCartStore()
   const exist = products.some((p) => p.id === id)
@@ -51,6 +57,9 @@ export const AddToCartButton = ({
           rating,
           totalRatings,
           quantity,
+          usedCoupon,
+          size,
+          color,
         })
       }}
     >

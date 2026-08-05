@@ -79,6 +79,7 @@ export const FeaturedProducts = () => {
                         totalRatings={item.ratingCount}
                         title={item.products.title}
                         quantity={1}
+                        usedCoupon={false}
                       />
                     </div>
                   </div>

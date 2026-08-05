@@ -94,6 +94,7 @@ export const WishListPage = () => {
                   totalRatings={item.totalRatings}
                   title={item.title}
                   quantity={1}
+                  usedCoupon={false}
                 />
               </div>
             </div>

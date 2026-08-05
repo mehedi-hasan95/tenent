@@ -33,8 +33,8 @@ export const stripeWebhookHandler: RouteHandler<
     )
   }
 
-  const session = event.data.object as Stripe.Checkout.Session
-  console.log(`Received event: ${event.type}`, "account:", event.account)
+  // const session = event.data.object as Stripe.Checkout.Session //used here for test
+  // console.log(`Received event: ${event.type}`, "account:", event.account)
   switch (event.type) {
     case "account.updated":
       const account = event.data.object as Stripe.Account
@@ -51,22 +51,29 @@ export const stripeWebhookHandler: RouteHandler<
       break
 
     case "checkout.session.completed":
+      const session = event.data.object as Stripe.Checkout.Session
       if (!session?.metadata?.user && !session?.metadata?.coin) {
         return c.json({ message: "Webhook Error: Missing metadata" }, 400)
       }
+      // purchase coin for vendor start
       // used kafka
-      // await producer.send("vendor.coin", {
+      // if (session?.metadata?.user && session?.metadata?.coin) {
+      //   await producer.send("vendor.coin", {
       //   value: JSON.stringify({
       //     email: session?.metadata?.user as string,
       //     price: Number(session?.metadata?.coin),
       //   }),
       // })
+      // }
 
       // used kafka: disabled this if kafka is used
-      await vendorCoinPurchaseAction({
-        email: session?.metadata?.user as string,
-        price: Number(session?.metadata?.coin),
-      })
+      if (session?.metadata?.user && session?.metadata?.coin) {
+        await vendorCoinPurchaseAction({
+          email: session?.metadata?.user as string,
+          price: Number(session?.metadata?.coin),
+        })
+      }
+      // purchase coin for vendor end
       break
 
     default:
