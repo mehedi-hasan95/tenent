@@ -19,14 +19,22 @@ import { useCheckoutStore } from "@/store/products/use-checkout-store"
 import { MoveLeft } from "lucide-react"
 import { useEffect } from "react"
 import { ProductCheckout } from "./checkout/product-checkout"
+import { useShallow } from "zustand/react/shallow"
 
 export const AddToCartPage = () => {
-  const { products, removeItem, updateQuantity, clear } = useAddToCartStore()
+  const { products, removeItem, updateQuantity, clear } = useAddToCartStore(
+    useShallow((state) => ({
+      products: state.products,
+      removeItem: state.removeItem,
+      updateQuantity: state.updateQuantity,
+      clear: state.clear,
+    }))
+  )
   const removeCart = (id: string) => {
-    removeItem({ id })
+    removeItem(id)
   }
   const updateQuantityState = (id: string, quantity: number) => {
-    updateQuantity({ id, quantity })
+    updateQuantity(id, quantity)
   }
   const { user } = useGetSession()
 
@@ -129,6 +137,7 @@ export const AddToCartPage = () => {
                   className="mt-5 w-full"
                   variant={"primary"}
                   onClick={() => setStep("cart")}
+                  disabled={!products.length}
                 >
                   Checkout
                 </Button>

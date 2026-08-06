@@ -2,6 +2,7 @@
 import { useAddToCartStore } from "@/store/products/use-add-to-cart-store"
 import { cn } from "@workspace/ui/lib/utils"
 import { FaCartShopping } from "react-icons/fa6"
+import { useShallow } from "zustand/react/shallow"
 
 interface Props {
   title: string
@@ -33,7 +34,12 @@ export const AddToCartButton = ({
   size = null,
   color = null,
 }: Props) => {
-  const { addItem, products } = useAddToCartStore()
+  const { addItem, products } = useAddToCartStore(
+    useShallow((state) => ({
+      products: state.products,
+      addItem: state.addItem,
+    }))
+  )
   const exist = products.some((p) => p.id === id)
   return (
     <button

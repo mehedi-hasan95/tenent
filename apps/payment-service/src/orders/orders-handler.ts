@@ -127,7 +127,7 @@ export const retrieveOrderHandler: RouteHandler<
   typeof retrieveOrderRoute
 > = async (c) => {
   try {
-    const { id } = c.req.valid("query")
+    const { id } = c.req.valid("param")
     const session = await stripeClient.checkout.sessions.retrieve(id, {
       expand: ["line_items"],
     })

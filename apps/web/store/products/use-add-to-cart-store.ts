@@ -1,7 +1,7 @@
 import { create } from "zustand"
 import { persist } from "zustand/middleware"
 
-type productType = {
+export type ProductType = {
   id: string
   image: string
   title: string
@@ -14,47 +14,48 @@ type productType = {
   size: string | null
   color: string | null
 }
-type zustandArray = {
-  products: productType[]
+
+type AddToCartStore = {
+  products: ProductType[]
+
+  addItem: (product: ProductType) => void
+  removeItem: (id: string) => void
+  updateQuantity: (id: string, quantity: number) => void
+  clear: () => void
 }
 
-const zustandProductsInitialState: zustandArray = {
-  products: [],
-}
+export const useAddToCartStore = create<AddToCartStore>()(
+  persist(
+    (set) => ({
+      products: [],
 
-export const addToCartStore = create<zustandArray>()(
-  persist(() => zustandProductsInitialState, {
-    name: "addToCartStore",
-  })
+      addItem: (product) =>
+        set((state) => ({
+          products: [
+            product,
+            ...state.products.filter((p) => p.id !== product.id),
+          ],
+        })),
+
+      removeItem: (id) =>
+        set((state) => ({
+          products: state.products.filter((p) => p.id !== id),
+        })),
+
+      updateQuantity: (id, quantity) =>
+        set((state) => ({
+          products: state.products.map((p) =>
+            p.id === id ? { ...p, quantity } : p
+          ),
+        })),
+
+      clear: () =>
+        set({
+          products: [],
+        }),
+    }),
+    {
+      name: "addToCartStore",
+    }
+  )
 )
-
-export const useAddToCartStore = () => {
-  const { products } = addToCartStore()
-  return {
-    products,
-    addItem: (product: productType) => {
-      const filteredProducts = products.filter((p) => p.id !== product.id)
-      addToCartStore.setState({
-        products: [product, ...filteredProducts],
-      })
-    },
-    removeItem: (id: { id: string }) => {
-      const updatedProducts = products.filter((p) => p.id !== id.id)
-      addToCartStore.setState({
-        products: updatedProducts,
-      })
-    },
-    updateQuantity: (product: { id: string; quantity: number }) => {
-      addToCartStore.setState({
-        products: products.map((p) =>
-          p.id === product.id ? { ...p, quantity: product.quantity } : p
-        ),
-      })
-    },
-    clear: () => {
-      addToCartStore.setState({
-        products: [],
-      })
-    },
-  }
-}

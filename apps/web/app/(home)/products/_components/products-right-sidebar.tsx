@@ -4,9 +4,9 @@ import { AddToCartButton } from "@/components/common/nav/add-to-cart-button"
 import { WishlistButton } from "@/components/common/nav/wishlist-button"
 import { InfinityScroll } from "@/components/common/products/infinity-scroll"
 import { StarRating } from "@/components/common/products/star-rating"
-import useBrowsingHistory from "@/store/products/use-browsing-history"
 import { useGetAllProducts } from "@/hooks/products/use-products"
 import { formatName, formatPrice } from "@/lib/lib"
+import { useBrowsingHistoryStore } from "@/store/products/use-browsing-history-store"
 import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
@@ -15,7 +15,7 @@ export const ProductsRightSidebar = () => {
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
     useGetAllProducts()
   const router = useRouter()
-  const { addItem } = useBrowsingHistory()
+  const addItem = useBrowsingHistoryStore((state) => state.addItem)
   return (
     <div>
       <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
@@ -50,7 +50,7 @@ export const ProductsRightSidebar = () => {
                   category={item.products.categorySlug}
                   id={item.products.id}
                   image={item.products.images[0]!}
-                  price={item.products.basePrice}
+                  price={item.products.salePrice}
                   rating={item.avgRating}
                   totalRatings={item.ratingCount}
                   title={item.products.title}
@@ -63,7 +63,7 @@ export const ProductsRightSidebar = () => {
                   category={item.products.categorySlug}
                   id={item.products.id}
                   image={item.products.images[0]!}
-                  price={item.products.basePrice}
+                  price={item.products.salePrice}
                   rating={item.avgRating}
                   totalRatings={item.ratingCount}
                   title={item.products.title}

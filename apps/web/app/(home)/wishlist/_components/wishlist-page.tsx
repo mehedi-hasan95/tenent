@@ -4,15 +4,21 @@ import { AddToCartButton } from "@/components/common/nav/add-to-cart-button"
 import { WishlistButton } from "@/components/common/nav/wishlist-button"
 import { StarRating } from "@/components/common/products/star-rating"
 import { formatName, formatPrice } from "@/lib/lib"
-import { useAddToWishlistStore } from "@/store/products/use-add-to-wishlist"
+import { useAddToWishlistStore } from "@/store/products/use-add-to-wishlist-store"
 import { Button } from "@workspace/ui/components/button"
 import { Separator } from "@workspace/ui/components/separator"
 import { X } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import { useShallow } from "zustand/react/shallow"
 
 export const WishListPage = () => {
-  const { products, clear } = useAddToWishlistStore()
+  const { products, clear } = useAddToWishlistStore(
+    useShallow((state) => ({
+      products: state.products,
+      clear: state.clear,
+    }))
+  )
 
   if (!products.length) {
     return (

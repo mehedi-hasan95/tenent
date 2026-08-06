@@ -1,5 +1,6 @@
 "use client"
 
+import { LoadingButton } from "@/components/common/loading-button"
 import {
   PaymentElement,
   useCheckoutElements,
@@ -15,6 +16,7 @@ interface Props {
 export const ProductsCheckoutForm = ({ shipping }: Props) => {
   const [message, setMessage] = useState<string | null>(null)
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
+  const [hasError, setHasError] = useState<boolean>(false)
 
   const checkoutState = useCheckoutElements()
 
@@ -34,6 +36,7 @@ export const ProductsCheckoutForm = ({ shipping }: Props) => {
     e.preventDefault()
     setIsSubmitting(true)
     setMessage(null)
+    setHasError(false)
 
     await checkout.updateShippingAddress({
       name: "shipping_address",
@@ -51,10 +54,13 @@ export const ProductsCheckoutForm = ({ shipping }: Props) => {
 
     if (confirmResult.type === "error") {
       setMessage(confirmResult.error.message)
+      setHasError(true)
     }
 
     setIsSubmitting(false)
   }
+
+  console.log(checkout)
 
   return (
     <form onSubmit={handleSubmit}>
@@ -62,19 +68,23 @@ export const ProductsCheckoutForm = ({ shipping }: Props) => {
 
       <PaymentElement id="payment-element" options={{ layout: "tabs" }} />
 
-      <Button
-        disabled={!checkout.canConfirm || isSubmitting}
-        id="submit"
-        className="mt-5 w-full"
-      >
-        {isSubmitting ? (
-          <div className="spinner"></div>
-        ) : (
-          `Pay ${checkout.total.total.amount} now`
-        )}
-      </Button>
+      {isSubmitting ? (
+        <LoadingButton className="mt-5 w-full bg-blue-800 text-white hover:bg-blue-900" />
+      ) : (
+        <Button
+          disabled={!checkout.canConfirm || isSubmitting || hasError}
+          className="mt-5 w-full"
+          variant={"primary"}
+        >
+          Pay {checkout.total.total.amount} now
+        </Button>
+      )}
 
-      {message && <div id="payment-message">{message}</div>}
+      {message && (
+        <div id="payment-message" className="mt-2 text-destructive">
+          {message}
+        </div>
+      )}
     </form>
   )
 }

@@ -22,3 +22,21 @@ export const createStripeOrderAction = async (
   const data = await response.json()
   return data.data as string
 }
+
+export const retrievePurchaseAction = async ({ id }: { id: string }) => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_PAYMENT_URL}/orders/retrieve-current-order/${id}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    }
+  )
+  if (!response.ok) {
+    const error = await response.json()
+    throw error
+  }
+  return response.json()
+}

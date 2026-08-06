@@ -1,8 +1,9 @@
 "use client"
 
-import { useAddToWishlistStore } from "@/store/products/use-add-to-wishlist"
+import { useAddToWishlistStore } from "@/store/products/use-add-to-wishlist-store"
 import { cn } from "@workspace/ui/lib/utils"
 import { Heart } from "lucide-react"
+import { useShallow } from "zustand/react/shallow"
 
 interface Props {
   title: string
@@ -27,7 +28,12 @@ export const WishlistButton = ({
   totalRatings,
   btnTitle,
 }: Props) => {
-  const { products, toggleItem } = useAddToWishlistStore()
+  const { products, toggleItem } = useAddToWishlistStore(
+    useShallow((state) => ({
+      products: state.products,
+      toggleItem: state.toggleItem,
+    }))
+  )
 
   const exist = products.some((p) => p.id === id)
 

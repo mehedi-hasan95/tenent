@@ -61,7 +61,7 @@ export const FeaturedProducts = () => {
                         category={item.products.categorySlug}
                         id={item.products.id}
                         image={item.products.images[0]!}
-                        price={item.products.basePrice}
+                        price={item.products.salePrice}
                         rating={item.avgRating}
                         totalRatings={item.ratingCount}
                         title={item.products.title}
@@ -74,7 +74,7 @@ export const FeaturedProducts = () => {
                         category={item.products.categorySlug}
                         id={item.products.id}
                         image={item.products.images[0]!}
-                        price={item.products.basePrice}
+                        price={item.products.salePrice}
                         rating={item.avgRating}
                         totalRatings={item.ratingCount}
                         title={item.products.title}

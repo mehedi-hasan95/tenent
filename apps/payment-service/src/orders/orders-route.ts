@@ -34,7 +34,7 @@ export const retrieveOrderRoute = createRoute({
   tags,
   middleware: authMiddleware,
   request: {
-    query: z.object({ id: z.string() }),
+    params: z.object({ id: z.string() }),
   },
   responses: {
     200: { description: "OK" },

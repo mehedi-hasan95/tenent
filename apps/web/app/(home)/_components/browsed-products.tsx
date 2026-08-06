@@ -3,8 +3,8 @@
 import { AddToCartButton } from "@/components/common/nav/add-to-cart-button"
 import { WishlistButton } from "@/components/common/nav/wishlist-button"
 import { StarRating } from "@/components/common/products/star-rating"
-import useBrowsingHistory from "@/store/products/use-browsing-history"
 import { formatName, formatPrice } from "@/lib/lib"
+import { useBrowsingHistoryStore } from "@/store/products/use-browsing-history-store"
 import { Button } from "@workspace/ui/components/button"
 import {
   Carousel,
@@ -18,9 +18,12 @@ import { X } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
+import { useShallow } from "zustand/react/shallow"
 
 export const BrowsedProducts = () => {
-  const { clear, products } = useBrowsingHistory()
+  const { clear, products } = useBrowsingHistoryStore(
+    useShallow((state) => ({ products: state.products, clear: state.clear }))
+  )
   const router = useRouter()
   return (
     <>

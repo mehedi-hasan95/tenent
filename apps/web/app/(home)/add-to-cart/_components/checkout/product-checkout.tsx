@@ -5,8 +5,7 @@ import { StripeSkeleton } from "@/components/common/stripe/stripe-skeleton"
 import { StripeCheckoutProviders } from "@/components/common/stripe/stripe-checkout-providers"
 import { useAddToCartStore } from "@/store/products/use-add-to-cart-store"
 import { useMutation } from "@tanstack/react-query"
-import { Button } from "@workspace/ui/components/button"
-import { useEffect, useState } from "react"
+import { useState } from "react"
 import { ProductsShippingForm } from "./products-shipping-form"
 import z from "zod"
 import { shippingFormSchema } from "@workspace/validators/validators/order-validators"
@@ -14,6 +13,11 @@ import { ProductsCheckoutForm } from "./products-checkout-form"
 
 export const ProductCheckout = () => {
   const { products } = useAddToCartStore()
+  const [shipping, setShipping] = useState<z.infer<
+    typeof shippingFormSchema
+  > | null>(null)
+  const [step, setStep] = useState<"form" | "checkout">("form")
+
   const {
     mutate,
     data: clientSecret,
@@ -24,13 +28,16 @@ export const ProductCheckout = () => {
     mutationFn: createStripeOrderAction,
   })
 
-  const [shipping, setShipping] = useState<z.infer<
-    typeof shippingFormSchema
-  > | null>(null)
-  const [step, setStep] = useState<"form" | "checkout">("form")
-  useEffect(() => {
-    if (products.length > 0) {
-      mutate({
+  // Trigger order creation directly upon user submission
+  const handleShippingSubmit = (data: z.infer<typeof shippingFormSchema>) => {
+    setShipping(data)
+
+    if (products.length === 0) {
+      return
+    }
+
+    mutate(
+      {
         order: products.map((p) => ({
           id: p.id,
           quantity: p.quantity,
@@ -38,9 +45,14 @@ export const ProductCheckout = () => {
           color: p.color,
           size: p.size,
         })),
-      })
-    }
-  }, [products, mutate])
+      },
+      {
+        onSuccess: () => {
+          setStep("checkout")
+        },
+      }
+    )
+  }
 
   if (isPending) {
     return <StripeSkeleton />
@@ -52,23 +64,18 @@ export const ProductCheckout = () => {
     )
   }
 
-  if (!clientSecret) {
-    return null
-  }
-
-  const handleShippingSubmit = (data: z.infer<typeof shippingFormSchema>) => {
-    setShipping(data)
-  }
   return (
-    <StripeCheckoutProviders clientSecret={clientSecret}>
+    <>
       {step === "form" ? (
         <ProductsShippingForm
           onSubmitData={handleShippingSubmit}
           setStep={setStep}
         />
-      ) : (
-        <ProductsCheckoutForm shipping={shipping!} />
-      )}
-    </StripeCheckoutProviders>
+      ) : clientSecret ? (
+        <StripeCheckoutProviders clientSecret={clientSecret}>
+          <ProductsCheckoutForm shipping={shipping!} />
+        </StripeCheckoutProviders>
+      ) : null}
+    </>
   )
 }

@@ -13,7 +13,7 @@ import { useAddToCartStore } from "@/store/products/use-add-to-cart-store"
 import { FaCartShopping } from "react-icons/fa6"
 import { Badge } from "@workspace/ui/components/badge"
 import { Heart } from "lucide-react"
-import { useAddToWishlistStore } from "@/store/products/use-add-to-wishlist"
+import { useAddToWishlistStore } from "@/store/products/use-add-to-wishlist-store"
 
 interface Props {
   className?: string
@@ -21,8 +21,8 @@ interface Props {
 export const NavBar = ({ className }: Props) => {
   const { user } = useGetSession()
   const pathName = usePathname()
-  const { products } = useAddToCartStore()
-  const { products: wishlist } = useAddToWishlistStore()
+  const products = useAddToCartStore((state) => state.products)
+  const wishlist = useAddToWishlistStore((state) => state.products)
   return (
     <div className={cn("flex items-center justify-between", className)}>
       <Logo />
