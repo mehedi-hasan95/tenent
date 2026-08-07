@@ -12,8 +12,7 @@ import { HTTPException } from "hono/http-exception"
 import products from "./seller-products/products-index"
 import common from "./products/products-index"
 import boosting from "./boosting/boosting-index"
-import { consumer, producer } from "./utils/kafka"
-import { runKafkaSubscriptions } from "./utils/subscriptions"
+import userReports from "./reports/users/user-reports-index"
 
 const app = new OpenAPIHono({
   defaultHook,
@@ -35,6 +34,7 @@ const routes = app
   .route("/products", products)
   .route("/common", common)
   .route("/boosting", boosting)
+  .route("/user/reports", userReports)
 
 app.onError((err, c) => {
   if (err instanceof HTTPException) {

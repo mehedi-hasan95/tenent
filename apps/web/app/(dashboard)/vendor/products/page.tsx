@@ -1,11 +1,8 @@
 "use client"
 
-import {
-  sellerAllProductsAction,
-  trashedProductAction,
-} from "@/api/products/seller-products-action"
+import { trashedProductAction } from "@/api/products/seller-products-action"
 import { DataTable } from "@/components/common/data-table/data-table"
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { VendorProductsColumns } from "./_components/vendor-data-table/vendor-products-columns"
 import Link from "next/link"
 import { Button } from "@workspace/ui/components/button"

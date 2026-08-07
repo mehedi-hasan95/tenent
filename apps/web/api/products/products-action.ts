@@ -57,57 +57,11 @@ export const singleProductsAction = async (id: string) => {
   return data.data
 }
 
-// type FetchAllProductsParams = z.infer<typeof productsValidators>
-
-// export const fetchAllProductsAction = async ({
-//   seller,
-//   cursor,
-//   pageSize = 10,
-//   search,
-//   maxPrice,
-//   minPrice,
-// }: FetchAllProductsParams ) => {
-//   const params = new URLSearchParams()
-
-//   Object.entries({ seller, cursor, search, minPrice, maxPrice }).forEach(
-//     ([key, value]) => {
-//       if (value !== undefined && value !== null) {
-//         params.set(key, String(value))
-//       }
-//     }
-//   )
-
-//   params.set("pageSize", String(pageSize))
-
-//   const response = await fetch(
-//     `${process.env.NEXT_PUBLIC_PRODUCTS_URL}/common/all-products?${params.toString()}`,
-//     {
-//       method: "GET",
-//     }
-//   )
-
-//   if (!response.ok) {
-//     throw await response.json()
-//   }
-
-//   return response.json()
-// }
-
+// *example: query
 export const fetchAllProductsAction = async (
   data: z.infer<typeof productListQuerySchema> & { cats?: string[] }
 ) => {
   const params = new URLSearchParams()
-  // const { seller, cursor, search, minPrice, maxPrice, pageSize,cats } = data
-
-  // Object.entries({ seller, cursor, search, minPrice, maxPrice }).forEach(
-  //   ([key, value]) => {
-  //     if (value !== undefined && value !== null) {
-  //       params.set(key, String(value))
-  //     }
-  //   }
-  // )
-
-  // params.set("pageSize", String(pageSize))
 
   Object.entries(data).forEach(([key, value]) => {
     if (value !== undefined && value !== null) {
