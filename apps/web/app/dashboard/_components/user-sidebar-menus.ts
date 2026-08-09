@@ -1,4 +1,9 @@
-import { ChartNoAxesCombined, LayoutDashboard, ShoppingBag } from "lucide-react"
+import {
+  ChartNoAxesCombined,
+  LayoutDashboard,
+  ShoppingBag,
+  Star,
+} from "lucide-react"
 
 export const USER_OVERVIEW = [
   {
@@ -15,5 +20,10 @@ export const USER_OVERVIEW = [
     name: "Orders",
     slug: "/dashboard/orders",
     icon: ShoppingBag,
+  },
+  {
+    name: "Rating & Reviews",
+    slug: "/dashboard/rating",
+    icon: Star,
   },
 ]

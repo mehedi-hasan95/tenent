@@ -8,6 +8,7 @@ import { DataTable } from "@/components/common/data-table/data-table"
 import { UserOrdersColumns } from "./user-order-columns"
 import { DataTableFilter } from "@/components/common/data-table/data-table-filter"
 import { productShipping } from "./product-delivery-helper"
+import { ProductRatingModal } from "../../ratting/_components/produc-rating-modal"
 
 export const UserAllOrders = () => {
   const [pagination, setPagination] = useState<PaginationState>({
@@ -28,23 +29,26 @@ export const UserAllOrders = () => {
     return <p>load</p>
   }
   return (
-    <DataTable
-      columns={UserOrdersColumns()}
-      data={data?.data ?? []}
-      searchKey="title"
-      pagination={pagination}
-      onPaginationChange={setPagination}
-      pageCount={data?.pagination.totalPages ?? 0}
-      manualPagination={true}
-      showRowCount={false}
-      toolbar={(table) => (
-        <DataTableFilter
-          table={table}
-          column="status"
-          options={productShipping}
-          title="Delivery Status"
-        />
-      )}
-    />
+    <div>
+      <DataTable
+        columns={UserOrdersColumns()}
+        data={data?.data ?? []}
+        searchKey="title"
+        pagination={pagination}
+        onPaginationChange={setPagination}
+        pageCount={data?.pagination.totalPages ?? 0}
+        manualPagination={true}
+        showRowCount={false}
+        toolbar={(table) => (
+          <DataTableFilter
+            table={table}
+            column="status"
+            options={productShipping}
+            title="Delivery Status"
+          />
+        )}
+      />
+      <ProductRatingModal />
+    </div>
   )
 }

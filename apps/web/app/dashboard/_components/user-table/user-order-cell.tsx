@@ -1,4 +1,6 @@
 "use client"
+import { useCreateRatingStore } from "@/store/products/use-create-ratting-store"
+import { useDialogActiveStore } from "@/store/useModalActiveStore"
 import { Button } from "@workspace/ui/components/button"
 import {
   DropdownMenu,
@@ -8,14 +10,26 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@workspace/ui/components/dropdown-menu"
-import { Eye, MoreHorizontal } from "lucide-react"
+import { Eye, MoreHorizontal, NotebookPen } from "lucide-react"
 import { useRouter } from "next/navigation"
 
 interface Props {
   id: string
+  orderId: string
+  productId: string
+  title: string
+  createdAt: Date
 }
-export const UserOrderCell = ({ id }: Props) => {
+export const UserOrderCell = ({
+  id,
+  orderId,
+  productId,
+  title,
+  createdAt,
+}: Props) => {
   const router = useRouter()
+  const onModalOpen = useDialogActiveStore((state) => state.onOpen)
+  const addRating = useCreateRatingStore((state) => state.addData)
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
@@ -32,6 +46,16 @@ export const UserOrderCell = ({ id }: Props) => {
         >
           <Eye />
           Track Order
+        </DropdownMenuItem>
+        <DropdownMenuSeparator />
+        <DropdownMenuItem
+          onClick={() => {
+            addRating({ orderId, productId, title, createdAt })
+            onModalOpen(true)
+          }}
+        >
+          <NotebookPen />
+          Rating & Reviews
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>

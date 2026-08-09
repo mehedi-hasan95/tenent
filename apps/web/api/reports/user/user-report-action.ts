@@ -6,6 +6,8 @@ import {
   ORDER_ITEMS_TYPE,
   ORDER_TYPE,
 } from "@workspace/validators/types/orders.types"
+import { ratingsValidator } from "@workspace/validators/validators/order-validators"
+import z from "zod"
 
 export const allOrdersAction = async ({
   limit = DEFAULT_SIZE,
@@ -44,4 +46,52 @@ export const allOrdersAction = async ({
     pagination: PAGINATION_TYPES
   } = await response.json()
   return data
+}
+
+export const singleOrderAction = async ({ id }: { id: string }) => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_PRODUCTS_URL}/user/reports/orders/${id}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    }
+  )
+  if (!response.ok) {
+    const error = await response.json()
+    throw error
+  }
+  const data: {
+    data:
+      | {
+          orderItems: ORDER_ITEMS_TYPE
+          orders: ORDER_TYPE
+          products: { title: string; images: string[] }
+        }
+      | undefined
+  } = await response.json()
+  return data.data
+}
+
+export const createRatingAction = async (
+  data: z.input<typeof ratingsValidator>
+) => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_PRODUCTS_URL}/user/reports/add-rating`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify(data),
+    }
+  )
+  if (!response.ok) {
+    const error = await response.json()
+    throw error
+  }
+  return response.json()
 }

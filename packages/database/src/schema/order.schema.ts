@@ -6,6 +6,7 @@ import {
   pgTable,
   real,
   text,
+  uniqueIndex,
   uuid,
   varchar,
 } from "drizzle-orm/pg-core"
@@ -102,6 +103,10 @@ export const ratings = pgTable(
     index("ratings_product_id_idx").on(table.productId),
     index("ratings_order_id_idx").on(table.orderId),
     index("ratings_email_idx").on(table.email),
+    uniqueIndex("ratings_order_product_unique").on(
+      table.orderId,
+      table.productId
+    ),
   ]
 )
 

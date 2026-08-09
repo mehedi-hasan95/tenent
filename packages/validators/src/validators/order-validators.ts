@@ -29,10 +29,9 @@ export const orderItemsValidator = z.object({
 })
 
 export const ratingsValidator = z.object({
-  productId: z.string(),
-  orderId: z.string(),
-  email: z.email(),
-  rating: z.coerce.number().int().positive(),
+  productId: z.uuid(),
+  orderId: z.uuid(),
+  rating: z.coerce.number().min(1).max(5).int().positive(),
   reviews: z.string().max(400).optional(),
 })
 

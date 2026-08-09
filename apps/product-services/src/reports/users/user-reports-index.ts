@@ -1,11 +1,22 @@
 import { OpenAPIHono, defaultHook } from "@workspace/open-api"
-import { userAllOrdersRoute } from "./user-reports-route"
-import { userAllOrdersHandler } from "./user-reports-handler"
+import {
+  addRatingRoute,
+  getSingleOrderRoute,
+  userAllOrdersRoute,
+} from "./user-reports-route"
+import {
+  addRatingHandler,
+  getSingleOrderHandler,
+  userAllOrdersHandler,
+} from "./user-reports-handler"
 
 const app = new OpenAPIHono({
   defaultHook,
 })
 
-app.openapi(userAllOrdersRoute, userAllOrdersHandler)
+app
+  .openapi(userAllOrdersRoute, userAllOrdersHandler)
+  .openapi(getSingleOrderRoute, getSingleOrderHandler)
+  .openapi(addRatingRoute, addRatingHandler)
 
 export default app

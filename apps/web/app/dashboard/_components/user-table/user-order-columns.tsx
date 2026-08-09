@@ -1,12 +1,15 @@
 "use client"
 import { DataTableColumnHeader } from "@/components/common/data-table/data-table-column-header"
+import { Badge } from "@workspace/ui/components/badge"
 import { formatPrice } from "@/lib/lib"
 import { ColumnDef } from "@tanstack/react-table"
 import {
   ORDER_ITEMS_TYPE,
+  ORDER_STATUS_TYPE,
   ORDER_TYPE,
 } from "@workspace/validators/types/orders.types"
 import { formatDistanceToNow } from "date-fns"
+import { CheckCircle2, Clock, RotateCcw, Truck, XCircle } from "lucide-react"
 import { UserOrderCell } from "./user-order-cell"
 
 type UserOrderRow = {
@@ -14,6 +17,7 @@ type UserOrderRow = {
   orders: ORDER_TYPE
   products: { title: string; images: string[] }
 }
+
 export const UserOrdersColumns = (): ColumnDef<UserOrderRow>[] => [
   {
     accessorKey: "title",
@@ -65,8 +69,55 @@ export const UserOrdersColumns = (): ColumnDef<UserOrderRow>[] => [
     ),
     filterFn: "arrIncludesSome",
     cell: ({ row }) => {
-      const status = row.original.orderItems.status
-      return <p className="capitalize">{status}</p>
+      const status = row.original.orderItems.status as ORDER_STATUS_TYPE
+      const statusConfig: Record<
+        ORDER_STATUS_TYPE,
+        { label: string; icon: React.ElementType; className: string }
+      > = {
+        PROCESSING: {
+          label: "Processing",
+          icon: Clock,
+          className: "bg-amber-400",
+        },
+        SHIPPED: {
+          label: "Shipped",
+          icon: Truck,
+          className: "bg-blue-500",
+        },
+        DELIVERED: {
+          label: "Delivered",
+          icon: CheckCircle2,
+          className: "bg-green-400 text-black!",
+        },
+        CANCELLED: {
+          label: "Cancelled",
+          icon: XCircle,
+          className: "bg-red-500",
+        },
+        REFUNDED: {
+          label: "Refunded",
+          icon: RotateCcw,
+          className: "bg-purple-500",
+        },
+      }
+
+      const config = statusConfig[status]
+
+      if (!config) {
+        return <p className="capitalize">{status}</p>
+      }
+
+      const Icon = config.icon
+
+      return (
+        <Badge
+          variant="outline"
+          className={`flex w-fit items-center gap-1.5 font-medium ${config.className}`}
+        >
+          <Icon className="h-3.5 w-3.5" />
+          {config.label}
+        </Badge>
+      )
     },
   },
   {
@@ -89,6 +140,14 @@ export const UserOrdersColumns = (): ColumnDef<UserOrderRow>[] => [
   },
   {
     accessorKey: "Action",
-    cell: ({ row }) => <UserOrderCell id={row.original.orderItems.id} />,
+    cell: ({ row }) => (
+      <UserOrderCell
+        id={row.original.orderItems.id}
+        orderId={row.original.orderItems.orderId}
+        productId={row.original.orderItems.productId}
+        title={row.original.products.title}
+        createdAt={row.original.orders.createdAt}
+      />
+    ),
   },
 ]

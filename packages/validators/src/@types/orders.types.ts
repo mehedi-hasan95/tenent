@@ -13,13 +13,19 @@ export type ORDER_TYPE = {
   state: string | null
   country: string | null
 }
+export type ORDER_STATUS_TYPE =
+  | "PROCESSING"
+  | "SHIPPED"
+  | "DELIVERED"
+  | "CANCELLED"
+  | "REFUNDED"
 
 export type ORDER_ITEMS_TYPE = {
   id: string
   createdAt: Date
   updatedAt: Date
   size: string | null
-  status: "PROCESSING" | "SHIPPED" | "DELIVERED" | "CANCELLED" | "REFUNDED"
+  status: ORDER_STATUS_TYPE
   color: string | null
   price: number
   productId: string
