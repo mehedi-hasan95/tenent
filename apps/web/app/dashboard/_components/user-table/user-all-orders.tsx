@@ -8,7 +8,7 @@ import { DataTable } from "@/components/common/data-table/data-table"
 import { UserOrdersColumns } from "./user-order-columns"
 import { DataTableFilter } from "@/components/common/data-table/data-table-filter"
 import { productShipping } from "./product-delivery-helper"
-import { ProductRatingModal } from "../../ratting/_components/produc-rating-modal"
+import { ProductRatingModal } from "../product-rating-modal"
 
 export const UserAllOrders = () => {
   const [pagination, setPagination] = useState<PaginationState>({

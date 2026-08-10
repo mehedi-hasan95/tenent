@@ -33,3 +33,14 @@ export type ORDER_ITEMS_TYPE = {
   quantity: number
   usedCoupon: boolean
 }
+
+export type RATING_TYPE = {
+  updatedAt: Date
+  createdAt: Date
+  id: string
+  productId: string
+  orderId: string
+  email: string
+  rating: number
+  reviews: string | null
+}

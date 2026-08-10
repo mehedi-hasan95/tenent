@@ -69,3 +69,18 @@ export const addRatingRoute = createRoute({
     500: { description: "Internal server error" },
   },
 })
+
+export const getAllRatingsRoute = createRoute({
+  method: "get",
+  path: "/all-ratings",
+  summary: "A users all ratings and reviews",
+  tags,
+  middleware: authMiddleware,
+
+  responses: {
+    200: { description: "OK" },
+    400: { description: "Bad Request" },
+    401: { description: "Unauthorized" },
+    500: { description: "Internal server error" },
+  },
+})

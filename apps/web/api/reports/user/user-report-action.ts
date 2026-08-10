@@ -5,6 +5,7 @@ import {
 import {
   ORDER_ITEMS_TYPE,
   ORDER_TYPE,
+  RATING_TYPE,
 } from "@workspace/validators/types/orders.types"
 import { ratingsValidator } from "@workspace/validators/validators/order-validators"
 import z from "zod"
@@ -94,4 +95,31 @@ export const createRatingAction = async (
     throw error
   }
   return response.json()
+}
+
+export const userAllRatingsAction = async () => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_PRODUCTS_URL}/user/reports/all-ratings`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    }
+  )
+  if (!response.ok) {
+    const error = await response.json()
+    throw error
+  }
+  const data: {
+    data: {
+      ratings: RATING_TYPE
+      product: {
+        title: string
+        image: string[]
+      }
+    }[]
+  } = await response.json()
+  return data.data
 }

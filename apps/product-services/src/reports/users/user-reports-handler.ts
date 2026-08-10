@@ -1,6 +1,7 @@
 import { RouteHandler } from "@workspace/open-api"
 import {
   addRatingRoute,
+  getAllRatingsRoute,
   getSingleOrderRoute,
   userAllOrdersRoute,
 } from "./user-reports-route"
@@ -128,6 +129,26 @@ export const addRatingHandler: RouteHandler<typeof addRatingRoute> = async (
     ) {
       return c.json({ message: "You already add rating & reviews" }, 409)
     }
+    return c.json({ message: "Something went wrong" }, 500)
+  }
+}
+
+export const getAllRatingsHandler: RouteHandler<
+  typeof getAllRatingsRoute
+> = async (c) => {
+  try {
+    const email = c.get("user")?.email
+    const data = await db
+      .select({
+        ratings,
+        product: { title: products.title, image: products.images },
+      })
+      .from(ratings)
+      .leftJoin(products, eq(ratings.productId, products.id))
+      .where(eq(ratings.email, email!))
+      .orderBy(desc(ratings.createdAt))
+    return c.json({ data }, 200)
+  } catch (error) {
     return c.json({ message: "Something went wrong" }, 500)
   }
 }

@@ -5,7 +5,7 @@ import { DialogModify } from "@/components/modify/dialog-modify"
 import { useCreateRatingStore } from "@/store/products/use-create-ratting-store"
 import { useDialogActiveStore } from "@/store/useModalActiveStore"
 import { zodResolver } from "@hookform/resolvers/zod"
-import { useMutation } from "@tanstack/react-query"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
 import {
   Field,
   FieldError,
@@ -17,11 +17,11 @@ import { Controller, useForm } from "react-hook-form"
 import { toast } from "sonner"
 import z from "zod"
 import { useShallow } from "zustand/react/shallow"
-import { StarRatingForm } from "./star-rating-form"
 import { TextareaController } from "@/components/form/textarea-controller"
 import { Button } from "@workspace/ui/components/button"
 import { useEffect } from "react"
 import { LoadingButton } from "@/components/common/loading-button"
+import { StarRatingForm } from "./star-rating-form"
 
 export const ProductRatingModal = () => {
   const { onOpen, open } = useDialogActiveStore(
@@ -33,12 +33,14 @@ export const ProductRatingModal = () => {
   const { clear, data: getRating } = useCreateRatingStore(
     useShallow((state) => ({ clear: state.clear, data: state.data }))
   )
+  const queryClient = useQueryClient()
   const { mutate, isPending } = useMutation({
     mutationFn: createRatingAction,
     onSuccess: () => {
       toast.success("Rating and reviews add successfully")
       onOpen(false)
       clear()
+      queryClient.invalidateQueries({ queryKey: ["user-ratings"] })
     },
     onError: (error) => {
       toast.error(error.message)
