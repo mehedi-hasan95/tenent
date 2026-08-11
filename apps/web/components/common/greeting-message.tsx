@@ -10,7 +10,7 @@ interface Props {
 export const GreetingMessage = ({ className }: Props) => {
   const { user } = useGetSession()
   return (
-    <h2 className={cn("text-xl", className)}>
+    <h2 className={cn("font-dynaPuff text-xl", className)}>
       {getGreeting()}, {user?.name}
     </h2>
   )

@@ -44,3 +44,10 @@ export type RATING_TYPE = {
   rating: number
   reviews: string | null
 }
+
+export type VENDER_REPORT_TYPE = {
+  total: number
+  current: number
+  previous: number
+  percentage: number
+}

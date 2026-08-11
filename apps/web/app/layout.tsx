@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono } from "next/font/google"
+import { DynaPuff, Geist, Geist_Mono } from "next/font/google"
 
 import "@workspace/ui/globals.css"
 import { cn } from "@workspace/ui/lib/utils"
@@ -14,6 +14,12 @@ const geist = Geist({ subsets: ["latin"], variable: "--font-sans" })
 const fontMono = Geist_Mono({
   subsets: ["latin"],
   variable: "--font-mono",
+})
+
+const dynaPuff = DynaPuff({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+  variable: "--font-dynaPuff",
 })
 
 export default async function RootLayout({
@@ -46,7 +52,9 @@ export default async function RootLayout({
         "antialiased",
         fontMono.variable,
         "font-sans",
-        geist.variable
+        geist.variable,
+        "dynaPuff",
+        dynaPuff.variable
       )}
     >
       <body>
