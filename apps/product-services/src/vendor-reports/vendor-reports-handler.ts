@@ -1,5 +1,10 @@
 import { RouteHandler } from "@workspace/open-api"
-import { vendorTotalRevenueRoute } from "./vendor-reports-route"
+import {
+  updateVendorSingleOrderRoute,
+  vendorAllOrdersRoute,
+  vendorSingleOrderRoute,
+  vendorTotalRevenueRoute,
+} from "./vendor-reports-route"
 import {
   and,
   count,
@@ -231,6 +236,107 @@ export const vendorTotalRevenueHandler: RouteHandler<
         percentage: Number(uniqueUserPercentage.toFixed(2)),
       },
     })
+  } catch (error) {
+    return c.json({ message: "Something went wrong" }, 500)
+  }
+}
+
+export const vendorAllOrdersHandler: RouteHandler<
+  typeof vendorAllOrdersRoute
+> = async (c) => {
+  try {
+    const email = c.get("user")?.email
+    const { limit, page } = c.req.valid("query")
+    const offset = (page - 1) * limit
+    const [data, totalResult] = await Promise.all([
+      db
+        .select({
+          orderItems: orderItems,
+          orders: orders,
+          products: { title: products.title, images: products.images },
+        })
+        .from(orderItems)
+        .innerJoin(orders, eq(orderItems.orderId, orders.id))
+        .innerJoin(products, eq(orderItems.productId, products.id))
+        .where(eq(products.userEmail, email!))
+        .limit(limit)
+        .offset(offset),
+      db
+        .select({ count: count() })
+        .from(orderItems)
+        .innerJoin(orders, eq(orderItems.orderId, orders.id))
+        .innerJoin(products, eq(orderItems.productId, products.id))
+        .where(eq(products.userEmail, email!)),
+    ])
+
+    const total = totalResult[0]?.count ?? 0
+    const totalPages = Math.ceil(total / limit)
+
+    return c.json({
+      data,
+      pagination: {
+        page,
+        limit,
+        total,
+        totalPages,
+        hasNextPage: page < totalPages,
+        hasPrevPage: page > 1,
+      },
+    })
+  } catch (error) {
+    return c.json({ message: "Something went wrong" }, 500)
+  }
+}
+
+export const vendorSingleOrderHandler: RouteHandler<
+  typeof vendorSingleOrderRoute
+> = async (c) => {
+  try {
+    const { id } = c.req.valid("param")
+    const email = c.get("user")?.email
+    const [data] = await db
+      .select({
+        orderItems,
+        orders,
+        products: { title: products.title, images: products.images },
+      })
+      .from(orderItems)
+      .innerJoin(orders, eq(orderItems.orderId, orders.id))
+      .innerJoin(products, eq(orderItems.productId, products.id))
+      .where(and(eq(orderItems.id, id), eq(products.userEmail, email!)))
+
+    return c.json({ data }, 200)
+  } catch (error) {
+    return c.json({ message: "Something went wrong" }, 500)
+  }
+}
+
+export const updateVendorSingleOrderHandler: RouteHandler<
+  typeof updateVendorSingleOrderRoute
+> = async (c) => {
+  try {
+    const { id, status } = c.req.valid("json")
+    const email = c.get("user")?.email
+    const [orderItem] = await db
+      .select({
+        id: orderItems.id,
+      })
+      .from(orderItems)
+      .innerJoin(products, eq(orderItems.productId, products.id))
+      .where(and(eq(orderItems.id, id), eq(products.userEmail, email!)))
+      .limit(1)
+
+    if (!orderItem) {
+      return c.json({ message: "You're not author of this product" }, 404)
+    }
+
+    const [data] = await db
+      .update(orderItems)
+      .set({ status })
+      .where(eq(orderItems.id, id))
+      .returning()
+
+    return c.json({ data }, 200)
   } catch (error) {
     return c.json({ message: "Something went wrong" }, 500)
   }

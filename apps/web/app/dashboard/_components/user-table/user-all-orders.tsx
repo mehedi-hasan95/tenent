@@ -17,7 +17,7 @@ export const UserAllOrders = () => {
   })
 
   const { data, isLoading } = useQuery({
-    queryKey: ["orders", pagination], // also rename key while you're at it, "test" won't scale
+    queryKey: ["orders", pagination],
     queryFn: () =>
       allOrdersAction({
         limit: pagination.pageSize,

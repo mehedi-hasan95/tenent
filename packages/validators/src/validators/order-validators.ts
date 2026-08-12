@@ -1,4 +1,5 @@
 import z from "zod"
+import { orderStatusEnum } from "../@types/enum.types"
 
 export const shippingFormSchema = z.object({
   line1: z.string().optional(),
@@ -45,4 +46,9 @@ export const createStripeOrderValidator = z.object({
       color: z.string().nullable(),
     })
   ),
+})
+
+export const updateOrderItemsValidator = z.object({
+  id: z.uuid(),
+  status: orderStatusEnum,
 })
