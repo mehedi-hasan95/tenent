@@ -2,216 +2,196 @@
 
 import { ComposableMap, Geographies, Geography } from "react-simple-maps"
 import { useState } from "react"
+import { useQuery } from "@tanstack/react-query"
+import { vendorCountryBasedReportAction } from "@/api/reports/vendor/vendor-report-action"
+import countries from "@/lib/country.json"
+import { formatPrice } from "@/lib/lib"
 
 const geoUrl = "https://cdn.jsdelivr.net/npm/world-atlas@2/countries-110m.json"
 
 type CountryData = {
   country: string
-  users: number
-  sellers: number
+  price: number
+  quantity: number
 }
 
-const countryData: CountryData[] = [
-  {
-    country: "Bangladesh",
-    users: 12500,
-    sellers: 320,
-  },
-  {
-    country: "India",
-    users: 45200,
-    sellers: 850,
-  },
-  {
-    country: "United States of America",
-    users: 78200,
-    sellers: 1240,
-  },
-  {
-    country: "United Kingdom",
-    users: 18400,
-    sellers: 430,
-  },
-  {
-    country: "Canada",
-    users: 12600,
-    sellers: 290,
-  },
-  {
-    country: "Australia",
-    users: 9800,
-    sellers: 210,
-  },
-  {
-    country: "Germany",
-    users: 22100,
-    sellers: 510,
-  },
-  {
-    country: "France",
-    users: 19400,
-    sellers: 450,
-  },
-  {
-    country: "Brazil",
-    users: 28600,
-    sellers: 620,
-  },
-  {
-    country: "Japan",
-    users: 31200,
-    sellers: 710,
-  },
-  {
-    country: "China",
-    users: 65400,
-    sellers: 980,
-  },
-  {
-    country: "United Arab Emirates",
-    users: 8700,
-    sellers: 180,
-  },
-]
+// ISO country code -> country name
+const countryCodeToName: Record<string, string> = Object.fromEntries(
+  countries.map(({ code, name }) => [code.toLowerCase(), name])
+)
 
-const getCountryData = (countryName: string) => {
-  return countryData.find(
-    (item) => item.country.toLowerCase() === countryName.toLowerCase()
-  )
-}
-
-export default function VendorReactMap() {
+export const VendorReactMap = () => {
   const [hoveredCountry, setHoveredCountry] = useState<CountryData | null>(null)
 
+  // Mouse position for tooltip
+  const [tooltipPosition, setTooltipPosition] = useState({
+    x: 0,
+    y: 0,
+  })
+
+  const { data, isLoading, isError } = useQuery({
+    queryKey: ["country-order"],
+    queryFn: vendorCountryBasedReportAction,
+  })
+
+  // Convert API response into map-friendly data
+  const countryData: CountryData[] = (data ?? [])
+    .filter((item) => item.country !== null)
+    .map((item) => ({
+      country: countryCodeToName[item.country!.toLowerCase()] ?? item.country!,
+      price: item.price,
+      quantity: item.quantity,
+    }))
+
+  const getCountryData = (countryName: string) => {
+    return countryData.find(
+      (item) => item.country.toLowerCase() === countryName.toLowerCase()
+    )
+  }
+
   return (
-    <div className="relative w-full rounded-xl border bg-background p-4 shadow-sm">
+    <div className="relative w-full rounded-xl px-4 shadow-sm">
       {/* Header */}
       <div className="mb-4">
-        <h2 className="text-lg font-semibold">Users & Sellers by Country</h2>
+        <h2 className="text-lg font-semibold">Country Based Report</h2>
 
         <p className="text-sm text-muted-foreground">
           Geographic distribution of your marketplace
         </p>
       </div>
 
-      {/* Stats */}
-      <div className="mb-4 flex gap-6">
-        <div>
-          <p className="text-xs text-muted-foreground">Total Users</p>
+      {/* Loading */}
+      {isLoading && (
+        <div className="flex h-75 items-center justify-center">
+          <p className="text-sm text-muted-foreground">Loading map...</p>
+        </div>
+      )}
 
-          <p className="text-xl font-bold">
-            {countryData
-              .reduce((total, country) => total + country.users, 0)
-              .toLocaleString()}
+      {/* Error */}
+      {isError && (
+        <div className="flex h-75 items-center justify-center">
+          <p className="text-sm text-destructive">
+            Failed to load country report.
           </p>
         </div>
-
-        <div>
-          <p className="text-xs text-muted-foreground">Total Sellers</p>
-
-          <p className="text-xl font-bold">
-            {countryData
-              .reduce((total, country) => total + country.sellers, 0)
-              .toLocaleString()}
-          </p>
-        </div>
-      </div>
+      )}
 
       {/* Map */}
-      <div className="relative">
-        <ComposableMap
-          projectionConfig={{
-            scale: 145,
-          }}
-          className="h-auto w-full"
-        >
-          <Geographies geography={geoUrl}>
-            {({ geographies }) =>
-              geographies.map((geo) => {
-                const countryName = geo.properties.name
-                const data = getCountryData(countryName)
+      {!isLoading && !isError && (
+        <div className="relative">
+          <ComposableMap
+            projectionConfig={{
+              scale: 145,
+            }}
+          >
+            <Geographies geography={geoUrl}>
+              {({ geographies }) =>
+                geographies.map((geo) => {
+                  const countryName = geo.properties.name
 
-                return (
-                  <Geography
-                    key={geo.rsmKey}
-                    geography={geo}
-                    onMouseEnter={() => {
-                      setHoveredCountry(data ?? null)
-                    }}
-                    onMouseLeave={() => {
-                      setHoveredCountry(null)
-                    }}
-                    style={{
-                      default: {
-                        fill: data ? "#6366f1" : "#E5E7EB",
-                        outline: "none",
-                        stroke: "#ffffff",
-                        strokeWidth: 0.5,
-                      },
-                      hover: {
-                        fill: "#4f46e5",
-                        outline: "none",
-                        cursor: "pointer",
-                      },
-                      pressed: {
-                        fill: "#4338ca",
-                        outline: "none",
-                      },
-                    }}
-                  />
-                )
-              })
-            }
-          </Geographies>
-        </ComposableMap>
+                  const country = getCountryData(countryName)
 
-        {/* Tooltip */}
-        {hoveredCountry && (
-          <div className="pointer-events-none absolute top-4 right-4 min-w-[180px] rounded-lg border bg-background p-3 shadow-lg">
-            <p className="mb-2 font-semibold">{hoveredCountry.country}</p>
+                  return (
+                    <Geography
+                      key={geo.rsmKey}
+                      geography={geo}
+                      onMouseEnter={(event) => {
+                        if (!country) {
+                          setHoveredCountry(null)
+                          return
+                        }
 
-            <div className="flex items-center justify-between gap-6 text-sm">
-              <span className="text-muted-foreground">Users</span>
+                        const mapContainer =
+                          event.currentTarget.closest(".relative")
 
-              <span className="font-medium">
-                {hoveredCountry.users.toLocaleString()}
-              </span>
-            </div>
+                        if (!mapContainer) return
 
-            <div className="mt-1 flex items-center justify-between gap-6 text-sm">
-              <span className="text-muted-foreground">Sellers</span>
+                        const rect = mapContainer.getBoundingClientRect()
 
-              <span className="font-medium">
-                {hoveredCountry.sellers.toLocaleString()}
-              </span>
-            </div>
-          </div>
-        )}
-      </div>
+                        setHoveredCountry(country)
 
-      {/* Country list */}
-      <div className="mt-4 grid grid-cols-2 gap-3 border-t pt-4 sm:grid-cols-3 lg:grid-cols-4">
-        {countryData
-          .sort((a, b) => b.users - a.users)
-          .slice(0, 8)
-          .map((country) => (
-            <div key={country.country} className="rounded-lg border p-3">
-              <p className="truncate text-sm font-medium">{country.country}</p>
+                        setTooltipPosition({
+                          x: event.clientX - rect.left,
+                          y: event.clientY - rect.top,
+                        })
+                      }}
+                      onMouseMove={(event) => {
+                        if (!country) return
 
-              <div className="mt-1 flex justify-between text-xs">
-                <span className="text-muted-foreground">Users</span>
+                        const mapContainer =
+                          event.currentTarget.closest(".relative")
 
-                <span>{country.users.toLocaleString()}</span>
+                        if (!mapContainer) return
+
+                        const rect = mapContainer.getBoundingClientRect()
+
+                        setTooltipPosition({
+                          x: event.clientX - rect.left,
+                          y: event.clientY - rect.top,
+                        })
+                      }}
+                      onMouseLeave={() => {
+                        setHoveredCountry(null)
+                      }}
+                      style={{
+                        default: {
+                          fill: country ? "#6366f1" : "#E5E7EB",
+                          outline: "none",
+                          stroke: "#ffffff",
+                          strokeWidth: 0.5,
+                        },
+
+                        hover: {
+                          fill: country ? "#4f46e5" : "#D1D5DB",
+                          outline: "none",
+                          cursor: country ? "pointer" : "default",
+                        },
+
+                        pressed: {
+                          fill: "#4338ca",
+                          outline: "none",
+                        },
+                      }}
+                    />
+                  )
+                })
+              }
+            </Geographies>
+          </ComposableMap>
+
+          {/* Tooltip */}
+          {hoveredCountry && (
+            <div
+              className="pointer-events-none absolute z-50 min-w-50 -translate-x-1/2 -translate-y-full rounded-lg border bg-background p-3 shadow-lg"
+              style={{
+                left: tooltipPosition.x,
+                top: tooltipPosition.y - 10,
+              }}
+            >
+              <p className="mb-2 font-semibold">{hoveredCountry.country}</p>
+
+              <div className="flex items-center justify-between gap-6 text-sm">
+                <span className="text-muted-foreground">Quantity</span>
+
+                <span className="font-medium">
+                  {hoveredCountry.quantity.toLocaleString()}
+                </span>
               </div>
 
-              <div className="mt-1 flex justify-between text-xs">
-                <span className="text-muted-foreground">Sellers</span>
+              <div className="mt-1 flex items-center justify-between gap-6 text-sm">
+                <span className="text-muted-foreground">Revenue</span>
 
-                <span>{country.sellers.toLocaleString()}</span>
+                <span className="font-medium">
+                  {formatPrice(hoveredCountry.price)}
+                </span>
               </div>
+
+              {/* Tooltip arrow */}
+              <div className="absolute top-full left-1/2 h-2 w-2 -translate-x-1/2 -translate-y-1/2 rotate-45 border-r border-b bg-background" />
             </div>
-          ))}
-      </div>
+          )}
+        </div>
+      )}
     </div>
   )
 }

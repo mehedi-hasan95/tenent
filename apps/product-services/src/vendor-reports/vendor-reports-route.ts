@@ -3,7 +3,10 @@ import { sellerMiddleware } from "../middleware"
 import z from "zod"
 import { DEFAULT_SIZE } from "@workspace/validators/types/constants.types"
 import { orderStatusEnum } from "@workspace/validators/types/enum.types"
-import { updateOrderItemsValidator } from "@workspace/validators/validators/order-validators"
+import {
+  updateOrderItemsValidator,
+  yearlyReportsValidator,
+} from "@workspace/validators/validators/order-validators"
 
 const tags = ["Vendor Reports"]
 export const vendorTotalRevenueRoute = createRoute({
@@ -79,6 +82,37 @@ export const updateVendorSingleOrderRoute = createRoute({
         },
       },
     },
+  },
+  responses: {
+    200: { description: "OK" },
+    400: { description: "Bad Request" },
+    401: { description: "Unauthorized" },
+    500: { description: "Internal server error" },
+  },
+})
+
+export const vendorCountryBasedRoute = createRoute({
+  method: "get",
+  path: "/country-based",
+  summary: "Vendor country based reports with sell reports",
+  tags,
+  middleware: sellerMiddleware,
+  responses: {
+    200: { description: "OK" },
+    400: { description: "Bad Request" },
+    401: { description: "Unauthorized" },
+    500: { description: "Internal server error" },
+  },
+})
+
+export const vendorPreviousYearsReportRoute = createRoute({
+  method: "get",
+  path: "/previous-year-reports",
+  summary: "Vendor previous 1 year report",
+  tags,
+  middleware: sellerMiddleware,
+  request: {
+    query: yearlyReportsValidator,
   },
   responses: {
     200: { description: "OK" },

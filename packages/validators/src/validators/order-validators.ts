@@ -52,3 +52,23 @@ export const updateOrderItemsValidator = z.object({
   id: z.uuid(),
   status: orderStatusEnum,
 })
+
+export const yearlyReportsValidator = z
+  .object({
+    startMonth: z
+      .string()
+      .regex(/^\d{4}-\d{2}-\d{2}$/)
+      .optional(),
+    endMonth: z
+      .string()
+      .regex(/^\d{4}-\d{2}-\d{2}$/)
+      .optional(),
+  })
+  .refine(
+    ({ startMonth, endMonth }) =>
+      !startMonth || !endMonth || endMonth >= startMonth,
+    {
+      message: "endMonth must not be less than startMonth",
+      path: ["endMonth"],
+    }
+  )

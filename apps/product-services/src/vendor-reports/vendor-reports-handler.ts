@@ -2,20 +2,12 @@ import { RouteHandler } from "@workspace/open-api"
 import {
   updateVendorSingleOrderRoute,
   vendorAllOrdersRoute,
+  vendorCountryBasedRoute,
+  vendorPreviousYearsReportRoute,
   vendorSingleOrderRoute,
   vendorTotalRevenueRoute,
 } from "./vendor-reports-route"
-import {
-  and,
-  count,
-  countDistinct,
-  db,
-  eq,
-  gte,
-  lt,
-  sql,
-  sum,
-} from "@workspace/db"
+import { and, count, countDistinct, db, eq, gte, sql, sum } from "@workspace/db"
 import { orderItems, orders } from "@workspace/db/schema/order.schema"
 import { products } from "@workspace/db/schema/products.schema"
 
@@ -28,13 +20,18 @@ export const vendorTotalRevenueHandler: RouteHandler<
       // start: Total Revenue
       db
         .select({
-          count: sum(orders.totalPrice),
+          count: sql<number>`
+            COALESCE(
+              SUM(${orderItems.price} * ${orderItems.quantity}),
+              0
+            )
+          `,
           currentTotal: sql<number>`
           COALESCE(
             SUM(
               CASE
                 WHEN ${orders.createdAt} >= date_trunc('month', CURRENT_DATE)
-                THEN ${orders.totalPrice}
+                THEN ${orderItems.quantity}*${orderItems.price}
                 ELSE 0
               END
             ),
@@ -47,7 +44,7 @@ export const vendorTotalRevenueHandler: RouteHandler<
               CASE 
                 WHEN ${orders.createdAt} >= date_trunc('month', CURRENT_DATE) - INTERVAL '1 month' 
                 AND ${orders.createdAt} < date_trunc('month', CURRENT_DATE) 
-                THEN ${orders.totalPrice} 
+                THEN ${orderItems.quantity}*${orderItems.price} 
                 ELSE 0 
               END
             ), 
@@ -56,8 +53,8 @@ export const vendorTotalRevenueHandler: RouteHandler<
         `,
         })
         .from(orders)
-        .leftJoin(orderItems, eq(orders.id, orderItems.orderId))
-        .leftJoin(products, eq(orderItems.productId, products.id))
+        .innerJoin(orderItems, eq(orders.id, orderItems.orderId))
+        .innerJoin(products, eq(orderItems.productId, products.id))
         .where(
           and(
             eq(orders.isPaid, true),
@@ -92,8 +89,8 @@ export const vendorTotalRevenueHandler: RouteHandler<
           `,
         })
         .from(orders)
-        .leftJoin(orderItems, eq(orders.id, orderItems.orderId))
-        .leftJoin(products, eq(orderItems.productId, products.id))
+        .innerJoin(orderItems, eq(orders.id, orderItems.orderId))
+        .innerJoin(products, eq(orderItems.productId, products.id))
         .where(
           and(
             eq(orders.isPaid, true),
@@ -128,7 +125,7 @@ export const vendorTotalRevenueHandler: RouteHandler<
           `,
         })
         .from(orderItems)
-        .leftJoin(products, eq(orderItems.productId, products.id))
+        .innerJoin(products, eq(orderItems.productId, products.id))
         .where(eq(products.userEmail, email!)),
       // end: OrderItem
       // start: unique user
@@ -154,8 +151,8 @@ export const vendorTotalRevenueHandler: RouteHandler<
           `,
         })
         .from(orders)
-        .leftJoin(orderItems, eq(orders.id, orderItems.orderId))
-        .leftJoin(products, eq(orderItems.productId, products.id))
+        .innerJoin(orderItems, eq(orders.id, orderItems.orderId))
+        .innerJoin(products, eq(orderItems.productId, products.id))
         .where(
           and(
             eq(orders.isPaid, true),
@@ -337,6 +334,101 @@ export const updateVendorSingleOrderHandler: RouteHandler<
       .returning()
 
     return c.json({ data }, 200)
+  } catch (error) {
+    return c.json({ message: "Something went wrong" }, 500)
+  }
+}
+
+export const vendorCountryBasedHandler: RouteHandler<
+  typeof vendorCountryBasedRoute
+> = async (c) => {
+  try {
+    const email = c.get("user")?.email
+
+    const data = await db
+      .select({
+        country: orders.country,
+        quantity: sql<number>`
+          COALESCE(
+            SUM(
+              ${orderItems.quantity}
+            ),
+            0
+          )::int
+        `,
+        price: sql<number>`
+          COALESCE(
+            SUM(${orderItems.price} * ${orderItems.quantity}),
+            0
+          )
+        `,
+      })
+      .from(orders)
+      .innerJoin(orderItems, eq(orderItems.orderId, orders.id))
+      .innerJoin(products, eq(products.id, orderItems.productId))
+      .where(eq(products.userEmail, email!))
+      .groupBy(orders.country)
+
+    return c.json({ data }, 200)
+  } catch (error) {
+    return c.json({ message: "Something went wrong" }, 500)
+  }
+}
+
+export const vendorPreviousYearsReportHandler: RouteHandler<
+  typeof vendorPreviousYearsReportRoute
+> = async (c) => {
+  try {
+    const email = c.get("user")?.email as string
+
+    const { endMonth, startMonth } = c.req.valid("query")
+    const data = await db.execute(sql`
+      WITH params AS (
+        SELECT
+          COALESCE(
+            ${startMonth ? sql`${startMonth}::date` : sql`date_trunc('month', CURRENT_DATE) - INTERVAL '11 months'`}
+          ) AS start_month,
+          COALESCE(
+            ${endMonth ? sql`${endMonth}::date` : sql`date_trunc('month', CURRENT_DATE)`}
+          ) AS end_month
+      ),
+      months AS (
+        SELECT generate_series(
+          date_trunc('month', start_month),
+          date_trunc('month', end_month),
+          INTERVAL '1 month'
+        ) AS month
+        FROM params
+      ),
+      sales AS (
+        SELECT
+          date_trunc('month', o.created_at) AS month,
+          SUM(oi.quantity)::int AS quantity,
+          SUM(oi.price * oi.quantity)::float AS "totalSale"
+        FROM ${orderItems} oi
+        INNER JOIN ${orders} o
+          ON o.id = oi.order_id
+        INNER JOIN ${products} p
+          ON p.id = oi.product_id
+        CROSS JOIN params
+        WHERE p.user_email = ${email}
+          AND o.is_paid = true
+          AND oi.status != 'CANCELLED'
+          AND o.created_at >= date_trunc('month', params.start_month)
+          AND o.created_at < date_trunc('month', params.end_month) + INTERVAL '1 month'
+        GROUP BY date_trunc('month', o.created_at)
+      )
+      SELECT
+        m.month::date AS month,
+        COALESCE(s.quantity, 0)::int AS quantity,
+        COALESCE(s."totalSale", 0)::float AS "totalSale"
+      FROM months m
+      LEFT JOIN sales s
+        ON s.month = m.month
+      ORDER BY m.month ASC
+    `)
+
+    return c.json({ data: data.rows }, 200)
   } catch (error) {
     return c.json({ message: "Something went wrong" }, 500)
   }

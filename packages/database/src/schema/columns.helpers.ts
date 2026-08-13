@@ -5,5 +5,5 @@ export const timestamps = {
     .defaultNow()
     .$onUpdate(() => new Date())
     .notNull(),
-  createdAt: timestamp("created_At").defaultNow().notNull(),
+  createdAt: timestamp("created_at").defaultNow().notNull(),
 }
