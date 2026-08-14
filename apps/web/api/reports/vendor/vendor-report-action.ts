@@ -5,6 +5,7 @@ import {
 import {
   ORDER_ITEMS_TYPE,
   ORDER_TYPE,
+  POPULAR_PRODUCTS_TYPE,
   VENDER_REPORT_TYPE,
 } from "@workspace/validators/types/orders.types"
 import {
@@ -175,6 +176,57 @@ export const vendorYearlyReportsAction = async (
   }
   const data: {
     data: { month: string; quantity: number; totalSale: number }[]
+  } = await response.json()
+  return data.data
+}
+
+export const vendorDailyReportsAction = async (
+  param: z.input<typeof yearlyReportsValidator>
+) => {
+  const params = new URLSearchParams()
+
+  Object.entries(param).forEach(([key, value]) => {
+    if (value !== undefined && value !== null) {
+      params.set(key, String(value))
+    }
+  })
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_PRODUCTS_URL}/vendor/reports/daily-reports?${params.toString()}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    }
+  )
+  if (!response.ok) {
+    const error = await response.json()
+    throw error
+  }
+  const data: {
+    data: { month: string; quantity: number; totalSale: number }[]
+  } = await response.json()
+  return data.data
+}
+
+export const vendorPopularProductsAction = async () => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_PRODUCTS_URL}/vendor/reports/popular-products`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    }
+  )
+  if (!response.ok) {
+    const error = await response.json()
+    throw error
+  }
+  const data: {
+    data: POPULAR_PRODUCTS_TYPE[]
   } = await response.json()
   return data.data
 }

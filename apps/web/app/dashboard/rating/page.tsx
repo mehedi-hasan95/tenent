@@ -1,6 +1,6 @@
-import { getQueryClient } from "@/lib/lib"
 import { RatingPage } from "./_components/ratting-page"
 import { userAllRatingsAction } from "@/api/reports/user/user-report-action"
+import { getQueryClient } from "@/lib/get-query-client"
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query"
 
 const Page = async () => {

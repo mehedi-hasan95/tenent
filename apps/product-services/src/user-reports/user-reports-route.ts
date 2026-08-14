@@ -1,8 +1,8 @@
 import { createRoute } from "@workspace/open-api"
-import { authMiddleware } from "../../middleware"
 import z from "zod"
 import { DEFAULT_SIZE } from "@workspace/validators/types/constants.types"
 import { ratingsValidator } from "@workspace/validators/validators/order-validators"
+import { authMiddleware } from "../middleware"
 const tags = ["User Reports"]
 export const userAllOrdersRoute = createRoute({
   method: "get",

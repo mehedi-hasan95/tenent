@@ -3,6 +3,8 @@ import {
   updateVendorSingleOrderRoute,
   vendorAllOrdersRoute,
   vendorCountryBasedRoute,
+  vendorDailyReportRoute,
+  vendorPopularProductsRoute,
   vendorPreviousYearsReportRoute,
   vendorSingleOrderRoute,
   vendorTotalRevenueRoute,
@@ -11,6 +13,8 @@ import {
   updateVendorSingleOrderHandler,
   vendorAllOrdersHandler,
   vendorCountryBasedHandler,
+  vendorDailyReportHandler,
+  vendorPopularProductsHandler,
   vendorPreviousYearsReportHandler,
   vendorSingleOrderHandler,
   vendorTotalRevenueHandler,
@@ -27,5 +31,7 @@ app
   .openapi(updateVendorSingleOrderRoute, updateVendorSingleOrderHandler)
   .openapi(vendorCountryBasedRoute, vendorCountryBasedHandler)
   .openapi(vendorPreviousYearsReportRoute, vendorPreviousYearsReportHandler)
+  .openapi(vendorDailyReportRoute, vendorDailyReportHandler)
+  .openapi(vendorPopularProductsRoute, vendorPopularProductsHandler)
 
 export default app

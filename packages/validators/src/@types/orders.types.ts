@@ -51,3 +51,11 @@ export type VENDER_REPORT_TYPE = {
   previous: number
   percentage: number
 }
+
+export type POPULAR_PRODUCTS_TYPE = {
+  productId: string
+  title: string
+  images: string[]
+  totalQuantity: number
+  totalPrice: number
+}

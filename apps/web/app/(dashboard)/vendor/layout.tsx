@@ -6,8 +6,8 @@ import {
   SidebarTrigger,
 } from "@workspace/ui/components/sidebar"
 import { VendorSidebar } from "./_components/vendor-sidebar"
-import { getQueryClient } from "@/lib/lib"
 import { getCategoriesAction } from "@/api/categories/categories-action"
+import { getQueryClient } from "@/lib/get-query-client"
 
 interface Props {
   children: React.ReactNode

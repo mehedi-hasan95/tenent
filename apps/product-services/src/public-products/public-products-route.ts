@@ -2,7 +2,7 @@ import { createRoute } from "@workspace/open-api"
 import { productListQuerySchema } from "@workspace/validators/validators/products-validators"
 import z from "zod"
 
-const tags = ["Products Common API"]
+const tags = ["Public Products API"]
 export const allProductsRoute = createRoute({
   method: "get",
   path: "/all-products",
@@ -47,6 +47,20 @@ export const boostedProductRoute = createRoute({
 
   responses: {
     200: { description: "OK" },
+    500: { description: "Internal server error" },
+  },
+})
+
+export const popularProductsRoute = createRoute({
+  method: "get",
+  path: "/popular-products",
+  summary: "Get popular products",
+  description: "Get popular products based on most sale",
+  tags,
+  responses: {
+    200: { description: "OK" },
+    400: { description: "Bad Request" },
+    401: { description: "Unauthorized" },
     500: { description: "Internal server error" },
   },
 })

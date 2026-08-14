@@ -1,14 +1,11 @@
 import { BOOSTED_PRODUCT_TYPE } from "@workspace/validators/types/boosting.types"
 import { PRODUCT_TYPE } from "@workspace/validators/types/product.types"
-import {
-  productListQuerySchema,
-  productValidator,
-} from "@workspace/validators/validators/products-validators"
+import { productListQuerySchema } from "@workspace/validators/validators/products-validators"
 import z from "zod"
 
 export const boostedProductsAction = async () => {
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_PRODUCTS_URL}/common/boosted-products`,
+    `${process.env.NEXT_PUBLIC_PRODUCTS_URL}/public/boosted-products`,
     {
       method: "GET",
     }
@@ -30,7 +27,7 @@ export const boostedProductsAction = async () => {
 
 export const singleProductsAction = async (id: string) => {
   const url = new URL(
-    `${process.env.NEXT_PUBLIC_PRODUCTS_URL}/common/single-products`
+    `${process.env.NEXT_PUBLIC_PRODUCTS_URL}/public/single-products`
   )
 
   if (id) {
@@ -70,7 +67,7 @@ export const fetchAllProductsAction = async (
   })
 
   const response = await fetch(
-    `${process.env.NEXT_PUBLIC_PRODUCTS_URL}/common/all-products?${params.toString()}`,
+    `${process.env.NEXT_PUBLIC_PRODUCTS_URL}/public/all-products?${params.toString()}`,
     {
       method: "GET",
     }
@@ -81,4 +78,24 @@ export const fetchAllProductsAction = async (
   }
 
   return response.json()
+}
+
+export const popularProductsAction = async () => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_PRODUCTS_URL}/public/popular-products`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  )
+  if (!response.ok) {
+    const error = await response.json()
+    throw error
+  }
+  const data: {
+    data: { products: PRODUCT_TYPE; avgRating: number; ratingCount: number }[]
+  } = await response.json()
+  return data.data
 }

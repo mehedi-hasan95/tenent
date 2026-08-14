@@ -2,8 +2,9 @@ import { RouteHandler } from "@workspace/open-api"
 import {
   allProductsRoute,
   boostedProductRoute,
+  popularProductsRoute,
   singleProductsRoute,
-} from "./products-route"
+} from "./public-products-route"
 import { Cursor, decodeCursor, encodeCursor } from "../utils/cursor"
 import {
   and,
@@ -19,6 +20,7 @@ import {
   lte,
   or,
   sql,
+  sum,
 } from "@workspace/db"
 import { products } from "@workspace/db/schema/products.schema"
 import { productBoost } from "@workspace/db/schema/boosting.schema"
@@ -27,6 +29,7 @@ import {
   ratingColumns,
   ratingSubquery,
 } from "../utils/queries/rating-query"
+import { orderItems } from "@workspace/db/schema/order.schema"
 
 export const allProductsHandler: RouteHandler<typeof allProductsRoute> = async (
   c
@@ -157,5 +160,24 @@ export const boostedProductHandler: RouteHandler<
     return c.json({ data }, 200)
   } catch (error) {
     return c.json({ message: "Something went wrong" }, 500)
+  }
+}
+
+export const popularProductsHandler: RouteHandler<
+  typeof popularProductsRoute
+> = async (c) => {
+  try {
+    const ratingSq = ratingSubquery()
+    const data = await db
+      .select({ products, ...ratingColumns(ratingSq) })
+      .from(orderItems)
+      .leftJoin(products, eq(orderItems.productId, products.id))
+      .leftJoin(ratingSq, eq(ratingSq.productId, products.id))
+      .groupBy(products.id, ratingSq.avgRating, ratingSq.ratingCount)
+      .orderBy(desc(sum(orderItems.quantity)))
+      .limit(10)
+    return c.json({ data }, 200)
+  } catch (error) {
+    return c.json({ error }, 500)
   }
 }

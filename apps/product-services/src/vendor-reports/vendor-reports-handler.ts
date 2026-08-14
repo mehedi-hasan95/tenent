@@ -3,11 +3,23 @@ import {
   updateVendorSingleOrderRoute,
   vendorAllOrdersRoute,
   vendorCountryBasedRoute,
+  vendorDailyReportRoute,
+  vendorPopularProductsRoute,
   vendorPreviousYearsReportRoute,
   vendorSingleOrderRoute,
   vendorTotalRevenueRoute,
 } from "./vendor-reports-route"
-import { and, count, countDistinct, db, eq, gte, sql, sum } from "@workspace/db"
+import {
+  and,
+  count,
+  countDistinct,
+  db,
+  desc,
+  eq,
+  gte,
+  sql,
+  sum,
+} from "@workspace/db"
 import { orderItems, orders } from "@workspace/db/schema/order.schema"
 import { products } from "@workspace/db/schema/products.schema"
 
@@ -429,6 +441,90 @@ export const vendorPreviousYearsReportHandler: RouteHandler<
     `)
 
     return c.json({ data: data.rows }, 200)
+  } catch (error) {
+    return c.json({ message: "Something went wrong" }, 500)
+  }
+}
+
+export const vendorDailyReportHandler: RouteHandler<
+  typeof vendorDailyReportRoute
+> = async (c) => {
+  try {
+    const email = c.get("user")?.email as string
+
+    const { endMonth, startMonth } = c.req.valid("query")
+    const data = await db.execute(sql`
+      WITH params AS (
+        SELECT
+          COALESCE(
+            ${startMonth ? sql`${startMonth}::date` : sql`CURRENT_DATE - INTERVAL '14 days'`}
+          ) AS start_date,
+          COALESCE(
+            ${endMonth ? sql`${endMonth}::date` : sql`CURRENT_DATE`}
+          ) AS end_date
+      ),
+      days AS (
+        SELECT generate_series(
+          start_date,
+          end_date,
+          INTERVAL '1 day'
+        )::date AS day
+        FROM params
+      ),
+      sales AS (
+        SELECT
+          o.created_at::date AS day,
+          SUM(oi.quantity)::int AS quantity,
+          SUM(oi.price * oi.quantity)::float AS "totalSale"
+        FROM ${orderItems} oi
+        INNER JOIN ${orders} o
+          ON o.id = oi.order_id
+        INNER JOIN ${products} p
+          ON p.id = oi.product_id
+        CROSS JOIN params
+        WHERE p.user_email = ${email}
+          AND o.is_paid = true
+          AND oi.status != 'CANCELLED'
+          AND o.created_at::date >= params.start_date
+          AND o.created_at::date <= params.end_date
+        GROUP BY o.created_at::date
+      )
+      SELECT
+        d.day AS month, 
+        COALESCE(s.quantity, 0)::int AS quantity,
+        COALESCE(s."totalSale", 0)::float AS "totalSale"
+      FROM days d
+      LEFT JOIN sales s
+        ON s.day = d.day
+      ORDER BY d.day ASC
+    `)
+
+    return c.json({ data: data.rows }, 200)
+  } catch (error) {
+    return c.json({ message: "Something went wrong" }, 500)
+  }
+}
+
+export const vendorPopularProductsHandler: RouteHandler<
+  typeof vendorPopularProductsRoute
+> = async (c) => {
+  try {
+    const email = c.get("user")?.email
+    const data = await db
+      .select({
+        productId: products.id,
+        title: products.title,
+        images: products.images,
+        totalQuantity: sql<number>`COALESCE(SUM(${orderItems.quantity})::int,0)`,
+        totalPrice: sql<number>`COALESCE(SUM(${orderItems.quantity}*${orderItems.price})::int,0)`,
+      })
+      .from(orderItems)
+      .innerJoin(products, eq(orderItems.productId, products.id))
+      .where(eq(products.userEmail, email!))
+      .groupBy(products.id, products.title, products.images)
+      .orderBy(desc(sum(orderItems.quantity)))
+      .limit(10)
+    return c.json({ data }, 200)
   } catch (error) {
     return c.json({ message: "Something went wrong" }, 500)
   }

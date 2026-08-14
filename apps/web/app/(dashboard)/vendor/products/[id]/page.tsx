@@ -1,7 +1,7 @@
-import { getQueryClient } from "@/lib/lib"
 import { CreateProductForm } from "./_components/create-product-form"
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query"
 import { singleProductsAction } from "@/api/products/products-action"
+import { getQueryClient } from "@/lib/get-query-client"
 
 interface Props {
   params: Promise<{ id: string }>

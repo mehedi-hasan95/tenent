@@ -121,3 +121,35 @@ export const vendorPreviousYearsReportRoute = createRoute({
     500: { description: "Internal server error" },
   },
 })
+
+export const vendorDailyReportRoute = createRoute({
+  method: "get",
+  path: "/daily-reports",
+  summary: "Vendor daily report",
+  description: "Vendor can expand reports with startDate to endDate",
+  tags,
+  middleware: sellerMiddleware,
+  request: {
+    query: yearlyReportsValidator,
+  },
+  responses: {
+    200: { description: "OK" },
+    400: { description: "Bad Request" },
+    401: { description: "Unauthorized" },
+    500: { description: "Internal server error" },
+  },
+})
+
+export const vendorPopularProductsRoute = createRoute({
+  method: "get",
+  path: "/popular-products",
+  summary: "Get a vendor popular products",
+  tags,
+  middleware: sellerMiddleware,
+  responses: {
+    200: { description: "OK" },
+    400: { description: "Bad Request" },
+    401: { description: "Unauthorized" },
+    500: { description: "Internal server error" },
+  },
+})

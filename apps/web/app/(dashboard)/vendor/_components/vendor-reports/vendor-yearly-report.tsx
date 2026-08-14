@@ -23,31 +23,24 @@ import {
   ChartTooltipContent,
   type ChartConfig,
 } from "@workspace/ui/components/chart"
-
-import { MonthRangePicker } from "../../../../../components/common/month-picker"
+import { MonthRangePicker } from "@/components/common/month-picker"
+import { formatDateParam } from "@/lib/lib"
 
 export const description = "An area chart with a legend"
-
-const formatMonthParam = (date: Date) => {
-  const year = date.getFullYear()
-  const month = String(date.getMonth() + 1).padStart(2, "0")
-
-  return `${year}-${month}-01`
-}
 
 export const VendorYearlyReport = () => {
   const [startMonth, setStartMonth] = useState<Date | undefined>()
   const [endMonth, setEndMonth] = useState<Date | undefined>()
 
   const startMonthParam = useMemo(() => {
-    return startMonth ? formatMonthParam(startMonth) : undefined
+    return startMonth ? formatDateParam(startMonth) : undefined
   }, [startMonth])
 
   const endMonthParam = useMemo(() => {
-    return endMonth ? formatMonthParam(endMonth) : undefined
+    return endMonth ? formatDateParam(endMonth) : undefined
   }, [endMonth])
 
-  const { data, isLoading, isFetching, isError } = useQuery({
+  const { data, isLoading, isFetching } = useQuery({
     queryKey: ["vendor-yearly-report", startMonthParam, endMonthParam],
 
     queryFn: async () => {
@@ -59,20 +52,6 @@ export const VendorYearlyReport = () => {
     staleTime: 1000 * 60 * 5,
     retry: 1,
   })
-
-  const chartData = useMemo(() => {
-    if (!data) {
-      return []
-    }
-
-    return data.map((item) => ({
-      month: new Date(item.month).toLocaleString("en-US", {
-        month: "short",
-      }),
-      quantity: item.quantity,
-      totalSale: item.totalSale,
-    }))
-  }, [data])
 
   const chartConfig = {
     quantity: {
@@ -111,22 +90,14 @@ export const VendorYearlyReport = () => {
 
       <CardContent>
         {isLoading ? (
-          <div className="flex h-62 items-center justify-center text-sm text-muted-foreground">
+          <p className="flex h-62 items-center justify-center text-sm text-muted-foreground">
             Loading...
-          </div>
-        ) : isError ? (
-          <div className="flex h-62 items-center justify-center text-sm text-destructive">
-            Failed to load vendor report.
-          </div>
-        ) : chartData.length === 0 ? (
-          <div className="flex h-62 items-center justify-center text-sm text-muted-foreground">
-            No data available.
-          </div>
+          </p>
         ) : (
           <ChartContainer config={chartConfig}>
             <AreaChart
               accessibilityLayer
-              data={chartData}
+              data={data}
               margin={{
                 left: 12,
                 right: 12,
@@ -139,11 +110,27 @@ export const VendorYearlyReport = () => {
                 tickLine={false}
                 axisLine={false}
                 tickMargin={8}
+                tickFormatter={(value) => {
+                  const date = new Date(value)
+                  return date.toLocaleDateString("en-US", {
+                    month: "short",
+                  })
+                }}
               />
 
               <ChartTooltip
                 cursor={false}
-                content={<ChartTooltipContent indicator="line" />}
+                content={
+                  <ChartTooltipContent
+                    indicator="line"
+                    labelFormatter={(value) => {
+                      return new Date(value).toLocaleDateString("en-US", {
+                        month: "short",
+                        year: "numeric",
+                      })
+                    }}
+                  />
+                }
               />
 
               <Area

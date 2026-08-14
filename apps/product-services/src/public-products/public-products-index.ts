@@ -2,13 +2,15 @@ import { OpenAPIHono, defaultHook } from "@workspace/open-api"
 import {
   allProductsRoute,
   boostedProductRoute,
+  popularProductsRoute,
   singleProductsRoute,
-} from "./products-route"
+} from "./public-products-route"
 import {
   allProductsHandler,
   boostedProductHandler,
+  popularProductsHandler,
   singleProductsHandler,
-} from "./products-handler"
+} from "./public-products-handler"
 
 const app = new OpenAPIHono({
   defaultHook,
@@ -18,5 +20,6 @@ app
   .openapi(allProductsRoute, allProductsHandler)
   .openapi(singleProductsRoute, singleProductsHandler)
   .openapi(boostedProductRoute, boostedProductHandler)
+  .openapi(popularProductsRoute, popularProductsHandler)
 
 export default app

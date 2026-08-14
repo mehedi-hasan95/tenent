@@ -3,11 +3,11 @@ import { DynaPuff, Geist, Geist_Mono } from "next/font/google"
 import "@workspace/ui/globals.css"
 import { cn } from "@workspace/ui/lib/utils"
 import { Providers } from "@/components/providers/providers"
-import { getQueryClient } from "@/lib/lib"
 import { getSessionAction } from "@/api/auth/auth-server-action"
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query"
 import { retrieveStripeConnectAction } from "@/api/stripe/stripe-action"
 import { boostedProductsAction } from "@/api/products/products-action"
+import { getQueryClient } from "@/lib/get-query-client"
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" })
 
