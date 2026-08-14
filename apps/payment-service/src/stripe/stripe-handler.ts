@@ -10,6 +10,7 @@ import { db, eq } from "@workspace/db"
 import { user } from "@workspace/db/schema/user.schema"
 import { vendorCoinPurchaseAction } from "../actions/buy-coin-action"
 import { producer } from "../utils/kafka"
+import { buyProductsAction } from "../actions/buy-products-action"
 
 export const stripeWebhookHandler: RouteHandler<
   typeof stripeWebhookRoute
@@ -33,8 +34,8 @@ export const stripeWebhookHandler: RouteHandler<
     )
   }
 
-  const session = event.data.object as Stripe.Checkout.Session
-  console.log(`Received event: ${event.type}`, "account:", event.account)
+  // const session = event.data.object as Stripe.Checkout.Session //used here for test
+  // console.log(`Received event: ${event.type}`, "account:", event.account)
   switch (event.type) {
     case "account.updated":
       const account = event.data.object as Stripe.Account
@@ -51,22 +52,43 @@ export const stripeWebhookHandler: RouteHandler<
       break
 
     case "checkout.session.completed":
-      if (!session?.metadata?.user && !session?.metadata?.coin) {
-        return c.json({ message: "Webhook Error: Missing metadata" }, 400)
-      }
+      const session = event.data.object as Stripe.Checkout.Session
+      console.log(session)
+      //start: purchase coin for vendor start
       // used kafka
-      // await producer.send("vendor.coin", {
+      // if (session?.metadata?.user && session?.metadata?.coin) {
+      //   await producer.send("vendor.coin", {
       //   value: JSON.stringify({
       //     email: session?.metadata?.user as string,
       //     price: Number(session?.metadata?.coin),
       //   }),
       // })
+      // }
 
       // used kafka: disabled this if kafka is used
-      await vendorCoinPurchaseAction({
-        email: session?.metadata?.user as string,
-        price: Number(session?.metadata?.coin),
-      })
+      if (session?.metadata?.user && session?.metadata?.coin) {
+        await vendorCoinPurchaseAction({
+          email: session?.metadata?.user as string,
+          price: Number(session?.metadata?.coin),
+        })
+      }
+      //end: purchase coin for vendor end
+      // start: Product purchase by user start
+      if (session?.metadata?.email && session?.metadata?.orderId) {
+        const address = session.collected_information?.shipping_details?.address
+        await buyProductsAction({
+          city: address?.city as string,
+          country: address?.country as string,
+          email: session.customer_details?.email as string,
+          id: session?.metadata?.orderId as string,
+          line1: address?.line1 as string,
+          paymentIntent: session.payment_intent as string,
+          phone: address?.line2 as string,
+          postalCode: address?.postal_code as string,
+          state: address?.state as string,
+        })
+      }
+      // end: Product purchase by user end
       break
 
     default:

@@ -6,7 +6,7 @@ import { useMutation } from "@tanstack/react-query"
 import { StripeCheckoutProviders } from "@/components/common/stripe/stripe-checkout-providers"
 import { BoostingCoinBuyForm } from "./boosting-coin-buy-form"
 import { createCoinPaymentIntent } from "@/api/stripe/stripe-action"
-import { BuyCoinSkeleton } from "./buy-coin-skeleton"
+import { StripeSkeleton } from "../../../../../components/common/stripe/stripe-skeleton"
 
 interface Props {
   coin: number
@@ -30,7 +30,7 @@ export const BuyBoostingCoinStripe = ({ coin }: Props) => {
   }, [coin, mutate])
 
   if (isPending) {
-    return <BuyCoinSkeleton />
+    return <StripeSkeleton />
   }
 
   if (isError) {

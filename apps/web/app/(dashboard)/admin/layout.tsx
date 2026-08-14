@@ -6,11 +6,11 @@ import {
 import { AdminSidebar } from "./_components/admin-sidebar"
 import { Separator } from "@workspace/ui/components/separator"
 import { DynamicBreadcrumbs } from "@/components/common/dynamic-breadcrumbs"
-import { getQueryClient } from "@/lib/lib"
 import { getCategoriesAction } from "@/api/categories/categories-action"
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query"
 import { getSubCategoriesAction } from "@/api/categories/subcategories-action"
 import { allBoostingCoinAction } from "@/api/boosting-coin/boosting-coin-action"
+import { getQueryClient } from "@/lib/get-query-client"
 
 interface Props {
   children: React.ReactNode

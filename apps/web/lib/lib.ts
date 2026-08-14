@@ -1,40 +1,4 @@
-import {
-  QueryClient,
-  defaultShouldDehydrateQuery,
-  environmentManager,
-} from "@tanstack/react-query"
-
-function makeQueryClient() {
-  return new QueryClient({
-    defaultOptions: {
-      queries: {
-        staleTime: 60 * 1000 * 5,
-      },
-      dehydrate: {
-        // include pending queries in dehydration
-        shouldDehydrateQuery: (query) =>
-          defaultShouldDehydrateQuery(query) ||
-          query.state.status === "pending",
-      },
-    },
-  })
-}
-
-let browserQueryClient: QueryClient | undefined = undefined
-
-export function getQueryClient() {
-  if (environmentManager.isServer()) {
-    // Server: always make a new query client
-    return makeQueryClient()
-  } else {
-    // Browser: make a new query client if we don't already have one
-    // This is very important, so we don't re-make a new client if React
-    // suspends during the initial render. This may not be needed if we
-    // have a suspense boundary BELOW the creation of the query client
-    if (!browserQueryClient) browserQueryClient = makeQueryClient()
-    return browserQueryClient
-  }
-}
+import { format } from "date-fns"
 
 export const getInitials = (name: string): string => {
   return name
@@ -56,4 +20,17 @@ export const formatPrice = (price: number) => {
     style: "currency",
     currency: "USD",
   }).format(price)
+}
+
+export function getGreeting(date = new Date()) {
+  const hour = date.getHours()
+
+  if (hour >= 5 && hour < 12) return "Good morning"
+  if (hour >= 12 && hour < 17) return "Good afternoon"
+  if (hour >= 17 && hour < 21) return "Good evening"
+  return "Good night"
+}
+
+export const formatDateParam = (date: Date) => {
+  return format(date, "yyyy-MM-dd")
 }

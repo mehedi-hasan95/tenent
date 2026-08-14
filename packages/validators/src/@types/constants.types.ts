@@ -20,3 +20,13 @@ export type PAGINATION_TYPES = {
   hasNextPage: boolean
   hasPrevPage: boolean
 }
+
+export const sortValues = [
+  "default",
+  "old",
+  "new",
+  "ascByName",
+  "dscByName",
+  "ascByPrice",
+  "dscByPrice",
+] as const

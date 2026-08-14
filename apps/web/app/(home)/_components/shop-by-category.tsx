@@ -39,7 +39,7 @@ export const ShopByCategory = () => {
                 key={cat.id}
                 className="md:basic-1/2 basis-1/1 pl-3 lg:basis-1/3 xl:basis-1/4"
               >
-                <Link href={"#"}>
+                <Link href={`/products?cats=${cat.slug}`}>
                   <div className="group hover:border-primary-500 dark:hover:border-primary-400 relative cursor-pointer overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 transition-all hover:shadow-xl dark:border-slate-700 dark:bg-slate-800">
                     <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-indigo-100 text-indigo-600 transition-transform group-hover:scale-110 dark:bg-indigo-900/50 dark:text-indigo-400">
                       {cat.image && (

@@ -1,22 +1,76 @@
-import { Badge } from "@workspace/ui/components/badge"
+"use client"
+import { useAddToCartStore } from "@/store/products/use-add-to-cart-store"
 import { cn } from "@workspace/ui/lib/utils"
 import { FaCartShopping } from "react-icons/fa6"
+import { useShallow } from "zustand/react/shallow"
 
 interface Props {
-  title?: string
-  showBadge?: boolean
+  title: string
   className?: string
+  category: string
+  id: string
+  image: string
+  price: number
+  rating: number
+  totalRatings: number
+  btnTitle?: string
+  quantity: number
+  usedCoupon: boolean
+  size?: string | null
+  color?: string | null
 }
 export const AddToCartButton = ({
   className,
   title,
-  showBadge = false,
+  category,
+  id,
+  image,
+  price,
+  rating,
+  totalRatings,
+  btnTitle,
+  quantity,
+  usedCoupon,
+  size = null,
+  color = null,
 }: Props) => {
+  const { addItem, products } = useAddToCartStore(
+    useShallow((state) => ({
+      products: state.products,
+      addItem: state.addItem,
+    }))
+  )
+  const exist = products.some((p) => p.id === id)
   return (
-    <div className={cn("relative flex items-center gap-5", className)}>
+    <button
+      type="button"
+      disabled={exist}
+      className={cn(
+        "relative flex cursor-pointer items-center gap-5",
+        exist && "cursor-not-allowed",
+        className
+      )}
+      onClick={(e) => {
+        e.stopPropagation()
+        if (exist) return
+
+        addItem({
+          title,
+          category,
+          id,
+          image,
+          price,
+          rating,
+          totalRatings,
+          quantity,
+          usedCoupon,
+          size,
+          color,
+        })
+      }}
+    >
       <FaCartShopping size={20} />
-      {title}
-      {showBadge && <Badge className="absolute -top-3 -right-4">0</Badge>}
-    </div>
+      {exist ? "Product in Cart" : btnTitle}
+    </button>
   )
 }

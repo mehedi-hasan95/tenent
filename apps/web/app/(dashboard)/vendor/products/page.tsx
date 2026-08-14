@@ -1,11 +1,8 @@
 "use client"
 
-import {
-  sellerAllProductsAction,
-  trashedProductAction,
-} from "@/api/products/seller-products-action"
+import { trashedProductAction } from "@/api/products/seller-products-action"
 import { DataTable } from "@/components/common/data-table/data-table"
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query"
+import { useMutation, useQueryClient } from "@tanstack/react-query"
 import { VendorProductsColumns } from "./_components/vendor-data-table/vendor-products-columns"
 import Link from "next/link"
 import { Button } from "@workspace/ui/components/button"
@@ -14,7 +11,7 @@ import { Separator } from "@workspace/ui/components/separator"
 import { DataTableFilter } from "@/components/common/data-table/data-table-filter"
 import { statuses } from "@/utils/constructor"
 import {
-  CACHE_ALL_PRODUCTS_KEYS,
+  CACHE_ALL_PRODUCTS,
   CACHE_SELLER_PRODUCTS_KEYS,
 } from "@/lib/query-cache"
 import { PRODUCT_TYPE } from "@workspace/validators/types/product.types"
@@ -61,7 +58,7 @@ const Page = () => {
         queryKey: CACHE_SELLER_PRODUCTS_KEYS,
       })
       queryClient.invalidateQueries({
-        queryKey: CACHE_ALL_PRODUCTS_KEYS(),
+        queryKey: CACHE_ALL_PRODUCTS(),
       })
       queryClient.invalidateQueries({
         queryKey: ["trashed-products"],

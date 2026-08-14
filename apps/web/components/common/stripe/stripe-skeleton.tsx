@@ -1,8 +1,8 @@
 import { Skeleton } from "@workspace/ui/components/skeleton"
 
-export const BuyCoinSkeleton = () => {
+export const StripeSkeleton = () => {
   return (
-    <div className="w-full max-w-xl rounded-2xl border bg-background p-5 shadow-sm">
+    <div className="w-full rounded-2xl border bg-background p-5 shadow-sm">
       <Skeleton className="mb-6 h-6 w-40" />
       <Skeleton className="mb-3 h-5 w-20" />
       <div className="mb-3 flex items-center rounded-lg border p-4">

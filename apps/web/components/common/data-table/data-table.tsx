@@ -15,6 +15,7 @@ import {
   type SortingState,
   type VisibilityState,
   Table as TanstackTable,
+  PaginationState,
 } from "@tanstack/react-table"
 
 import {
@@ -35,6 +36,14 @@ interface DataTableProps<TData, TValue> {
   data: TData[]
   toolbar?: (table: TanstackTable<TData>) => React.ReactNode
   searchKey: string
+  pageCount?: number
+  pagination?: PaginationState
+  onPaginationChange?: (
+    updater: PaginationState | ((old: PaginationState) => PaginationState)
+  ) => void
+  isLoading?: boolean
+  manualPagination?: boolean
+  showRowCount?: boolean
 }
 
 export function DataTable<TData, TValue>({
@@ -42,6 +51,12 @@ export function DataTable<TData, TValue>({
   data,
   toolbar,
   searchKey,
+  onPaginationChange,
+  pageCount,
+  pagination,
+  isLoading,
+  manualPagination = false,
+  showRowCount = true,
 }: DataTableProps<TData, TValue>) {
   const [rowSelection, setRowSelection] = React.useState({})
   const [columnVisibility, setColumnVisibility] =
@@ -51,25 +66,36 @@ export function DataTable<TData, TValue>({
   )
   const [sorting, setSorting] = React.useState<SortingState>([])
 
+  const [internalPagination, setInternalPagination] =
+    React.useState<PaginationState>({
+      pageIndex: 0,
+      pageSize: 10,
+    })
+
   const table = useReactTable({
     data,
     columns,
+    pageCount,
     state: {
       sorting,
       columnVisibility,
       rowSelection,
       columnFilters,
+      pagination: manualPagination
+        ? (pagination ?? internalPagination)
+        : internalPagination,
     },
-    initialState: {
-      pagination: {
-        pageSize: 25,
-      },
-    },
+    manualPagination,
+    onPaginationChange: manualPagination
+      ? onPaginationChange
+      : setInternalPagination,
+
     enableRowSelection: true,
     onRowSelectionChange: setRowSelection,
     onSortingChange: setSorting,
     onColumnFiltersChange: setColumnFilters,
     onColumnVisibilityChange: setColumnVisibility,
+
     getCoreRowModel: getCoreRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
@@ -120,7 +146,16 @@ export function DataTable<TData, TValue>({
             ))}
           </TableHeader>
           <TableBody>
-            {table.getRowModel().rows?.length ? (
+            {isLoading ? (
+              <TableRow>
+                <TableCell
+                  colSpan={columns.length}
+                  className="h-24 text-center"
+                >
+                  Loading...
+                </TableCell>
+              </TableRow>
+            ) : table.getRowModel().rows?.length ? (
               table.getRowModel().rows.map((row) => (
                 <TableRow
                   key={row.id}
@@ -149,7 +184,7 @@ export function DataTable<TData, TValue>({
           </TableBody>
         </Table>
       </div>
-      <DataTablePagination table={table} />
+      <DataTablePagination table={table} showRowCount={showRowCount} />
     </div>
   )
 }

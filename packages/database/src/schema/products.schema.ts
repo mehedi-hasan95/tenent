@@ -16,6 +16,7 @@ import { user } from "./user.schema"
 import { timestamps } from "./columns.helpers"
 import { relations } from "drizzle-orm"
 import { productBoost } from "./boosting.schema"
+import { orderItems, ratings } from "./order.schema"
 
 export const productTypeEnum = pgEnum("product_type", [
   "physical",
@@ -87,7 +88,15 @@ export const products = pgTable(
     ...timestamps,
     deletedAt: timestamp("deleted_at"),
   },
-  (table) => [index("products_id_idx").on(table.id)]
+  (table) => [
+    index("products_category_idx").on(table.categorySlug),
+    index("products_subcategory_idx").on(table.subCategorySlug),
+    index("products_status_idx").on(table.status),
+    index("products_category_status_idx").on(table.categorySlug, table.status),
+    index("products_user_email_idx").on(table.userEmail),
+    index("products_created_at_idx").on(table.createdAt),
+    index("products_sale_price_idx").on(table.salePrice),
+  ]
 )
 
 // =====================
@@ -110,4 +119,6 @@ export const productsRelations = relations(products, ({ one, many }) => ({
     references: [subCategories.slug],
   }),
   productsBoosts: many(productBoost),
+  orderItems: many(orderItems),
+  ratings: many(ratings),
 }))

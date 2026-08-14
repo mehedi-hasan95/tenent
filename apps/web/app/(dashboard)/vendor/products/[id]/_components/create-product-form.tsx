@@ -43,7 +43,7 @@ import { useRouter } from "next/navigation"
 import { toast } from "sonner"
 import { LoadingButton } from "@/components/common/loading-button"
 import {
-  CACHE_ALL_PRODUCTS_KEYS,
+  CACHE_ALL_PRODUCTS,
   CACHE_SELLER_PRODUCTS_KEYS,
 } from "@/lib/query-cache"
 
@@ -58,25 +58,25 @@ export const CreateProductForm = ({ id }: Props) => {
     resolver: zodResolver(productValidator),
     mode: "onChange",
     defaultValues: {
-      title: initialData?.title || "",
+      title: initialData?.products.title || "",
       images: [],
-      previousImage: initialData?.images || [],
-      categorySlug: initialData?.categorySlug || "",
-      subCategorySlug: initialData?.subCategorySlug || "",
-      shortDescription: initialData?.shortDescription || "",
-      basePrice: initialData?.basePrice || undefined,
-      salePrice: initialData?.salePrice || undefined,
-      stock: initialData?.stock || undefined,
-      weight: initialData?.weight || undefined,
-      tags: initialData?.tags || [],
-      color: initialData?.color || [],
-      specification: initialData?.specification || [],
-      description: initialData?.description || "",
-      cashOnDelivery: initialData?.cashOnDelivery || false,
-      coupon: initialData?.coupon || "",
-      type: initialData?.type || "physical",
-      status: initialData?.status || "draft",
-      sizes: initialData?.sizes || [],
+      previousImage: initialData?.products.images || [],
+      categorySlug: initialData?.products.categorySlug || "",
+      subCategorySlug: initialData?.products.subCategorySlug || "",
+      shortDescription: initialData?.products.shortDescription || "",
+      basePrice: initialData?.products.basePrice || undefined,
+      salePrice: initialData?.products.salePrice || undefined,
+      stock: initialData?.products.stock || undefined,
+      weight: initialData?.products.weight || undefined,
+      tags: initialData?.products.tags || [],
+      color: initialData?.products.color || [],
+      specification: initialData?.products.specification || [],
+      description: initialData?.products.description || "",
+      cashOnDelivery: initialData?.products.cashOnDelivery || false,
+      coupon: initialData?.products.coupon || "",
+      type: initialData?.products.type || "physical",
+      status: initialData?.products.status || "draft",
+      sizes: initialData?.products.sizes || [],
     },
   })
   const selectedCat = useWatch({
@@ -104,7 +104,7 @@ export const CreateProductForm = ({ id }: Props) => {
   const createMutation = useMutation({
     mutationFn: createProductAction,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: CACHE_ALL_PRODUCTS_KEYS() })
+      queryClient.invalidateQueries({ queryKey: CACHE_ALL_PRODUCTS() })
       queryClient.invalidateQueries({ queryKey: CACHE_SELLER_PRODUCTS_KEYS })
       toast.success("Product create successfully")
       router.push("/vendor/products/")
@@ -118,8 +118,10 @@ export const CreateProductForm = ({ id }: Props) => {
   const updateMutation = useMutation({
     mutationFn: updateProductAction,
     onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: CACHE_ALL_PRODUCTS_KEYS() })
-      queryClient.invalidateQueries({ queryKey: ["products", initialData?.id] })
+      queryClient.invalidateQueries({ queryKey: CACHE_ALL_PRODUCTS() })
+      queryClient.invalidateQueries({
+        queryKey: ["products", initialData?.products.id],
+      })
       queryClient.invalidateQueries({ queryKey: CACHE_SELLER_PRODUCTS_KEYS })
       toast.success("Product create successfully")
       router.push("/vendor/products/")

@@ -8,6 +8,7 @@ import { PRODUCT_TYPE } from "@workspace/validators/types/product.types"
 import { productBoostingValidator } from "@workspace/validators/validators/boosting-validators"
 import z from "zod"
 
+// *example: query
 export const getCoinPurchaseHistoryAction = async ({
   page,
   limit,

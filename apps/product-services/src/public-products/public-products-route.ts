@@ -1,22 +1,15 @@
 import { createRoute } from "@workspace/open-api"
-import {
-  DEFAULT_SIZE,
-  PRODUCTS_STATUS_ENUM,
-} from "@workspace/validators/types/constants.types"
+import { productListQuerySchema } from "@workspace/validators/validators/products-validators"
 import z from "zod"
 
-const tags = ["Products Common API"]
+const tags = ["Public Products API"]
 export const allProductsRoute = createRoute({
   method: "get",
   path: "/all-products",
   tags,
   summary: "Get all Products",
   request: {
-    query: z.object({
-      seller: z.string().optional(),
-      cursor: z.string().optional(),
-      pageSize: z.coerce.number().int().min(1).max(50).default(DEFAULT_SIZE),
-    }),
+    query: productListQuerySchema.extend({ cats: z.string().optional() }),
   },
   responses: {
     200: {
@@ -54,6 +47,20 @@ export const boostedProductRoute = createRoute({
 
   responses: {
     200: { description: "OK" },
+    500: { description: "Internal server error" },
+  },
+})
+
+export const popularProductsRoute = createRoute({
+  method: "get",
+  path: "/popular-products",
+  summary: "Get popular products",
+  description: "Get popular products based on most sale",
+  tags,
+  responses: {
+    200: { description: "OK" },
+    400: { description: "Bad Request" },
+    401: { description: "Unauthorized" },
     500: { description: "Internal server error" },
   },
 })

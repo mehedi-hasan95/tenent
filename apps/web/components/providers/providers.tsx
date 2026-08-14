@@ -1,4 +1,5 @@
 "use client"
+import { NuqsAdapter } from "nuqs/adapters/next/app"
 import { useState } from "react"
 import { ThemeProvider } from "./theme-provider"
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query"
@@ -23,16 +24,18 @@ export const Providers = ({ children }: Props) => {
       })
   )
   return (
-    <ThemeProvider>
-      <QueryClientProvider client={queryClient}>
-        <TooltipProvider>
-          {children}
-          <SignInModal />
-          <SignupModal />
-          <Toaster richColors />
-          <ReactQueryDevtools initialIsOpen={false} />
-        </TooltipProvider>
-      </QueryClientProvider>
-    </ThemeProvider>
+    <NuqsAdapter>
+      <ThemeProvider>
+        <QueryClientProvider client={queryClient}>
+          <TooltipProvider>
+            {children}
+            <SignInModal />
+            <SignupModal />
+            <Toaster richColors />
+            <ReactQueryDevtools initialIsOpen={false} />
+          </TooltipProvider>
+        </QueryClientProvider>
+      </ThemeProvider>
+    </NuqsAdapter>
   )
 }

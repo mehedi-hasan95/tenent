@@ -10,10 +10,10 @@ import { cors } from "hono/cors"
 // import { runKafkaSubscriptions } from "./utils/subscriptions"
 import { HTTPException } from "hono/http-exception"
 import products from "./seller-products/products-index"
-import common from "./products/products-index"
 import boosting from "./boosting/boosting-index"
-import { consumer, producer } from "./utils/kafka"
-import { runKafkaSubscriptions } from "./utils/subscriptions"
+import userReports from "./user-reports/user-reports-index"
+import vendorReports from "./vendor-reports/vendor-reports-index"
+import publicProducts from "./public-products/public-products-index"
 
 const app = new OpenAPIHono({
   defaultHook,
@@ -33,8 +33,10 @@ app.use(
  */
 const routes = app
   .route("/products", products)
-  .route("/common", common)
+  .route("/public", publicProducts)
   .route("/boosting", boosting)
+  .route("/user/reports", userReports)
+  .route("/vendor/reports", vendorReports)
 
 app.onError((err, c) => {
   if (err instanceof HTTPException) {

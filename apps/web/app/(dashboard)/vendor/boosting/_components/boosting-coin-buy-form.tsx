@@ -4,8 +4,8 @@ import {
   PaymentElement,
   useCheckoutElements,
 } from "@stripe/react-stripe-js/checkout"
-import { FormEvent, SubmitEvent, useState } from "react"
-import { BuyCoinSkeleton } from "./buy-coin-skeleton"
+import { SubmitEvent, useState } from "react"
+import { StripeSkeleton } from "../../../../../components/common/stripe/stripe-skeleton"
 import { Button } from "@workspace/ui/components/button"
 import { useCoinStepStore } from "@/store/stripe-store/useCoinStepStore"
 import { useModalActiveStore } from "@/store/useModalActiveStore"
@@ -19,7 +19,7 @@ export const BoostingCoinBuyForm = () => {
 
   const checkoutState = useCheckoutElements()
   if (checkoutState.type === "loading") {
-    return <BuyCoinSkeleton />
+    return <StripeSkeleton />
   }
 
   if (checkoutState.type === "error") {
