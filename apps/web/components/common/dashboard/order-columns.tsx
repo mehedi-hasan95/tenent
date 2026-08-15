@@ -21,12 +21,18 @@ import {
 } from "lucide-react"
 import Link from "next/link"
 
-type VendorOrderRow = {
+type OrderRow = {
   orderItems: ORDER_ITEMS_TYPE
   orders: ORDER_TYPE
   products: { title: string; images: string[] }
 }
-export const VendorOrdersColumns = (): ColumnDef<VendorOrderRow>[] => [
+
+interface Props {
+  url?: string
+}
+export const OrdersColumns = ({
+  url = "vendor",
+}: Props = {}): ColumnDef<OrderRow>[] => [
   {
     accessorKey: "title",
     accessorFn: (row) => row.products.title,
@@ -168,7 +174,7 @@ export const VendorOrdersColumns = (): ColumnDef<VendorOrderRow>[] => [
     accessorKey: "Action",
     cell: ({ row }) => {
       return (
-        <Link href={`/vendor/orders/${row.original.orderItems.id}`}>
+        <Link href={`/${url}/orders/${row.original.orderItems.id}`}>
           <Button variant={"link"}>
             <Eye /> Details
           </Button>

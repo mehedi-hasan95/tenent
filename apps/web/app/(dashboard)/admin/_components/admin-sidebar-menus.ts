@@ -7,6 +7,7 @@ import {
   ShoppingBasket,
   Trash,
   TrendingUp,
+  Users,
 } from "lucide-react"
 import { FaStripeS } from "react-icons/fa6"
 import { TbCreditCardRefund } from "react-icons/tb"
@@ -43,6 +44,11 @@ export const ADMIN_COMMERCE = [
     name: "Payments",
     slug: "/admin/payments",
     icon: CreditCard,
+  },
+  {
+    name: "Users",
+    slug: "/admin/users",
+    icon: Users,
   },
 ]
 

@@ -14,6 +14,7 @@ import boosting from "./boosting/boosting-index"
 import userReports from "./user-reports/user-reports-index"
 import vendorReports from "./vendor-reports/vendor-reports-index"
 import publicProducts from "./public-products/public-products-index"
+import adminReports from "./admin-reports/admin-reports-index"
 
 const app = new OpenAPIHono({
   defaultHook,
@@ -37,6 +38,7 @@ const routes = app
   .route("/boosting", boosting)
   .route("/user/reports", userReports)
   .route("/vendor/reports", vendorReports)
+  .route("/admin/reports", adminReports)
 
 app.onError((err, c) => {
   if (err instanceof HTTPException) {

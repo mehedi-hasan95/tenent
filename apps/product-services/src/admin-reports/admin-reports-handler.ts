@@ -1,14 +1,5 @@
 import { RouteHandler } from "@workspace/open-api"
-import {
-  updateVendorSingleOrderRoute,
-  vendorAllOrdersRoute,
-  vendorCountryBasedRoute,
-  vendorDailyReportRoute,
-  vendorPopularProductsRoute,
-  vendorPreviousYearsReportRoute,
-  vendorSingleOrderRoute,
-  vendorTotalRevenueRoute,
-} from "./vendor-reports-route"
+
 import {
   and,
   count,
@@ -22,12 +13,27 @@ import {
 } from "@workspace/db"
 import { orderItems, orders } from "@workspace/db/schema/order.schema"
 import { products } from "@workspace/db/schema/products.schema"
+import {
+  adminAllOrdersRoute,
+  adminAllUsersRoute,
+  adminCountRoute,
+  adminCountryBasedRoute,
+  adminDailyReportRoute,
+  adminPopularProductsRoute,
+  adminPreviousYearsReportRoute,
+  adminSingleOrderRoute,
+  adminTotalRevenueRoute,
+} from "./admin-reports-route"
+import { user } from "@workspace/db/schema/user.schema"
+import {
+  categories,
+  subCategories,
+} from "@workspace/db/schema/categories.schema"
 
-export const vendorTotalRevenueHandler: RouteHandler<
-  typeof vendorTotalRevenueRoute
+export const adminTotalRevenueHandler: RouteHandler<
+  typeof adminTotalRevenueRoute
 > = async (c) => {
   try {
-    const email = c.get("user")?.email
     const [[result], [order], [orderItem], [uniqueUser]] = await Promise.all([
       // start: Total Revenue
       db
@@ -67,7 +73,7 @@ export const vendorTotalRevenueHandler: RouteHandler<
         .from(orders)
         .innerJoin(orderItems, eq(orders.id, orderItems.orderId))
         .innerJoin(products, eq(orderItems.productId, products.id))
-        .where(and(eq(orders.isPaid, true), eq(products.userEmail, email!))),
+        .where(and(eq(orders.isPaid, true))),
       // end: Total Revenue
       // start: Total Order
       db
@@ -94,7 +100,7 @@ export const vendorTotalRevenueHandler: RouteHandler<
         .from(orders)
         .innerJoin(orderItems, eq(orders.id, orderItems.orderId))
         .innerJoin(products, eq(orderItems.productId, products.id))
-        .where(and(eq(orders.isPaid, true), eq(products.userEmail, email!))),
+        .where(and(eq(orders.isPaid, true))),
       // end: Total Order
       // start: OrderItem
       db
@@ -119,8 +125,7 @@ export const vendorTotalRevenueHandler: RouteHandler<
           `,
         })
         .from(orderItems)
-        .innerJoin(products, eq(orderItems.productId, products.id))
-        .where(eq(products.userEmail, email!)),
+        .innerJoin(products, eq(orderItems.productId, products.id)),
       // end: OrderItem
       // start: unique user
       db
@@ -147,7 +152,7 @@ export const vendorTotalRevenueHandler: RouteHandler<
         .from(orders)
         .innerJoin(orderItems, eq(orders.id, orderItems.orderId))
         .innerJoin(products, eq(orderItems.productId, products.id))
-        .where(and(eq(orders.isPaid, true), eq(products.userEmail, email!))),
+        .where(and(eq(orders.isPaid, true))),
       // end: unique user
     ])
 
@@ -223,11 +228,10 @@ export const vendorTotalRevenueHandler: RouteHandler<
   }
 }
 
-export const vendorAllOrdersHandler: RouteHandler<
-  typeof vendorAllOrdersRoute
+export const adminAllOrdersHandler: RouteHandler<
+  typeof adminAllOrdersRoute
 > = async (c) => {
   try {
-    const email = c.get("user")?.email
     const { limit, page } = c.req.valid("query")
     const offset = (page - 1) * limit
     const [data, totalResult] = await Promise.all([
@@ -240,15 +244,13 @@ export const vendorAllOrdersHandler: RouteHandler<
         .from(orderItems)
         .innerJoin(orders, eq(orderItems.orderId, orders.id))
         .innerJoin(products, eq(orderItems.productId, products.id))
-        .where(eq(products.userEmail, email!))
         .limit(limit)
         .offset(offset),
       db
         .select({ count: count() })
         .from(orderItems)
         .innerJoin(orders, eq(orderItems.orderId, orders.id))
-        .innerJoin(products, eq(orderItems.productId, products.id))
-        .where(eq(products.userEmail, email!)),
+        .innerJoin(products, eq(orderItems.productId, products.id)),
     ])
 
     const total = totalResult[0]?.count ?? 0
@@ -270,12 +272,11 @@ export const vendorAllOrdersHandler: RouteHandler<
   }
 }
 
-export const vendorSingleOrderHandler: RouteHandler<
-  typeof vendorSingleOrderRoute
+export const adminSingleOrderHandler: RouteHandler<
+  typeof adminSingleOrderRoute
 > = async (c) => {
   try {
     const { id } = c.req.valid("param")
-    const email = c.get("user")?.email
     const [data] = await db
       .select({
         orderItems,
@@ -285,38 +286,7 @@ export const vendorSingleOrderHandler: RouteHandler<
       .from(orderItems)
       .innerJoin(orders, eq(orderItems.orderId, orders.id))
       .innerJoin(products, eq(orderItems.productId, products.id))
-      .where(and(eq(orderItems.id, id), eq(products.userEmail, email!)))
-
-    return c.json({ data }, 200)
-  } catch (error) {
-    return c.json({ message: "Something went wrong" }, 500)
-  }
-}
-
-export const updateVendorSingleOrderHandler: RouteHandler<
-  typeof updateVendorSingleOrderRoute
-> = async (c) => {
-  try {
-    const { id, status } = c.req.valid("json")
-    const email = c.get("user")?.email
-    const [orderItem] = await db
-      .select({
-        id: orderItems.id,
-      })
-      .from(orderItems)
-      .innerJoin(products, eq(orderItems.productId, products.id))
-      .where(and(eq(orderItems.id, id), eq(products.userEmail, email!)))
-      .limit(1)
-
-    if (!orderItem) {
-      return c.json({ message: "You're not author of this product" }, 404)
-    }
-
-    const [data] = await db
-      .update(orderItems)
-      .set({ status })
       .where(eq(orderItems.id, id))
-      .returning()
 
     return c.json({ data }, 200)
   } catch (error) {
@@ -324,12 +294,11 @@ export const updateVendorSingleOrderHandler: RouteHandler<
   }
 }
 
-export const vendorCountryBasedHandler: RouteHandler<
-  typeof vendorCountryBasedRoute
+//
+export const adminCountryBasedHandler: RouteHandler<
+  typeof adminCountryBasedRoute
 > = async (c) => {
   try {
-    const email = c.get("user")?.email
-
     const data = await db
       .select({
         country: orders.country,
@@ -351,7 +320,6 @@ export const vendorCountryBasedHandler: RouteHandler<
       .from(orders)
       .innerJoin(orderItems, eq(orderItems.orderId, orders.id))
       .innerJoin(products, eq(products.id, orderItems.productId))
-      .where(eq(products.userEmail, email!))
       .groupBy(orders.country)
 
     return c.json({ data }, 200)
@@ -360,12 +328,10 @@ export const vendorCountryBasedHandler: RouteHandler<
   }
 }
 
-export const vendorPreviousYearsReportHandler: RouteHandler<
-  typeof vendorPreviousYearsReportRoute
+export const adminPreviousYearsReportHandler: RouteHandler<
+  typeof adminPreviousYearsReportRoute
 > = async (c) => {
   try {
-    const email = c.get("user")?.email as string
-
     const { endMonth, startMonth } = c.req.valid("query")
     const data = await db.execute(sql`
       WITH params AS (
@@ -396,8 +362,7 @@ export const vendorPreviousYearsReportHandler: RouteHandler<
         INNER JOIN ${products} p
           ON p.id = oi.product_id
         CROSS JOIN params
-        WHERE p.user_email = ${email}
-          AND o.is_paid = true
+        WHERE o.is_paid = true
           AND oi.status != 'CANCELLED'
           AND o.created_at >= date_trunc('month', params.start_month)
           AND o.created_at < date_trunc('month', params.end_month) + INTERVAL '1 month'
@@ -419,12 +384,10 @@ export const vendorPreviousYearsReportHandler: RouteHandler<
   }
 }
 
-export const vendorDailyReportHandler: RouteHandler<
-  typeof vendorDailyReportRoute
+export const adminDailyReportHandler: RouteHandler<
+  typeof adminDailyReportRoute
 > = async (c) => {
   try {
-    const email = c.get("user")?.email as string
-
     const { endMonth, startMonth } = c.req.valid("query")
     const data = await db.execute(sql`
       WITH params AS (
@@ -455,15 +418,14 @@ export const vendorDailyReportHandler: RouteHandler<
         INNER JOIN ${products} p
           ON p.id = oi.product_id
         CROSS JOIN params
-        WHERE p.user_email = ${email}
-          AND o.is_paid = true
+        WHERE o.is_paid = true
           AND oi.status != 'CANCELLED'
           AND o.created_at::date >= params.start_date
           AND o.created_at::date <= params.end_date
         GROUP BY o.created_at::date
       )
       SELECT
-        d.day AS month, 
+        d.day AS month,
         COALESCE(s.quantity, 0)::int AS quantity,
         COALESCE(s."totalSale", 0)::float AS "totalSale"
       FROM days d
@@ -478,11 +440,10 @@ export const vendorDailyReportHandler: RouteHandler<
   }
 }
 
-export const vendorPopularProductsHandler: RouteHandler<
-  typeof vendorPopularProductsRoute
+export const adminPopularProductsHandler: RouteHandler<
+  typeof adminPopularProductsRoute
 > = async (c) => {
   try {
-    const email = c.get("user")?.email
     const data = await db
       .select({
         productId: products.id,
@@ -493,11 +454,56 @@ export const vendorPopularProductsHandler: RouteHandler<
       })
       .from(orderItems)
       .innerJoin(products, eq(orderItems.productId, products.id))
-      .where(eq(products.userEmail, email!))
       .groupBy(products.id, products.title, products.images)
       .orderBy(desc(sum(orderItems.quantity)))
       .limit(10)
     return c.json({ data }, 200)
+  } catch (error) {
+    return c.json({ message: "Something went wrong" }, 500)
+  }
+}
+
+export const adminAllUsersHandler: RouteHandler<
+  typeof adminAllUsersRoute
+> = async (c) => {
+  try {
+    const { limit, page } = c.req.valid("query")
+    const offset = (page - 1) * limit
+    const [data, totalUser] = await Promise.all([
+      db.select().from(user).limit(limit).offset(offset),
+      db.$count(user),
+    ])
+
+    const total = totalUser ?? 0
+    const totalPages = Math.ceil(total / limit)
+
+    return c.json({
+      data,
+      pagination: {
+        page,
+        limit,
+        total,
+        totalPages,
+        hasNextPage: page < totalPages,
+        hasPrevPage: page > 1,
+      },
+    })
+  } catch (error) {
+    return c.json({ message: "Something went wrong" }, 500)
+  }
+}
+
+export const adminCountHandler: RouteHandler<typeof adminCountRoute> = async (
+  c
+) => {
+  try {
+    const [product, cat, subCat, users] = await Promise.all([
+      db.$count(products),
+      db.$count(categories),
+      db.$count(subCategories),
+      db.$count(user),
+    ])
+    return c.json({ product, cat, subCat, users })
   } catch (error) {
     return c.json({ message: "Something went wrong" }, 500)
   }

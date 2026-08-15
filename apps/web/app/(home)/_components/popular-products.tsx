@@ -32,7 +32,7 @@ export const PopularProducts = () => {
   return (
     <>
       {data?.length && (
-        <div className="mx-auto max-w-7xl px-5">
+        <div className="mx-auto max-w-7xl space-y-5 px-5">
           <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
             <div className="mx-auto max-w-3xl">
               <h1 className="font-serif text-5xl leading-[0.95] tracking-tight sm:text-7xl">
@@ -69,6 +69,7 @@ export const PopularProducts = () => {
                         alt={item.products.title}
                         fill
                         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        loading="lazy"
                       />
                       <div className="absolute top-3 right-3">
                         <WishlistButton

@@ -1,12 +1,12 @@
 "use client"
-import { vendorAllOrdersAction } from "@/api/reports/vendor/vendor-report-action"
 import { DataTable } from "@/components/common/data-table/data-table"
 import { useQuery } from "@tanstack/react-query"
 import { PaginationState } from "@tanstack/table-core"
 import { useState } from "react"
+import { OrdersColumns } from "@/components/common/dashboard/order-columns"
 import { DataTableFilter } from "@/components/common/data-table/data-table-filter"
 import { productShipping } from "@/app/dashboard/_components/user-table/product-delivery-helper"
-import { OrdersColumns } from "@/components/common/dashboard/order-columns"
+import { adminAllOrdersAction } from "@/api/reports/admin/admin-report-action"
 
 const Page = () => {
   const [pagination, setPagination] = useState<PaginationState>({
@@ -15,9 +15,9 @@ const Page = () => {
   })
 
   const { data, isLoading } = useQuery({
-    queryKey: ["vendor-all-products", pagination],
+    queryKey: ["admin-all-orders", pagination],
     queryFn: () =>
-      vendorAllOrdersAction({
+      adminAllOrdersAction({
         limit: pagination.pageSize,
         page: pagination.pageIndex + 1, // 0-based → 1-based
       }),
@@ -28,7 +28,7 @@ const Page = () => {
   }
   return (
     <DataTable
-      columns={OrdersColumns()}
+      columns={OrdersColumns({ url: "admin" })}
       data={data?.data ?? []}
       searchKey="title"
       pagination={pagination}

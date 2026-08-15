@@ -18,7 +18,7 @@ interface Props {
   icon?: React.ElementType
   isRevenue?: boolean
 }
-export const VendorRevenueCard = ({
+export const RevenueCard = ({
   isPositive,
   percentage,
   title,

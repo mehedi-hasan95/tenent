@@ -6,7 +6,10 @@ import { Providers } from "@/components/providers/providers"
 import { getSessionAction } from "@/api/auth/auth-server-action"
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query"
 import { retrieveStripeConnectAction } from "@/api/stripe/stripe-action"
-import { boostedProductsAction } from "@/api/products/products-action"
+import {
+  boostedProductsAction,
+  popularProductsAction,
+} from "@/api/products/products-action"
 import { getQueryClient } from "@/lib/get-query-client"
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" })
@@ -28,22 +31,32 @@ export default async function RootLayout({
   children: React.ReactNode
 }>) {
   const queryClient = getQueryClient()
-  await queryClient.prefetchQuery({
-    queryKey: ["session"],
-    queryFn: getSessionAction,
-  })
-  await queryClient.prefetchQuery({
-    queryKey: ["retrieve-stripe-connect"],
-    queryFn: retrieveStripeConnectAction,
-    staleTime: 1000 * 60 * 5,
-    retry: 1,
-  })
-  await queryClient.prefetchQuery({
-    queryKey: ["boosted-products"],
-    queryFn: boostedProductsAction,
-    staleTime: 1000 * 60 * 5,
-    retry: 1,
-  })
+  await Promise.allSettled([
+    queryClient.prefetchQuery({
+      queryKey: ["session"],
+      queryFn: getSessionAction,
+    }),
+
+    queryClient.prefetchQuery({
+      queryKey: ["retrieve-stripe-connect"],
+      queryFn: retrieveStripeConnectAction,
+      staleTime: 1000 * 60 * 5,
+      retry: 1,
+    }),
+
+    queryClient.prefetchQuery({
+      queryKey: ["boosted-products"],
+      queryFn: boostedProductsAction,
+      staleTime: 1000 * 60 * 5,
+      retry: 1,
+    }),
+    queryClient.prefetchQuery({
+      queryKey: ["popular-products"],
+      queryFn: popularProductsAction,
+      staleTime: 1000 * 60 * 5,
+      retry: 1,
+    }),
+  ])
   return (
     <html
       lang="en"
