@@ -64,3 +64,19 @@ export const popularProductsRoute = createRoute({
     500: { description: "Internal server error" },
   },
 })
+
+export const ratingAndReviewRoute = createRoute({
+  method: "get",
+  path: "/retrieve-rating/{id}",
+  summary: "Rating and reviews",
+  tags,
+  request: {
+    params: z.object({ id: z.string() }),
+  },
+  responses: {
+    200: { description: "OK" },
+    400: { description: "Bad Request" },
+    401: { description: "Unauthorized" },
+    500: { description: "Internal server error" },
+  },
+})

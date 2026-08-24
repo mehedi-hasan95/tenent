@@ -99,3 +99,36 @@ export const popularProductsAction = async () => {
   } = await response.json()
   return data.data
 }
+
+export const relatedProductAction = async ({ id }: { id: string }) => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_PRODUCTS_URL}/public/retrieve-rating/${id}`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }
+  )
+  if (!response.ok) {
+    const error = await response.json()
+    throw error
+  }
+  const data: {
+    data: {
+      rating: { rating: number; count: number; percentage: number }[]
+      review: {
+        reviews: string | null
+        name: string
+        img: string | null
+        createdAt: Date
+        rating: number
+      }[]
+      category: {
+        products: PRODUCT_TYPE[]
+      }
+    }
+  } = await response.json()
+
+  return data.data
+}

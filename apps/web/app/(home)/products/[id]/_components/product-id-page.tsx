@@ -16,14 +16,23 @@ import {
   CardTitle,
 } from "@workspace/ui/components/card"
 import { Separator } from "@workspace/ui/components/separator"
-import Link from "next/link"
 import { FaGifts } from "react-icons/fa6"
 import { SpecificationTable } from "./specification-table"
+import { useQuery } from "@tanstack/react-query"
+import { relatedProductAction } from "@/api/products/products-action"
+import ReviewsSection from "./review-section"
 interface Props {
   id: string
 }
 export const ProductIdPage = ({ id }: Props) => {
   const { data } = useGetSingleProduct({ id })
+  const { data: ratingsAndReviews } = useQuery({
+    queryKey: ["related-products-and-others", id],
+    queryFn: () => relatedProductAction({ id }),
+    retry: 1,
+    staleTime: 60 * 1000 * 5,
+    enabled: !!id,
+  })
   if (!data) {
     return
   }
@@ -184,6 +193,13 @@ export const ProductIdPage = ({ id }: Props) => {
           </CardContent>
         </Card>
       </div>
+
+      <ReviewsSection
+        avgRating={data.avgRating}
+        total={data.ratingCount}
+        rating={ratingsAndReviews?.rating ?? []}
+        review={ratingsAndReviews?.review ?? []}
+      />
     </section>
   )
 }
