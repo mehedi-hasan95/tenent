@@ -9,7 +9,8 @@ export type PRODUCT_TYPE = {
   shortDescription: string
   basePrice: number
   salePrice: number
-  stock: number
+  stock: number | null
+  totalSale: number
   weight: number | null
   status: "draft" | "active" | "archived"
   images: string[]
@@ -19,7 +20,21 @@ export type PRODUCT_TYPE = {
   color: string[] | null
   specification: unknown
   cashOnDelivery: boolean
-  coupon: string | null
   sizes: string[] | null
   userEmail: string
+}
+
+export type COUPON_TYPE = {
+  id: string
+  code: string | null
+  createdAt: Date
+  updatedAt: Date
+  productId: string
+  discountPercent: number | null
+  flatDiscount: number | null
+  isActive: boolean
+  expiresAt: Date | null
+  maxRedemptions: number | null
+  timesRedeemed: number
+  minOrderAmount: number | null
 }

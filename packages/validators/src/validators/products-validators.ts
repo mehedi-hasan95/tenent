@@ -20,7 +20,7 @@ export const baseProductValidator = z.object({
   description: z.string().nonempty(),
   basePrice: z.coerce.number().nonnegative(),
   salePrice: z.coerce.number().nonnegative(),
-  stock: z.coerce.number().int().nonnegative(),
+  stock: z.coerce.number().int().nonnegative().optional(),
   tags: formArray(z.array(z.string()).optional()),
   weight: z.coerce.number().nonnegative().optional(),
   type: z.enum(DELIVERY_ENUM).default("physical"),
@@ -40,9 +40,59 @@ export const baseProductValidator = z.object({
   specification: jsonArray(z.array(specificationSchema).default([])),
 
   cashOnDelivery: z.coerce.boolean().default(false),
-  coupon: z.string().max(20).optional(),
   sizes: formArray(z.array(z.string()).optional()),
 })
+
+const optionalPositiveNumber = (int = false) =>
+  z.preprocess(
+    (val) => (val === "" || val === null ? undefined : val),
+    int
+      ? z.coerce.number().int().positive().optional()
+      : z.coerce.number().positive().optional()
+  )
+export const couponValidator = z
+  .object({
+    code: z.string().min(5).max(50).optional(),
+    discountPercent: optionalPositiveNumber(true),
+    flatDiscount: optionalPositiveNumber(false),
+    isActive: z.coerce.boolean(),
+    expiresAt: z.coerce.date().optional(),
+    maxRedemptions: z.coerce.number().int().positive().optional(),
+    minOrderAmount: z.coerce.number().positive().optional(),
+    productId: z.uuid(),
+  })
+  .superRefine((data, ctx) => {
+    if (data.isActive) {
+      // code is required when active
+      if (!data.code) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["code"],
+          message: "Code is required when coupon is active",
+        })
+      }
+
+      // Exactly one discount must be provided
+      const hasPercent = data.discountPercent !== undefined
+      const hasFlat = data.flatDiscount !== undefined
+
+      if (hasPercent === hasFlat) {
+        ctx.addIssue({
+          code: "custom",
+          path: ["discountPercent"],
+          message:
+            "Provide either discountPercent or flatDiscount, but not both",
+        })
+
+        ctx.addIssue({
+          code: "custom",
+          path: ["flatDiscount"],
+          message:
+            "Provide either flatDiscount or discountPercent, but not both",
+        })
+      }
+    }
+  })
 
 export const productValidator = baseProductValidator
   .extend({

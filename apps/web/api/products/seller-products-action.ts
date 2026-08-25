@@ -1,6 +1,12 @@
-import { productValidator } from "@workspace/validators/validators/products-validators"
+import {
+  couponValidator,
+  productValidator,
+} from "@workspace/validators/validators/products-validators"
 import z from "zod"
-import { PRODUCT_TYPE } from "@workspace/validators/types/product.types"
+import {
+  PRODUCT_TYPE,
+  COUPON_TYPE,
+} from "@workspace/validators/types/product.types"
 
 export const createProductAction = async (
   data: z.input<typeof productValidator>
@@ -197,5 +203,92 @@ export const sellerAllProductsAction = async () => {
     throw error
   }
   const data: { data: PRODUCT_TYPE[] } = await response.json()
+  return data.data
+}
+
+/**
+ * Coupon part start here
+ */
+export const createCouponAction = async (
+  data: z.input<typeof couponValidator>
+) => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_PRODUCTS_URL}/products/create-coupon`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+      credentials: "include",
+    }
+  )
+  if (!response.ok) {
+    const error = await response.json()
+    throw error
+  }
+  return response.json()
+}
+
+export const updateCouponAction = async (
+  data: z.input<typeof couponValidator> & { id: string }
+) => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_PRODUCTS_URL}/products/update-coupon`,
+    {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+      credentials: "include",
+    }
+  )
+  if (!response.ok) {
+    const error = await response.json()
+    throw error
+  }
+  return response.json()
+}
+
+export const allCouponAction = async () => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_PRODUCTS_URL}/products/get-all-coupon`,
+    {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    }
+  )
+  if (!response.ok) {
+    const error = await response.json()
+    throw error
+  }
+  const data: {
+    data: (COUPON_TYPE & {
+      title: string
+      image: string[]
+    })[]
+  } = await response.json()
+  return data.data
+}
+
+export const singleCouponAction = async (id: string) => {
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_PRODUCTS_URL}/products/get-coupon/${id}`,
+    {
+      method: "GET",
+      credentials: "include",
+    }
+  )
+  if (!response.ok) {
+    const error = await response.json()
+    throw error
+  }
+  const data: {
+    data: COUPON_TYPE | undefined
+  } = await response.json()
   return data.data
 }

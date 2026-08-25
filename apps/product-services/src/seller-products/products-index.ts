@@ -1,24 +1,32 @@
 import { OpenAPIHono, defaultHook } from "@workspace/open-api"
 import {
   allTrashedProductsRoute,
+  createCouponRoute,
   createProductRoute,
   deleteATrashedProductRoute,
   deleteManyProductsRoute,
   deleteTrashedProductsRoute,
+  getACouponRoute,
+  getAllCouponRoute,
   restoreProductsRoute,
   sellerAllProductRoute,
   trashedProductRoute,
+  updateCouponRoute,
   updateProductRoute,
 } from "./products-route"
 import {
   allTrashedProductsHandler,
+  createCouponHandler,
   createProductHandler,
   deleteATrashedProductHandler,
   deleteManyProductsHandler,
   deleteTrashedProductsHandler,
+  getACouponHandler,
+  getAllCouponHandler,
   restoreProductsHandler,
   sellerAllProductHandler,
   trashedProductHandler,
+  updateCouponHandler,
   updateProductHandler,
 } from "./products-handler"
 
@@ -36,5 +44,9 @@ app
   .openapi(deleteTrashedProductsRoute, deleteTrashedProductsHandler)
   .openapi(deleteATrashedProductRoute, deleteATrashedProductHandler)
   .openapi(sellerAllProductRoute, sellerAllProductHandler)
+  .openapi(createCouponRoute, createCouponHandler)
+  .openapi(updateCouponRoute, updateCouponHandler)
+  .openapi(getACouponRoute, getACouponHandler)
+  .openapi(getAllCouponRoute, getAllCouponHandler)
 
 export default app

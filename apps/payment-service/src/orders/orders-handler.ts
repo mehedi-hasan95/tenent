@@ -12,6 +12,7 @@ export const createOrderHandler: RouteHandler<typeof createOrderRoute> = async (
   c
 ) => {
   try {
+    // todo: has error
     const email = c.get("user")?.email
     const { order } = c.req.valid("json")
     if (!order.length) {

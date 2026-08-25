@@ -1,13 +1,17 @@
 import { RouteHandler } from "@workspace/open-api"
 import {
   allTrashedProductsRoute,
+  createCouponRoute,
   createProductRoute,
   deleteATrashedProductRoute,
   deleteManyProductsRoute,
   deleteTrashedProductsRoute,
+  getACouponRoute,
+  getAllCouponRoute,
   restoreProductsRoute,
   sellerAllProductRoute,
   trashedProductRoute,
+  updateCouponRoute,
   updateProductRoute,
 } from "./products-route"
 import { utapi } from "@workspace/uploadthing"
@@ -16,12 +20,13 @@ import {
   db,
   desc,
   eq,
+  getTableColumns,
   inArray,
   isNotNull,
   isNull,
   sql,
 } from "@workspace/db"
-import { products } from "@workspace/db/schema/products.schema"
+import { coupons, products } from "@workspace/db/schema/products.schema"
 
 export const createProductHandler: RouteHandler<
   typeof createProductRoute
@@ -218,5 +223,92 @@ export const sellerAllProductHandler: RouteHandler<
     return c.json({ data }, 200)
   } catch (error) {
     return c.json({ message: "Internal server error" }, 500)
+  }
+}
+
+export const createCouponHandler: RouteHandler<
+  typeof createCouponRoute
+> = async (c) => {
+  try {
+    const userEmail = c.get("user")?.email
+    const formData = c.req.valid("json")
+    const checkValidity = await db.query.products.findFirst({
+      where: and(
+        eq(products.id, formData.productId),
+        eq(products.userEmail, userEmail!)
+      ),
+    })
+    if (!checkValidity) {
+      return c.json({ message: "You're not the author of this product" })
+    }
+    const [data] = await db.insert(coupons).values(formData).returning()
+    return c.json({ data }, 200)
+  } catch (error) {
+    return c.json({ message: "Something went wrong" }, 500)
+  }
+}
+
+export const updateCouponHandler: RouteHandler<
+  typeof updateCouponRoute
+> = async (c) => {
+  try {
+    const userEmail = c.get("user")?.email
+    const formData = c.req.valid("json")
+    const checkValidity = await db.query.products.findFirst({
+      where: and(
+        eq(products.id, formData.productId),
+        eq(products.userEmail, userEmail!)
+      ),
+    })
+    if (!checkValidity) {
+      return c.json({ message: "You're not the author of this product" })
+    }
+    const [data] = await db
+      .update(coupons)
+      .set({ ...formData })
+      .where(eq(coupons.id, formData.id))
+      .returning()
+    return c.json({ data }, 200)
+  } catch (error) {
+    return c.json({ message: "Something went wrong" }, 500)
+  }
+}
+
+export const getACouponHandler: RouteHandler<typeof getACouponRoute> = async (
+  c
+) => {
+  try {
+    const { id } = c.req.valid("param")
+    const data = await db.query.coupons.findFirst({ where: eq(coupons.id, id) })
+    return c.json({ data }, 200)
+  } catch (error) {
+    return c.json({ message: "Something went wrong" }, 500)
+  }
+}
+
+export const getAllCouponHandler: RouteHandler<
+  typeof getAllCouponRoute
+> = async (c) => {
+  try {
+    const userEmail = c.get("user")?.email
+    const data = await db
+      .select({
+        ...getTableColumns(coupons),
+        title: products.title,
+        image: products.images,
+      })
+      .from(coupons)
+      .innerJoin(
+        products,
+        and(
+          eq(coupons.productId, products.id),
+          eq(products.userEmail, userEmail!)
+        )
+      )
+      .orderBy(desc(coupons.updatedAt), desc(coupons.createdAt))
+
+    return c.json({ data }, 200)
+  } catch (error) {
+    return c.json({ message: "Something went wrong" }, 500)
   }
 }

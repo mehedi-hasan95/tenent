@@ -1,6 +1,7 @@
 import {
   ChartNoAxesCombined,
   LayoutDashboard,
+  Puzzle,
   ShoppingBasket,
   Trash2,
   TrendingUp,
@@ -31,6 +32,7 @@ export const VENDOR_ACT = [
   { name: "Products", slug: "/vendor/products", icon: AiFillProduct },
   { name: "Boosting", slug: "/vendor/boosting", icon: TrendingUp },
   { name: "Trash", slug: "/vendor/trash", icon: Trash2 },
+  { name: "Coupon", slug: "/vendor/coupon", icon: Puzzle },
 ]
 
 export const VENDOR_COMMERCE = [

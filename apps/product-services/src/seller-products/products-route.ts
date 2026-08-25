@@ -1,6 +1,9 @@
 import { createRoute } from "@workspace/open-api"
 import { sellerMiddleware } from "../middleware"
-import { productOpenApiValidator } from "@workspace/validators/validators/products-validators"
+import {
+  couponValidator,
+  productOpenApiValidator,
+} from "@workspace/validators/validators/products-validators"
 import z from "zod"
 
 const tags = ["Products"]
@@ -164,6 +167,83 @@ export const sellerAllProductRoute = createRoute({
   responses: {
     200: { description: "OK" },
     401: { description: "Unauthorize" },
+    500: { description: "Internal server error" },
+  },
+})
+
+export const createCouponRoute = createRoute({
+  method: "post",
+  path: "/create-coupon",
+  summary: "Create Coupon",
+  tags,
+  middleware: sellerMiddleware,
+  request: {
+    body: {
+      content: {
+        "application/json": {
+          schema: couponValidator,
+        },
+      },
+    },
+  },
+  responses: {
+    200: { description: "OK" },
+    400: { description: "Bad Request" },
+    401: { description: "Unauthorized" },
+    500: { description: "Internal server error" },
+  },
+})
+
+export const updateCouponRoute = createRoute({
+  method: "patch",
+  path: "/update-coupon",
+  summary: "Update Coupon",
+  tags,
+  middleware: sellerMiddleware,
+  request: {
+    body: {
+      content: {
+        "application/json": {
+          schema: couponValidator.extend({ id: z.string() }),
+        },
+      },
+    },
+  },
+  responses: {
+    200: { description: "OK" },
+    400: { description: "Bad Request" },
+    401: { description: "Unauthorized" },
+    500: { description: "Internal server error" },
+  },
+})
+
+export const getACouponRoute = createRoute({
+  method: "get",
+  path: "/get-coupon/{id}",
+  summary: "Get A Coupon",
+  tags,
+  middleware: sellerMiddleware,
+  request: {
+    params: z.object({ id: z.string() }),
+  },
+  responses: {
+    200: { description: "OK" },
+    400: { description: "Bad Request" },
+    401: { description: "Unauthorized" },
+    500: { description: "Internal server error" },
+  },
+})
+
+export const getAllCouponRoute = createRoute({
+  method: "get",
+  path: "/get-all-coupon",
+  summary: "Get All Coupon",
+  tags,
+  middleware: sellerMiddleware,
+  responses: {
+    200: { description: "OK" },
+    400: { description: "Bad Request" },
+    401: { description: "Unauthorized" },
     500: { description: "Internal server error" },
   },
 })

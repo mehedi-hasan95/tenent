@@ -25,7 +25,7 @@ import {
   sql,
   sum,
 } from "@workspace/db"
-import { products } from "@workspace/db/schema/products.schema"
+import { coupons, products } from "@workspace/db/schema/products.schema"
 import { productBoost } from "@workspace/db/schema/boosting.schema"
 import {
   boostingSubquery,
@@ -131,9 +131,10 @@ export const singleProductsHandler: RouteHandler<
     const ratingSq = ratingSubquery()
 
     const [data] = await db
-      .select({ products, ...ratingColumns(ratingSq) })
+      .select({ products, ...ratingColumns(ratingSq), coupons })
       .from(products)
       .leftJoin(ratingSq, eq(ratingSq.productId, products.id))
+      .leftJoin(coupons, eq(products.id, coupons.productId))
       .where(eq(products.id, id))
     return c.json({ data }, 200)
   } catch (error) {
@@ -256,9 +257,10 @@ export const getArrayProductsHandler: RouteHandler<
 
     const ratingSq = ratingSubquery()
     const data = await db
-      .select({ products, ...ratingColumns(ratingSq) })
+      .select({ products, ...ratingColumns(ratingSq), coupons })
       .from(products)
       .leftJoin(ratingSq, eq(ratingSq.productId, products.id))
+      .leftJoin(coupons, eq(products.id, coupons.productId))
       .where(inArray(products.id, ids))
     return c.json({ data }, 200)
   } catch (error) {

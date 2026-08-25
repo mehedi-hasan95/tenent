@@ -127,6 +127,27 @@
       "when": 1787617958939,
       "tag": "0017_boring_ink",
       "breakpoints": true
+    },
+    {
+      "idx": 18,
+      "version": "7",
+      "when": 1787622580311,
+      "tag": "0018_slow_hellfire_club",
+      "breakpoints": true
+    },
+    {
+      "idx": 19,
+      "version": "7",
+      "when": 1787622666311,
+      "tag": "0019_robust_silhouette",
+      "breakpoints": true
+    },
+    {
+      "idx": 20,
+      "version": "7",
+      "when": 1787626380730,
+      "tag": "0020_illegal_photon",
+      "breakpoints": true
     }
   ]
 }

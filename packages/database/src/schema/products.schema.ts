@@ -1,5 +1,6 @@
 import {
   boolean,
+  check,
   index,
   integer,
   jsonb,
@@ -8,13 +9,14 @@ import {
   real,
   text,
   timestamp,
+  uniqueIndex,
   uuid,
   varchar,
 } from "drizzle-orm/pg-core"
 import { categories, subCategories } from "./categories.schema"
 import { user } from "./user.schema"
 import { timestamps } from "./columns.helpers"
-import { relations } from "drizzle-orm"
+import { relations, sql } from "drizzle-orm"
 import { productBoost } from "./boosting.schema"
 import { orderItems, ratings } from "./order.schema"
 
@@ -43,7 +45,8 @@ export const products = pgTable(
 
     salePrice: real("sale_price").notNull(),
 
-    stock: integer("stock").notNull(),
+    stock: integer("stock"),
+    totalSale: integer("total_sale").notNull().default(0),
 
     tags: text("tags").array(),
 
@@ -75,8 +78,6 @@ export const products = pgTable(
 
     cashOnDelivery: boolean("cash_on_delivery").default(false).notNull(),
 
-    coupon: text("coupon"),
-
     sizes: text("sizes").array(),
 
     userEmail: text("user_email")
@@ -96,6 +97,42 @@ export const products = pgTable(
     index("products_user_email_idx").on(table.userEmail),
     index("products_created_at_idx").on(table.createdAt),
     index("products_sale_price_idx").on(table.salePrice),
+  ]
+)
+
+export const coupons = pgTable(
+  "coupons",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    code: varchar("code", { length: 50 }),
+    discountPercent: integer("discount_percent"),
+    flatDiscount: real("flat_discount"),
+    isActive: boolean("is_active").default(true).notNull(),
+    expiresAt: timestamp("expires_at"),
+    maxRedemptions: integer("max_redemptions"), // null = unlimited
+    timesRedeemed: integer("times_redeemed").default(0).notNull(),
+    minOrderAmount: real("min_order_amount"),
+    productId: uuid("product_id")
+      .notNull()
+      .unique()
+      .references(() => products.id, { onDelete: "cascade" }),
+    ...timestamps,
+  },
+  (table) => [
+    uniqueIndex("coupon_product_code_idx").on(table.productId, table.code),
+    index("coupon_code_idx").on(table.code),
+    check(
+      "active_coupon_requires_code_and_one_discount",
+      sql`NOT ${table.isActive} OR
+    (
+      ${table.code} IS NOT NULL AND
+      ${table.code} != '' AND
+      (
+        (${table.discountPercent} IS NOT NULL AND ${table.flatDiscount} IS NULL) OR
+        (${table.discountPercent} IS NULL AND ${table.flatDiscount} IS NOT NULL)
+      )
+    )`
+    ),
   ]
 )
 
@@ -121,4 +158,12 @@ export const productsRelations = relations(products, ({ one, many }) => ({
   productsBoosts: many(productBoost),
   orderItems: many(orderItems),
   ratings: many(ratings),
+  coupon: one(coupons),
+}))
+
+export const couponsRelations = relations(coupons, ({ one }) => ({
+  product: one(products, {
+    fields: [coupons.productId],
+    references: [products.id],
+  }),
 }))

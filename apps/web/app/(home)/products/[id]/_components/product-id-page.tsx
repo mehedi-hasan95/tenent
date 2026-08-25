@@ -54,6 +54,7 @@ export const ProductIdPage = ({ id }: Props) => {
   const [isCouponUsed, setIsCouponUsed] = useState<string | undefined>(
     undefined
   )
+
   const [couponError, setCouponError] = useState("")
 
   useEffect(() => {
@@ -110,7 +111,7 @@ export const ProductIdPage = ({ id }: Props) => {
       return false
     }
 
-    const productCoupon = data?.products?.coupon?.trim()
+    const productCoupon = data?.coupons.code?.trim()
 
     if (
       productCoupon &&
@@ -154,7 +155,7 @@ export const ProductIdPage = ({ id }: Props) => {
   const handleIncreaseQuantity = () => {
     if (!data?.products) return
 
-    const newQuantity = Math.min(data.products.stock, quantity + 1)
+    const newQuantity = Math.min(data.products.stock ?? 1000, quantity + 1)
 
     setQuantity(newQuantity)
 
@@ -300,75 +301,85 @@ export const ProductIdPage = ({ id }: Props) => {
             )}
 
             {/* Coupon */}
-            {product.coupon && (
-              <div className="rounded-xl border border-indigo-100 bg-indigo-50 p-4 dark:bg-card">
-                <div className="flex items-center gap-3">
-                  <div className="rounded-lg bg-indigo-100 p-2 text-indigo-600">
-                    <FaGifts />
-                  </div>
+            {data.coupons &&
+              data.coupons.isActive &&
+              (!data.coupons.expiresAt ||
+                new Date(data.coupons.expiresAt) >= new Date()) && (
+                <div className="rounded-xl border border-indigo-100 bg-indigo-50 p-4 dark:bg-card">
+                  <div className="flex items-center gap-3">
+                    <div className="rounded-lg bg-indigo-100 p-2 text-indigo-600">
+                      <FaGifts />
+                    </div>
 
-                  <div className="flex-1">
-                    <p className="text-xs font-medium tracking-wider text-indigo-400 uppercase">
-                      Available Coupon
-                    </p>
+                    <div className="flex-1">
+                      <p className="text-xs font-medium tracking-wider text-indigo-400 uppercase">
+                        Available Coupon
+                      </p>
 
-                    {isCouponUsed ? (
-                      <div className="mt-1">
-                        <p className="text-sm font-bold text-green-600">
-                          Coupon applied successfully!
-                        </p>
-
-                        <span className="mt-1 inline-block rounded border border-green-200 bg-white px-2 py-0.5 text-sm font-semibold text-green-600">
-                          {isCouponUsed}
-                        </span>
-                      </div>
-                    ) : (
-                      <>
-                        <p className="mt-1 text-sm text-indigo-500">
-                          Use code{" "}
-                          <span className="rounded border border-indigo-200 bg-white px-2 py-0.5 font-bold">
-                            {product.coupon}
-                          </span>{" "}
-                          for more off!
-                        </p>
-
-                        <div className="mt-3 flex gap-2">
-                          <input
-                            type="text"
-                            value={couponInput}
-                            onChange={(e) => {
-                              setCouponInput(e.target.value)
-                              setCouponError("")
-                            }}
-                            onKeyDown={(e) => {
-                              if (e.key === "Enter") {
-                                handleApplyCoupon()
-                              }
-                            }}
-                            placeholder="Enter coupon code"
-                            className="min-w-0 flex-1 rounded-lg border px-4"
-                          />
-
-                          <Button
-                            type="button"
-                            onClick={handleApplyCoupon}
-                            className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-indigo-700"
-                          >
-                            Apply
-                          </Button>
-                        </div>
-
-                        {couponError && (
-                          <p className="mt-2 text-xs font-medium text-red-500">
-                            {couponError}
+                      {isCouponUsed ? (
+                        <div className="mt-1">
+                          <p className="text-sm font-bold text-green-600">
+                            Coupon applied successfully!
                           </p>
-                        )}
-                      </>
-                    )}
+
+                          <span className="mt-1 inline-block rounded border border-green-200 bg-white px-2 py-0.5 text-sm font-semibold text-green-600">
+                            {isCouponUsed}
+                          </span>
+                        </div>
+                      ) : (
+                        <>
+                          <p className="mt-1 text-sm text-indigo-500">
+                            Use code{" "}
+                            <span className="rounded border border-indigo-200 bg-white px-2 py-0.5 font-bold">
+                              {data.coupons.code}
+                            </span>{" "}
+                            {data.coupons.discountPercent ? (
+                              <span className="font-extrabold">
+                                {data.coupons.discountPercent}%
+                              </span>
+                            ) : (
+                              formatPrice(data.coupons.flatDiscount ?? 0)
+                            )}{" "}
+                            for more off!
+                          </p>
+
+                          <div className="mt-3 flex gap-2">
+                            <input
+                              type="text"
+                              value={couponInput}
+                              onChange={(e) => {
+                                setCouponInput(e.target.value)
+                                setCouponError("")
+                              }}
+                              onKeyDown={(e) => {
+                                if (e.key === "Enter") {
+                                  handleApplyCoupon()
+                                }
+                              }}
+                              placeholder="Enter coupon code"
+                              className="min-w-0 flex-1 rounded-lg border px-4"
+                            />
+
+                            <Button
+                              type="button"
+                              onClick={handleApplyCoupon}
+                              className="rounded-lg bg-indigo-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-indigo-700"
+                            >
+                              Apply
+                            </Button>
+                          </div>
+
+                          {couponError && (
+                            <p className="mt-2 text-xs font-medium text-red-500">
+                              {couponError}
+                            </p>
+                          )}
+                        </>
+                      )}
+                    </div>
                   </div>
                 </div>
-              </div>
-            )}
+              )}
           </div>
 
           {/* Quantity / Cart / Wishlist */}
@@ -391,7 +402,7 @@ export const ProductIdPage = ({ id }: Props) => {
               <Button
                 type="button"
                 variant="outline"
-                disabled={quantity >= product.stock}
+                disabled={quantity >= (product.stock ?? 100)}
                 onClick={handleIncreaseQuantity}
                 className="flex h-9 w-9 items-center justify-center text-lg text-muted-foreground transition hover:bg-muted hover:text-foreground"
               >
@@ -419,7 +430,8 @@ export const ProductIdPage = ({ id }: Props) => {
             <span>
               In stock:{" "}
               <strong className="text-muted-foreground">
-                {product.stock} units available
+                {product.stock ? product.stock - product.totalSale : `♾️`} units
+                available
               </strong>
             </span>
           </div>

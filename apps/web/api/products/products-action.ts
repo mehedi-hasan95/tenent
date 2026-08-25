@@ -1,5 +1,8 @@
 import { BOOSTED_PRODUCT_TYPE } from "@workspace/validators/types/boosting.types"
-import { PRODUCT_TYPE } from "@workspace/validators/types/product.types"
+import {
+  COUPON_TYPE,
+  PRODUCT_TYPE,
+} from "@workspace/validators/types/product.types"
 import { productListQuerySchema } from "@workspace/validators/validators/products-validators"
 import z from "zod"
 
@@ -48,6 +51,7 @@ export const singleProductsAction = async (id: string) => {
           avgRating: number
           ratingCount: number
           products: PRODUCT_TYPE
+          coupons: COUPON_TYPE
         }
       | undefined
   } = await response.json()
@@ -150,7 +154,12 @@ export const getArrayProductsAction = async ({ ids }: { ids: string[] }) => {
     throw error
   }
   const data: {
-    data: { products: PRODUCT_TYPE; avgRating: number; ratingCount: number }[]
+    data: {
+      products: PRODUCT_TYPE
+      avgRating: number
+      ratingCount: number
+      coupons: COUPON_TYPE | null
+    }[]
   } = await response.json()
   return data.data
 }

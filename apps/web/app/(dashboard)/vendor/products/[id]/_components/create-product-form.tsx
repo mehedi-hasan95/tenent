@@ -73,7 +73,6 @@ export const CreateProductForm = ({ id }: Props) => {
       specification: initialData?.products.specification || [],
       description: initialData?.products.description || "",
       cashOnDelivery: initialData?.products.cashOnDelivery || false,
-      coupon: initialData?.products.coupon || "",
       type: initialData?.products.type || "physical",
       status: initialData?.products.status || "draft",
       sizes: initialData?.products.sizes || [],
@@ -236,12 +235,6 @@ export const CreateProductForm = ({ id }: Props) => {
                 title="Sale Price"
                 placeholder="$8"
                 inputTypes="number"
-              />
-              <InputController
-                control={form.control}
-                name="coupon"
-                title="Coupon Code"
-                placeholder="FLAT_10"
               />
               <InputController
                 control={form.control}
