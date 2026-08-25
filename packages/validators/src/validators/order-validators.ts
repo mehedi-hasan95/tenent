@@ -23,9 +23,9 @@ export const orderItemsValidator = z.object({
   productId: z.string(),
   price: z.coerce.number().nonnegative(),
   quantity: z.coerce.number().int().nonnegative(),
-  size: z.string().max(50).nullable(),
-  color: z.string().max(50).nullable(),
-  usedCoupon: z.coerce.boolean(),
+  size: z.string().max(50).optional(),
+  color: z.string().max(50).optional(),
+  usedCoupon: z.string().optional(),
   orderId: z.string(),
 })
 
@@ -41,9 +41,9 @@ export const createStripeOrderValidator = z.object({
     z.object({
       id: z.string(),
       quantity: z.coerce.number().int().positive(),
-      usedCoupon: z.boolean(),
-      size: z.string().nullable(),
-      color: z.string().nullable(),
+      usedCoupon: z.string().optional(),
+      size: z.string().optional(),
+      color: z.string().optional(),
     })
   ),
 })

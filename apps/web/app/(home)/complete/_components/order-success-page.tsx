@@ -38,7 +38,6 @@ export const OrderSuccessPage = ({ id }: Props) => {
     (total: number, item: any) => total + item.amount_total,
     0
   )
-  console.log(data)
   return (
     <div className="container-default min-h-screen bg-linear-to-br from-background via-accent/5 to-background">
       <div className="pointer-events-none fixed inset-0 overflow-hidden">

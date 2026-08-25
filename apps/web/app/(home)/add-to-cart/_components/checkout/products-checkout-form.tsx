@@ -60,8 +60,6 @@ export const ProductsCheckoutForm = ({ shipping }: Props) => {
     setIsSubmitting(false)
   }
 
-  console.log(checkout)
-
   return (
     <form onSubmit={handleSubmit}>
       <h4>Payment</h4>

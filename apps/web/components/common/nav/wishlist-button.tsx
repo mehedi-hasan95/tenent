@@ -6,28 +6,12 @@ import { Heart } from "lucide-react"
 import { useShallow } from "zustand/react/shallow"
 
 interface Props {
-  title: string
   className?: string
-  category: string
   id: string
-  image: string
-  price: number
-  rating: number
-  totalRatings: number
   btnTitle?: string
 }
 
-export const WishlistButton = ({
-  className,
-  title,
-  category,
-  id,
-  image,
-  price,
-  rating,
-  totalRatings,
-  btnTitle,
-}: Props) => {
+export const WishlistButton = ({ className, id, btnTitle }: Props) => {
   const { products, toggleItem } = useAddToWishlistStore(
     useShallow((state) => ({
       products: state.products,
@@ -38,13 +22,7 @@ export const WishlistButton = ({
   const exist = products.some((p) => p.id === id)
 
   const product = {
-    title,
-    category,
     id,
-    image,
-    price,
-    rating,
-    totalRatings,
   }
 
   return (

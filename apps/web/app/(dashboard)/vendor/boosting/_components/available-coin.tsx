@@ -22,7 +22,6 @@ export const AvailableCoin = () => {
     staleTime: 1000 * 60 * 5,
   })
 
-  console.log(vendorAvailableCoin)
   return (
     <Card>
       <CardHeader>

@@ -61,7 +61,7 @@ export const orderItems = pgTable(
 
     color: varchar("color", { length: 50 }),
 
-    usedCoupon: boolean("used_coupon").default(false).notNull(),
+    usedCoupon: varchar("used_coupon"),
 
     status: orderEnum("status").default("PROCESSING").notNull(),
 

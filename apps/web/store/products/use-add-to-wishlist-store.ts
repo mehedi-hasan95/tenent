@@ -1,11 +1,13 @@
 import { create } from "zustand"
 import { persist } from "zustand/middleware"
-import { productZustandType } from "./products-constants"
 
+type wishlistType = {
+  id: string
+}
 interface WishlistStore {
-  products: productZustandType[]
+  products: wishlistType[]
 
-  toggleItem: (product: productZustandType) => void
+  toggleItem: (product: wishlistType) => void
   clear: () => void
 }
 

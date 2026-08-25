@@ -2,7 +2,9 @@ import { RouteHandler } from "@workspace/open-api"
 import {
   allProductsRoute,
   boostedProductRoute,
+  getArrayProductsRoute,
   popularProductsRoute,
+  ratingAndReviewRoute,
   singleProductsRoute,
 } from "./public-products-route"
 import { Cursor, decodeCursor, encodeCursor } from "../utils/cursor"
@@ -18,6 +20,7 @@ import {
   isNull,
   lt,
   lte,
+  ne,
   or,
   sql,
   sum,
@@ -29,7 +32,10 @@ import {
   ratingColumns,
   ratingSubquery,
 } from "../utils/queries/rating-query"
-import { orderItems } from "@workspace/db/schema/order.schema"
+import { orderItems, ratings } from "@workspace/db/schema/order.schema"
+import { categories } from "@workspace/db/schema/categories.schema"
+import { alias } from "drizzle-orm/pg-core"
+import { user } from "@workspace/db/schema/user.schema"
 
 export const allProductsHandler: RouteHandler<typeof allProductsRoute> = async (
   c
@@ -179,5 +185,83 @@ export const popularProductsHandler: RouteHandler<
     return c.json({ data }, 200)
   } catch (error) {
     return c.json({ error }, 500)
+  }
+}
+
+export const ratingAndReviewHandler: RouteHandler<
+  typeof ratingAndReviewRoute
+> = async (c) => {
+  try {
+    const { id } = c.req.valid("param")
+    const ratingSeries = sql`generate_series(1, 5) AS s(rating)`
+
+    const targetedProduct = alias(products, "targeted_product")
+    const [rating, review, category] = await Promise.all([
+      db
+        .select({
+          rating: sql<number>`s.rating`,
+          count: sql<number>`count(${ratings.id})::int`,
+          percentage: sql<number>`
+            COALESCE(
+              (count(${ratings.id})::float / NULLIF(sum(count(${ratings.id})) over(), 0)) * 100,
+              0
+            )
+          `,
+        })
+        .from(ratingSeries)
+        .leftJoin(
+          ratings,
+          sql`${ratings.rating} = s.rating AND ${ratings.productId} = ${id}`
+        )
+        .groupBy(sql`s.rating`)
+        .orderBy(sql`s.rating DESC`),
+
+      db
+        .select({
+          reviews: ratings.reviews,
+          name: user.name,
+          img: user.image ?? "https://github.com/shadcn.png",
+          createdAt: ratings.createdAt,
+          rating: ratings.rating,
+        })
+        .from(ratings)
+        .innerJoin(user, eq(ratings.email, user.email))
+        .where(eq(ratings.productId, id)),
+
+      db
+        .select()
+        .from(products)
+        .leftJoin(targetedProduct, eq(targetedProduct.id, id))
+        .where(
+          and(
+            eq(products.categorySlug, targetedProduct.categorySlug),
+            ne(products.id, id)
+          )
+        )
+        .orderBy(sql`RANDOM()`)
+        .limit(3),
+    ])
+
+    return c.json({ data: { rating, review, category } }, 200)
+  } catch (error) {
+    return c.json({ message: "Something went wrong" }, 500)
+  }
+}
+
+export const getArrayProductsHandler: RouteHandler<
+  typeof getArrayProductsRoute
+> = async (c) => {
+  try {
+    const { ids } = c.req.valid("query")
+
+    const ratingSq = ratingSubquery()
+    const data = await db
+      .select({ products, ...ratingColumns(ratingSq) })
+      .from(products)
+      .leftJoin(ratingSq, eq(ratingSq.productId, products.id))
+      .where(inArray(products.id, ids))
+    return c.json({ data }, 200)
+  } catch (error) {
+    return c.json({ message: "Something went wrong" }, 500)
   }
 }

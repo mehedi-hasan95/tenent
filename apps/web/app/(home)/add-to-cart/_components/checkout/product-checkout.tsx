@@ -38,13 +38,8 @@ export const ProductCheckout = () => {
 
     mutate(
       {
-        order: products.map((p) => ({
-          id: p.id,
-          quantity: p.quantity,
-          usedCoupon: p.usedCoupon,
-          color: p.color,
-          size: p.size,
-        })),
+        // todo: send data for checkout
+        order: products,
       },
       {
         onSuccess: () => {

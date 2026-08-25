@@ -5,34 +5,22 @@ import { FaCartShopping } from "react-icons/fa6"
 import { useShallow } from "zustand/react/shallow"
 
 interface Props {
-  title: string
   className?: string
-  category: string
   id: string
-  image: string
-  price: number
-  rating: number
-  totalRatings: number
   btnTitle?: string
   quantity: number
-  usedCoupon: boolean
-  size?: string | null
-  color?: string | null
+  usedCoupon?: string | undefined
+  size?: string | undefined
+  color?: string | undefined
 }
 export const AddToCartButton = ({
   className,
-  title,
-  category,
   id,
-  image,
-  price,
-  rating,
-  totalRatings,
   btnTitle,
   quantity,
   usedCoupon,
-  size = null,
-  color = null,
+  size,
+  color,
 }: Props) => {
   const { addItem, products } = useAddToCartStore(
     useShallow((state) => ({
@@ -55,13 +43,7 @@ export const AddToCartButton = ({
         if (exist) return
 
         addItem({
-          title,
-          category,
           id,
-          image,
-          price,
-          rating,
-          totalRatings,
           quantity,
           usedCoupon,
           size,

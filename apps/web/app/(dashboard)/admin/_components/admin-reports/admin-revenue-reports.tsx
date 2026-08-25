@@ -1,6 +1,5 @@
 "use client"
 
-import { vendorReportsAction } from "@/api/reports/vendor/vendor-report-action"
 import { useQuery } from "@tanstack/react-query"
 import { BaggageClaim, BrickWallFire, DollarSign, User } from "lucide-react"
 import {
@@ -8,12 +7,13 @@ import {
   TooltipContent,
   TooltipTrigger,
 } from "@workspace/ui/components/tooltip"
+import { adminReportsAction } from "@/api/reports/admin/admin-report-action"
 import { RevenueCard } from "@/components/common/dashboard/revenue-card"
 
-export const VendorDashboardReports = () => {
+export const AdminDashboardReports = () => {
   const { data, isPending } = useQuery({
-    queryKey: ["vendor-reports"],
-    queryFn: vendorReportsAction,
+    queryKey: ["admin-reports"],
+    queryFn: adminReportsAction,
     staleTime: 1000 * 60 * 5,
     retry: 1,
   })
@@ -42,7 +42,7 @@ export const VendorDashboardReports = () => {
             isRevenue={true}
           />
         </TooltipTrigger>
-        <TooltipContent>Vendor will get 10% of Revenue</TooltipContent>
+        <TooltipContent>Admin will get 10% of Revenue</TooltipContent>
       </Tooltip>
       <RevenueCard
         isPositive={isPositiveOrder}
