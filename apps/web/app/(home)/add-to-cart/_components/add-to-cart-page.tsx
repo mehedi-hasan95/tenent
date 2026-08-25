@@ -20,6 +20,8 @@ import { MoveLeft } from "lucide-react"
 import { useEffect } from "react"
 import { ProductCheckout } from "./checkout/product-checkout"
 import { useShallow } from "zustand/react/shallow"
+import { useQuery } from "@tanstack/react-query"
+import { getArrayProductsAction } from "@/api/products/products-action"
 
 export const AddToCartPage = () => {
   const { products, removeItem, updateQuantity, clear } = useAddToCartStore(
@@ -44,6 +46,29 @@ export const AddToCartPage = () => {
       reset()
     }
   }, [reset])
+  const productIds = products.map((item) => item.id)
+  const { data } = useQuery({
+    queryKey: ["add-to-cart-data", productIds],
+    queryFn: () => getArrayProductsAction({ ids: productIds }),
+    enabled: !!productIds,
+    staleTime: 1000 * 5 * 60,
+  })
+
+  const productsLocalStorage = new Map(
+    products.map((item) => [
+      item.id,
+      {
+        color: item.color,
+        quantity: item.quantity,
+        size: item.size,
+        usedCoupon: item.usedCoupon,
+      },
+    ])
+  )
+  const result = data?.map((item) => ({
+    ...item,
+    ...productsLocalStorage.get(item.products.id),
+  }))
   return (
     <section className="mx-auto max-w-7xl p-6">
       <div className="mb-8 flex items-center justify-between">
@@ -71,16 +96,16 @@ export const AddToCartPage = () => {
       <div className="grid grid-cols-3 gap-5">
         <div className="col-span-full space-y-3 md:col-span-2">
           {step === "list" ? (
-            products.map((item) => (
+            result?.map((item) => (
               <CartItem
-                key={item.id}
-                image={item.image}
-                price={item.price}
-                quantity={item.quantity}
-                title={item.title}
-                removeCart={() => removeCart(item.id)}
+                key={item.products.id}
+                image={item.products.images[0] as string}
+                price={item.products.salePrice}
+                quantity={item.quantity ?? 1}
+                title={item.products.title}
+                removeCart={() => removeCart(item.products.id)}
                 onUpdateQuantity={(newQuantity) =>
-                  updateQuantityState(item.id, newQuantity)
+                  updateQuantityState(item.products.id, newQuantity)
                 }
               />
             ))
@@ -102,15 +127,17 @@ export const AddToCartPage = () => {
               </TableRow>
             </TableHeader>
             <TableBody>
-              {products.map((item) => (
-                <TableRow key={item.id}>
+              {result?.map((item) => (
+                <TableRow key={item.products.id}>
                   <TableCell colSpan={3}>
-                    {item.title.length > 40
-                      ? item.title.slice(0, 40) + "..."
-                      : item.title}
+                    {item.products.title.length > 40
+                      ? item.products.title.slice(0, 40) + "..."
+                      : item.products.title}
                   </TableCell>
                   <TableCell className="text-right">
-                    {formatPrice(item.price * item.quantity)}
+                    {formatPrice(
+                      item.products.salePrice * (item.quantity ?? 1)
+                    )}
                   </TableCell>
                 </TableRow>
               ))}
@@ -120,9 +147,10 @@ export const AddToCartPage = () => {
                 <TableCell colSpan={3}>Total</TableCell>
                 <TableCell className="text-right">
                   {formatPrice(
-                    products.reduce(
+                    (result ?? []).reduce(
                       (total, product) =>
-                        total + product.price * product.quantity,
+                        total +
+                        product.products.salePrice * (product.quantity ?? 1),
                       0
                     )
                   )}

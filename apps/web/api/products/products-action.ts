@@ -132,3 +132,25 @@ export const relatedProductAction = async ({ id }: { id: string }) => {
 
   return data.data
 }
+
+export const getArrayProductsAction = async ({ ids }: { ids: string[] }) => {
+  const params = new URLSearchParams()
+  ids.forEach((id) => {
+    if (id !== undefined && id !== null) {
+      params.append("ids", id)
+    }
+  })
+
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_PRODUCTS_URL}/public/get-array-products?${params.toString()}`,
+    { method: "GET" }
+  )
+  if (!response.ok) {
+    const error = await response.json()
+    throw error
+  }
+  const data: {
+    data: { products: PRODUCT_TYPE; avgRating: number; ratingCount: number }[]
+  } = await response.json()
+  return data.data
+}

@@ -2,6 +2,7 @@ import { OpenAPIHono, defaultHook } from "@workspace/open-api"
 import {
   allProductsRoute,
   boostedProductRoute,
+  getArrayProductsRoute,
   popularProductsRoute,
   ratingAndReviewRoute,
   singleProductsRoute,
@@ -9,6 +10,7 @@ import {
 import {
   allProductsHandler,
   boostedProductHandler,
+  getArrayProductsHandler,
   popularProductsHandler,
   ratingAndReviewHandler,
   singleProductsHandler,
@@ -24,5 +26,6 @@ app
   .openapi(boostedProductRoute, boostedProductHandler)
   .openapi(popularProductsRoute, popularProductsHandler)
   .openapi(ratingAndReviewRoute, ratingAndReviewHandler)
+  .openapi(getArrayProductsRoute, getArrayProductsHandler)
 
 export default app

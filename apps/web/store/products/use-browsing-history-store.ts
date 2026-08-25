@@ -1,14 +1,16 @@
 import { create } from "zustand"
-import { productZustandType } from "./products-constants"
 import { persist } from "zustand/middleware"
 
 type productType = {
-  products: productZustandType[]
-  addItem: (product: productZustandType) => void
+  id: string
+}
+type productTypeStore = {
+  products: productType[]
+  addItem: (product: productType) => void
   clear: () => void
 }
 
-export const useBrowsingHistoryStore = create<productType>()(
+export const useBrowsingHistoryStore = create<productTypeStore>()(
   persist(
     (set) => ({
       products: [],

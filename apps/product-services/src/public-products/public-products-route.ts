@@ -1,4 +1,5 @@
 import { createRoute } from "@workspace/open-api"
+import { formArray } from "@workspace/validators/validators/constructor"
 import { productListQuerySchema } from "@workspace/validators/validators/products-validators"
 import z from "zod"
 
@@ -72,6 +73,24 @@ export const ratingAndReviewRoute = createRoute({
   tags,
   request: {
     params: z.object({ id: z.string() }),
+  },
+  responses: {
+    200: { description: "OK" },
+    400: { description: "Bad Request" },
+    401: { description: "Unauthorized" },
+    500: { description: "Internal server error" },
+  },
+})
+
+export const getArrayProductsRoute = createRoute({
+  method: "get",
+  path: "/get-array-products",
+  summary: "Get products based on array",
+  tags,
+  request: {
+    query: z.object({
+      ids: formArray(z.array(z.string())),
+    }),
   },
   responses: {
     200: { description: "OK" },

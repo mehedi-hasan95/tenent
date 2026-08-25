@@ -5,6 +5,7 @@ import { AddToCartButton } from "@/components/common/nav/add-to-cart-button"
 import { WishlistButton } from "@/components/common/nav/wishlist-button"
 import { StarRating } from "@/components/common/products/star-rating"
 import { formatName, formatPrice } from "@/lib/lib"
+import { useBrowsingHistoryStore } from "@/store/products/use-browsing-history-store"
 import { useQuery } from "@tanstack/react-query"
 import {
   Carousel,
@@ -25,6 +26,7 @@ export const PopularProducts = () => {
     staleTime: 1000 * 60 * 5,
     retry: 1,
   })
+  const addItem = useBrowsingHistoryStore((state) => state.addItem)
 
   if (isLoading) {
     return <p>Loading...</p>
@@ -60,7 +62,12 @@ export const PopularProducts = () => {
                   className="md:basic-1/2 basis-1/1 pl-3 lg:basis-1/3 xl:basis-1/4"
                 >
                   <div
-                    onClick={() => router.push(`/products/${item.products.id}`)}
+                    onClick={async () => {
+                      router.push(`/products/${item.products.id}`)
+                      await addItem({
+                        id: item.products.id,
+                      })
+                    }}
                     className="group hover:border-primary-500/50 relative cursor-pointer overflow-hidden rounded-2xl border border-slate-200 bg-white transition-all hover:shadow-2xl dark:border-slate-700 dark:bg-slate-800"
                   >
                     <div className="relative aspect-square overflow-hidden bg-slate-100 dark:bg-slate-700">
@@ -74,28 +81,15 @@ export const PopularProducts = () => {
                       <div className="absolute top-3 right-3">
                         <WishlistButton
                           className="flex h-8 w-8 items-center justify-center rounded-full bg-white/80"
-                          category={item.products.categorySlug}
                           id={item.products.id}
-                          image={item.products.images[0]!}
-                          price={item.products.salePrice}
-                          rating={item.avgRating}
-                          totalRatings={item.ratingCount}
-                          title={item.products.title}
                         />
                       </div>
                       <div className="absolute inset-x-0 bottom-0 translate-y-full p-4 transition-transform duration-300 group-hover:translate-y-0">
                         <AddToCartButton
                           className="w-full justify-center rounded-xl bg-blue-500 py-3 text-sm font-bold text-white shadow-lg transition-colors hover:bg-blue-600"
                           btnTitle="Add to Cart"
-                          category={item.products.categorySlug}
                           id={item.products.id}
-                          image={item.products.images[0]!}
-                          price={item.products.salePrice}
-                          rating={item.avgRating}
-                          totalRatings={item.ratingCount}
-                          title={item.products.title}
                           quantity={1}
-                          usedCoupon={false}
                         />
                       </div>
                     </div>

@@ -2,6 +2,7 @@ import { RouteHandler } from "@workspace/open-api"
 import {
   allProductsRoute,
   boostedProductRoute,
+  getArrayProductsRoute,
   popularProductsRoute,
   ratingAndReviewRoute,
   singleProductsRoute,
@@ -242,6 +243,24 @@ export const ratingAndReviewHandler: RouteHandler<
     ])
 
     return c.json({ data: { rating, review, category } }, 200)
+  } catch (error) {
+    return c.json({ message: "Something went wrong" }, 500)
+  }
+}
+
+export const getArrayProductsHandler: RouteHandler<
+  typeof getArrayProductsRoute
+> = async (c) => {
+  try {
+    const { ids } = c.req.valid("query")
+
+    const ratingSq = ratingSubquery()
+    const data = await db
+      .select({ products, ...ratingColumns(ratingSq) })
+      .from(products)
+      .leftJoin(ratingSq, eq(ratingSq.productId, products.id))
+      .where(inArray(products.id, ids))
+    return c.json({ data }, 200)
   } catch (error) {
     return c.json({ message: "Something went wrong" }, 500)
   }

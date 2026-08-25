@@ -26,12 +26,6 @@ export const ProductsRightSidebar = () => {
             onClick={async () => {
               await addItem({
                 id: item.products.id,
-                category: item.products.categorySlug,
-                image: item.products.images[0]!,
-                price: item.products.salePrice,
-                title: item.products.title,
-                rating: item.avgRating,
-                totalRatings: item.ratingCount,
               })
 
               router.push(`/products/${item.products.id}`)
@@ -47,28 +41,15 @@ export const ProductsRightSidebar = () => {
               <div className="absolute top-3 right-3">
                 <WishlistButton
                   className="flex h-8 w-8 items-center justify-center rounded-full bg-white/80"
-                  category={item.products.categorySlug}
                   id={item.products.id}
-                  image={item.products.images[0]!}
-                  price={item.products.salePrice}
-                  rating={item.avgRating}
-                  totalRatings={item.ratingCount}
-                  title={item.products.title}
                 />
               </div>
               <div className="absolute inset-x-0 bottom-0 translate-y-full p-4 transition-transform duration-300 group-hover:translate-y-0">
                 <AddToCartButton
                   className="w-full justify-center rounded-xl bg-blue-500 py-3 text-sm font-bold text-white shadow-lg transition-colors hover:bg-blue-600"
                   btnTitle="Add to Cart"
-                  category={item.products.categorySlug}
                   id={item.products.id}
-                  image={item.products.images[0]!}
-                  price={item.products.salePrice}
-                  rating={item.avgRating}
-                  totalRatings={item.ratingCount}
-                  title={item.products.title}
                   quantity={1}
-                  usedCoupon={false}
                 />
               </div>
             </div>

@@ -87,7 +87,6 @@ export const trashedProductHandler: RouteHandler<
 > = async (c) => {
   try {
     const { id } = c.req.valid("json")
-    console.log(id)
     const user = c.get("user")
     if (!id) {
       return c.json({ message: "Missing the ID" }, 400)
@@ -98,7 +97,6 @@ export const trashedProductHandler: RouteHandler<
       .set({ deletedAt: sql`NOW() + INTERVAL '30 days'` })
       .where(and(eq(products.id, id), eq(products.userEmail, user?.email!)))
       .returning()
-    console.log("data: ", data)
 
     if (!data.length) {
       return c.json({ message: "This product is not yours" }, 404)

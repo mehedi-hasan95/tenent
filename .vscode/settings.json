@@ -1,5 +1,5 @@
 {
-  "cSpell.words": ["nuqs", "uploadthing", "utapi"],
+  "cSpell.words": ["nuqs", "Storate", "uploadthing", "utapi"],
   "files.watcherExclude": {
     "**/.next/**": true,
     "**/.turbo/**": true,
