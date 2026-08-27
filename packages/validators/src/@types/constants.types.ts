@@ -26,7 +26,7 @@ export const sortValues = [
   "old",
   "new",
   "ascByName",
-  "dscByName",
+  "descByName",
   "ascByPrice",
-  "dscByPrice",
+  "descByPrice",
 ] as const

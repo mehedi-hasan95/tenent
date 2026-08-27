@@ -14,6 +14,7 @@ import {
   db,
   desc,
   eq,
+  gt,
   gte,
   ilike,
   inArray,
@@ -37,6 +38,98 @@ import { categories } from "@workspace/db/schema/categories.schema"
 import { alias } from "drizzle-orm/pg-core"
 import { user } from "@workspace/db/schema/user.schema"
 
+// export const allProductsHandler: RouteHandler<typeof allProductsRoute> = async (
+//   c
+// ) => {
+//   try {
+//     const {
+//       seller,
+//       pageSize,
+//       cursor: rawCursor,
+//       search,
+//       maxPrice,
+//       minPrice,
+//       cats,
+//       sort,
+//     } = c.req.valid("query")
+
+//     let cursor: Cursor | null = null
+//     if (rawCursor) {
+//       cursor = decodeCursor(rawCursor)
+//       if (!cursor) return c.json({ error: "Invalid cursor" }, 400)
+//     }
+
+//     const getCats = cats?.length ? cats?.split(",") : undefined
+
+//     const boostSq = boostingSubquery()
+//     const ratingSq = ratingSubquery()
+
+//     const boost = sql<number>`coalesce(${boostSq.boostRate}, 0)`
+
+//     const cursorCondition = cursor
+//       ? or(
+//           lt(boost, cursor.boost),
+//           and(
+//             eq(boost, cursor.boost),
+//             lt(products.createdAt, cursor.createdAt)
+//           ),
+//           and(
+//             eq(boost, cursor.boost),
+//             eq(products.createdAt, cursor.createdAt),
+//             lt(products.id, cursor.id)
+//           )
+//         )
+//       : undefined
+
+//     const rows = await db
+//       .select({
+//         products,
+//         boost: boost.as("boost"),
+//         ...ratingColumns(ratingSq),
+//       })
+//       .from(products)
+//       .leftJoin(boostSq, eq(boostSq.productId, products.id))
+//       .leftJoin(ratingSq, eq(ratingSq.productId, products.id))
+//       .where(
+//         and(
+//           eq(products.status, "active"),
+//           search ? ilike(products.title, `%${search}%`) : undefined,
+//           minPrice ? gte(products.salePrice, minPrice) : undefined,
+//           maxPrice ? lte(products.salePrice, maxPrice) : undefined,
+//           seller ? eq(products.userEmail, seller) : undefined,
+//           getCats && inArray(products.categorySlug, getCats),
+//           cursorCondition
+//         )
+//       )
+//       .orderBy(desc(products.createdAt), desc(products.id))
+//       .limit(pageSize + 1)
+
+//     const hasMore = rows.length > pageSize
+
+//     const data = rows.slice(0, pageSize)
+
+//     const lastItem = data[data.length - 1]
+
+//     const nextCursor =
+//       hasMore && lastItem
+//         ? encodeCursor({
+//             createdAt: lastItem.products.createdAt,
+//             id: lastItem.products.id,
+//             boost: lastItem.boost,
+//           })
+//         : null
+
+//     return c.json({
+//       data,
+//       nextCursor,
+//       hasMore,
+//     })
+//   } catch (error) {
+//     console.error(error)
+//     return c.json({ error: "Something went wrong" }, 500)
+//   }
+// }
+
 export const allProductsHandler: RouteHandler<typeof allProductsRoute> = async (
   c
 ) => {
@@ -53,23 +146,153 @@ export const allProductsHandler: RouteHandler<typeof allProductsRoute> = async (
     } = c.req.valid("query")
 
     let cursor: Cursor | null = null
+
     if (rawCursor) {
       cursor = decodeCursor(rawCursor)
-      if (!cursor) return c.json({ error: "Invalid cursor" }, 400)
+
+      if (!cursor) {
+        return c.json({ error: "Invalid cursor" }, 400)
+      }
     }
 
-    const getCats = cats?.length ? cats?.split(",") : undefined
+    const getCats = cats?.length ? cats.split(",") : undefined
 
     const boostSq = boostingSubquery()
     const ratingSq = ratingSubquery()
 
     const boost = sql<number>`coalesce(${boostSq.boostRate}, 0)`
 
+    // --------------------------------------------------
+    // CURSOR CONDITION
+    // --------------------------------------------------
+
+    let cursorCondition
+
+    if (cursor) {
+      switch (sort) {
+        case "ascByPrice":
+          cursorCondition = or(
+            gt(products.salePrice, Number(cursor.value)),
+            and(
+              eq(products.salePrice, Number(cursor.value)),
+              gt(products.id, cursor.id)
+            )
+          )
+          break
+
+        case "descByPrice":
+          cursorCondition = or(
+            lt(products.salePrice, Number(cursor.value)),
+            and(
+              eq(products.salePrice, Number(cursor.value)),
+              lt(products.id, cursor.id)
+            )
+          )
+          break
+
+        case "ascByName":
+          cursorCondition = or(
+            gt(products.title, String(cursor.value)),
+            and(
+              eq(products.title, String(cursor.value)),
+              gt(products.id, cursor.id)
+            )
+          )
+          break
+
+        case "descByName":
+          cursorCondition = or(
+            lt(products.title, String(cursor.value)),
+            and(
+              eq(products.title, String(cursor.value)),
+              lt(products.id, cursor.id)
+            )
+          )
+          break
+        case "new":
+          cursorCondition = or(
+            lt(products.createdAt, cursor.createdAt!),
+            and(
+              eq(products.createdAt, cursor.createdAt!),
+              lt(products.id, cursor.id)
+            )
+          )
+          break
+        case "old":
+          cursorCondition = or(
+            gt(products.createdAt, cursor.createdAt!),
+            and(
+              eq(products.createdAt, cursor.createdAt!),
+              gt(products.id, cursor.id)
+            )
+          )
+          break
+        default:
+          // Default sorting:
+          // boost DESC -> createdAt DESC -> id DESC
+          cursorCondition = or(
+            lt(boost, cursor.boost ?? 0),
+
+            and(
+              eq(boost, cursor.boost ?? 0),
+              lt(products.createdAt, cursor.createdAt!)
+            ),
+
+            and(
+              eq(boost, cursor.boost ?? 0),
+              eq(products.createdAt, cursor.createdAt!),
+              lt(products.id, cursor.id)
+            )
+          )
+      }
+    }
+
+    // --------------------------------------------------
+    // ORDER BY
+    // --------------------------------------------------
+
+    let orderBy
+
+    switch (sort) {
+      case "ascByPrice":
+        orderBy = [asc(products.salePrice), asc(products.id)]
+        break
+
+      case "descByPrice":
+        orderBy = [desc(products.salePrice), desc(products.id)]
+        break
+
+      case "ascByName":
+        orderBy = [asc(products.title), asc(products.id)]
+        break
+
+      case "descByName":
+        orderBy = [desc(products.title), desc(products.id)]
+        break
+
+      // Newest
+      case "new":
+        orderBy = [desc(products.createdAt), desc(products.id)]
+        break
+
+      // Oldest
+      case "old":
+        orderBy = [asc(products.createdAt), asc(products.id)]
+        break
+
+      default:
+        // Current/default sorting
+        orderBy = [desc(boost), desc(products.createdAt), desc(products.id)]
+    }
+
+    // --------------------------------------------------
+    // QUERY
+    // --------------------------------------------------
+
     const rows = await db
       .select({
         products,
         boost: boost.as("boost"),
-
         ...ratingColumns(ratingSq),
       })
       .from(products)
@@ -80,46 +303,76 @@ export const allProductsHandler: RouteHandler<typeof allProductsRoute> = async (
           eq(products.status, "active"),
 
           search ? ilike(products.title, `%${search}%`) : undefined,
+
           minPrice ? gte(products.salePrice, minPrice) : undefined,
+
           maxPrice ? lte(products.salePrice, maxPrice) : undefined,
+
           seller ? eq(products.userEmail, seller) : undefined,
-          getCats && inArray(products.categorySlug, getCats),
-          cursor
-            ? or(
-                lt(boost, cursor.boost),
-                and(
-                  eq(boost, cursor.boost),
-                  lt(products.createdAt, cursor.createdAt)
-                ),
-                and(
-                  eq(boost, cursor.boost),
-                  eq(products.createdAt, cursor.createdAt),
-                  lt(products.id, cursor.id)
-                )
-              )
-            : undefined,
-          isNull(products.deletedAt)
+
+          getCats ? inArray(products.categorySlug, getCats) : undefined,
+
+          cursorCondition
         )
       )
-      .orderBy(desc(boost), desc(products.createdAt), desc(products.id))
+      .orderBy(...orderBy)
       .limit(pageSize + 1)
 
+    // --------------------------------------------------
+    // PAGINATION
+    // --------------------------------------------------
+
     const hasMore = rows.length > pageSize
-    const data = hasMore ? rows.slice(0, -1) : rows
-    const last = data[data.length - 1]
 
-    const nextCursor =
-      hasMore && last
-        ? encodeCursor({
-            boost: last.boost,
-            id: last.products.id,
-            createdAt: last.products.createdAt,
+    const data = rows.slice(0, pageSize)
+
+    const lastItem = data[data.length - 1]
+
+    let nextCursor: string | null = null
+
+    if (hasMore && lastItem) {
+      switch (sort) {
+        case "ascByPrice":
+        case "descByPrice":
+          nextCursor = encodeCursor({
+            id: lastItem.products.id,
+            value: lastItem.products.salePrice,
           })
-        : null
+          break
 
-    return c.json({ data, nextCursor, hasMore }, 200)
+        case "ascByName":
+        case "descByName":
+          nextCursor = encodeCursor({
+            id: lastItem.products.id,
+            value: lastItem.products.title,
+          })
+          break
+
+        // New / Old
+        case "new":
+        case "old":
+          nextCursor = encodeCursor({
+            id: lastItem.products.id,
+            createdAt: lastItem.products.createdAt,
+          })
+          break
+        default:
+          nextCursor = encodeCursor({
+            id: lastItem.products.id,
+            createdAt: lastItem.products.createdAt,
+            boost: lastItem.boost,
+          })
+      }
+    }
+
+    return c.json({
+      data,
+      nextCursor,
+      hasMore,
+    })
   } catch (error) {
     console.error(error)
+
     return c.json({ error: "Something went wrong" }, 500)
   }
 }

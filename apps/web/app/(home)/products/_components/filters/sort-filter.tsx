@@ -30,7 +30,7 @@ const sortData: { title: string; value: (typeof sortValues)[number] }[] = [
   },
   {
     title: "Sort by Name (Z–A)",
-    value: "dscByName",
+    value: "descByName",
   },
   {
     title: "Price: Low to High (0–9)",
@@ -38,7 +38,7 @@ const sortData: { title: string; value: (typeof sortValues)[number] }[] = [
   },
   {
     title: "Price: High to Low (9–0)",
-    value: "dscByPrice",
+    value: "descByPrice",
   },
 ]
 export const SortFilter = () => {
