@@ -11,6 +11,9 @@ interface Props {
   title: string
   removeCart: () => void
   onUpdateQuantity: (quantity: number) => void
+  size?: string | undefined
+  usedCoupon: boolean
+  validCoupon: boolean
 }
 export const CartItem = ({
   image,
@@ -19,9 +22,12 @@ export const CartItem = ({
   title,
   removeCart,
   onUpdateQuantity,
+  size,
+  usedCoupon,
+  validCoupon,
 }: Props) => {
   return (
-    <div className="flex items-center gap-4 rounded-xl border border-transparent bg-white p-4 shadow-sm transition-all hover:shadow-md dark:border-gray-700 dark:bg-gray-800">
+    <div className="flex flex-col items-center gap-4 rounded-xl border border-transparent bg-white p-4 shadow-sm transition-all hover:shadow-md md:flex-row dark:border-gray-700 dark:bg-gray-800">
       <Image
         src={image}
         alt=""
@@ -34,6 +40,14 @@ export const CartItem = ({
         <p className="font-bold text-indigo-600 dark:text-indigo-400">
           {formatPrice(price)} x {quantity} = {formatPrice(price * quantity)}
         </p>
+        {size && <p>Size = {size}</p>}
+        <p>{usedCoupon && "Coupon Used"}</p>
+        {usedCoupon && !validCoupon && (
+          <p className="text-red-300">
+            Coupon expired. It will apply <strong>regular</strong> checkout
+            process
+          </p>
+        )}
       </div>
       <div className="flex items-center gap-3">
         <div className="flex items-center rounded-lg bg-gray-100 p-1 dark:bg-gray-700">

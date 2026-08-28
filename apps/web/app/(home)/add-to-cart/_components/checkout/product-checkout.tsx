@@ -38,7 +38,6 @@ export const ProductCheckout = () => {
 
     mutate(
       {
-        // todo: send data for checkout
         order: products,
       },
       {

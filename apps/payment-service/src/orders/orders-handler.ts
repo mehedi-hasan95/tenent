@@ -1,7 +1,7 @@
 import { RouteHandler } from "@workspace/open-api"
 import { createOrderRoute, retrieveOrderRoute } from "./orders-route"
-import { db, inArray } from "@workspace/db"
-import { products } from "@workspace/db/schema/products.schema"
+import { db, eq, inArray } from "@workspace/db"
+import { coupons, products } from "@workspace/db/schema/products.schema"
 import Stripe from "stripe"
 import { stripeClient } from "../utils/stripe-client"
 import { orderItems, orders } from "@workspace/db/schema/order.schema"
@@ -12,7 +12,6 @@ export const createOrderHandler: RouteHandler<typeof createOrderRoute> = async (
   c
 ) => {
   try {
-    // todo: has error
     const email = c.get("user")?.email
     const { order } = c.req.valid("json")
     if (!order.length) {
@@ -25,8 +24,10 @@ export const createOrderHandler: RouteHandler<typeof createOrderRoute> = async (
         id: products.id,
         price: products.salePrice,
         inStoke: products.stock,
+        coupon: coupons,
       })
       .from(products)
+      .leftJoin(coupons, eq(products.id, coupons.productId))
       .where(inArray(products.id, productIds))
 
     const productMap = new Map(product.map((p) => [p.id, p]))
@@ -44,7 +45,7 @@ export const createOrderHandler: RouteHandler<typeof createOrderRoute> = async (
       if (!p) {
         return c.json({ message: `Product ${item.id} not found` }, 404)
       }
-      if (item.quantity > p.inStoke) {
+      if (p.inStoke != null && item.quantity > p.inStoke) {
         return c.json(
           {
             message: `Only ${p.inStoke} unit(s) left for product ${item.id}`,
@@ -53,7 +54,24 @@ export const createOrderHandler: RouteHandler<typeof createOrderRoute> = async (
         )
       }
 
-      const finalPrice = item.usedCoupon ? p.price * 0.9 : p.price
+      // check coupon valid or not
+      const validCoupon =
+        p.coupon?.code === item.usedCoupon &&
+        (!p.coupon?.expiresAt || new Date(p.coupon.expiresAt) > new Date()) &&
+        (!p.coupon?.maxRedemptions ||
+          p.coupon.maxRedemptions > p.coupon.timesRedeemed) &&
+        (!p.coupon?.minOrderAmount ||
+          p.coupon?.minOrderAmount <= item.quantity * p.price)
+
+      // calculate the price
+      const finalPrice = validCoupon
+        ? p.coupon?.discountPercent != null
+          ? p.price * item.quantity * (1 - p.coupon.discountPercent / 100)
+          : p.coupon?.flatDiscount != null
+            ? p.price * item.quantity - p.coupon.flatDiscount
+            : p.price
+        : p.price * item.quantity
+
       calculatedTotalPrice += finalPrice * item.quantity
       modifiedOrder.push({
         productId: item.id,

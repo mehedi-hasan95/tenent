@@ -42,3 +42,4 @@ seed().catch((error) => {
 })
 
 // ? This seed for my created
+// run this bun db:seed2

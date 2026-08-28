@@ -69,6 +69,8 @@ export const AddToCartPage = () => {
     ...item,
     ...productsLocalStorage.get(item.products.id),
   }))
+
+  console.log(result)
   return (
     <section className="mx-auto max-w-7xl p-6">
       <div className="mb-8 flex items-center justify-between">
@@ -106,6 +108,20 @@ export const AddToCartPage = () => {
                 removeCart={() => removeCart(item.products.id)}
                 onUpdateQuantity={(newQuantity) =>
                   updateQuantityState(item.products.id, newQuantity)
+                }
+                size={item.size}
+                usedCoupon={
+                  item.usedCoupon && item.coupons?.code === item.usedCoupon
+                    ? true
+                    : false
+                }
+                validCoupon={
+                  item.coupons &&
+                  item.coupons.code === item.usedCoupon &&
+                  (!item.coupons.expiresAt ||
+                    new Date(item.coupons.expiresAt) > new Date())
+                    ? true
+                    : false
                 }
               />
             ))

@@ -10,7 +10,10 @@ import { db, eq } from "@workspace/db"
 import { user } from "@workspace/db/schema/user.schema"
 import { vendorCoinPurchaseAction } from "../actions/buy-coin-action"
 import { producer } from "../utils/kafka"
-import { buyProductsAction } from "../actions/buy-products-action"
+import {
+  buyProductsAction,
+  updateProducts,
+} from "../actions/buy-products-action"
 
 export const stripeWebhookHandler: RouteHandler<
   typeof stripeWebhookRoute
@@ -74,6 +77,8 @@ export const stripeWebhookHandler: RouteHandler<
       }
       //end: purchase coin for vendor end
       // start: Product purchase by user start
+
+      // todo: implement kafka
       if (session?.metadata?.email && session?.metadata?.orderId) {
         const address = session.collected_information?.shipping_details?.address
         await buyProductsAction({
@@ -87,6 +92,7 @@ export const stripeWebhookHandler: RouteHandler<
           postalCode: address?.postal_code as string,
           state: address?.state as string,
         })
+        await updateProducts(session?.metadata?.orderId as string)
       }
       // end: Product purchase by user end
       break
