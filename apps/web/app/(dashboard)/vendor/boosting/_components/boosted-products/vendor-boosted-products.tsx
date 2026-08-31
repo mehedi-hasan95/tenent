@@ -13,12 +13,14 @@ export const VendorBoostedProducts = () => {
     retry: 1,
     staleTime: 1000 * 60 * 5,
   })
+
   return (
     <div>
       <DataTable
         columns={BoostedProductsColumns()}
         data={data?.data ?? []}
-        searchKey="id"
+        searchKey="title"
+        showRowCount={false}
       />
     </div>
   )

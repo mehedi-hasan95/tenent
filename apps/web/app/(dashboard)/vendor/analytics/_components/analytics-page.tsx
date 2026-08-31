@@ -17,6 +17,10 @@ import {
 } from "@workspace/ui/components/chart"
 import { useQuery } from "@tanstack/react-query"
 import {
+  individualProductsSaleAction,
+  vendorDailyReportsAction,
+} from "@/api/reports/vendor/vendor-report-action"
+import {
   Popover,
   PopoverContent,
   PopoverTrigger,
@@ -26,13 +30,23 @@ import { Calendar } from "@workspace/ui/components/calendar"
 import { Calendar1 } from "lucide-react"
 import { formatDateParam } from "@/lib/lib"
 import { cn } from "@workspace/ui/lib/utils"
-import { adminDailyReportsAction } from "@/api/reports/admin/admin-report-action"
+import { useGetVendorAllProducts } from "@/hooks/products/use-products"
+import {
+  Combobox,
+  ComboboxContent,
+  ComboboxEmpty,
+  ComboboxInput,
+  ComboboxItem,
+  ComboboxList,
+} from "@workspace/ui/components/combobox"
 
 export const description = "An interactive bar chart"
 
-export const AdminDailyReport = () => {
+export const AnalyticsPage = () => {
   const [fromDate, setFromDate] = useState<Date | undefined>(undefined)
   const [toDate, setToDate] = useState<Date | undefined>(undefined)
+  const [productId, setProductId] = useState<string | undefined>(undefined)
+  const { data: vendorProducts } = useGetVendorAllProducts()
 
   const startDate = useMemo(() => {
     return fromDate ? formatDateParam(fromDate) : undefined
@@ -45,20 +59,29 @@ export const AdminDailyReport = () => {
   const isSelect = Boolean(startDate || endDate)
 
   const { data, isLoading, isFetching } = useQuery({
-    queryKey: ["admin-daily-report", startDate, endDate],
+    queryKey: [
+      "vendor-individual-products-report",
+      startDate,
+      endDate,
+      productId,
+    ],
     queryFn: () =>
-      adminDailyReportsAction({ startDate: startDate, endDate: endDate }),
+      individualProductsSaleAction({
+        startDate: startDate,
+        endDate: endDate,
+        productId: productId,
+      }),
     retry: 1,
     staleTime: 1000 * 60 * 5,
   })
 
   const chartConfig = {
     quantity: {
-      label: "Quantity",
+      label: "Units_Sold",
       color: "var(--chart-2)",
     },
     totalSale: {
-      label: "Total Sale",
+      label: "Revenue",
       color: "var(--chart-1)",
     },
   } satisfies ChartConfig
@@ -67,13 +90,30 @@ export const AdminDailyReport = () => {
     <Card>
       <CardHeader className="flex justify-between">
         <div>
-          <CardTitle>Admin Daily Reports</CardTitle>
+          <CardTitle>Vendor Daily Reports</CardTitle>
           <CardDescription>
             {isSelect ? "Showing selected reports" : "Showing default reports"}
           </CardDescription>
         </div>
 
         <div className="flex items-center gap-2">
+          <Combobox items={vendorProducts}>
+            <ComboboxInput placeholder="Select a framework" />
+            <ComboboxContent>
+              <ComboboxEmpty>No items found.</ComboboxEmpty>
+              <ComboboxList>
+                {(item) => (
+                  <ComboboxItem
+                    key={item.id}
+                    value={item.title}
+                    onClick={() => setProductId(item.id)}
+                  >
+                    {item.title}
+                  </ComboboxItem>
+                )}
+              </ComboboxList>
+            </ComboboxContent>
+          </Combobox>
           {/* FROM DATE */}
           <Popover>
             <PopoverTrigger asChild>
@@ -147,7 +187,7 @@ export const AdminDailyReport = () => {
               <CartesianGrid vertical={false} />
 
               <XAxis
-                dataKey="month"
+                dataKey="date"
                 tickLine={false}
                 tickMargin={10}
                 axisLine={false}
@@ -177,13 +217,13 @@ export const AdminDailyReport = () => {
                 }
               />
 
-              <Bar dataKey="quantity" fill="var(--color-quantity)" radius={4} />
-
               <Bar
-                dataKey="totalSale"
-                fill="var(--color-totalSale)"
+                dataKey="units_sold"
+                fill="var(--color-quantity)"
                 radius={4}
               />
+
+              <Bar dataKey="revenue" fill="var(--color-totalSale)" radius={4} />
             </BarChart>
           </ChartContainer>
         )}

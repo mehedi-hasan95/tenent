@@ -65,12 +65,49 @@ export const AddToCartPage = () => {
       },
     ])
   )
-  const result = data?.map((item) => ({
-    ...item,
-    ...productsLocalStorage.get(item.products.id),
-  }))
+  const result = data?.map((item) => {
+    const localData = productsLocalStorage.get(item.products.id)
+    const usedCoupon =
+      localData?.usedCoupon && item.coupons?.code === localData.usedCoupon
+        ? true
+        : false
+    const validCoupon =
+      item.coupons &&
+      item.coupons.isActive &&
+      item.coupons.code === localData?.usedCoupon &&
+      (!item.coupons.expiresAt || new Date(item.coupons.expiresAt) > new Date())
+        ? true
+        : false
 
-  console.log(result)
+    const quantity = localData?.quantity ?? 1
+    const baseTotal = item.products.salePrice * quantity
+
+    let finalItemTotal = baseTotal
+    if (usedCoupon && validCoupon) {
+      if (
+        item.coupons?.discountPercent !== null &&
+        item.coupons?.discountPercent !== undefined
+      ) {
+        finalItemTotal =
+          baseTotal - baseTotal * (item.coupons.discountPercent / 100)
+      } else if (
+        item.coupons?.flatDiscount !== null &&
+        item.coupons?.flatDiscount !== undefined
+      ) {
+        finalItemTotal = Math.max(0, baseTotal - item.coupons.flatDiscount)
+      }
+    }
+
+    return {
+      ...item,
+      ...localData,
+      quantity,
+      finalItemTotal,
+      usedCoupon,
+      validCoupon,
+    }
+  })
+
   return (
     <section className="mx-auto max-w-7xl p-6">
       <div className="mb-8 flex items-center justify-between">
@@ -103,26 +140,17 @@ export const AddToCartPage = () => {
                 key={item.products.id}
                 image={item.products.images[0] as string}
                 price={item.products.salePrice}
-                quantity={item.quantity ?? 1}
+                quantity={item.quantity}
                 title={item.products.title}
                 removeCart={() => removeCart(item.products.id)}
                 onUpdateQuantity={(newQuantity) =>
                   updateQuantityState(item.products.id, newQuantity)
                 }
                 size={item.size}
-                usedCoupon={
-                  item.usedCoupon && item.coupons?.code === item.usedCoupon
-                    ? true
-                    : false
-                }
-                validCoupon={
-                  item.coupons &&
-                  item.coupons.code === item.usedCoupon &&
-                  (!item.coupons.expiresAt ||
-                    new Date(item.coupons.expiresAt) > new Date())
-                    ? true
-                    : false
-                }
+                usedCoupon={item.usedCoupon}
+                validCoupon={item.validCoupon}
+                couponPercentage={item.coupons?.discountPercent || null}
+                flatRate={item.coupons?.flatDiscount || null}
               />
             ))
           ) : (
@@ -151,9 +179,7 @@ export const AddToCartPage = () => {
                       : item.products.title}
                   </TableCell>
                   <TableCell className="text-right">
-                    {formatPrice(
-                      item.products.salePrice * (item.quantity ?? 1)
-                    )}
+                    {formatPrice(item.finalItemTotal)}
                   </TableCell>
                 </TableRow>
               ))}
@@ -164,9 +190,7 @@ export const AddToCartPage = () => {
                 <TableCell className="text-right">
                   {formatPrice(
                     (result ?? []).reduce(
-                      (total, product) =>
-                        total +
-                        product.products.salePrice * (product.quantity ?? 1),
+                      (total, product) => total + product.finalItemTotal,
                       0
                     )
                   )}

@@ -15,6 +15,8 @@ import userReports from "./user-reports/user-reports-index"
 import vendorReports from "./vendor-reports/vendor-reports-index"
 import publicProducts from "./public-products/public-products-index"
 import adminReports from "./admin-reports/admin-reports-index"
+import { consumer, producer } from "./utils/kafka"
+import { runKafkaSubscriptions } from "./utils/subscriptions"
 
 const app = new OpenAPIHono({
   defaultHook,
@@ -55,43 +57,43 @@ app.onError((err, c) => {
     500
   )
 })
-serve(
-  {
-    fetch: app.fetch,
-    port: Number(process.env.PORT ?? 5003),
-  },
-  (info) => {
-    ;(console.log(`Server is running on ${process.env.HOST}:${info.port}`),
-      console.log(
-        `You can get the documentation at ${process.env.HOST}:${info.port}/api/v1/tenant`
-      ))
-  }
-)
+// serve(
+//   {
+//     fetch: app.fetch,
+//     port: Number(process.env.PORT ?? 5003),
+//   },
+//   (info) => {
+//     ;(console.log(`Server is running on ${process.env.HOST}:${info.port}`),
+//       console.log(
+//         `You can get the documentation at ${process.env.HOST}:${info.port}/api/v1/tenant`
+//       ))
+//   }
+// )
 
 // used kafka
 
-// const start = async () => {
-//   try {
-//     await Promise.all([producer.connect(), consumer.connect()])
-//     await runKafkaSubscriptions()
-//     serve(
-//       {
-//         fetch: app.fetch,
-//         port: Number(process.env.PORT ?? 5003),
-//       },
-//       (info) => {
-//         ;(console.log(`Server is running on ${process.env.HOST}:${info.port}`),
-//           console.log(
-//             `You can get the documentation at ${process.env.HOST}:${info.port}/api/v1/tenant`
-//           ))
-//       }
-//     )
-//   } catch (error) {
-//     console.log(error)
-//   }
-// }
+const start = async () => {
+  try {
+    await Promise.all([producer.connect(), consumer.connect()])
+    await runKafkaSubscriptions()
+    serve(
+      {
+        fetch: app.fetch,
+        port: Number(process.env.PORT ?? 5003),
+      },
+      (info) => {
+        ;(console.log(`Server is running on ${process.env.HOST}:${info.port}`),
+          console.log(
+            `You can get the documentation at ${process.env.HOST}:${info.port}/api/v1/tenant`
+          ))
+      }
+    )
+  } catch (error) {
+    console.log(error)
+  }
+}
 
-// start()
+start()
 
 // used kafka
 openAPIConfiguration(app)

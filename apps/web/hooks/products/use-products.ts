@@ -33,7 +33,14 @@ export const useGetAllProducts = ({
         : undefined
   const sort = filters.sort as (typeof sortValues)[number] | undefined
   const query = useInfiniteQuery({
-    queryKey: CACHE_ALL_PRODUCTS(pageSize, sort, cats, minPrice, maxPrice),
+    queryKey: CACHE_ALL_PRODUCTS(
+      pageSize,
+      sort,
+      cats,
+      minPrice,
+      maxPrice,
+      search
+    ),
     queryFn: ({ pageParam }) =>
       fetchAllProductsAction({
         cursor: pageParam,

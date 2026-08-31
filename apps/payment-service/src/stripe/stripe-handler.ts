@@ -46,53 +46,69 @@ export const stripeWebhookHandler: RouteHandler<
         account.charges_enabled &&
         account.payouts_enabled &&
         account.details_submitted
-      console.log("isFullyOnboarded: ", isFullyOnboarded)
-      console.log("account: ", account)
       // used kafka
-      // await producer.send("account.update", {
-      //   value: JSON.stringify({ email: account?.email }),
-      // })
+      await producer.send("account.update", {
+        value: JSON.stringify({ email: account?.email }),
+      })
+      // used kafka
       break
 
     case "checkout.session.completed":
       const session = event.data.object as Stripe.Checkout.Session
-      console.log(session)
       //start: purchase coin for vendor start
       // used kafka
-      // if (session?.metadata?.user && session?.metadata?.coin) {
-      //   await producer.send("vendor.coin", {
-      //   value: JSON.stringify({
-      //     email: session?.metadata?.user as string,
-      //     price: Number(session?.metadata?.coin),
-      //   }),
-      // })
-      // }
-
-      // used kafka: disabled this if kafka is used
       if (session?.metadata?.user && session?.metadata?.coin) {
-        await vendorCoinPurchaseAction({
-          email: session?.metadata?.user as string,
-          price: Number(session?.metadata?.coin),
+        await producer.send("vendor.coin", {
+          value: JSON.stringify({
+            email: session?.metadata?.user as string,
+            price: Number(session?.metadata?.coin),
+          }),
         })
       }
+      // used kafka
+
+      // used kafka: disabled this if kafka is used
+      // if (session?.metadata?.user && session?.metadata?.coin) {
+      //   await vendorCoinPurchaseAction({
+      //     email: session?.metadata?.user as string,
+      //     price: Number(session?.metadata?.coin),
+      //   })
+      // }
       //end: purchase coin for vendor end
       // start: Product purchase by user start
 
-      // todo: implement kafka
       if (session?.metadata?.email && session?.metadata?.orderId) {
         const address = session.collected_information?.shipping_details?.address
-        await buyProductsAction({
-          city: address?.city as string,
-          country: address?.country as string,
-          email: session.customer_details?.email as string,
-          id: session?.metadata?.orderId as string,
-          line1: address?.line1 as string,
-          paymentIntent: session.payment_intent as string,
-          phone: address?.line2 as string,
-          postalCode: address?.postal_code as string,
-          state: address?.state as string,
+        //? if not used kafka
+        // await buyProductsAction({
+        //   city: address?.city as string,
+        //   country: address?.country as string,
+        //   email: session.customer_details?.email as string,
+        //   id: session?.metadata?.orderId as string,
+        //   line1: address?.line1 as string,
+        //   paymentIntent: session.payment_intent as string,
+        //   phone: address?.line2 as string,
+        //   postalCode: address?.postal_code as string,
+        //   state: address?.state as string,
+        // })
+        // await updateProducts(session?.metadata?.orderId as string)
+        //? if not used kafka
+
+        // used kafka
+        await producer.send("products.purchase", {
+          value: JSON.stringify({
+            city: address?.city as string,
+            country: address?.country as string,
+            email: session.customer_details?.email as string,
+            id: session?.metadata?.orderId as string,
+            line1: address?.line1 as string,
+            paymentIntent: session.payment_intent as string,
+            phone: address?.line2 as string,
+            postalCode: address?.postal_code as string,
+            state: address?.state as string,
+          }),
         })
-        await updateProducts(session?.metadata?.orderId as string)
+        // used kafka
       }
       // end: Product purchase by user end
       break

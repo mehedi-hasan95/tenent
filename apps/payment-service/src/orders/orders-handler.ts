@@ -34,6 +34,7 @@ export const createOrderHandler: RouteHandler<typeof createOrderRoute> = async (
     const modifiedOrder: z.infer<typeof orderItemsValidator>[] = []
     const seenIds = new Set<string>()
     let calculatedTotalPrice = 0
+    let validCoupon = false
 
     for (const item of order) {
       if (seenIds.has(item.id)) {
@@ -54,14 +55,16 @@ export const createOrderHandler: RouteHandler<typeof createOrderRoute> = async (
         )
       }
 
-      // check coupon valid or not
-      const validCoupon =
+      validCoupon = !!(
+        p.coupon &&
+        p.coupon.isActive &&
         p.coupon?.code === item.usedCoupon &&
         (!p.coupon?.expiresAt || new Date(p.coupon.expiresAt) > new Date()) &&
         (!p.coupon?.maxRedemptions ||
           p.coupon.maxRedemptions > p.coupon.timesRedeemed) &&
         (!p.coupon?.minOrderAmount ||
           p.coupon?.minOrderAmount <= item.quantity * p.price)
+      )
 
       // calculate the price
       const finalPrice = validCoupon
@@ -77,7 +80,7 @@ export const createOrderHandler: RouteHandler<typeof createOrderRoute> = async (
         productId: item.id,
         quantity: item.quantity,
         price: finalPrice,
-        usedCoupon: item.usedCoupon,
+        usedCoupon: validCoupon,
         size: item.size,
         color: item.color,
         orderId: "",
@@ -103,7 +106,7 @@ export const createOrderHandler: RouteHandler<typeof createOrderRoute> = async (
           productId: item.productId,
           price: item.price,
           quantity: item.quantity,
-          usedCoupon: item.usedCoupon,
+          usedCoupon: validCoupon,
           size: item.size,
           color: item.color,
         }))

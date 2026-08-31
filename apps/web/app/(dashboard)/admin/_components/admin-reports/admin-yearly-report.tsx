@@ -45,8 +45,8 @@ export const AdminYearlyReport = () => {
 
     queryFn: async () => {
       return adminYearlyReportsAction({
-        startMonth: startMonthParam,
-        endMonth: endMonthParam,
+        startDate: startMonthParam,
+        endDate: endMonthParam,
       })
     },
     staleTime: 1000 * 60 * 5,

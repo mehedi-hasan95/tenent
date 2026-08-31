@@ -1,10 +1,10 @@
 import { createRoute } from "@workspace/open-api"
-import { sellerMiddleware } from "../middleware"
+import { adminMiddleware, sellerMiddleware } from "../middleware"
 import z from "zod"
 import { DEFAULT_SIZE } from "@workspace/validators/types/constants.types"
 import {
   updateOrderItemsValidator,
-  yearlyReportsValidator,
+  startEndDateValidator,
 } from "@workspace/validators/validators/order-validators"
 
 const tags = ["Vendor Reports"]
@@ -111,7 +111,7 @@ export const vendorPreviousYearsReportRoute = createRoute({
   tags,
   middleware: sellerMiddleware,
   request: {
-    query: yearlyReportsValidator,
+    query: startEndDateValidator,
   },
   responses: {
     200: { description: "OK" },
@@ -129,7 +129,7 @@ export const vendorDailyReportRoute = createRoute({
   tags,
   middleware: sellerMiddleware,
   request: {
-    query: yearlyReportsValidator,
+    query: startEndDateValidator,
   },
   responses: {
     200: { description: "OK" },
@@ -145,6 +145,24 @@ export const vendorPopularProductsRoute = createRoute({
   summary: "Get a vendor popular products",
   tags,
   middleware: sellerMiddleware,
+  responses: {
+    200: { description: "OK" },
+    400: { description: "Bad Request" },
+    401: { description: "Unauthorized" },
+    500: { description: "Internal server error" },
+  },
+})
+
+export const vendorProductsSaleRoute = createRoute({
+  method: "get",
+  path: "/products-sale-reports",
+  summary: "Vendor daily products report",
+  description: "Vendor can expand products sale with startDate to endDate",
+  tags,
+  middleware: sellerMiddleware || adminMiddleware,
+  request: {
+    query: startEndDateValidator.extend({ productId: z.uuid().optional() }),
+  },
   responses: {
     200: { description: "OK" },
     400: { description: "Bad Request" },

@@ -10,7 +10,7 @@ import {
 } from "@workspace/validators/types/orders.types"
 import {
   updateOrderItemsValidator,
-  yearlyReportsValidator,
+  startEndDateValidator,
 } from "@workspace/validators/validators/order-validators"
 import z from "zod"
 
@@ -151,7 +151,7 @@ export const vendorCountryBasedReportAction = async () => {
 }
 
 export const vendorYearlyReportsAction = async (
-  param: z.input<typeof yearlyReportsValidator>
+  param: z.input<typeof startEndDateValidator>
 ) => {
   const params = new URLSearchParams()
 
@@ -181,7 +181,7 @@ export const vendorYearlyReportsAction = async (
 }
 
 export const vendorDailyReportsAction = async (
-  param: z.input<typeof yearlyReportsValidator>
+  param: z.input<typeof startEndDateValidator>
 ) => {
   const params = new URLSearchParams()
 
@@ -229,4 +229,38 @@ export const vendorPopularProductsAction = async () => {
     data: POPULAR_PRODUCTS_TYPE[]
   } = await response.json()
   return data.data
+}
+
+export const individualProductsSaleAction = async (
+  data: z.input<typeof startEndDateValidator> & {
+    productId: string | undefined
+  }
+) => {
+  const params = new URLSearchParams()
+
+  Object.entries(data).forEach(([key, value]) => {
+    if (value !== undefined && value !== null) {
+      params.set(key, String(value))
+    }
+  })
+  const response = await fetch(
+    `${process.env.NEXT_PUBLIC_PRODUCTS_URL}/vendor/reports/products-sale-reports?${params.toString()}`,
+    {
+      method: "GET",
+      credentials: "include",
+    }
+  )
+  if (!response.ok) {
+    const error = await response.json()
+    throw error
+  }
+  const result: {
+    data: {
+      product_title: string
+      date: string
+      revenue: number
+      units_sold: number
+    }[]
+  } = await response.json()
+  return result.data
 }

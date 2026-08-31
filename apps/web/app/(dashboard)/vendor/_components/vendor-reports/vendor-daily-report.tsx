@@ -47,7 +47,7 @@ export const VendorDailyReport = () => {
   const { data, isLoading, isFetching } = useQuery({
     queryKey: ["vendor-daily-report", startDate, endDate],
     queryFn: () =>
-      vendorDailyReportsAction({ startMonth: startDate, endMonth: endDate }),
+      vendorDailyReportsAction({ startDate: startDate, endDate: endDate }),
     retry: 1,
     staleTime: 1000 * 60 * 5,
   })

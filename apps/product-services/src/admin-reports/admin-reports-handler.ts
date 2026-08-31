@@ -332,7 +332,7 @@ export const adminPreviousYearsReportHandler: RouteHandler<
   typeof adminPreviousYearsReportRoute
 > = async (c) => {
   try {
-    const { endMonth, startMonth } = c.req.valid("query")
+    const { endDate: endMonth, startDate: startMonth } = c.req.valid("query")
     const data = await db.execute(sql`
       WITH params AS (
         SELECT
@@ -388,7 +388,7 @@ export const adminDailyReportHandler: RouteHandler<
   typeof adminDailyReportRoute
 > = async (c) => {
   try {
-    const { endMonth, startMonth } = c.req.valid("query")
+    const { endDate: endMonth, startDate: startMonth } = c.req.valid("query")
     const data = await db.execute(sql`
       WITH params AS (
         SELECT

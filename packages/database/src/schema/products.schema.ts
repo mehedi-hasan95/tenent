@@ -97,6 +97,11 @@ export const products = pgTable(
     index("products_user_email_idx").on(table.userEmail),
     index("products_created_at_idx").on(table.createdAt),
     index("products_sale_price_idx").on(table.salePrice),
+    index("product_id_user_email_deleted_at_idx").on(
+      table.id,
+      table.userEmail,
+      table.deletedAt
+    ),
   ]
 )
 

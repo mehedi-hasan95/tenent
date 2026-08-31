@@ -14,6 +14,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@workspace/ui/components/carousel"
+import { Separator } from "@workspace/ui/components/separator"
 import Image from "next/image"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
@@ -34,7 +35,7 @@ export const PopularProducts = () => {
   return (
     <>
       {data?.length && (
-        <div className="mx-auto max-w-7xl space-y-5 px-5">
+        <div className="mx-auto w-full max-w-7xl px-4 py-5 sm:px-6 lg:px-8">
           <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
             <div className="mx-auto max-w-3xl">
               <h1 className="font-serif text-5xl leading-[0.95] tracking-tight sm:text-7xl">
@@ -49,6 +50,7 @@ export const PopularProducts = () => {
               </p>
             </div>
           </div>
+          <Separator className="mt-2 mb-4" />
           <Carousel
             opts={{
               align: "start",
@@ -72,11 +74,10 @@ export const PopularProducts = () => {
                   >
                     <div className="relative aspect-square overflow-hidden bg-slate-100 dark:bg-slate-700">
                       <Image
-                        src={item.products.images[0]!}
+                        src={item.products.images[0] as string}
                         alt={item.products.title}
                         fill
                         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
-                        loading="lazy"
                       />
                       <div className="absolute top-3 right-3">
                         <WishlistButton
@@ -87,8 +88,8 @@ export const PopularProducts = () => {
                       <div className="absolute inset-x-0 bottom-0 translate-y-full p-4 transition-transform duration-300 group-hover:translate-y-0">
                         <AddToCartButton
                           className="w-full justify-center rounded-xl bg-blue-500 py-3 text-sm font-bold text-white shadow-lg transition-colors hover:bg-blue-600"
-                          btnTitle="Add to Cart"
                           id={item.products.id}
+                          btnTitle="Add to Cart"
                           quantity={1}
                         />
                       </div>

@@ -45,8 +45,8 @@ export const VendorYearlyReport = () => {
 
     queryFn: async () => {
       return vendorYearlyReportsAction({
-        startMonth: startMonthParam,
-        endMonth: endMonthParam,
+        startDate: startMonthParam,
+        endDate: endMonthParam,
       })
     },
     staleTime: 1000 * 60 * 5,

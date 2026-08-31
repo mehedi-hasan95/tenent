@@ -6,6 +6,7 @@ import {
   vendorDailyReportRoute,
   vendorPopularProductsRoute,
   vendorPreviousYearsReportRoute,
+  vendorProductsSaleRoute,
   vendorSingleOrderRoute,
   vendorTotalRevenueRoute,
 } from "./vendor-reports-route"
@@ -16,6 +17,7 @@ import {
   vendorDailyReportHandler,
   vendorPopularProductsHandler,
   vendorPreviousYearsReportHandler,
+  vendorProductsSaleHandler,
   vendorSingleOrderHandler,
   vendorTotalRevenueHandler,
 } from "./vendor-reports-handler"
@@ -33,5 +35,6 @@ app
   .openapi(vendorPreviousYearsReportRoute, vendorPreviousYearsReportHandler)
   .openapi(vendorDailyReportRoute, vendorDailyReportHandler)
   .openapi(vendorPopularProductsRoute, vendorPopularProductsHandler)
+  .openapi(vendorProductsSaleRoute, vendorProductsSaleHandler)
 
 export default app

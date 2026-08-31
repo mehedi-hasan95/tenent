@@ -2,7 +2,7 @@ import { createRoute } from "@workspace/open-api"
 import { adminMiddleware } from "../middleware"
 import z from "zod"
 import { DEFAULT_SIZE } from "@workspace/validators/types/constants.types"
-import { yearlyReportsValidator } from "@workspace/validators/validators/order-validators"
+import { startEndDateValidator } from "@workspace/validators/validators/order-validators"
 
 const tags = ["Admin Reports"]
 export const adminTotalRevenueRoute = createRoute({
@@ -85,7 +85,7 @@ export const adminPreviousYearsReportRoute = createRoute({
   tags,
   middleware: adminMiddleware,
   request: {
-    query: yearlyReportsValidator,
+    query: startEndDateValidator,
   },
   responses: {
     200: { description: "OK" },
@@ -103,7 +103,7 @@ export const adminDailyReportRoute = createRoute({
   tags,
   middleware: adminMiddleware,
   request: {
-    query: yearlyReportsValidator,
+    query: startEndDateValidator,
   },
   responses: {
     200: { description: "OK" },

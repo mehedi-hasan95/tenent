@@ -13,7 +13,7 @@ import {
 import { timestamps } from "./columns.helpers"
 import { user } from "./user.schema"
 import { products } from "./products.schema"
-import { relations } from "drizzle-orm"
+import { relations, sql } from "drizzle-orm"
 
 export const orders = pgTable(
   "orders",
@@ -33,7 +33,14 @@ export const orders = pgTable(
     country: varchar("country", { length: 100 }),
     ...timestamps,
   },
-  (table) => [index("order_user_email_idx").on(table.email)]
+  (table) => [
+    index("order_user_email_idx").on(table.email),
+    index("order_items_user_email_created_at_idx").on(
+      table.email,
+      table.createdAt
+    ),
+    index("order_items_created_at_idx").on(table.createdAt),
+  ]
 )
 
 export const orderEnum = pgEnum("order_enum", [
@@ -61,7 +68,7 @@ export const orderItems = pgTable(
 
     color: varchar("color", { length: 50 }),
 
-    usedCoupon: varchar("used_coupon"),
+    usedCoupon: boolean("used_coupon").default(false),
 
     status: orderEnum("status").default("PROCESSING").notNull(),
 
@@ -77,6 +84,14 @@ export const orderItems = pgTable(
     index("order_items_order_id_idx").on(table.orderId),
     index("order_items_product_id_idx").on(table.productId),
     index("order_items_status_idx").on(table.status),
+    index("order_items_product_status_created_at_idx").on(
+      table.productId,
+      table.status,
+      table.createdAt
+    ),
+    index("order_items_active_sales_idx")
+      .on(table.productId, table.createdAt)
+      .where(sql`status != 'CANCELLED'`),
   ]
 )
 

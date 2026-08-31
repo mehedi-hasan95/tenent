@@ -11,7 +11,7 @@ import {
 } from "@workspace/validators/types/orders.types"
 import {
   updateOrderItemsValidator,
-  yearlyReportsValidator,
+  startEndDateValidator,
 } from "@workspace/validators/validators/order-validators"
 import z from "zod"
 
@@ -131,7 +131,7 @@ export const adminCountryBasedReportAction = async () => {
 }
 
 export const adminYearlyReportsAction = async (
-  param: z.input<typeof yearlyReportsValidator>
+  param: z.input<typeof startEndDateValidator>
 ) => {
   const params = new URLSearchParams()
 
@@ -161,7 +161,7 @@ export const adminYearlyReportsAction = async (
 }
 
 export const adminDailyReportsAction = async (
-  param: z.input<typeof yearlyReportsValidator>
+  param: z.input<typeof startEndDateValidator>
 ) => {
   const params = new URLSearchParams()
 

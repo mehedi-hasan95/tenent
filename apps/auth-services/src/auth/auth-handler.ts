@@ -77,11 +77,12 @@ export const registrationEmailVerifyOTPHandler: RouteHandler<
       asResponse: true,
     })
     // used kafka
-    // if (data.ok === true) {
-    //   await producer.send("create.stripe", {
-    //     value: JSON.stringify({ email }),
-    //   })
-    // }
+    if (data.ok === true) {
+      await producer.send("create.stripe", {
+        value: JSON.stringify({ email }),
+      })
+    }
+    // used kafka
     return data
   } catch (error) {
     return c.json({ error })
@@ -367,8 +368,9 @@ export const getSendEmailHandler: RouteHandler<
 > = async (c) => {
   const { email, otp, type } = c.req.valid("json")
   // used kafka
-  // await producer.send("verification.email", {
-  //   value: JSON.stringify({ email, otp, type }),
-  // })
+  await producer.send("verification.email", {
+    value: JSON.stringify({ email, otp, type }),
+  })
+  // used kafka
   return c.json({ success: true })
 }

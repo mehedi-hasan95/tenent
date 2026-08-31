@@ -25,7 +25,7 @@ export const orderItemsValidator = z.object({
   quantity: z.coerce.number().int().nonnegative(),
   size: z.string().max(50).optional(),
   color: z.string().max(50).optional(),
-  usedCoupon: z.string().optional(),
+  usedCoupon: z.coerce.boolean(),
   orderId: z.string(),
 })
 
@@ -53,22 +53,21 @@ export const updateOrderItemsValidator = z.object({
   status: orderStatusEnum,
 })
 
-export const yearlyReportsValidator = z
+export const startEndDateValidator = z
   .object({
-    startMonth: z
+    startDate: z
       .string()
       .regex(/^\d{4}-\d{2}-\d{2}$/)
       .optional(),
-    endMonth: z
+    endDate: z
       .string()
       .regex(/^\d{4}-\d{2}-\d{2}$/)
       .optional(),
   })
   .refine(
-    ({ startMonth, endMonth }) =>
-      !startMonth || !endMonth || endMonth >= startMonth,
+    ({ startDate, endDate }) => !startDate || !endDate || endDate >= startDate,
     {
-      message: "endMonth must not be less than startMonth",
-      path: ["endMonth"],
+      message: "endDate must not be less than startDate",
+      path: ["endDate"],
     }
   )

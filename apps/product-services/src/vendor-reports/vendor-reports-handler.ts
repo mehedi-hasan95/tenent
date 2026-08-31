@@ -6,6 +6,7 @@ import {
   vendorDailyReportRoute,
   vendorPopularProductsRoute,
   vendorPreviousYearsReportRoute,
+  vendorProductsSaleRoute,
   vendorSingleOrderRoute,
   vendorTotalRevenueRoute,
 } from "./vendor-reports-route"
@@ -366,7 +367,7 @@ export const vendorPreviousYearsReportHandler: RouteHandler<
   try {
     const email = c.get("user")?.email as string
 
-    const { endMonth, startMonth } = c.req.valid("query")
+    const { endDate: endMonth, startDate: startMonth } = c.req.valid("query")
     const data = await db.execute(sql`
       WITH params AS (
         SELECT
@@ -425,15 +426,15 @@ export const vendorDailyReportHandler: RouteHandler<
   try {
     const email = c.get("user")?.email as string
 
-    const { endMonth, startMonth } = c.req.valid("query")
+    const { endDate, startDate } = c.req.valid("query")
     const data = await db.execute(sql`
       WITH params AS (
         SELECT
           COALESCE(
-            ${startMonth ? sql`${startMonth}::date` : sql`CURRENT_DATE - INTERVAL '14 days'`}
+            ${startDate ? sql`${startDate}::date` : sql`CURRENT_DATE - INTERVAL '14 days'`}
           ) AS start_date,
           COALESCE(
-            ${endMonth ? sql`${endMonth}::date` : sql`CURRENT_DATE`}
+            ${endDate ? sql`${endDate}::date` : sql`CURRENT_DATE`}
           ) AS end_date
       ),
       days AS (
@@ -500,5 +501,81 @@ export const vendorPopularProductsHandler: RouteHandler<
     return c.json({ data }, 200)
   } catch (error) {
     return c.json({ message: "Something went wrong" }, 500)
+  }
+}
+
+export const vendorProductsSaleHandler: RouteHandler<
+  typeof vendorProductsSaleRoute
+> = async (c) => {
+  try {
+    const { endDate, startDate, productId } = c.req.valid("query")
+    const user = c.get("user")
+
+    if (!user?.email) {
+      return c.json({ message: "Unauthorize" }, 501)
+    }
+    const isAdmin = user.role === "ADMIN"
+    const data = await db.execute(sql`
+      WITH params AS (
+        SELECT
+          COALESCE(
+            ${startDate ? sql`${startDate}::date` : sql`CURRENT_DATE - INTERVAL '14 days'`},
+            CURRENT_DATE - INTERVAL '14 days'
+          ) AS start_date,
+          COALESCE(
+            ${endDate ? sql`${endDate}::date` : sql`CURRENT_DATE`},
+            CURRENT_DATE
+          ) AS end_date
+      ),
+      
+      days AS (
+        SELECT generate_series(
+          start_date,
+          end_date,
+          INTERVAL '1 day'
+        )::date AS day
+        FROM params
+      ),
+      -- Pick target product: passed productId OR the first created product by title/date
+      target_product AS (
+        SELECT id, title
+        FROM ${products}
+        WHERE deleted_at IS NULL
+          ${isAdmin ? sql`` : sql`AND user_email = ${user.email}`}
+          ${productId ? sql`AND id = ${productId}::uuid` : sql``}
+        ORDER BY created_at DESC
+        LIMIT 1
+      ),
+      daily_product_sales AS (
+        SELECT
+          oi.product_id,
+          oi.created_at::date AS sale_date,
+          SUM(oi.price * oi.quantity)::real AS total_revenue,
+          SUM(oi.quantity)::integer AS total_units_sold
+        FROM ${orderItems} oi
+        INNER JOIN target_product tp ON oi.product_id = tp.id
+        INNER JOIN ${orders} o
+          ON o.id = oi.order_id
+        WHERE oi.status != 'CANCELLED'
+          AND o.is_paid = true
+          AND oi.created_at >= (SELECT start_date FROM params)
+          AND oi.created_at < (SELECT end_date FROM params) + INTERVAL '1 day'
+        GROUP BY oi.product_id, oi.created_at::date
+      )
+      SELECT
+        tp.title AS product_title,
+        d.day AS date,
+        COALESCE(dps.total_revenue, 0) AS revenue,
+        COALESCE(dps.total_units_sold, 0) AS units_sold
+      FROM target_product tp
+      CROSS JOIN days d
+      LEFT JOIN daily_product_sales dps 
+        ON dps.product_id = tp.id 
+      AND dps.sale_date = d.day
+      ORDER BY d.day ASC;
+    `)
+    return c.json({ data: data.rows }, 200)
+  } catch (error) {
+    return c.json({ message: error }, 500)
   }
 }

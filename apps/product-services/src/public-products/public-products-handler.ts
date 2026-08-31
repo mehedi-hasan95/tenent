@@ -301,6 +301,7 @@ export const allProductsHandler: RouteHandler<typeof allProductsRoute> = async (
       .where(
         and(
           eq(products.status, "active"),
+          isNull(products.deletedAt),
 
           search ? ilike(products.title, `%${search}%`) : undefined,
 
